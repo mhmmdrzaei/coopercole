@@ -1,0 +1,230 @@
+.flex {
+	display: flex;
+}
+
+.logoall{
+	margin:100px auto;
+	width: 400px;
+}
+.logoSvgOne,.logoSvgTwo {
+	@extend .flex;
+	svg {
+		width: 70px;
+	}
+}
+.logoSvgOne{
+	.cOne{
+		// animation: fadeIn 10s, cOne 4s ease-in-out infinite;
+	}
+	.oOne {
+		position: relative;
+		top: 6px;
+		left:-11%;
+		// animation: fadeIn 10s, oOne 12s ease-in-out infinite;
+	}
+	.oTwo {
+		position: relative;
+		top: 6px;
+		left: -20.5%;
+		// animation: fadeIn 7s, oTwo 7s ease-in-out infinite;
+	}
+	.pSvg{
+		position: relative;
+		left: -29%;
+		top: -10px;
+		// animation: fadeIn 10s, waveRight 4s ease-in-out infinite;
+	}
+	.eOne{
+		position: relative;
+		left: -40%;
+		top: 6px;
+		// animation: fadeIn 7s, oThreeA 7s ease-in-out infinite;
+	}
+	.rSvg{
+		position: relative;
+		left: -49.5%;
+		top: 10px;
+		// animation: fadeIn 3s, cTwoA 5s ease-in-out infinite;
+	}
+
+}
+.logoall:hover > .logoSvgOne > .rSvg {
+	animation: fadeIn 3s, cTwoA 5s ease-in-out infinite;
+}
+.logoall:hover > .logoSvgOne > .eOne {		
+	animation: fadeIn 7s, oThreeA 7s ease-in-out infinite;
+}
+.logoall:hover > .logoSvgOne > .pSvg {
+	animation: fadeIn 10s, waveRight 4s ease-in-out infinite; 
+}
+.logoall:hover > .logoSvgOne > .oTwo {
+	animation: fadeIn 7s, oTwo 7s ease-in-out infinite;
+
+}
+.logoall:hover > .logoSvgOne > .oOne {
+	animation: fadeIn 10s, oOne 12s ease-in-out infinite;
+}
+.logoall:hover > .logoSvgOne > .cOne {
+		animation: fadeIn 10s, cOne 4s ease-in-out infinite;
+}
+
+.logoSvgTwo {
+	.cTwo {
+		position: relative;
+		top: -4px;
+		left: -3%;
+		// animation: fadeIn 3s, cTwoA 5s ease-in-out infinite;
+	}
+	.oThree{
+		position: relative;
+		    top: -13px;
+		    left: -11.5%;
+		    // animation: fadeIn 7s, oThreeA 7s ease-in-out infinite;
+	}
+	.lSvg{
+		position: relative;
+		    left: -22.5%;
+		    top: -11px;
+
+	}
+	.eTwo {
+		position: relative;
+		    left: -33%;
+		    top: -13px;
+		    // animation-timing-function: ease-in-out;
+		    // animation: fadeIn 10s, waveRight 4s ease-in-out infinite;
+
+	}
+}
+.logoall:hover > .logoSvgTwo > .eTwo {
+	animation: fadeIn 10s, waveRight 4s ease-in-out infinite;
+}
+
+.logoall:hover > .logoSvgTwo > .lSvg {
+	animation: fadeIn 10s, lUpDown 4s ease-in-out infinite;
+
+}
+
+.logoall:hover > .logoSvgTwo > .oThree {
+	animation: fadeIn 7s, oThreeA 7s ease-in-out infinite;
+}
+
+.logoall:hover > .logoSvgTwo > .cTwo {
+	animation: fadeIn 3s, cTwoA 5s ease-in-out infinite;
+
+}
+@keyframes waveRight {
+     0% {transform:rotate(0deg) translateY(0px)}
+    33% {transform:rotate(0deg) translateY(5px) }
+}
+
+@keyframes lUpDown {
+     0% {transform:rotate(0deg) translateY(0px)}
+    33% {transform:rotate(0deg) translateY(10px) }
+}
+
+@keyframes oThreeA {
+     0% {transform:rotate(0deg) translateY(0px)}
+    33% {transform:rotate(30deg) translateY(12px) }
+}
+@keyframes cTwoA {
+     0% {transform:rotate(0deg) translateY(0px)}
+    33% {transform:rotate(-10deg) translateY(5px) }
+}
+@keyframes oTwo {
+     0% {transform:rotate(0deg) translateY(0px)}
+    33% {transform:rotate(-50deg) translateY(2px) }
+}
+@keyframes oOne {
+     0% {transform:rotate(0deg) translateY(0px)}
+    33% {transform:rotate(0deg) translateY(-7px) }
+}
+@keyframes cOne {
+     0% {transform:rotate(0deg) translateY(0px)}
+    33% {transform:rotate(-20deg) translateY(7px) }
+}
+
+.logoTwo {
+	@extend .flex;
+	margin: 100px auto;
+	width: 400px;
+	
+	
+	svg {
+		width: 70px;
+	}
+	.cOneLTwo {
+	transition: 0.6s all;
+	}
+	.cTwoLTwo {
+	position: relative;
+    left: -7.5%;
+    top: 10px;
+    transition: 0.6s all;
+
+	}
+}
+
+.logoTwo:hover > .cOneLTwo{
+	transform: rotate(720deg);
+}
+
+.logoTwo:hover > .cTwoLTwo{
+	transform: rotate(-720deg);
+}
+.logoThree{
+	background: linear-gradient(-45deg, #f300e0, #f300e0, #9700fe, #0a07d7, #13e2da, #16ff22, #f7f600,#fbbf00 );
+	background-size: 400% 400%;
+	animation: gradient 2s ease-in-out infinite;
+	animation-iteration-count:infinite;
+	padding: 1px;
+
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+}
+.logoallCool{
+	background: linear-gradient(-45deg, #13e2da, #16ff22, #f7f600,#fbbf00 );
+	background-size: 100px 100px;
+	animation: gradient 5s ease-in-out infinite;
+	animation-iteration-count:infinite;
+	padding: 1px;
+	width: 500px;
+	height: 400px;
+	margin: 0 auto;
+	@extend .flex;
+	svg {
+		width: 150px;
+		position: relative;
+	}
+	.cCool{
+		left:10%;
+		animation: fadeIn 3s, cTwoA 2s ease-in-out infinite;
+	}
+		
+	.oCoolOne{
+		top:23px;
+		left: -5%;
+		animation: fadeIn 7s, oThreeA 2s ease-in-out infinite;
+	}
+	.oCoolTwo {
+		top: 23px;
+		left:-19%;
+		animation: fadeIn 10s, lUpDown 1s ease-in-out infinite;
+	}
+	.lCool{
+		left:-33%;
+		animation: fadeIn 10s, waveRight 1s ease-in-out infinite;
+	}
+}
+
+
+
