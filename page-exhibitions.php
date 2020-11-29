@@ -1,7 +1,12 @@
 <?php //template name: Exhibitions ?>
 
 <?php get_header(); ?>
-
+<h3><a href="#2012">2012</a></h3>
+<h3><a href="#2016">2016</a></h3>
+    <?php wp_nav_menu( array(
+      'container' => false,
+      'theme_location' => 'social'
+    )); ?>
 			<div class="exhibitions container">
 
 				<?php
@@ -128,6 +133,7 @@
 
 
 			</div>
+<?php wp_custom_archive(); ?>
 
 
 <?php get_footer(); ?>

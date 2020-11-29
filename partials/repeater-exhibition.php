@@ -22,10 +22,13 @@ if( get_field('end_date') ) {
 
 
  ?>
-<article class="exhibition">
+
+
+<article id="<?php echo $start_date->format('Y'); ?>" class="exhibition">
 	<div class="image">
 		<a href="<?php the_permalink(); ?>">
 			<?php the_post_thumbnail('large'); ?>	
+
 		</a>
 	</div>
 

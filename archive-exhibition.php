@@ -4,24 +4,7 @@
   <div class="container">
     <div class="content">
 
-
-      <?php   $args = array (
-              'post_type' => 'exhibition',
-              'meta_key'      => 'start_date',
-              // 'orderby'      => 'meta_value',
-              'orderby'    => array(
-                    'start_date' => 'DSC',
-                    'post_date' => 'desc'
-                  ),
-              'order'       => 'DESC'
-            );
-
-
-       ?>
-
-
-
-       ?>
+      <?php if ( have_posts() ) the_post(); ?>
 
       <h1>
         <?php if ( is_day() ) : ?>
@@ -34,12 +17,7 @@
           Blog Archives
         <?php endif; ?>
       </h1>
- <?php 
-        $exhibitions = new Wp_Query( $args );
 
-        if($exhibitions->have_posts()) : while($exhibitions->have_posts()) : $exhibitions->the_post();
-
-          ?>
       <?php
     	/* Since we called the_post() above, we need to
     	 * rewind the loop back to the beginning that way
@@ -51,15 +29,12 @@
     	 * If you want to overload this in a child theme then include a file
     	 * called loop-archives.php and that will be used instead.
     	 */
-      get_template_part( 'partials/repeater-exhibition', 'archive' );
+      get_template_part( 'loop', 'archive' );
       ?>
-
-       <?php endwhile; wp_reset_postdata(); ?>
-
-<?php endif; ?>
 
     </div><!--/content-->
 
+    <?php get_sidebar(); ?>
 
   </div> <!-- /.container -->
 </div> <!-- /.main -->
