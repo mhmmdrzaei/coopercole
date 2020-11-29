@@ -1,37 +1,28 @@
 <?php //template name: Contact ?>
-
 <?php get_header(); ?>
-
+<main>
 	<?php if(have_posts()) : while(have_posts()) : the_post(); ?>
-
-		<?php $banner = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'full' ); ?>
-
-		<div class="contact-banner" style="background-image:url(<?php echo $banner[0]; ?>);"></div>
-		<section class="contactContainer">
-			<aside class="galleryAddress">
-				<h3><?php echo get_field('location')['address']; ?></h3>
-			</aside>
-			<aside class="galleryContact">
-				<a href="tel:<?php the_field('phone_number'); ?>"><?php the_field('phone_number'); ?></a><br/>
-				<a href="mailto:<?php the_field('email_address'); ?>"><?php the_field('email_address'); ?></a><br/>
-			</aside>
-			<aside class="galleryHours">
-				<?php the_field('hours'); ?>
-			</aside>
-		</section>
-		<article class="Mailinglist">
-			<h3 class="toggle-mailing-list"><a href="#">Sign up for our mailing list</a></h3>
-			<p>The gallery does not review unsolicited artist submissions.</p>
-		</article>
-		<section class="galleryinfo">
-			<aside class="galleryAccess">
-				<?php the_content(); ?>
-			</aside>
-			<aside class="GalleryStaff">
-				<?php the_field('gallery_staff'); ?>
-			</aside>
-		</section>
-		<section class="galleryAdditionalInfo">
+	<?php 
+	$contactImage = get_the_post_thumbnail_url(null, 'full');?>
+	<img src="<?php echo $contactImage ?>" alt="an image from the exhibtion <?php echo $titleExhibit ?>">	
+	<section class="contactContainer">
+		<aside class="galleryAddress">
+			<h3><?php echo get_field('location')['address']; ?></h3>
+			<a href="<?php the_field('location_link') ?>" target="_blank" class="contactMapLink">Map</a>
+			
+		</aside>
+		<aside class="galleryContact">
+			<a href="tel:<?php the_field('phone_number'); ?>"><?php the_field('phone_number'); ?></a><br/>
+			<a href="mailto:<?php the_field('email_address'); ?>"><?php the_field('email_address'); ?></a><br/>
+		</aside>
+		<aside class="galleryHours">
+			<?php the_field('hours'); ?>
+		</aside>
+	</section>
+	<section class="Mailinglist">
+		<h3 class="toggle-mailing-list"><a href="#">Sign up for our mailing list</a></h3>
+	</section>
+	<section class="galleryAdditionalInfo">
 			<?php if( have_rows('flexible_additional_info') ): ?>
 			    <?php while( have_rows('flexible_additional_info') ): the_row(); ?>
 			    	<?php if( get_row_layout() == 'link_dynamic_info_option' ): ?>
@@ -74,15 +65,14 @@
 			<?php endif; ?>
 
 		</section>
-
-			
-			
-			<div class="wrap-map">
-				<div id="map" data-lat="<?php echo get_field('location')['lat']; ?>" data-lng="<?php echo get_field('location')['lng']; ?>"></div>
-			</div>
-			
-		
+		<div class="wrap-map">
+			<div id="map" data-lat="<?php echo get_field('location')['lat']; ?>" data-lng="<?php echo get_field('location')['lng']; ?>"></div>
 		</div>
+
+
+</main>
+
+
 
 	<?php endwhile; endif; ?>
 	  

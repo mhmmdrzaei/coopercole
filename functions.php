@@ -127,7 +127,7 @@ add_filter( 'wp_page_menu_args', 'hackeryou_page_menu_args' );
  * Sets the post excerpt length to 40 characters.
  */
 function hackeryou_excerpt_length( $length ) {
-	return 40;
+	return 30;
 }
 add_filter( 'excerpt_length', 'hackeryou_excerpt_length' );
 
@@ -135,7 +135,7 @@ add_filter( 'excerpt_length', 'hackeryou_excerpt_length' );
  * Returns a "Continue Reading" link for excerpts
  */
 function hackeryou_continue_reading_link() {
-	return ' <a href="'. get_permalink() . '">Continue reading <span class="meta-nav">&rarr;</span></a>';
+	return ' <a href="'. get_permalink() . '">Read More <span class="meta-nav">&rarr;</span></a>';
 }
 
 /**
@@ -526,7 +526,7 @@ function coopercole_tags() {
 			$tags[] = '<a href="'.get_permalink(get_the_id() ).'">'.get_the_title(get_the_id()).'</a>';
 		endwhile; endif;
 
-		echo 'Tags: ';
+		
 
 		foreach($tags as $tag) {
 
@@ -704,14 +704,6 @@ function theme_setup() {
 			'menu_title' 	=> 'Theme Settings',
 			'redirect' 		=> false
 		));
-
-
-		// add sub page
-		// acf_add_options_sub_page(array(
-		// 	'page_title' 	=> 'Tickets Settings',
-		// 	'menu_title' 	=> 'Tickets',
-		// 	'parent_slug' 	=> $parent['menu_slug']
-		// ));
 
 	}
 

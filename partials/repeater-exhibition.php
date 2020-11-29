@@ -22,73 +22,73 @@ if( get_field('end_date') ) {
 
 
  ?>
+<?php 
+	$exhibitionImage = get_the_post_thumbnail_url(null, 'full');
 
+ ?>
 
 <article id="<?php echo $start_date->format('Y'); ?>" class="exhibition">
-	<div class="image">
-		<a href="<?php the_permalink(); ?>">
-			<?php the_post_thumbnail('large'); ?>	
+	<a href="<?php the_permalink(); ?>">
 
-		</a>
-	</div>
+	<section class="artistNameExhibition">
+		<?php
 
-	<div class="description">
-		<a href="<?php the_permalink(); ?>">
-		<div class="constrainMohammad">
-			<?php
-
-				$connected = new WP_Query( array(
-				  'connected_type' => 'exhibition_to_artist',
-				  'connected_items' => get_the_id(),
-				  'nopaging' => true,
-				) );
+			$connected = new WP_Query( array(
+			  'connected_type' => 'exhibition_to_artist',
+			  'connected_items' => get_the_id(),
+			  'nopaging' => true,
+			) );
 
 
-				foreach($connected->posts as $p) {
-					$lastname = explode(' ', $p->post_title);
-					if(sizeof($lastname) == 1) {
-						$p->lastname = $lastname[0];
-					}
-					if(sizeof($lastname) == 2) {
-						$p->lastname = $lastname[1];
-					}
-					if(sizeof($lastname) == 3) {
-						$p->lastname = $lastname[2];
-					}
+			foreach($connected->posts as $p) {
+				$lastname = explode(' ', $p->post_title);
+				if(sizeof($lastname) == 1) {
+					$p->lastname = $lastname[0];
 				}
+				if(sizeof($lastname) == 2) {
+					$p->lastname = $lastname[1];
+				}
+				if(sizeof($lastname) == 3) {
+					$p->lastname = $lastname[2];
+				}
+			}
 
-				usort($connected->posts, 'cmp');
+			usort($connected->posts, 'cmp');
 
-				if ( $connected->have_posts() ) :
+			if ( $connected->have_posts() ) :
 
-					echo '<ul class="mohammadUl">';
+				echo '<ul class="mohammadUl">';
 
-					while ( $connected->have_posts() ) : $connected->the_post();
+				while ( $connected->have_posts() ) : $connected->the_post();
 
-						echo '<li><h4>';
+					echo '<li><h4>';
 
-						echo get_the_title(get_the_id());
+					echo get_the_title(get_the_id());
 
 
-						echo '</h4></li>';
+					echo '</h4></li>';
 
-					endwhile;
-					echo '</ul>';
+				endwhile;
+				echo '</ul>';
 
-			 endif;
+		 endif;
 
-				wp_reset_query($connected);
+			wp_reset_query($connected);
 
-			?>
-			<div class="nonartistsdesc" >
-					<?php echo $titleExhibit ?>	
+		?>
+	</section>
+	<figure class="image">
+			<img src="<?php echo $exhibitionImage ?>" alt="an image from the exhibtion <?php echo $titleExhibit ?>">
+	</figure>
+	<section class="exhibitionDetails">
+		<h3><?php echo $titleExhibit ?>	</h3>
+		<aside class="exhibitionDateLocation">
+			<div class="date"><?php echo $start_date->format('F j, Y'); if($end_date) { echo ' - '.$end_date->format('F j, Y'); } ?></div>
+			<div class="location"><?php echo $exhibitlocation ?></div>
+		</aside>
+	</section>
 
-				<div class="date"><?php echo $start_date->format('F j, Y'); if($end_date) { echo ' - '.$end_date->format('F j, Y'); } ?></div>
-				<div class="location"><?php echo $exhibitlocation ?></div>
-			</div>
-		</div>
 
-		</a>
-	</div>
+	</a>
 
 </article>

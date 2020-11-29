@@ -1,45 +1,29 @@
 <?php get_header(); ?>
+<main>
+   <?php if ( have_posts() ) while ( have_posts() ) : the_post(); ?>
+  <section class="newsSide">
+    <h1><?php the_title(); ?></h1>
+    <h2><?php the_time('F j, Y'); ?></h2>
+    <aside class="NewsTags">
+            <?php coopercole_tags(); ?>
+    </aside>
+  </section>
+  <section class="newsMain">
+    <aside class="newsMainNav">
+       <p class="nav-previous"><?php previous_post_link('%link', '&larr; %title'); ?></p>
+        <p class="nav-next"><?php next_post_link('%link', '%title &rarr;'); ?></p>
+    </aside>
+    <aside class="video wrap-video">
+      <?php the_field('video_link_news'); ?>
+    </aside>
+    <aside class="newsContentMain">
+       <?php the_content(); ?>
+    </aside>
 
-<div class="main">
-  <div class="container">
-    <div class="content">
-      <?php if ( have_posts() ) while ( have_posts() ) : the_post(); ?>
+  </section>
+</main>
 
-        <div id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-          <h1 class="entry-title"><?php the_title(); ?></h1>
+ <?php endwhile; // end of the loop. ?>
 
-          <div class="entry-meta">
-            <?php hackeryou_posted_on(); ?>
-          </div><!-- .entry-meta -->
-
-          <div class="entry-content">
-            <?php the_content(); ?>
-            <?php wp_link_pages(array(
-              'before' => '<div class="page-link"> Pages: ',
-              'after' => '</div>'
-            )); ?>
-          </div><!-- .entry-content -->
-
-          <div class="entry-utility">
-            <?php hackeryou_posted_in(); ?>
-            <?php edit_post_link( 'Edit', '<span class="edit-link">', '</span>' ); ?>
-          </div><!-- .entry-utility -->
-        </div><!-- #post-## -->
-
-        <div id="nav-below" class="navigation">
-          <p class="nav-previous"><?php previous_post_link('%link', '&larr; %title'); ?></p>
-          <p class="nav-next"><?php next_post_link('%link', '%title &rarr;'); ?></p>
-        </div><!-- #nav-below -->
-
-        <?php comments_template( '', true ); ?>
-
-      <?php endwhile; // end of the loop. ?>
-
-    </div> <!-- /.content -->
-
-    <?php get_sidebar(); ?>
-
-  </div> <!-- /.container -->
-</div> <!-- /.main -->
 
 <?php get_footer(); ?>

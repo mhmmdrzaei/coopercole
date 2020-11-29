@@ -1,7 +1,14 @@
 <footer>
-  <div class="container">
-    <p>&copy; HackerYou <?php echo date('Y'); ?></p>
-  </div>
+
+	<nav class="Footermenu">
+		
+		<?php wp_nav_menu( array(
+		  'container' => false,
+		  'theme_location' => 'footer_menu'
+		)); ?>
+	</nav>
+	<span class="copyright"><?php the_field('copyright_text', 'options'); ?></span>
+
 </footer>
 
 <script>
