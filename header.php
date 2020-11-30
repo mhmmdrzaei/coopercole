@@ -15,22 +15,35 @@
 
 <header>
 
-  <?php require 'partials/logo.php'; ?>
+  
 
-   <?php require 'partials/logoTwo.php'; ?>
-  <?php require 'partials/logoThree.php'; ?>
-    <?php require 'partials/logoFour.php'; ?>
-  <div class="container">
-    <h1>
-      <a href="<?php echo home_url( '/' ); ?>" title="<?php bloginfo( 'name', 'display' ); ?>" rel="home">
-        <?php bloginfo( 'name' ); ?>
-      </a>
-    </h1>
-
-    <?php wp_nav_menu( array(
+  <!-- <?php require 'partials/logoTwo.php'; ?> -->
+  <!-- <?php require 'partials/logoThree.php'; ?> -->
+   <!-- <?php require 'partials/logoFour.php'; ?> -->
+  <main>
+    <h3 class="Menu">Menu</h3>
+    <nav class="primaryMenu">
+          <?php wp_nav_menu( array(
       'container' => false,
       'theme_location' => 'primary_menu'
     )); ?>
-  </div> <!-- /.container -->
+    </nav>
+    <section class="logo">
+       <a href="<?php echo home_url( '/' ); ?>" title="<?php bloginfo( 'name', 'display' ); ?>" rel="home">
+        <?php require 'partials/logo.php'; ?>
+      </a>
+     
+    </section>
+    <nav class="languages">
+                <?php wp_nav_menu( array(
+      'container' => false,
+      'theme_location' => 'languages_menu'
+    )); ?>
+    </nav>
+    <section class="search">
+      <?php get_search_form(); ?>
+    </section>
+
+  </main> <!-- /.container -->
 </header><!--/.header-->
 

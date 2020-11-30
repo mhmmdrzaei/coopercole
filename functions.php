@@ -692,7 +692,8 @@ function theme_setup() {
 	register_nav_menus( array(
 		'primary_menu' => 'Primary Menu',
 		'footer_menu' => 'Footer Menu',
-		'social_menu' => 'Social Menu'
+		'social_menu' => 'Social Menu',
+		'languages_menu' => 'Languages Menu'
 	) );
 
 

@@ -22,6 +22,7 @@
 	<section class="Mailinglist">
 		<h3 class="toggle-mailing-list"><a href="#">Sign up for our mailing list</a></h3>
 	</section>
+	<hr>
 	<section class="galleryAdditionalInfo">
 			<?php if( have_rows('flexible_additional_info') ): ?>
 			    <?php while( have_rows('flexible_additional_info') ): the_row(); ?>
