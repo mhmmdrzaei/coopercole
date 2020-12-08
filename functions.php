@@ -50,6 +50,13 @@ function hackeryou_styles(){
 }
 
 add_action( 'wp_enqueue_scripts', 'hackeryou_styles');
+
+function wpb_add_google_fonts() {
+ 
+wp_enqueue_style( 'wpb-google-fonts', 'https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap', false ); 
+}
+ 
+add_action( 'wp_enqueue_scripts', 'wpb_add_google_fonts' );
 /* Add all our JavaScript files here.
 We'll let WordPress add them to our templates automatically instead
 of writing our own script tags in the header and footer. */
@@ -84,6 +91,7 @@ function hackeryou_scripts() {
 }
 
 add_action( 'wp_enqueue_scripts', 'hackeryou_scripts');
+
 
 
 /* Custom Title Tags */
