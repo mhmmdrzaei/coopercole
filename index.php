@@ -132,7 +132,6 @@
 
 	</div>
 
-<?php require 'partials/footer.php'; ?>
 
 
 <?php get_footer(); ?>

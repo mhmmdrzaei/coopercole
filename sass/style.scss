@@ -13,11 +13,21 @@
 @import 'logo';
 @import 'comments';
 @import 'footer';
+@import 'search';
 /*
 ====================================
 Default Styling
 ====================================
 */
+
+@mixin fontSize($sizeValue){
+    font-size: $sizeValue * 1px;
+    font-size: ($sizeValue/10) * 1rem;
+}
+.flex {
+	display: flex;
+	flex-flow: row wrap;
+}
 
 img {
 	max-width: 100%;
@@ -25,21 +35,21 @@ img {
 
 body {
 	font-family: 'Open Sans', sans-serif;
+	width: 95%;
+	margin: 0 auto;
 }
-
-.container {
+main {
 	max-width: 1200px;
 	margin: 0 auto;
 }
 
-.content {
-	float: left;
-	width: 65%;
-	margin-right: 5%;
+main.headerMain {
+	max-width: 100%;
 }
-
-.full {
-	width: 100%;
+@media(max-width: 1200px){
+	main.headerMain {
+	max-width: 1200px;
+}
 }
 
 

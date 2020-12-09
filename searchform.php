@@ -1,4 +1,8 @@
-<form role="search" method="get" id="searchform" action="<?php bloginfo('url'); ?>">
-	<input type="search" placeholder="Search..." title="Search..." name="s" id="s" >
-	<input type="submit" class="searchsubmit" value="Search">
+<form class="searchForm" role="search" method="get" id="searchform" action="<?php bloginfo('url'); ?>">
+	<input type="search" placeholder="Search" title="Search" name="s" id="s" >
+	<label>
+	 <input class="searchSubmit" type="submit" name="image" value="Search">
+	 <svg xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" version="1.1" x="0px" y="0px" viewBox="0 0 100 125"><g transform="translate(0,-952.36218)"><path style="text-indent:0;text-transform:none;direction:ltr;block-progression:tb;baseline-shift:baseline;color:#000000;enable-background:accumulate;" d="m 43.995212,968.36218 c -15.44938,0 -27.99521,12.54572 -27.99521,27.99521 0,15.44941 12.54582,27.99521 27.99521,27.99521 7.37654,0 14.08736,-2.828 19.09049,-7.4987 l 19.18422,19.2155 c 0.39038,0.3903 1.04679,0.3904 1.43725,0 0.3904,-0.3906 0.39047,-1.0156 0,-1.4061 l -19.21546,-19.2154 c 4.65288,-4.9997 7.49872,-11.7298 7.49872,-19.09051 0,-15.44949 -12.54584,-27.99521 -27.99522,-27.99521 z m 0,1.99966 c 14.36869,0 25.99556,11.62678 25.99556,25.99555 0,14.36871 -11.62688,25.99561 -25.99556,25.99561 -14.36867,0 -25.99555,-11.6269 -25.99555,-25.99561 0,-14.36877 11.62687,-25.99555 25.99555,-25.99555 z" fill="#000000" fill-opacity="1" stroke="none" marker="none" visibility="visible" display="inline" overflow="visible"/></g></svg> 
+	 <!-- Search by Zaff Studio from the Noun Project -->
+	</label>
 </form>

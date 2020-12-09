@@ -1,0 +1,20 @@
+
+label {
+	svg {
+		width: 30px;
+		cursor: pointer;
+	}
+}
+form.searchForm{
+	display: flex;
+	input{
+		border: none;
+		border-bottom: 1px solid;
+		text-transform: uppercase;
+		height: 25px;
+	}
+}
+
+input.searchSubmit{
+	display: none;
+}

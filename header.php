@@ -13,7 +13,7 @@
 
 <body <?php body_class(); ?>>
 
-  <body>
+<body>
 
     
 
@@ -24,14 +24,24 @@
   <!-- <?php require 'partials/logoTwo.php'; ?> -->
   <!-- <?php require 'partials/logoThree.php'; ?> -->
    <!-- <?php require 'partials/logoFour.php'; ?> -->
-  <main>
-    <h3 class="Menu">Menu</h3>
-    <nav class="primaryMenu">
-          <?php wp_nav_menu( array(
-      'container' => false,
-      'theme_location' => 'primary_menu'
-    )); ?>
-    </nav>
+  <main class="headerMain">
+    <input type="checkbox" id="menu__check">
+    <div class="menu__hero">
+      <nav class="menu__nav">
+        <label class="menu__icon" for="menu__check">
+         <h3 class="Menu">Close</h3>
+        </label>
+            <?php wp_nav_menu( array(
+        'container' => false,
+        'theme_location' => 'primary_menu'
+      )); ?>
+      </nav>
+      
+    </div>
+    <label class="menu__icon" for="menu__check">
+     <h3 class="Menu">Menu</h3>
+    </label>
+
     <section class="logo">
        <a href="<?php echo home_url( '/' ); ?>" title="<?php bloginfo( 'name', 'display' ); ?>" rel="home">
         <?php require 'partials/logo.php'; ?>

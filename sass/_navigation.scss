@@ -1,14 +1,126 @@
-ul.menu {
-	margin: 0;
-	padding: 0;
-	li {
-		display: inline;
-		margin-right: 10px;
-		a {
-			color: #333;
-			padding: 10px;
-			background: #333;
-			color: white;
-		}
-	}
+@mixin fontSize($sizeValue){
+    font-size: $sizeValue * 1px;
+    font-size: ($sizeValue/10) * 1rem;
+}
+.flex {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.headerMain{
+  @extend .flex;
+  // padding-top: 30px;
+  align-items: center;
+  justify-content: center;
+}
+.fl-panelBar-wideScreen{
+  width: 20%;
+  position: relative;
+  left: 41px;
+}
+
+#menu__check {
+  display: none; // hide checkbox
+}
+
+.menu__hero {
+  display: flex; 
+  position: absolute; // for animation
+  // top: 10px;
+  left: -300px;
+  right: 0;
+  width: 200px; // 160px without button
+  transition: left ease-in-out .7s;
+  #menu__check:checked ~ & {
+    left: 0;
+    transition: left ease-in-out .7s;
+  }
+  .wrap {
+    margin-right: 10px; // margin for menu button
+    background-color: #bbb;
+    & h2 {
+      margin: 0;
+      padding: 10px 0 10px 0;
+      text-align: right;
+    }
+  }
+  // styles menu button
+  .menu__icon {
+    display: flex;
+    flex-direction: column;
+    text-transform: uppercase;
+    outline: none;
+    transition: transform ease-in-out 0.7s, background-color ease-in-out 0.3s;
+    cursor: pointer;
+
+    #menu__check:checked ~ & {
+      // transform: rotate(-360deg);
+      transition: transform ease-in-out 0.7s, background-color ease-in-out 0.3s;
+    }
+
+    .item {
+      width: 5px;
+      height: 12.5px;
+      background-color: #000;
+    }
+
+    .item__top {
+      transform: skew(45deg);
+    }
+
+    .item__bottom {
+      transform: skew(-45deg);
+    }
+  }
+  .menu__nav {
+    // background-color: #ccc;
+    z-index: 999;
+    ul {
+      @include fontSize(25);
+      text-shadow:
+        -1px -1px 0 #000,  
+         1px -1px 0 #000,
+         -1px 1px 0 #000,
+          1px 1px 0 #000;
+          color: white;
+    }
+    text-transform: uppercase;
+    label{
+      h3{
+        text-align: right;
+      }
+    }
+    padding: 0 20px 14px 10px;
+    border: 1px solid black;
+    border-left: none;
+    ul {
+      padding: 0;
+    }
+    width: 400px;
+    background: white;
+    
+    & > ul, li {
+      display: flex;
+      flex-direction: column;
+      list-style-type: none;
+      margin: 0;
+      // padding: 10px;
+      & a {
+        display: block;
+        // width: 150px;
+        // height: 50px;
+        text-align: right;
+        line-height: 50px;
+        text-decoration: none;
+        color: white;
+        font-weight: 700;
+        text-align: right;
+        transition: background-color ease-in-out .3s;
+        &:hover {
+          // background-color: #bee;
+          transition: background-color ease-in-out .3s;
+        }
+      }
+    }
+  }
 }
