@@ -10,7 +10,8 @@
 .headerMain{
   @extend .flex;
   // padding-top: 30px;
-  align-items: center;
+  // align-items: center;
+  align-items: flex-start;
   justify-content: center;
 }
 .fl-panelBar-wideScreen{
@@ -27,9 +28,9 @@
   display: flex; 
   position: absolute; // for animation
   // top: 10px;
-  left: -300px;
+  left: -700px;
   right: 0;
-  width: 200px; // 160px without button
+  max-width: 20%;
   transition: left ease-in-out .7s;
   #menu__check:checked ~ & {
     left: 0;
@@ -96,7 +97,7 @@
     ul {
       padding: 0;
     }
-    width: 400px;
+    // width: 400px;
     background: white;
     
     & > ul, li {
@@ -124,3 +125,49 @@
     }
   }
 }
+h3.menuMain{
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+//languages menu
+.dropbtn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-transform: uppercase;
+  outline: none;
+}
+
+.language {
+  position: relative;
+  display: inline-block;
+}
+
+#menu-languages-menu {
+  display: none;
+  position: absolute;
+  // min-width: 160px;
+  overflow: auto;
+  // box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+  list-style: none;
+  padding: 0;
+  text-transform: uppercase;
+  li {
+    @include fontSize(8);
+  }
+}
+
+#menu-languages-menu a {
+  color: black;
+  padding: 8px 7px;
+  text-decoration: none;
+  display: block;
+}
+
+.language a:hover {
+  // border: 1px solid;
+}
+
+.show {display: block !important;}

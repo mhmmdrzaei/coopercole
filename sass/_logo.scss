@@ -3,7 +3,7 @@
 }
 
 .logoall{
-	margin:100px auto;
+	// margin:100px auto;
 	width: 420px;
 }
 .logoSvgOne,.logoSvgTwo {
@@ -11,6 +11,11 @@
 	svg {
 		width: 70px;
 	}
+}
+section.logo {
+	overflow: hidden;
+	    width: 210px;
+	    height: 140px;
 }
 .logoSvgOne{
 	.cOne{

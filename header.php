@@ -6,6 +6,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title><?php  wp_title('|', true, 'right'); ?></title>
   <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
+
   <!-- stylesheets should be enqueued in functions.php -->
   <?php wp_head(); ?>
 </head>
@@ -39,7 +40,7 @@
       
     </div>
     <label class="menu__icon" for="menu__check">
-     <h3 class="Menu">Menu</h3>
+     <h3 class="menuMain">Menu</h3>
     </label>
 
     <section class="logo">
@@ -48,7 +49,8 @@
       </a>
      
     </section>
-    <nav class="languages">
+    <nav class="language">
+       <button onclick="myFunction()" class="dropbtn">lang ▼</button>
                 <?php wp_nav_menu( array(
       'container' => false,
       'theme_location' => 'languages_menu'
