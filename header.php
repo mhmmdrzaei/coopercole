@@ -39,7 +39,7 @@
       </nav>
       
     </div>
-    <label class="menu__icon" for="menu__check">
+    <label class="menu__icon headerMainMenu" for="menu__check">
      <h3 class="menuMain">Menu</h3>
     </label>
 

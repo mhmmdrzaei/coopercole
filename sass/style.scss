@@ -28,6 +28,9 @@ Default Styling
 	display: flex;
 	flex-flow: row wrap;
 }
+h3 {
+	@include fontSize(16);
+}
 
 img {
 	max-width: 100%;
