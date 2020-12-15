@@ -79,9 +79,10 @@
         <hr>
 
         <?php wp_reset_postdata(); endif; ?>
-   <section class="exhibitionContent">
+   <section class="exhibitionContent text-area" data-controller="#readMore1">
      <?php the_content(); ?>
    </section>
+   <a id="readMore1" class="btn btn-info">Read more</a>  </div>
   <?php if(get_field('carousel')): ?>
    <section class="exhibitionImages">
       <?php
@@ -98,7 +99,7 @@
 
     <?php endif; ?>
 
-  <h3>featured Art</h3>
+  <h3>Artworks</h3>
 
     <?php
 

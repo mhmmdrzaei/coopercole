@@ -49,6 +49,9 @@ main {
 main.headerMain {
 	max-width: 100%;
 }
+.show-read-more .more-text{
+    display: none;
+}
 @media(max-width: 1200px){
 	main.headerMain {
 	max-width: 1200px;
