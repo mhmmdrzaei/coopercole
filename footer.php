@@ -1,13 +1,27 @@
 <footer>
-
+	<div class="addressFooter">
+		<p><?php the_field('gallery_address_footer', 'options'); ?></p>
+	</div>
+	
 	<nav class="Footermenu">
 		
 		<?php wp_nav_menu( array(
 		  'container' => false,
 		  'theme_location' => 'footer_menu'
 		)); ?>
+		<button class="mailing-list-open" alt="Opens Mailing List Subscription form">Mailing List</button>
 	</nav>
-	<span class="copyright"><?php the_field('copyright_text', 'options'); ?></span>
+
+
+	<p class="copyright"><?php the_field('copyright_text', 'options'); ?></p>
+	<form class="mailing-list" method="post" action="http://www.ymlp.com/subscribe.php?ymlpid=guqjmseg" >
+	    <div class="container">
+	    	<button class="close-mailing-list">Close</button>
+	        <input type="email" class="span3 mlist_email" placeholder="Enter Email Address" name="YMLP0">
+	        <button type="submit" class="subscribe-to-mailing-list">Subscribe</button>
+	        
+	    </div>
+	</form>
 
 </footer>
 

@@ -29,7 +29,7 @@
     var maxLines = parseInt(options.lines),
       readMoreLabel = options.readMoreLabel || "Read more",
       readLessLabel = options.readLessLabel || "Read less",
-      ellipsis = options.ellipsis || "...",
+      ellipsis = options.ellipsis || "",
       splitOn = options.splitOn || ' ';
 
     if(!maxLines || isNaN(maxLines)) {

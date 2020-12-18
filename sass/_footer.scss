@@ -1,3 +1,103 @@
+@mixin fontSize($sizeValue){
+    font-size: $sizeValue * 1px;
+    font-size: ($sizeValue/10) * 1rem;
+}
+.flex {
+	display: flex;
+	flex-flow: row wrap;
+}
+
 footer {
-	clear: both;
+	border-top: 1px solid black;
+}
+.mailing-list {
+	display: none;
+}
+
+.Footermenu {
+	@extend .flex;
+	align-items: center; 
+	justify-content: space-between;
+	max-width: 1200px;
+	margin: 0 auto;
+	width: 95%;
+	#menu-footer-menu{
+		margin: 0;
+		@extend .flex;
+		width: 78%;
+		list-style: none;
+		padding: 0;
+		li {
+			width: 35.1%;
+			position: relative;
+			// left: 1%;
+			padding: 14px 0;
+			text-align: center;
+			border: 1px solid;
+			border-top: none;
+			border-bottom: none;
+			a {
+				color: black;
+			}
+		}
+	}
+}
+li.menu-item-14927{
+	border-right: none !important;
+}
+li.menu-item-14929{
+	width: 29% !important;
+	left:1% !important;
+	border: none !important;
+	    top: -15px !important;
+	    padding: 0 !important;
+	    text-align: left !important;
+	a {
+		color: white !important;
+	}
+}
+.mailing-list-open, #menu-item-14929 a{
+		color: white;
+		text-transform: uppercase;
+		background: black;
+		padding: 10px;
+		height: 43px;
+		@include fontSize(9);
+		outline: none;
+		border: none;
+		width: 162px !important;
+		text-align: center;
+
+}
+.mailing-list-open {
+	border: none;
+    top: -35px;
+    right: 1%;
+    position: relative;
+}
+.addressFooter{
+
+    width: 52%;
+    max-width: 658px;
+    margin: 0 auto;
+    border: 1px solid;
+    border-top: none;
+    p{
+
+    	max-width: 246px;
+    	text-align: center;
+    	margin: 0px auto;
+    	padding: 11px;
+
+    }
+
+}
+.copyright{
+	width: 100%;
+	text-align: center;
+	margin: 0;
+	padding: 5px 0 10px;
+	border-top: 1px solid;
+	@include fontSize(8);
+
 }

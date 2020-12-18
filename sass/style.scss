@@ -38,13 +38,15 @@ img {
 
 body {
 	font-family: 'Open Sans', sans-serif;
-	width: 95%;
+	width: 100%;
 	margin: 0 auto;
 }
-main {
+main, .container {
+	width: 95%;
 	max-width: 1200px;
 	margin: 0 auto;
 }
+
 
 main.headerMain {
 	max-width: 100%;
@@ -57,6 +59,7 @@ main.headerMain {
 	max-width: 1200px;
 }
 }
+//footer 
 
 
 
