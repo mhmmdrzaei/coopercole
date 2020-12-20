@@ -72,7 +72,14 @@ function hackeryou_scripts() {
   	null, //version number
   	true //load in footer
   );
-
+	wp_deregister_script('swiperjs');
+  wp_enqueue_script(
+  	'swiperjs',
+  	"http" . ($_SERVER['SERVER_PORT'] == 443 ? "s" : "") . "://unpkg.com/swiper/swiper-bundle.min.js",
+  	false, //dependencies
+  	null, //version number
+  	true //load in footer
+  );
   	wp_deregister_script('jquery');
   wp_enqueue_script(
   	'jquery',
