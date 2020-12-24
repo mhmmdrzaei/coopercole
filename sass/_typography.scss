@@ -1,97 +1,85 @@
-a {
-	color: #BA209B;
-	text-decoration: none;
-	&:hover {
-		color: #D424B1;
-	}
+$arrow-width: 110%;
+$arrow-height: 4px;
+$arrow-color : black;
+
+@mixin fontSize($sizeValue){
+    font-size: $sizeValue * 1px;
+    font-size: ($sizeValue/10) * 1rem;
 }
 
-/* paragraphs */
-
-p {
-	line-height: 1.5;
+button {
+   outline: none;
+   padding: 0;
 }
 
-/*blockquotes*/
+.arrow {
+   box-sizing: inherit;
+  // width:$arrow-width;
+  height:$arrow-height;
+  cursor:pointer;
+  position:relative;
+  // overflow:hidden;
+  display:inline-block;
+   // @include transition(all .5s ease);
+ 
 
-blockquote {
-	background: #F7F7F7;
-	margin: 0;
-	padding: 20px;
-	p {
-		margin-top: 0;
-	}
+  
+  &:before {
+    content: "";
+    width:100%;
+    height:50%;
+    position:absolute;
+    border-bottom:.7px solid black;
+    top:1.3em;
+    left:0;
+
+  }
+  
+   &:after {
+    content: "";
+    width:$arrow-height;
+    height:$arrow-height;
+    position:absolute;
+    border-top:.7px solid $arrow-color;
+    border-right:.7px solid $arrow-color;
+    top:1.3em;
+    right:$arrow-height / 5;
+    transform: rotate(45deg);
+     // @include transition(border-color .5s ease);
+     // z-index:9999;
+  }
+  
+}
+//exhibitors hi
+.exhibitors {
+  padding: 0;
+  li{
+    list-style: none;
+    margin: 0;
+    h1 {
+      margin: 0;
+      margin-bottom: 10px;
+    }
+      h1 a{
+      text-decoration: none;
+      // width: 100%;
+      @include fontSize(17);
+      text-shadow:
+      -.7px -.7px 0 #000,  
+      .7px -.7px 0 #000,
+      -.7px .7px 0 #000,
+      .7px .7px 0 #000;
+      color: white;
+    } 
+
+  }
 }
 
-/*tables*/
-
-table {
-	td {
-		padding: 10px;
-	}
-	tr td:first {
-		padding-right: 0;
-	}
+.exhibitionSide h2 {
+  @include fontSize(14);
+  margin: 30px 0;
 }
-
-/*def lists*/
-
-dt {
-	font-weight: 600;
-	padding-bottom: 5px;
-}
-
-dd {
-	padding: 10px;
-	margin-left: 10px;
-}
-
-/*lists*/
-
-ul li, ol li {
-	padding: 3px;
-}
-
-/*PRE*/
-
-pre {
-	background: #F7F7F7;
-	padding: 10px;
-	border-radius: 4px;
-	border: 1px solid #ccc;
-}
-
-
-/*
-====================================
-Global Classes / Wordpress Specific
-====================================
-*/
-
-.aligncenter {
-	text-align: center;
-	margin: 0 auto;
-}
-
-.alignleft {
-	float: left;
-}
-
-.alignright {
-	float: right;
-}
-
-img {
-	&.alignleft {
-		padding-right: 5px;
-	}
-	&.alignright {
-		padding-left: 5px;
-	}
-}
-
-.clear {
-	width: 100%;
-	float: left;
-	clear: both;
+.exhibitionDateLoca h4 {
+  margin: 0;
+  @include fontSize(9);
 }

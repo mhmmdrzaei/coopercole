@@ -14,7 +14,12 @@
         <p class="nav-next"><?php next_post_link('%link', '%title &rarr;'); ?></p>
     </aside>
     <aside class="video wrap-video">
-      <?php the_field('video_link_news'); ?>
+      <?php if( have_rows('related_featured_video') ): ?>
+          <?php while( have_rows('related_featured_video') ): the_row(); 
+           ?>;
+           <?php the_sub_field('video_link'); ?>
+          <?php endwhile; ?>
+      <?php endif; ?>
     </aside>
     <aside class="newsContentMain">
        <?php the_content(); ?>

@@ -3,6 +3,7 @@
   <section class="exhibitionMain">
     <?php if(have_posts()) : while(have_posts()) : the_post(); ?>
     <section class="exhibitionSide">
+      <section class="exhibitionsideInnner">
       <div class="exhibtionArtists">
             <?php
         $connected_artists = new WP_Query( array(
@@ -30,7 +31,7 @@
 
         if($connected_artists->have_posts()): while($connected_artists->have_posts()) : $connected_artists->the_post(); ?>
 
-          <li><h1><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h1></li>
+          <li><h1><a class="arrow" href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h1></li>
 
         <?php
         endwhile; wp_reset_postdata(); endif;
@@ -40,7 +41,7 @@
         ?>
       </div>
       <h2><?php the_title(); ?></h2>
-      <aside class="exhibitionDate">
+      <aside class="exhibitionDateLoca">
         <?php
         $start_date = get_field('start_date', false, false);
         $start_date = new DateTime($start_date);
@@ -52,7 +53,10 @@
         ?>
 
         <h4><?php echo $start_date->format('F j'); if($end_date) { echo ' - '.$end_date->format('F j, Y'); } ?></h4>
+        <h4><em><?php the_field('location'); ?></em></h4>
       </aside>
+
+        
       <nav class="exhibtionNews">
               <?php
         $connected = new WP_Query( array(
@@ -65,21 +69,38 @@
 
         ?>
 
-        <h4 class="newsOpen">News</h4>
+        <button class="newsOpen">News</button>
+        <div id="newsContentID">
         <ul class="newsContent">
           <?php while($connected->have_posts()) : $connected->the_post(); ?>
             <li><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></li>
           <?php endwhile; ?>
         </ul>
+        </div>
          <?php wp_reset_postdata(); endif; ?>
       </nav>
+    </section>
     </section>
     <section class="exhibitionCenter">
       <section class="exhibitionContent text-area" data-controller="#readMore1">
         <?php the_content(); ?>
         
       </section>
-      <a id="readMore1" class="btn btn-info">Read more</a> 
+      <button id="readMore1" class="btn btn-info">Read more</button> 
+      <p class="artworksLink"><a href="#artworks">Artworks</a></p>
+      <section class="featuredVideo">
+        
+             <?php if( have_rows('related_featured_video') ): ?>
+          <?php while( have_rows('related_featured_video') ): the_row(); 
+           ?>
+           <button class="featuredVideoTitle"><?php the_sub_field('video_text') ?></button> 
+           <div id="featuredVideoLink" class="video-responsive">
+             <?php the_sub_field('video_link'); ?>
+           </div>
+          <?php endwhile; ?>
+      <?php endif; ?>    
+       </section>
+
       <?php if(get_field('carousel')): ?>
       <section class="exhibitionImages">
           <?php
@@ -99,7 +120,7 @@
 
   </section>
   <section class="artworksMain">
-    <h3 id="Artworks">Artworks</h3>
+    <h3 id="artworks">Artworks</h3>
     <?php
 
     $connected = new WP_Query( array(

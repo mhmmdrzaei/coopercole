@@ -24,8 +24,12 @@
           <aside class="date"><?php the_time('F j, Y'); ?></aside>
          </section>
          <section class="video wrap-video">
-           <?php the_field('video_link_news'); ?>
-         </section>
+           <?php if( have_rows('related_featured_video') ): ?>
+               <?php while( have_rows('related_featured_video') ): the_row(); 
+                ?>;
+                <?php the_sub_field('video_link'); ?>
+               <?php endwhile; ?>
+           <?php endif; ?>         </section>
         <section class="newsExcerpt">
           <?php the_excerpt(); ?>
         </section>

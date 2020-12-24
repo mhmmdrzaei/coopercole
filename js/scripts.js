@@ -27,8 +27,8 @@
     }
 
     var maxLines = parseInt(options.lines),
-      readMoreLabel = options.readMoreLabel || "Read more",
-      readLessLabel = options.readLessLabel || "Read less",
+      readMoreLabel = options.readMoreLabel || "+ Read more",
+      readLessLabel = options.readLessLabel || "- Less",
       ellipsis = options.ellipsis || "",
       splitOn = options.splitOn || ' ';
 
@@ -75,7 +75,7 @@
   
         function callback() {
           if($(element).data().expanded) {
-            $fullDiv.animate({height: minH + 'px'}, 1000, function() {
+            $fullDiv.animate(6000, function() {
               $newDiv.css('display', display);
               $fullDiv.css('display', 'none');
             });
@@ -86,8 +86,8 @@
           } else {
             $newDiv.css('display', 'none');
             $fullDiv.css('display', display);
-            $fullDiv.css('height', minH + 'px')
-            $fullDiv.animate({height: realH + 'px'}, 1000);
+            // $fullDiv.css('height', minH + 'px')
+            // $fullDiv.animate({height: realH + 'px'}, 1000);
             $readMore.animate({opacity: 0}, 500, function() {
               $readMore.text(readLessLabel);
             }).animate({opacity: 1}, 500);
@@ -103,7 +103,7 @@
     });
   }
 })(jQuery);
-$(".text-area").readMore({lines: 12})
+$(".text-area").readMore({lines: 15})
 /* When the user clicks on the button, 
 toggle between hiding and showing the dropdown content */
 function myFunction() {
@@ -130,6 +130,42 @@ window.onclick = function(event) {
         prevEl: '.swiper-button-prev',
       },
     });
+//video Link
+$(document).ready(function(){
+  $(".featuredVideoTitle").click(function(){
+    $("#featuredVideoLink").toggle(1000);
+    
+  });
+
+  $(".newsOpen").click(function(){
+    $("#newsContentID").toggle(500);
+    $( this ).toggleClass( "highlight" );
+    
+  });
+  //smooth scroll
+  // Add smooth scrolling to all links
+   $("a").on('click', function(event) {
+
+     // Make sure this.hash has a value before overriding default behavior
+     if (this.hash !== "") {
+       // Prevent default anchor click behavior
+       event.preventDefault();
+
+       // Store hash
+       var hash = this.hash;
+
+       // Using jQuery's animate() method to add smooth page scroll
+       // The optional number (800) specifies the number of milliseconds it takes to scroll to the specified area
+       $('html, body').animate({
+         scrollTop: $(hash).offset().top
+       }, 800, function(){
+
+         // Add hash (#) to URL when done scrolling (default click behavior)
+         window.location.hash = hash;
+       });
+     } // End if
+   });
+});
 
 
 // $(document).ready(function(){
