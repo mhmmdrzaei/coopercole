@@ -100,6 +100,7 @@ main.headerMain {
   	width: 30%;
   }
 }
+
 #newsContentID {
 	display: none;
 } 
@@ -175,7 +176,27 @@ main.headerMain {
 	
 
 }
+.exhibitionsideInnner{
+	position: fixed;
+	
+}
+.outer{
+	display: none;
+	position: fixed;
+	top: 140px;
+	a {
+		display: block;
+		margin-bottom: 4px;
+		@include fontSize(8);
+		color: black;
+		text-transform: uppercase;
+		font-weight: 700;
+		text-decoration: none;
 
+	}
+	
+	// display: none;
+}
 
 
 

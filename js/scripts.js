@@ -166,7 +166,66 @@ $(document).ready(function(){
      } // End if
    });
 });
+//scrolling fade in and out
+$(document).scroll(function() {
+  var y = $(this).scrollTop();
+  if (y > 1200) {
+    $('.outer').fadeIn();
+  } else {
+    $('.outer').fadeOut();
+  }
+});
 
+var height = $('.exhibitionMain').height();
+console.log(height);
+
+
+$(window).scroll(function(){
+  var z = $(this).scrollTop();
+  if (z > height - 200) {
+  $("#exhibtionSideScroll").stop().animate({"marginTop": "0 px", "marginLeft":($(window).scrollLeft()) + "px"}, "slow" );
+  }else {
+    $("#exhibtionSideScroll").stop().animate({"marginTop": ($(window).scrollTop()) + "px", "marginLeft":($(window).scrollLeft()) + "px"}, "slow" );
+  }
+});
+
+
+
+$.fn.isOnScreen = function(){
+    
+    var win = $(window);
+    
+    var viewport = {
+        top : win.scrollTop(),
+        left : win.scrollLeft()
+    };
+    viewport.right = viewport.left + win.width();
+    viewport.bottom = viewport.top + win.height();
+    
+    var bounds = this.offset();
+    bounds.right = bounds.left + this.outerWidth();
+    bounds.bottom = bounds.top + this.outerHeight();
+    
+    return (!(viewport.right < bounds.left || viewport.left > bounds.right || viewport.bottom < bounds.top || viewport.top > bounds.bottom));
+    
+};
+
+$(window).scroll(function(){
+
+   // alert($('.artworksMain').isOnScreen());
+});
+
+
+
+$(document).scroll(function() {
+  var z = $(this).scrollTop();
+  if (z > height - 600) {
+    console.log('bitch');
+    $('.exhibitionSide').css("margin-top","0");
+  } else {
+    $('.exhibitionSide').css('','')
+  }
+});
 
 // $(document).ready(function(){
 //   var maxLength = 700;

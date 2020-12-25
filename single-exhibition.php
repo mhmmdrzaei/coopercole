@@ -1,9 +1,13 @@
 <?php get_header(); ?>
 <main>
-  <section class="exhibitionMain">
+  <section class="exhibitionMain" id="pageTop">
     <?php if(have_posts()) : while(have_posts()) : the_post(); ?>
-    <section class="exhibitionSide">
-      <section class="exhibitionsideInnner">
+    <section class="exhibitionSide" id="exhibtionSideScroll">
+      <!-- <section class="exhibitionsideInnner"> -->
+      <div class="outer">
+        <a href="#pageTop">↑ Back to the Top</a>
+        <a href="#artworks">↓ Artworks</a>
+      </div>
       <div class="exhibtionArtists">
             <?php
         $connected_artists = new WP_Query( array(
@@ -79,7 +83,7 @@
         </div>
          <?php wp_reset_postdata(); endif; ?>
       </nav>
-    </section>
+    <!-- </section> -->
     </section>
     <section class="exhibitionCenter">
       <section class="exhibitionContent text-area" data-controller="#readMore1">
