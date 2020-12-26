@@ -9,7 +9,6 @@
 
 @import 'normalize';
 @import 'typography';
-@import 'swiper';
 @import 'navigation';
 @import 'logo';
 @import 'comments';
@@ -178,7 +177,7 @@ main.headerMain {
 }
 .exhibitionsideInnner{
 	position: fixed;
-	
+
 }
 .outer{
 	display: none;
@@ -196,6 +195,74 @@ main.headerMain {
 	}
 	
 	// display: none;
+}
+
+//exhibition main and main page
+article.exhibition {
+	padding: 50px 0;
+	border-top: 1px solid black;
+	position: relative;
+	top: -65px;
+	a {
+		@extend .flex;
+		justify-content: space-between;
+		color: black;
+		text-decoration: none;
+
+
+		.artistNameExhibition{
+			width: 14%;
+			.mohammadUl{
+				margin: 0;
+				padding: 0;
+				list-style: none;
+				-webkit-text-stroke: .7px black;
+				color: white;
+				@include fontSize(12);
+				li {
+					h4{
+						margin: 0 0 10px;
+
+					}
+				}
+			}
+		}
+		.exhibitionDetails {
+			position: relative;
+			width: 22%;
+
+			h3 {
+				width: 100%;
+				margin: 0;
+				-webkit-text-stroke: .7px black;
+				color: white;
+			}
+			.exhibitionDateLocation{
+				@include fontSize(8);
+				position: absolute;
+				bottom: 0;
+				left: 0;
+				.date {
+					font-weight: 700;
+					width: 60%;
+					margin-bottom: 20px;
+				}
+				.location {
+					font-style: oblique;
+				}
+			}
+
+		}
+		figure {
+			width: 60%;
+			img {
+				// max-width: 700px;
+			}
+		}
+	}
+}
+article.exhibition:nth-child(1) {
+  border: none;
 }
 
 

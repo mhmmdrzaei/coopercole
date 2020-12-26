@@ -1,6 +1,55 @@
 <?php //template name: Home ?>
 <?php get_header(); ?>
 
+<?php
+
+$today = current_time('Ymd');
+$category = get_field('exhibition_category', 'options');
+
+if ($category == 'Current'){
+	$argTwo = array (
+	    'post_type' => array('art-fair'),
+	    'meta_query' => array(
+	    	'relation' => 'AND',
+			'start_clause' => array(
+		        'key'		=> 'start_date',
+		        'compare'	=> '<=',
+		        'value'		=> $today
+		    ),
+		    'end_clause' => array(
+		        'key'		=> 'end_date',
+		        'compare'	=> '>=',
+		        'value'		=> $today
+		    )
+	    ),
+			'orderby' => array(
+					'meta_value_num' => 'asc',
+					'post_date' => 'desc'
+			)
+	    // 'orderby' => 'meta_value_num',
+	    // 'order' => 'asc'
+	);
+}
+
+
+
+else {
+
+}
+	;?>
+<?php $currentArtF = new Wp_Query( $argTwo );
+
+if($currentArtF->have_posts()) : while($currentArtF->have_posts()) : $currentArtF->the_post();
+
+	?>
+
+<?php	get_template_part('partials/repeater-exhibition'); ?>
+
+
+<?php endwhile; wp_reset_postdata(); ?>
+
+
+<?php endif; ?>
 <div class="exhibitions container">
 
 		<?php
@@ -11,7 +60,7 @@
 		if($category == 'Current') {
 
 			$args = array (
-			    'post_type' => 'exhibition',
+			    'post_type' => array('exhibition'),
 			    'meta_query' => array(
 			    	'relation' => 'AND',
 					'start_clause' => array(
@@ -33,6 +82,30 @@
 			    // 'order' => 'asc'
 			);
 
+		}
+		elseif ($category == 'Current'){
+			$argTwo = array (
+			    'post_type' => array('art-fair'),
+			    'meta_query' => array(
+			    	'relation' => 'AND',
+					'start_clause' => array(
+				        'key'		=> 'start_date',
+				        'compare'	=> '<=',
+				        'value'		=> $today
+				    ),
+				    'end_clause' => array(
+				        'key'		=> 'end_date',
+				        'compare'	=> '>=',
+				        'value'		=> $today
+				    )
+			    ),
+					'orderby' => array(
+							'meta_value_num' => 'asc',
+							'post_date' => 'desc'
+					)
+			    // 'orderby' => 'meta_value_num',
+			    // 'order' => 'asc'
+			);
 		}
 
 		elseif($category == 'Upcoming') {
@@ -77,9 +150,8 @@
 
 
 		}
-
-
-		$exhibitions = new Wp_Query( $args );
+?>
+		<?php $exhibitions = new Wp_Query( $args );
 
 		if($exhibitions->have_posts()) : while($exhibitions->have_posts()) : $exhibitions->the_post();
 
@@ -131,6 +203,7 @@
 		<?php endif; ?>
 
 	</div>
+
 
 
 

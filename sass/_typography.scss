@@ -65,11 +65,7 @@ button {
       text-decoration: none;
       // width: 100%;
       @include fontSize(17);
-      text-shadow:
-      -.7px -.7px 0 #000,  
-      .7px -.7px 0 #000,
-      -.7px .7px 0 #000,
-      .7px .7px 0 #000;
+      -webkit-text-stroke: .7px black;
       color: white;
     } 
 

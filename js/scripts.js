@@ -166,66 +166,90 @@ $(document).ready(function(){
      } // End if
    });
 });
+
+
+
 //scrolling fade in and out
+var height = $('.exhibitionMain').height();
+var detailHeights = $('.exhibtionArtists').height();
 $(document).scroll(function() {
   var y = $(this).scrollTop();
-  if (y > 1200) {
-    $('.outer').fadeIn();
-  } else {
+  if (y > height - (detailHeights + 200) ) {
     $('.outer').fadeOut();
-  }
-});
+    $(".exhibtionArtists").css({"position": "relative"});
 
-var height = $('.exhibitionMain').height();
-console.log(height);
+  } else if (y < 700) {
+    $('.outer').fadeOut();
+    $(".exhibtionArtists").css({"position": "relative"});
 
-
-$(window).scroll(function(){
-  var z = $(this).scrollTop();
-  if (z > height - 200) {
-  $("#exhibtionSideScroll").stop().animate({"marginTop": "0 px", "marginLeft":($(window).scrollLeft()) + "px"}, "slow" );
-  }else {
-    $("#exhibtionSideScroll").stop().animate({"marginTop": ($(window).scrollTop()) + "px", "marginLeft":($(window).scrollLeft()) + "px"}, "slow" );
-  }
-});
-
-
-
-$.fn.isOnScreen = function(){
-    
-    var win = $(window);
-    
-    var viewport = {
-        top : win.scrollTop(),
-        left : win.scrollLeft()
-    };
-    viewport.right = viewport.left + win.width();
-    viewport.bottom = viewport.top + win.height();
-    
-    var bounds = this.offset();
-    bounds.right = bounds.left + this.outerWidth();
-    bounds.bottom = bounds.top + this.outerHeight();
-    
-    return (!(viewport.right < bounds.left || viewport.left > bounds.right || viewport.bottom < bounds.top || viewport.top > bounds.bottom));
-    
-};
-
-$(window).scroll(function(){
-
-   // alert($('.artworksMain').isOnScreen());
-});
-
-
-
-$(document).scroll(function() {
-  var z = $(this).scrollTop();
-  if (z > height - 600) {
-    console.log('bitch');
-    $('.exhibitionSide').css("margin-top","0");
   } else {
-    $('.exhibitionSide').css('','')
+    $('.outer').fadeIn();
+    $(".exhibtionArtists").css({"position": "fixed"});
+
+
   }
 });
+
+
+// $(document).scroll(function() {
+//   var z = $(this).scrollTop();
+//   if (z > height - 400 ) {
+//   } else if (z < 700) {
+//       $(".exhibtionArtists").stop().css({"position": "relative", "marginLeft":($(window).scrollLeft()) + "px"}, "slow" );
+    
+//   } else {
+//     $(".exhibtionArtists").stop().css({"position": "fixed", "marginLeft":($(window).scrollLeft()) + "px"}, "slow" );
+
+//   }
+// });
+
+
+// $(window).scroll(function(){
+//   var z = $(this).scrollTop();
+//   if (z > height - 200) {
+//   $(".exhibtionArtists").stop().css({"position": "relative", "marginLeft":($(window).scrollLeft()) + "px"}, "slow" );
+//   }else {
+//     $(".exhibtionArtists").stop().css({"position": "fixed", "marginLeft":($(window).scrollLeft()) + "px"}, "slow" );
+//   }
+// });
+
+
+
+// $.fn.isOnScreen = function(){
+    
+//     var win = $(window);
+    
+//     var viewport = {
+//         top : win.scrollTop(),
+//         left : win.scrollLeft()
+//     };
+//     viewport.right = viewport.left + win.width();
+//     viewport.bottom = viewport.top + win.height();
+    
+//     var bounds = this.offset();
+//     bounds.right = bounds.left + this.outerWidth();
+//     bounds.bottom = bounds.top + this.outerHeight();
+    
+//     return (!(viewport.right < bounds.left || viewport.left > bounds.right || viewport.bottom < bounds.top || viewport.top > bounds.bottom));
+    
+// };
+
+// $(window).scroll(function(){
+
+//    // alert($('.artworksMain').isOnScreen());
+// });
+
+
+
+// $(document).scroll(function() {
+//   var z = $(this).scrollTop();
+//   if (z > height - 600) {
+//     console.log('bitch');
+//     $('.exhibitionSide').css("margin-top","0");
+//   } else {
+//     $('.exhibitionSide').css('','')
+//   }
+// });
 
 // $(document).ready(function(){
 //   var maxLength = 700;

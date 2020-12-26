@@ -43,8 +43,9 @@
         echo '</ul>';
 
         ?>
+        <h2 class="exhibitionTitle"><?php the_title(); ?></h2>
       </div>
-      <h2><?php the_title(); ?></h2>
+      
       <aside class="exhibitionDateLoca">
         <?php
         $start_date = get_field('start_date', false, false);
