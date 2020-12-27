@@ -95,7 +95,7 @@
       <p class="artworksLink"><a href="#artworks">Artworks</a></p>
       <section class="featuredVideo">
         
-             <?php if( have_rows('related_featured_video') ): ?>
+          <?php if( have_rows('related_featured_video') ): ?>
           <?php while( have_rows('related_featured_video') ): the_row(); 
            ?>
            <button class="featuredVideoTitle"><?php the_sub_field('video_text') ?></button> 
@@ -103,7 +103,7 @@
              <?php the_sub_field('video_link'); ?>
            </div>
           <?php endwhile; ?>
-      <?php endif; ?>    
+           <?php endif; ?>    
        </section>
 
       <?php if(get_field('carousel')): ?>

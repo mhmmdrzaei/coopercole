@@ -1,76 +1,136 @@
 <?php get_header(); ?>
+<main>
+	<section class="exhibitionMain" id="pageTop">
+		<?php if(have_posts()) : while(have_posts()) : the_post(); ?>
+			<section class="exhibitionSide" id="exhibtionSideScroll">
+				<div class="outer">
+				  <a href="#pageTop">↑ Back to the Top</a>
+				  <a href="#artworks">↓ Artworks</a>
+				</div>
+				<figure class="artFairLogo">
+					<?php the_post_thumbnail('medium'); ?>
+				</figure>
+				<h2 class="artFairTitle">
+					<?php the_title(); ?>
+				</h2>
+				<div class="artFairDates">
 
-	<?php if(have_posts()) : while(have_posts()) : the_post(); ?>
-		<h1><?php the_title(); ?></h1>
+					<?php
+					$start_date = get_field('start_date', false, false);
+					$start_date = new DateTime($start_date);
 
-		<?php the_post_thumbnail('large'); ?>
+					if( get_field('end_date') ) {
+						$end_date = get_field('end_date', false, false);
+						$end_date = new DateTime($end_date);
+					} 
+					?>
 
-			<div class="artFairDates">
+					<p><strong><?php echo $start_date->format('F j, Y'); if($end_date) { echo ' - '.$end_date->format('F j, Y'); } ?></strong></p>
 
-				<?php
-				$start_date = get_field('start_date', false, false);
-				$start_date = new DateTime($start_date);
+					
 
-				if( get_field('end_date') ) {
-					$end_date = get_field('end_date', false, false);
-					$end_date = new DateTime($end_date);
-				} 
-				?>
+				</div>
+				<div class="artFairArtists">
+					<?php
+					
+					$connected = new WP_Query( array(
+					  'connected_type' => 'art_fair_to_artist',
+					  'connected_items' => get_the_id(),
+					  'nopaging' => true,
+					) );
 
-				<p><strong><?php echo $start_date->format('F j, Y'); if($end_date) { echo ' - '.$end_date->format('F j, Y'); } ?></strong></p>
+					if ( $connected->have_posts() ) :
 
-				<?php the_content(); ?>
+					?>
 
-			</div>
+					<h4>Exhibitiors</h4>
+					
+					<ul class="artFairExhibitors">
+						<?php while($connected->have_posts() ) : $connected->the_post(); ?>
+							<li><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></li>
+						<?php endwhile; ?>
+					</ul>
+
+					<?php wp_reset_postdata(); endif; ?>
+				</div>
+				<nav class="exhibtionNews">
+
+					<?php
+
+					$connected = new WP_Query( array(
+					  'connected_type' => 'post_to_art_fair',
+					  'connected_items' => get_the_id(),
+					  'nopaging' => true
+					) );
+
+					if($connected->have_posts()):
+
+					?>
+					<button class="newsOpen">News</button>
+					<div id="newsContentID">
+					<ul class="newsContent">
+
+						<?php while($connected->have_posts()) : $connected->the_post(); ?>
+							<li><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></li>
+						<?php endwhile; ?>
+					</ul>
+					<?php wp_reset_postdata(); endif; ?>
+					</div>
+				</nav>
+
+	</section>
+	<section class="exhibitionCenter">
+		<section class="exhibitionContent text-area" data-controller="#readMore1">
+			<?php the_content(); ?>
+		</section>
+		<button id="readMore1" class="btn btn-info">Read more</button> 
+		<p class="artworksLink"><a href="#artworks">Artworks</a></p>
+		<section class="featuredVideo">
+		  
+		    <?php if( have_rows('related_featured_video') ): ?>
+		    <?php while( have_rows('related_featured_video') ): the_row(); 
+		     ?>
+		     <button class="featuredVideoTitle"><?php the_sub_field('video_text') ?></button> 
+		     <div id="featuredVideoLink" class="video-responsive">
+		       <?php the_sub_field('video_link'); ?>
+		     </div>
+		    <?php endwhile; ?>
+		     <?php endif; ?>    
+		 </section>
+		 <?php if(get_field('carousel')): ?>
+		 <section class="exhibitionImages">
+		     <?php
+		       $slides = get_field('carousel');
+		       $slide_amount = count($slides);
+		       foreach($slides as $slide):
+
+		       ?>
+
+		       <img src="<?php echo $slide['sizes']['large']; ?>" alt="" id="<?php echo $slide['id'];?>"/>
+
+		       <?php endforeach; ?>
+		 </section>
+		   <?php endif; ?>
+	</section>
+	<section class="artworksMain">
+	  <h3 id="artworks">Artworks</h3>
+
+	</section>
+</main>
+
+	
+		<h1></h1>
+
+		
+
+
 
 			<div class="right-col">
 				
 				
-				<?php
 
-				$connected = new WP_Query( array(
-				  'connected_type' => 'post_to_art_fair',
-				  'connected_items' => get_the_id(),
-				  'nopaging' => true
-				) );
 
-				if($connected->have_posts()):
 
-				?>
-
-				<h6>News</h6>
-
-				<ul>
-					<?php while($connected->have_posts()) : $connected->the_post(); ?>
-						<li><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></li>
-					<?php endwhile; ?>
-				</ul>
-				
-				<hr>
-
-				<?php wp_reset_postdata(); endif; ?>
-
-				<?php
-				
-				$connected = new WP_Query( array(
-				  'connected_type' => 'art_fair_to_artist',
-				  'connected_items' => get_the_id(),
-				  'nopaging' => true,
-				) );
-
-				if ( $connected->have_posts() ) :
-
-				?>
-
-				<h6>Exhibitiors</h6>
-				
-				<ul class="exhibitors">
-					<?php while($connected->have_posts() ) : $connected->the_post(); ?>
-						<li><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></li>
-					<?php endwhile; ?>
-				</ul>
-
-				<?php wp_reset_postdata(); endif; ?>
 			</div>
 
 <p>Featured Artworks</p>

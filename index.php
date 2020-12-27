@@ -51,14 +51,12 @@ if($currentArtF->have_posts()) : while($currentArtF->have_posts()) : $currentArt
 		      	$end_date = new DateTime($end_date);
 		      } 
 		?>
-	<article class="artFairHome" >
-		<marquee behavior="scroll" direction="left">
+	<article class="artFairHome scroll-left" >
 		<a href="<?php the_permalink(); ?>">
 			
-
-			<section class="title">Currently: <?php the_title(); ?></section>
-			<div class="dateLocationAF"><?php echo $start_date->format('F j, Y'); if($end_date) { echo ' - '.$end_date->format('F j, Y'); } ?>
-				<div><?php the_field('location'); ?></div>
+			<section class="title">Currently At: <?php the_title(); ?></section>
+			<div class="dateLocationAF"><?php echo $start_date->format('F j, Y'); if($end_date) { echo ' - '.$end_date->format('F j, Y'); } ?><br>
+				<?php the_field('location'); ?>
 			</div>
 			
 			<section class="moreInfo">
@@ -66,7 +64,6 @@ if($currentArtF->have_posts()) : while($currentArtF->have_posts()) : $currentArt
 			</section>
 
 		</a>
-		</marquee>
 		
 	</article>
 	

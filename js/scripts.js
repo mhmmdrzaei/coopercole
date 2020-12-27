@@ -172,19 +172,32 @@ $(document).ready(function(){
 //scrolling fade in and out
 var height = $('.exhibitionMain').height();
 var detailHeights = $('.exhibtionArtists').height();
+var detailArtFairHeight = $('.exhibtionArtists').height();
 $(document).scroll(function() {
   var y = $(this).scrollTop();
   if (y > height - (detailHeights + 200) ) {
-    $('.outer').fadeOut();
+    // $('.outer').fadeOut();
     $(".exhibtionArtists").css({"position": "relative"});
+
+
+  } else if (y > height - 500) {
+    $('.outer').fadeOut();
+    $(".artFairTitle").css({"position": "relative"});
+    $(".artFairArtists").css({"position": "relative"});
 
   } else if (y < 700) {
     $('.outer').fadeOut();
     $(".exhibtionArtists").css({"position": "relative"});
+    $(".artFairTitle").css({"position": "relative"});
+    // $(".artFairDates").css({"position": "relative"});
+    $(".artFairArtists").css({"position": "relative"});
 
   } else {
     $('.outer').fadeIn();
     $(".exhibtionArtists").css({"position": "fixed"});
+    $(".artFairTitle").css({"position": "fixed"});
+    // $(".artFairDates").css({"position": "fixed"});
+    $(".artFairArtists").css({"position": "fixed"});
 
 
   }

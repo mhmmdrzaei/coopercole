@@ -50,6 +50,10 @@ button {
   }
   
 }
+.whiteText {
+  -webkit-text-stroke: .7px black;
+  color: white;
+}
 //exhibitors hi
 .exhibitors {
   padding: 0;
@@ -79,4 +83,44 @@ button {
 .exhibitionDateLoca h4 {
   margin: 0;
   @include fontSize(9);
+}
+
+//artfairs
+h2.artFairTitle {
+  @extend .whiteText;
+  @include fontSize(17);
+  margin: 5px 0;
+}
+.artFairDates {
+  font-weight: 700;
+  @include fontSize(8);
+  p {
+    margin: 0;
+  }
+}
+.artFairArtists{
+  h4 {
+    margin: 40px 0 10px;
+    @extend .whiteText;
+    @include fontSize(14);
+  }
+}
+.artFairExhibitors {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    li {
+      margin-bottom: 10px;
+      a {
+        @extend .arrow;
+        color: black;
+        font-weight:700;
+        text-transform: uppercase;
+
+
+
+      }
+    }
+    
+
 }
