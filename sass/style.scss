@@ -265,5 +265,42 @@ article.exhibition:nth-child(1) {
   border: none;
 }
 
+//artfair home page
+.artFairHome{
+    background-image: linear-gradient(to left, violet, indigo, blue, green, yellow, orange, red);
+    margin: 11px 0 40px;
+    a {
+    	margin: 16px 0 11px;
+    	// padding: 20px 0;
+    	@extend .flex;
+    	justify-content: space-around;
+    	color: black;
+    	text-decoration: none;
+    	.title{
+    		@include fontSize(12);
+    		-webkit-text-stroke: .7px black;
+    		color: white;
+    		font-weight: 700;
+    		text-transform: uppercase;
+
+    	}
+    	.dateLocationAF{
+    		@include fontSize(8);
+    		font-weight: 700;
+    	}
+    	.moreInfo {
+    		@include fontSize(12);
+    		-webkit-text-stroke: .7px black;
+    		color: white;
+    		font-weight: 700;
+    		text-transform: uppercase;
+
+    		@extend .arrow;
+    	}
+
+    }
+
+}
+
 
 

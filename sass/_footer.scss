@@ -6,6 +6,9 @@
 	display: flex;
 	flex-flow: row wrap;
 }
+a {
+	text-decoration: none;
+}
 
 footer {
 	border-top: 1px solid black;
@@ -51,6 +54,7 @@ li.menu-item-14929{
 	border: none !important;
 	    top: -15px !important;
 	    padding: 0 !important;
+	    line-height: 2em;
 	    text-align: left !important;
 	a {
 		color: white !important;
@@ -61,7 +65,7 @@ li.menu-item-14929{
 		text-transform: uppercase;
 		background: black;
 		padding: 10px;
-		height: 43px;
+		min-height: 43px;
 		@include fontSize(9);
 		outline: none;
 		border: none;

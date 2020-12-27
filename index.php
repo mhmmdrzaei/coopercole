@@ -42,9 +42,40 @@ else {
 if($currentArtF->have_posts()) : while($currentArtF->have_posts()) : $currentArtF->the_post();
 
 	?>
+		<?php 		      
+		$start_date = get_field('start_date', false, false);
+		      $start_date = new DateTime($start_date);
 
-<?php	get_template_part('partials/repeater-exhibition'); ?>
+		      if( get_field('end_date') ) {
+		      	$end_date = get_field('end_date', false, false);
+		      	$end_date = new DateTime($end_date);
+		      } 
+		?>
+	<article class="artFairHome" >
+		<marquee behavior="scroll" direction="left">
+		<a href="<?php the_permalink(); ?>">
+			
 
+			<section class="title">Currently: <?php the_title(); ?></section>
+			<div class="dateLocationAF"><?php echo $start_date->format('F j, Y'); if($end_date) { echo ' - '.$end_date->format('F j, Y'); } ?>
+				<div><?php the_field('location'); ?></div>
+			</div>
+			
+			<section class="moreInfo">
+				More Information
+			</section>
+
+		</a>
+		</marquee>
+		
+	</article>
+	
+
+	
+
+
+		      			
+		      			
 
 <?php endwhile; wp_reset_postdata(); ?>
 
