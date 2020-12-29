@@ -151,7 +151,7 @@ add_filter( 'wp_page_menu_args', 'hackeryou_page_menu_args' );
  * Sets the post excerpt length to 40 characters.
  */
 function hackeryou_excerpt_length( $length ) {
-	return 30;
+	return 70;
 }
 add_filter( 'excerpt_length', 'hackeryou_excerpt_length' );
 
@@ -159,7 +159,7 @@ add_filter( 'excerpt_length', 'hackeryou_excerpt_length' );
  * Returns a "Continue Reading" link for excerpts
  */
 function hackeryou_continue_reading_link() {
-	return ' <a href="'. get_permalink() . '">Read More <span class="meta-nav">&rarr;</span></a>';
+	return '<br> <a class="newsReadMore" href="'. get_permalink() . '">Read More <span class="meta-nav"></span></a>';
 }
 
 /**
@@ -555,7 +555,7 @@ function coopercole_tags() {
 		foreach($tags as $tag) {
 
 			if($i > 0) {
-				echo ', '.$tag;
+				echo ''.$tag;
 			}
 
 			else {
@@ -572,7 +572,72 @@ function coopercole_tags() {
 	<?php
 	wp_reset_postdata();
 }
+function coopercole_inner_tags() {
+	?>
+	<div class="tagsInner">
+		<?php
 
+		$tags = [];
+		$cats = get_the_category();
+
+		$related_artists = new WP_Query( array(
+		  'connected_type' => 'post_to_artist',
+		  'connected_items' => get_the_id(),
+		  'nopaging' => true
+		) );
+
+		$related_exhibitions = new WP_Query( array(
+		  'connected_type' => 'post_to_exhibition',
+		  'connected_items' => get_the_id(),
+		  'nopaging' => true
+		) );
+
+		$related_art_fairs = new WP_Query( array(
+		  'connected_type' => 'post_to_art_fair',
+		  'connected_items' => get_the_id(),
+		  'nopaging' => true
+		) );
+
+		$i = 0;
+
+		foreach($cats as $cat) {
+			$tags[] = '<a href="'.get_category_link( $cat->term_id ).'">'.$cat->cat_name.'</a>';
+		}
+
+		if($related_exhibitions->have_posts()) : while($related_exhibitions->have_posts()) : $related_exhibitions->the_post();
+			$tags[] = '<a class="newsRelatedExhibitions" href="'.get_permalink(get_the_id() ).'">'.get_the_title(get_the_id()).'</a>';
+		endwhile; endif;
+
+		if($related_art_fairs->have_posts()) : while($related_art_fairs->have_posts()) : $related_art_fairs->the_post();
+			$tags[] = '<a class="newsRelatedArtFairs" href="'.get_permalink(get_the_id() ).'">'.get_the_title(get_the_id()).'</a>';
+		endwhile; endif; ?>
+		<?php
+
+		if($related_artists->have_posts()) : while($related_artists->have_posts()) : $related_artists->the_post();
+			$tags[] = '<div class="newsRelatedArtist"> <a href="'.get_permalink( get_the_id() ).'">'.get_the_title(get_the_id()).'</a></div>';
+		endwhile; endif;
+		
+
+		foreach($tags as $tag) {
+
+			if($i > 0) {
+				echo ''.$tag;
+			}
+
+			else {
+				echo $tag;
+			}
+
+			$i++;
+
+		}
+
+
+		?>
+	
+	<?php
+	wp_reset_postdata();
+}
 /**
  * Extend WordPress search to include custom fields
  *

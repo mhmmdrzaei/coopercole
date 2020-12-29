@@ -12,7 +12,7 @@ button {
    padding: 0;
 }
 
-.arrow {
+.arrow, .arrowBack{
    box-sizing: inherit;
   // width:$arrow-width;
   height:$arrow-height;
@@ -50,9 +50,32 @@ button {
   }
   
 }
+
+.arrowBack {
+   
+  
+   &:after {
+    content: "";
+    width:$arrow-height;
+    height:$arrow-height;
+    position:absolute;
+    border-top:.7px solid $arrow-color;
+    border-right:.7px solid $arrow-color;
+    top:1.3em;
+    left:$arrow-height / 5;
+    transform: rotate(-135deg);
+     // @include transition(border-color .5s ease);
+     // z-index:9999;
+  }
+  
+}
 .whiteText {
   -webkit-text-stroke: .7px black;
   color: white;
+  font-weight: 700;
+  &:hover {
+    text-decoration: none;
+  }
 }
 //exhibitors hi
 .exhibitors {

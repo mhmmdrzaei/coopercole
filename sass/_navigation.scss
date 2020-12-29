@@ -17,7 +17,7 @@
 .fl-panelBar-wideScreen{
   width: 20%;
   position: relative;
-  left: 10%;
+  left: 17%;
 }
 
 #menu__check {
@@ -197,3 +197,6 @@ h3.menuMain{
 }
 
 .show {display: block !important;}
+.fl-panelBar-wideScreen {
+  max-width: 230px;
+}
