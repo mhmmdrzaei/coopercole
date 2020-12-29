@@ -501,3 +501,41 @@ article.post:nth-child(1) {
 	
 }
 
+//artists main page
+
+.artists {
+	ul {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+		@extend .flex;
+		@include fontSize(28);	
+		li {
+			margin-right:20px;
+			margin-bottom: 20px;
+			&:hover {
+				// background-image: linear-gradient(to left, violet, indigo, blue, green, yellow, orange, red);
+				// color: transparent;
+			}
+			a {
+			@extend .whiteText;
+			// text-shadow: 0.1px 0.1px 0.1em violet, 3.1px 0.1px 0.2em indigo, 9.1px 0.1px 0.3em blue, 3.1px 0.1px 0.3em green, 4.1px 0.1px 0.3em blue, 5.1px 0.1px 14.3em yellow, 6.1px 0.1px 0.3em orange, 7.1px 0.1px 0.3em red;
+
+			&:hover {
+				  color: white;
+				  -webkit-text-stroke: 2px solid black;
+
+				  /* background-position: right 20px bottom 10px; */
+				  background-image: linear-gradient(to left, violet, indigo, blue, green, yellow, orange, red);
+				  -webkit-background-clip: text;
+				  color: white;
+				  background-size: 80%;
+				  text-shadow: 3.1px -0.9px 0.1em violet, -2.9px 11.1px 0.2em indigo, 15.1px 7.1px 0.3em #00f, -10.9px 7.1px 0.5em green, 7.1px 0.1px 0.3em #00f, 40.1px 42.1px 14.3em #ff0, -7.9px -11.9px 0.3em orange, 7.1px 18.1px 0.3em red
+				 
+				} 
+
+
+			}
+		}
+	}
+}
