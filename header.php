@@ -21,7 +21,7 @@
 
   
 
-  <!-- <?php require 'partials/logoTwo.php'; ?> -->
+ <!--  <?php require 'partials/logoTwo.php'; ?>  -->
   <!-- <?php require 'partials/logoThree.php'; ?> -->
    <!-- <?php require 'partials/logoFour.php'; ?> -->
   <main class="headerMain">

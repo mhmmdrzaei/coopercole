@@ -1,7 +1,13 @@
 <?php //template name: Exhibitions ?>
 
 <?php get_header(); ?>
-<main>
+<main class="exhibitionsMainPage">
+<nav class="exhibitionYearsSide">
+	 <?php wp_nav_menu( array(
+      'container' => false,
+      'theme_location' => 'social_menu'
+    )); ?>
+</nav>
 <section class="exhibitionContainer">
 	<?php
 
@@ -127,11 +133,6 @@
 
 
 </section>
-<nav class="exhibitionYearsSide">
-	 <?php wp_nav_menu( array(
-      'container' => false,
-      'theme_location' => 'social_menu'
-    )); ?>
-</nav>
+
 </main>
 <?php get_footer(); ?>

@@ -98,7 +98,7 @@
           <?php if( have_rows('related_featured_video') ): ?>
           <?php while( have_rows('related_featured_video') ): the_row(); 
            ?>
-           <button class="featuredVideoTitle"><?php the_sub_field('video_text') ?></button> 
+           <button class="featuredVideoTitle"><img src="<?php bloginfo('template_directory'); ?>/images/movie_icon.svg"> <?php the_sub_field('video_text') ?></button> 
            <div id="featuredVideoLink" class="video-responsive">
              <?php the_sub_field('video_link'); ?>
            </div>

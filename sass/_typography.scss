@@ -70,7 +70,7 @@ button {
   
 }
 .whiteText {
-  -webkit-text-stroke: .7px black;
+  -webkit-text-stroke: .8px black;
   color: white;
   font-weight: 700;
   &:hover {
@@ -146,5 +146,45 @@ h2.artFairTitle {
     }
     
 
+}
+//artist page 
+.artistName {
+  @extend .whiteText;
+  @include fontSize(60);
+  font-size:9vw;
+  text-align: center;
+}
+
+//rainbow
+
+$colors: #7F00FF, #00416A, green, blue, yellow, orange, red;
+$size: 10;
+
+@mixin rainbow-shadow($colors, $offset: 0, $size: $size) {
+  $len: length($colors);
+  $outp: 0px 0px transparent;
+  @for $i from 1 through $size {
+    $ind: floor( max($i + $offset, 1) / $size * length($colors) ) % $len + 1;
+    $col: nth($colors, $ind);
+    $outp: #{$outp}, #{$i}px #{$i}px #{$col};
+  }
+  
+  text-shadow: $outp;
+}
+
+.rainbow {
+  &:hover {
+    animation: animated-rainbow-shadow 1s infinite;      
+
+  }
+  
+}
+
+@keyframes animated-rainbow-shadow {
+  @for $i from 0 to $size + 1 {
+    #{$i / $size * 100}% {
+      @include rainbow-shadow($colors, $i);
+    }
+  }
 }
 

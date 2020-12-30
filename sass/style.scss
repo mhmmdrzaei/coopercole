@@ -55,16 +55,27 @@ a {
 	}
 }
 
+@keyframes twoShake {
+     0% {transform: translateX(0px)}
+    33% {transform: translateX(5px) }
+}
 
-main.headerMain {
-	max-width: 1000px
+.activateShake {
+	animation: twoShake .3s infinite;
+}
+
+
+.headerMain {
+	max-width: 1000px;
+	margin: 0 auto;
 }
 .show-read-more .more-text{
     display: none;
 }
 @media(max-width: 1000px){
-	main.headerMain {
+	.headerMain {
 	max-width: 1000px;
+
 }
 }
 //featured video
@@ -95,6 +106,11 @@ main.headerMain {
 	font-weight: 700;
 	text-decoration: underline;
 	margin: 0 0 10px;
+	img {
+		width: 30px;
+		position: relative;
+		top: 7px;
+	}
 }
 
 .featuredVideo{
@@ -102,6 +118,22 @@ main.headerMain {
     margin: 0 auto;
 }
 //EXHIBITION
+.exhibitionsMainPage {
+	@extend .flex;
+	flex-direction: row-reverse;
+	justify-content: space-between;
+	.exhibitionYearsSide {
+		width: 5%;
+		ul {
+			list-style: none;
+			padding: 0;
+
+		}
+	}
+	.exhibitionContainer {
+		width: 95%;
+	}
+}
 
 .exhibitionMain {
   @extend .flex;
@@ -115,7 +147,7 @@ main.headerMain {
   }
 }
 
-#newsContentID {
+#newsContentID, #exhibitionContentID {
 	display: none;
 } 
 .newsContent{
@@ -132,7 +164,7 @@ main.headerMain {
     	
     }
 }
-.newsOpen {
+.newsOpen,.exhibitionsOpen {
   margin: 30px 0 0;
   background: transparent;
   border: none;
@@ -375,6 +407,56 @@ article.exhibition:nth-child(1) {
 
 }
 
+.artFairEach {
+	@extend .flex;
+	justify-content:space-between;
+	padding-bottom: 50px;
+	border-top: 1px solid black;
+	.description {
+		width: 60%;
+	}
+	.description {
+		h2 {
+			margin: 10px 0;
+			a {
+				@extend .whiteText;
+				@include fontSize(22);
+			}
+		}
+		.date, .location{
+			@include fontSize(13);
+		}
+		ul {
+			list-style: none;
+			padding: 0;
+			@include fontSize(13);
+			li {
+				margin-bottom: 15px;
+				a {
+					@extend .arrow;
+					text-decoration: none;
+					font-weight: 700;
+
+				}
+			}
+		
+		}
+	}
+	figure {
+		width: 35%;
+		max-width: 440px;
+		img {
+			width: 100%;
+			height: auto;
+			// border: 1px solid black;
+		}
+	}
+
+}
+.artFairEach:nth-child(1) {
+  border: none;
+}
+
 //news
 .newsNavigation {
 	@extend .flex;
@@ -403,6 +485,7 @@ article.exhibition:nth-child(1) {
 	width: 30%;
 	h2 {
 		margin: 0;
+		margin-top: .5em;
 		@extend .whiteText;
 
 	}
@@ -523,19 +606,159 @@ article.post:nth-child(1) {
 
 			&:hover {
 				  color: white;
-				  -webkit-text-stroke: 2px solid black;
-
-				  /* background-position: right 20px bottom 10px; */
-				  background-image: linear-gradient(to left, violet, indigo, blue, green, yellow, orange, red);
-				  -webkit-background-clip: text;
-				  color: white;
-				  background-size: 80%;
-				  text-shadow: 3.1px -0.9px 0.1em violet, -2.9px 11.1px 0.2em indigo, 15.1px 7.1px 0.3em #00f, -10.9px 7.1px 0.5em green, 7.1px 0.1px 0.3em #00f, 40.1px 42.1px 14.3em #ff0, -7.9px -11.9px 0.3em orange, 7.1px 18.1px 0.3em red
-				 
+				  -webkit-text-stroke: 4px solid black;				 
 				} 
 
 
 			}
 		}
 	}
+}
+
+.artistMain {
+	@extend .flex;
+	justify-content:space-between;
+	.artistsMainSide {
+		width: 30%;
+		position: relative;
+	}
+	.artistMainCenter {
+		width: 65%;
+		
+	}
+}
+.downloadCV {
+	@include fontSize(9);
+	font-weight: 700;
+	text-transform: uppercase; 
+	position: absolute;
+	bottom: 2%;
+	img {
+		width: 23px;
+		position: relative;
+		top: 2px;
+
+	}
+
+}
+.artistsExhibtion {
+	margin-top: 50%;
+}
+
+//contact 
+main.contactMain{
+	h1 {
+		@extend .whiteText;
+		@include fontSize(20);
+		width: 100%;
+		margin: 10px 0;
+	}
+	h2 {
+		@extend .whiteText;
+		@include fontSize(18);
+		width: 100%;
+		margin: 10px 0;
+	}
+	h3 {
+		@extend .whiteText;
+		@include fontSize(15);
+		width: 100%;
+		margin: 5px 0;
+	}
+	h4 {
+		font-weight: 700;
+		@include fontSize(13);
+		width: 100%;
+		margin: 5px 0;
+
+	}
+	h5 {
+		font-weight: 700;
+		@include fontSize(10);
+		width: 100%;
+		margin: 5px 0;
+	}
+	hr {
+		width: 100%;
+	}
+	.galleryAdditionalInfo{
+		@extend .flex;
+		justify-content:space-between;
+		.paragraphHalf{
+			width: 43%;
+			margin-right: 15px;
+		}
+	}
+
+	.headerLink{
+		@extend .whiteText;
+		@include fontSize(20);
+		// @extend .arrow;
+		animation: animated-rainbow-shadow 1s infinite;  
+		width: 100%;
+		margin: 10px 0;
+
+	}
+	.mediumBold {
+		@extend .whiteText;
+		@include fontSize(13);
+		width: 100%;
+		margin: 10px 0;
+		&:hover {
+			text-decoration: underline;
+		}
+	}
+	.smallBody {
+		font-weight: 700;
+		width: 100%;
+		margin: 5px 0;
+	}
+
+
+}
+.contactContainer {
+
+	@extend .flex;
+	justify-content: space-between;
+    margin-bottom: 22px;
+	p, a {
+		@include fontSize(12);
+	}
+	h3 {
+		@extend .whiteText;
+		@include fontSize(18);
+
+
+	}
+	.galleryAddress {
+		width: 20%;
+		.addressMap {
+			@extend .whiteText;
+			@include fontSize(18);
+
+			&:before {
+				content: "↓";
+				@include fontSize(17);
+		
+
+			}
+
+		}
+	}
+}
+.addressMap:hover::before {
+	animation: twoShake .3s infinite;
+}
+
+.Mailinglist{
+	h3 a {
+	@extend .whiteText;
+	@extend .arrow;	
+	}
+	
+
+}
+
+.acf-map img {
+   max-width: inherit !important;
 }

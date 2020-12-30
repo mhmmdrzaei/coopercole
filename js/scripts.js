@@ -142,6 +142,11 @@ $(document).ready(function(){
     $( this ).toggleClass( "highlight" );
     
   });
+    $(".exhibitionsOpen").click(function(){
+    $("#exhibitionContentID").toggle(500);
+    $( this ).toggleClass( "highlight" );
+    
+  });
   //smooth scroll
   // Add smooth scrolling to all links
    $("a").on('click', function(event) {

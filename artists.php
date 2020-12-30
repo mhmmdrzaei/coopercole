@@ -42,7 +42,7 @@
 			?>
 
 				<li>
-					<a data-before="<?php the_title(); ?> . " href="<?php the_permalink(); ?>">
+					<a class="rainbow" href="<?php the_permalink(); ?>">
 						<?php the_title(); ?> . 
 					</a>
 				</li>
