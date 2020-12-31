@@ -15,6 +15,57 @@ footer {
 }
 .mailing-list {
 	display: none;
+    position: fixed;
+    top: 20%;
+    left: 25%;
+    background: white;
+    border: 2px solid black;
+    padding: 2%;
+    height: 220px;
+    @include fontSize(16);
+    z-index: 20;
+    max-width: 440px;
+
+    .mlist_email {
+    	border: none;
+    	border-bottom: 1px solid;
+    	text-transform: uppercase;
+    	 outline: 0;
+    	 width: 100%;
+    	 margin: 20px 0px;
+    }
+    .subscribe-to-mailing-list {
+
+    	background: black;
+    	padding: 10px;
+    	border: none;
+    	width: 200px;
+    	color: white;
+    	text-transform: uppercase;
+    	position: relative;
+    	left: 50%;
+    	
+
+    }
+    .closelistML {
+    	width: 50px;
+    	border: none;
+    	background: transparent;
+    	margin: 0;
+    	cursor: pointer;
+    
+    }
+
+}
+
+.mailing-listContact {
+	@extend .mailing-list;
+	position: absolute;
+    top: 1083px;
+}
+
+.highlightML {
+	display: block;
 }
 
 .Footermenu {

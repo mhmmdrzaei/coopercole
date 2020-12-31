@@ -70,7 +70,7 @@
 
 		</section>
 		<section class="Mailinglist">
-		<h3 class="toggle-mailing-list"><a href="#">Sign up for our mailing list</a></h3>
+		<h3 class="toggle-mailing-list">Sign up for our mailing list</h3>
 		</section>
 		<style type="text/css">
 		.acf-map {

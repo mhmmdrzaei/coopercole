@@ -6,6 +6,12 @@
 		<h1 class="artistName"><?php the_title(); ?></h1>
 		<section class="artistMain">
 			<section class="artistsMainSide">
+				<?php 
+					 $artistCV = get_field('cv_pdf');
+				      if( $artistCV ) {; ?>
+
+				   <a class="downloadCV" href="<?php the_field('cv_pdf'); ?>" target="_blank" ><img src="<?php bloginfo('template_directory'); ?>/images/cv_icon.svg"> Download CV</a>
+				<?php }; ?>	
 				<nav class="exhibtionNews artistsExhibtion">
 					<?php
 					
@@ -54,12 +60,6 @@
 				  </div>
 				   <?php wp_reset_postdata(); endif; ?>
 				</nav>
-				<?php 
-					 $artistCV = get_field('cv_pdf');
-				      if( $artistCV ) {; ?>
-
-				   <a class="downloadCV" href="<?php the_field('cv_pdf'); ?>" target="_blank" ><img src="<?php bloginfo('template_directory'); ?>/images/cv_icon.svg"> Download CV</a>
-				<?php }; ?>	
 			</section>
 			<section class="artistMainCenter">
 				

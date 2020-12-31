@@ -147,6 +147,26 @@ $(document).ready(function(){
     $( this ).toggleClass( "highlight" );
     
   });
+      $(".mailing-list-open").click(function(){
+      // $(".mailing-list").toggle(500);
+      $('.mailing-list').toggleClass( "highlightML" );
+      
+    });
+    $(".closelistML").click(function(){
+      
+      // $(".mailing-list").toggle(500);
+      $('.mailing-list').toggleClass( "highlightML" );
+      
+    });
+    $(".toggle-mailing-list").click(function(){
+      // $(".mailing-list").toggle(500);
+      $('.mailing-list').toggleClass( "highlightML" );
+      
+    });
+
+    
+
+
   //smooth scroll
   // Add smooth scrolling to all links
    $("a").on('click', function(event) {
@@ -210,25 +230,23 @@ $(document).scroll(function() {
 const buttonDown = document.getElementById('downClick');
 const buttonUp = document.getElementById('upClick');
 var scrolled = 0;
-buttonDown.onclick = function () {
-  console.log('pzzzz');
+$(buttonDown).click(function(){
    scrolled=scrolled+19;
         
         $("#menu-exhibition-years").animate({
                 scrollTop:  scrolled
            });
 
-};
+});
 
-buttonUp.onclick = function () {
-  console.log('pzzzz');
+$(buttonUp).click(function(){
    scrolled=scrolled-19;
         
         $("#menu-exhibition-years").animate({
                 scrollTop:  scrolled
            });
 
-};
+});
 
 
 // $(document).scroll(function() {

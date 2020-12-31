@@ -653,8 +653,8 @@ article.post:nth-child(1) {
 	@include fontSize(9);
 	font-weight: 700;
 	text-transform: uppercase; 
-	position: absolute;
-	bottom: 2%;
+	position: relative;
+	bottom: -10px;
 	img {
 		width: 23px;
 		position: relative;
@@ -664,7 +664,7 @@ article.post:nth-child(1) {
 
 }
 .artistsExhibtion {
-	margin-top: 50%;
+	// margin-top: 50%;
 }
 
 //contact 
@@ -773,9 +773,10 @@ main.contactMain{
 }
 
 .Mailinglist{
-	h3 a {
+	h3 {
 	@extend .whiteText;
 	@extend .arrow;	
+	width: auto;
 	}
 	
 
