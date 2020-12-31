@@ -3,13 +3,13 @@
 
 
 /* TEAM */
-  DESIGNER & DEVELOPER: MOHAMMAD REZAEI AND SAAM KESMIRI
-  Site: coopercole.com
+  <your title>: <your name>
+  Site:
   Twitter:
-  Location: Toronto, Canada
+  Location:
 
 /* THANKS */
-  COOPER COLE DESIGNED BY - http://mohammadrezaei.com
+  WordPress starter theme from HackerYou - http://hackeryou.com
 
 /* SITE */
   Standards: HTML5, CSS3

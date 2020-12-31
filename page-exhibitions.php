@@ -3,10 +3,14 @@
 <?php get_header(); ?>
 <main class="exhibitionsMainPage">
 <nav class="exhibitionYearsSide">
-	 <?php wp_nav_menu( array(
-      'container' => false,
-      'theme_location' => 'social_menu'
-    )); ?>
+	<div class="exhibitionYearsSideInner">
+			<button id="upClick">^</button>
+			 <?php wp_nav_menu( array(
+		      'container' => false,
+		      'theme_location' => 'social_menu'
+		    )); ?>
+		    <button id="downClick">^</button>
+	</div>
 </nav>
 <section class="exhibitionContainer">
 	<?php

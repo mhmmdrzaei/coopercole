@@ -38,6 +38,7 @@ img {
 }
 
 body {
+	// background: red;
 	font-family: 'Open Sans', sans-serif;
 	width: 100%;
 	margin: 0 auto;
@@ -123,11 +124,32 @@ a {
 	flex-direction: row-reverse;
 	justify-content: space-between;
 	.exhibitionYearsSide {
-		width: 5%;
+		.exhibitionYearsSideInner {
+			position: fixed;
+		}
+		width: 2%;
 		ul {
 			list-style: none;
 			padding: 0;
+			height: 73px;
+    		overflow: scroll;
 
+
+		}
+		ul::-webkit-scrollbar {
+			display: none;
+		}
+
+
+		button	{
+			background: transparent;
+			border: none;
+			text-align: center;
+			width: 100%;
+			 @include fontSize(12);
+		}
+		#downClick {
+			transform: rotate(-180deg);
 		}
 	}
 	.exhibitionContainer {
@@ -303,7 +325,7 @@ article.exhibition {
 
 		}
 		figure {
-			width: 64%;
+			width: 62%;
 			img {
 				// max-width: 700px;
 			}

@@ -13,7 +13,6 @@
       <?php endwhile; // end the loop?>
     </div> <!-- /,content -->
 
-    <?php get_sidebar(); ?>
 
   </div> <!-- /.container -->
 </div> <!-- /.main -->

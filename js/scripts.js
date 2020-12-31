@@ -7,7 +7,7 @@
   Licensed under the MIT (http://www.opensource.org/licenses/mit-license.php) license.
 */
 (function($) {
-  console.log('test')
+  console.log('tessst')
   /**
    *  
    * @param {*} options Options object: 
@@ -207,7 +207,28 @@ $(document).scroll(function() {
 
   }
 });
+const buttonDown = document.getElementById('downClick');
+const buttonUp = document.getElementById('upClick');
+var scrolled = 0;
+buttonDown.onclick = function () {
+  console.log('pzzzz');
+   scrolled=scrolled+19;
+        
+        $("#menu-exhibition-years").animate({
+                scrollTop:  scrolled
+           });
 
+};
+
+buttonUp.onclick = function () {
+  console.log('pzzzz');
+   scrolled=scrolled-19;
+        
+        $("#menu-exhibition-years").animate({
+                scrollTop:  scrolled
+           });
+
+};
 
 
 // $(document).scroll(function() {

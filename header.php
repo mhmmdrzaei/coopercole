@@ -18,9 +18,6 @@
     
 
 <header>
-
-  
-
  <!--  <?php require 'partials/logoTwo.php'; ?>  -->
   <!-- <?php require 'partials/logoThree.php'; ?> -->
    <!-- <?php require 'partials/logoFour.php'; ?> -->
