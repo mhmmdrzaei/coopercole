@@ -785,3 +785,182 @@ main.contactMain{
 .acf-map img {
    max-width: inherit !important;
 }
+
+//Artworks on pages
+
+.artworkIteminfo {
+	display: none;
+}
+
+.openArtwork {
+	display: block;
+	min-width: 330px;
+	max-width: 700px;
+	z-index: 30;
+
+}
+
+
+
+.toggleText {
+	border: 1px solid black;
+	figure {
+		margin: 0 auto;
+		max-width: 230px;
+		img {
+			max-height: 350px;
+			width: auto;
+			
+		}
+
+	}
+	.toggleTextTitle {
+		padding: 10px;
+		margin: 0;
+		@extend .whiteText;
+		@include fontSize(12);
+
+	}
+	.infoAnimated:hover > div {
+		animation: bounce .3s ease infinite alternate;
+	}
+	.infoAnimated{
+				padding: 10px;
+			    margin: 0;
+			    font-weight: 700;
+			    @include fontSize(8);
+			    @extend .flex;
+
+			div {
+				position: relative;
+				// width: .5px;
+				
+				
+				
+			}
+
+			div:nth-child(2) {
+			 	animation-delay: 0.1s;
+			 	 // left: -1.5%;
+			  
+			}
+			div:nth-child(3) {
+			 	animation-delay: 0.2s;
+			 	 // left: -3%;
+			  
+			}
+			div:nth-child(4) {
+			 	animation-delay: 0.4s;
+			 	 // left: -4.5%;
+			  
+			}
+			div:nth-child(5) {
+			 	animation-delay: 0.5s;
+			 	 // left: -6%;
+			  
+			}
+			div:nth-child(6) {
+			 	animation-delay: 0.6s;
+			 	 // left: -7.5%;
+			  
+			}
+			div:nth-child(7) {
+			 	animation-delay: 0.7s;
+			 	 // left: -9%;
+			  
+			}
+			div:nth-child(8) {
+			 	animation-delay: 0.8s;
+			 	 // left: -10.5%;
+			  
+			}
+			div:nth-child(9) {
+			 	animation-delay: 0.9s;
+			 	 // left: -12%;
+			  
+			}
+			div:nth-child(10) {
+			 	animation-delay: 1.0s;
+			 	 // left: -13.5%;
+			  
+			}
+			div:nth-child(11) {
+			 	animation-delay: 1.1s;
+			 	 // left: -15%;
+			  
+			}
+			div:nth-child(12) {
+			 	animation-delay: 1.2s;
+			 	margin: 0 3px;
+			 	 // left: -15%;
+			  
+			}
+			div:nth-child(13) {
+			 	animation-delay: 1.3s;
+			 	 // left: -15%;
+			  
+			}
+			div:nth-child(14) {
+			 	animation-delay: 1.4s;
+			 	 // left: -16.5%;
+			  
+			}
+			div:nth-child(15) {
+			 	animation-delay: 1.5s;
+			 	 // left: -18%;
+			  
+			}
+			div:nth-child(16) {
+			 	animation-delay: 1.6s;
+			 	 // left: -19.5%;
+			  
+			}
+			div:nth-child(17) {
+			 	animation-delay: 1.7s;
+			 	 // left: -21%;
+			  
+			}
+			div:nth-child(18) {
+			 	animation-delay: 1.8s;
+			 	 // left: -22.5%;
+			  
+			}
+			div:nth-child(19) {
+			 	animation-delay: 1.9s;
+			 	 // left: -24%;
+			  
+			}
+			div:nth-child(20) {
+			 	animation-delay: 2.0s;
+			 	 // left: -25.5%;
+			  
+			}
+			div:nth-child(21) {
+			 	animation-delay: 2.1s;
+			 	 // left: -27%;
+			  
+			}
+			div:nth-child(22) {
+			 	animation-delay: 2.2s;
+			 	 // left: -28.5%;
+			  
+			}
+
+	}
+}
+
+@keyframes bounce {
+ from {top: 0px;}
+  to {top: -2px;}
+}
+
+.artworkItemEach {
+	width: 28%;
+	margin: 0 20px 20px 0;
+	cursor: pointer;
+}
+.artworksNew, .artworksOld {
+	@extend .flex;
+	
+
+}

@@ -7,7 +7,51 @@
   Licensed under the MIT (http://www.opensource.org/licenses/mit-license.php) license.
 */
 (function($) {
-  console.log('tessst')
+  // console.log('tessst');
+
+  // var main = document.getElementById('artworksPages');
+
+  // /* Register main to the click event 
+  // || when clicked ANYWHERE within main 
+  // || toggle() is called
+  // */
+  // main.addEventListener('click', toggle, false);
+
+  // function toggle(e) {
+  //    Determine if the current element in the
+  //   || event chain is the anchor that was 
+  //   || clicked.
+    
+
+  //   if (e.target !== e.currentTarget && e.target.class('toggleText')) {
+  //     console.log('fuck');
+  //     /* tgt is the clicked link
+  //     || txt is the div that follows tgt
+  //     */
+  //     var tgt = e.target;
+  //     var txt = tgt.nextElementSibling;
+  //     // Toggle classes .on and .off
+  //     txt.classList.toggle('on');
+  //     txt.classList.toggle('off');
+  //   }
+  // }
+  $(".artworkItemEach").click(function() {
+      $(this).find('.artworkIteminfo').toggleClass("open");
+  });
+  // $( ".toggleText" ).each(function(index) {
+  //     $(this).on("click", function(){
+  //       console.log('bitchface')
+  //       $('.artworkItemEach').each(function(){
+  //         $(this).toggleClass('on');
+  //       });
+  //         // // For the boolean value
+  //         // var boolKey = $(this).data('selected');
+  //         // // For the mammal value
+  //         // var mammalKey = $(this).attr('id'); 
+  //     });
+  // });
+
+
   /**
    *  
    * @param {*} options Options object: 
@@ -248,7 +292,27 @@ $(buttonUp).click(function(){
 
 });
 
+//Artworks
 
+// Reference the parent element
+
+
+// When a toggle is clicked (activated) show their content
+$('.closeBox').click(function () {
+  var el = $(this),
+      parent = el.closest('.displayText');
+
+  if (parent.hasClass('on')) {
+    // parent.find('.displayText').slideToggle();
+    parent.removeClass('on');
+    parent.addClass('off');
+  } else {
+    // parent.find('.displayText').slideToggle();
+    parent.addClass('on');
+    parent.removeClass('off');
+  }
+  return false;
+});
 // $(document).scroll(function() {
 //   var z = $(this).scrollTop();
 //   if (z > height - 400 ) {

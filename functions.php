@@ -823,7 +823,11 @@ function cyb_document_title_separator( $sep ) {
 
 }
 
+
 // inquire
+//AJAX Mohammad 
+
+
 
 /*
 *	Ajax Endpoints

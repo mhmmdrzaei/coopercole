@@ -93,18 +93,21 @@
       </section>
       <button id="readMore1" class="btn btn-info">Read more</button> 
       <p class="artworksLink"><a href="#artworks">Artworks</a></p>
-      <section class="featuredVideo">
-        
-          <?php if( have_rows('related_featured_video') ): ?>
-          <?php while( have_rows('related_featured_video') ): the_row(); 
-           ?>
-           <button class="featuredVideoTitle"><img src="<?php bloginfo('template_directory'); ?>/images/movie_icon.svg"> <?php the_sub_field('video_text') ?></button> 
-           <div id="featuredVideoLink" class="video-responsive">
-             <?php the_sub_field('video_link'); ?>
-           </div>
-          <?php endwhile; ?>
-           <?php endif; ?>    
-       </section>
+      
+           <?php if( have_rows('related_featured_video') ): ?>
+           <?php while( have_rows('related_featured_video') ): the_row(); 
+             $videoLink = get_sub_field('video_link');
+             if( $videoLink ) {; ?>
+             <section class="featuredVideo">
+             <button class="featuredVideoTitle"><img src="<?php bloginfo('template_directory'); ?>/images/movie_icon.svg"> <?php the_sub_field('video_text') ?></button> 
+             <div id="featuredVideoLink" class="video-responsive">
+               <?php the_sub_field('video_link'); ?>
+             </div>
+             </section>
+             <?php } ?> 
+           <?php endwhile; ?>
+            <?php endif; ?>   
+       
 
       <?php if(get_field('carousel')): ?>
       <section class="exhibitionImages">
@@ -136,15 +139,43 @@
 
     if ( $connected->have_posts() ) :
 
-      echo '<section class="artworksOld">';
+      echo '<section class="artworksOld" id="artworksPages">';
 
       while($connected->have_posts() ) : $connected->the_post(); ?>
-
-        <div class="artworkItemEach">
-          <a href="<?php the_permalink(); ?>" class="" data-id="<?php echo get_the_id(); ?>">
-            <?php the_title ();?>
-            <?php echo get_the_post_thumbnail( get_the_id(), 'large' ); ?>
-          </a>
+        <div class="artworkItemEach" >
+          <section class="toggleText">
+            <figure>
+              <?php echo get_the_post_thumbnail( get_the_id(), 'large' ); ?>
+            </figure>
+           
+              <p class="toggleTextTitle"><?php the_title ();?></p>
+              <section class="infoAnimated">
+                <div>I</div>
+                  <div>n</div>
+                  <div>f</div>
+                  <div>o</div>
+                  <div>r</div>
+                  <div>m</div>
+                  <div>a</div>
+                  <div>t</div>
+                  <div>i</div>
+                  <div>o</div>
+                  <div>n</div>
+                                    
+                  <div>&</div>
+                   
+                  <div>I</div>
+                  <div>n</div>
+                  <div>q</div>
+                  <div>u</div>
+                  <div>i</div>
+                  <div>r</div>
+                  <div>i</div>
+                  <div>e</div>
+                  <div>s</div>
+                  <div>→</div>
+              </section> 
+          </section>
           <section class="artworkIteminfo">
                   <?php echo get_field('title', $curr_id); ?><?php if(get_field('year', $curr_id)) { echo ', '.get_field('year', $curr_id).'<br/>'; } ?>
 
@@ -188,7 +219,7 @@
 
 
                    ?>
-                </section>
+
                 <section class="inquiry">
                   <?php
 
@@ -241,18 +272,14 @@
                      else if(get_field('gallery')){
 
                       $gallery = get_field('gallery');
-                        echo '<div class="swiper-container">';
-                        echo '<div class="swiper-wrapper">';
-
+                        echo '<div class="galleryContainer">';
+                  
                         foreach($gallery as $image) {
 
-                          echo '<img class="swiper-slide" src="'.$image['sizes']['large'].'" />';
+                          echo '<img class="" src="'.$image['sizes']['large'].'" />';
 
                           }
                           echo' </div>';
-                          echo'<div class="swiper-button-next"></div>
-                          <div class="swiper-button-prev"></div>
-                          </div>';
                       }
 
                       else {  
@@ -260,6 +287,7 @@
                         }
 
                       ?>
+              </section>
           </div>
         
 
@@ -269,18 +297,21 @@
         <?php
       $featured_posts = get_field('connected_art_1');
       if( $featured_posts ): 
-        echo '<section class="artworksNew">';
+        echo '<section class="artworksNew" id="artworskPages">';
         ?>
           
           <?php foreach( $featured_posts as $post ): 
 
               // Setup this post for WP functions (variable must be named $post).
               setup_postdata($post); ?>
-              <div class="artworkItemEach">
-                <a href="<?php the_permalink(); ?>">
-                  <?php the_title(); ?>
-                  <?php the_post_thumbnail('large'); ?>
-                </a>
+              <div class="artworkItemEach" id="artworksPages">
+                <section class="toggleText">
+                  <figure>
+                    <?php echo get_the_post_thumbnail( get_the_id(), 'large' ); ?>
+                  </figure>
+                    <p><?php the_title ();?></p> 
+                    <p>Information & inquiries -></p> 
+                </section>
                 <section class="artworkIteminfo">
                         <?php echo get_field('title', $curr_id); ?><?php if(get_field('year', $curr_id)) { echo ', '.get_field('year', $curr_id).'<br/>'; } ?>
 
@@ -324,7 +355,7 @@
 
 
                          ?>
-                      </section>
+
                       <section class="inquiry">
                         <?php
 
@@ -377,17 +408,15 @@
                            else if(get_field('gallery')){
 
                             $gallery = get_field('gallery');
-                              echo '<div class="swiper-container">';
-                              echo '<div class="swiper-wrapper">';
+                              echo '<div class="galleryContainer">';
 
                               foreach($gallery as $image) {
 
-                                echo '<img class="swiper-slide" src="'.$image['sizes']['large'].'" />';
+                                echo '<img class="" src="'.$image['sizes']['large'].'" />';
 
                                 }
-                                echo' </div>';
-                                echo'<div class="swiper-button-next"></div>
-                                <div class="swiper-button-prev"></div>
+                                
+                                echo'
                                 </div>';
                             }
 
@@ -396,7 +425,7 @@
                               }
 
                             ?>
-                     
+                 </section>     
               </div>
           <?php endforeach; ?>
           
