@@ -36,8 +36,30 @@
   //   }
   // }
   $(".artworkItemEach").click(function() {
-      $(this).find('.artworkIteminfo').toggleClass("open");
+      $(this).find('.artworkIteminfo').addClass("open");
+       // $(this).find('.artworkIteminfo').toggleClass("closed");
+      // $(this).find('.artworkIteminfo').css("display","block");
+
   });
+
+ $(".closeInfo").click(function() {
+  // if($('#artworksOpenItem').hasClass('open')){
+  //    $('#artworksOpenItem').removeClass('open')
+  // }else{
+    // parent = el.closest('.displayText');
+  // }
+  // $(".artworkItemEach").find('.artworkIteminfo').removeClass("open");
+    if ($('.artworkIteminfo').hasClass('open')) {
+      // parent.find('.displayText').slideToggle();
+      $('.artworkIteminfo').removeClass('open');
+    } 
+    return false;
+      // $('.artworkIteminfo').toggleClass("closed");
+      // console.log('fuck');
+
+  });
+
+  
   // $( ".toggleText" ).each(function(index) {
   //     $(this).on("click", function(){
   //       console.log('bitchface')
@@ -147,6 +169,7 @@
     });
   }
 })(jQuery);
+
 $(".text-area").readMore({lines: 15})
 /* When the user clicks on the button, 
 toggle between hiding and showing the dropdown content */
@@ -167,13 +190,6 @@ window.onclick = function(event) {
     }
   }
 } 
-//swiper
-    var swiper = new Swiper('.swiper-container', {
-      navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev',
-      },
-    });
 //video Link
 $(document).ready(function(){
   $(".featuredVideoTitle").click(function(){
