@@ -18,7 +18,7 @@
     
 
 <header>
- <!--  <?php require 'partials/logoTwo.php'; ?>  -->
+
   <!-- <?php require 'partials/logoThree.php'; ?> -->
    <!-- <?php require 'partials/logoFour.php'; ?> -->
   <main class="headerMain">
@@ -35,7 +35,10 @@
       </nav>
       
     </div>
-    <label class="menu__icon headerMainMenu" for="menu__check">
+    <label id="topMenu" class="menu__icon headerMainMenu" for="menu__check">
+      <section class="ccLogo">
+        <?php require 'partials/logoTwo.php'; ?> 
+      </section>
      <h3 class="menuMain">Menu</h3>
     </label>
 

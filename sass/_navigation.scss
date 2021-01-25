@@ -26,10 +26,11 @@
 
 .menu__hero {
   display: flex; 
-  position: absolute; // for animation
-  // top: 10px;
+  position: fixed; // for animation
+  top: 50px;
   left: -700px;
   right: 0;
+  z-index: 101;
   max-width: 20%;
   transition: left ease-in-out .7s;
   #menu__check:checked ~ & {
@@ -99,7 +100,7 @@
       }
     }
     padding: 0 20px 14px 10px;
-    border: 1px solid black;
+    border: 2px solid black;
     border-left: none;
     ul {
       padding: 0;
@@ -153,6 +154,14 @@ h3.menuMain{
 }
 .headerMainMenu {
   margin-right: 17%;
+}
+.stickyMenu{
+    position: fixed;
+    top: 30px;
+    align-items: center;
+    display: flex;
+    z-index: 100;
+
 }
 
 //languages menu
