@@ -17,21 +17,21 @@
 
 		<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 			<?php $post_type = get_post_type( $post->ID ); 
-			if ($post_type == 'art-fair') echo 'Art Fair';
-			if ($post_type == 'art') echo 'Artwork';
-			if ($post_type == 'exhibition') echo 'Exhibition';
-			if ($post_type == 'artist') echo 'Artist';
-			if ($post_type == 'post') echo 'News';
+			if ($post_type == 'art-fair') echo '<h2>Art Fair > </h2>';
+			if ($post_type == 'art') echo '<h2>Artwork > </h2>';
+			if ($post_type == 'exhibition') echo '<h2>Exhibition > </h2>';
+			if ($post_type == 'artist') echo '<h2>Artist > </h2>';
+			if ($post_type == 'post') echo '<h2>News > </h2>';
 			 ?>
 
-			<h2 class="entry-title">
+			<h3 class="entry-title">
         	<a href="<?php the_permalink(); ?>" title="Permalink to: <?php esc_attr(the_title_attribute()); ?>" rel="bookmark">
          		 <?php the_title(); ?>
         	</a>
-      		</h2>
+      		</h3>
 
 
-		</article><!-- #post-## -->
+		</article>
 
 
 

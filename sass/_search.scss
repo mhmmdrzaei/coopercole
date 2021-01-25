@@ -22,3 +22,42 @@ input.searchSubmit{
 .search {
 	margin: 1em 0;
 }
+input#s{
+	background: transparent;
+}
+
+//no results 
+.noResults {
+	width: 95;
+	margin: 0 auto;
+	figure {
+		width: 50%;
+		max-width: 250px;
+		margin: 0 auto;
+	}
+	img {
+		
+	}
+	h2 {
+		@extend .whiteText;
+		text-align: center;
+		text-transform: uppercase;
+	}
+}
+
+//search Resluts
+
+.searchResultsPage {
+	h2 {
+		@extend .whiteText;
+		text-transform: uppercase;
+	}
+	h3 {
+		font-weight: 400;
+	}
+	article {
+		padding-bottom: 12px;
+		border-bottom: 1px solid #d4d4d4;
+		border-top: 0 !important;
+	}
+}

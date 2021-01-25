@@ -224,7 +224,14 @@ $(document).ready(function(){
       
     });
 
-    
+    //no exhibition class
+    if ($(".noShowContainer")[0]){
+
+        $("body").css('background-image', 'linear-gradient(to right, #DC03FC, #0322FC, #03FCEF, #23FC03, #FCE303, #FC7A03, #FC0303)');
+        $('footer').css('background','white');
+        $('.artFairHome').css('background','white');
+
+    }
 
 
   //smooth scroll
@@ -329,6 +336,131 @@ $('.closeBox').click(function () {
   }
   return false;
 });
+
+
+
+App.inquire = function() {
+
+   var emailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
+
+    $('#submit-inquiry').on('submit', function(event) {
+        event.preventDefault();
+
+        var $this = $(this);
+        var email = $(this).find('[name="email"]');
+        var name = $(this).find('[name="name"]');
+        var phone = $(this).find('[name="phone"]');
+        var data = $(this).serialize();
+
+        var valid_name = true;
+        var valid_email = true;
+        var valid_phone = true;
+
+        //remove invalids
+        $('em.invalid').remove();
+        $('input.invalid').removeClass('invalid');
+
+        //keydowns
+        name.keydown(function(event) {
+            $(this).removeClass('invalid');
+            $('.invalid-name').remove();
+        });
+
+        email.keydown(function(event) {
+            $(this).removeClass('invalid');
+            $('.invalid-phone').remove();
+        });
+
+        email.keydown(function(event) {
+            $(this).removeClass('invalid');
+            $('.invalid-email').remove();
+        });
+
+        //check name
+        if(name.val() === '') {
+            name.addClass('invalid');
+            name.after('<em class="invalid invalid-name">please enter your name</em>');
+            valid_name = false;
+        }
+
+        //check email
+        if (!emailRegex.test(email.val())) {
+            email.addClass('invalid');
+            email.after('<em class="invalid invalid-email">please enter a valid email address</em>');
+            valid_email = false;
+        }
+
+        //check phone
+        if(phone.val() === '') {
+            phone.addClass('invalid');
+            phone.after('<em class="invalid invalid-phone">please enter your phone number</em>');
+            valid_phone = false;
+        }
+
+        //return if not valid
+        if(!valid_name || !valid_email || !valid_phone) {
+            return false;
+        }
+
+        //ok good to go
+        $.ajax({
+            url: AjaxHandler.ajaxurl,
+            dataType: 'html',
+            data: {
+                action: 'inquire',
+                data: data
+            },
+        })
+        .done(function(response) {
+            console.log(response);
+            $this.fadeOut(300, function() {
+                $this.after('<div class="response">'+response+'</div>');
+            });
+        })
+        .fail(function() {
+            console.log("error");
+        })
+        .always(function() {
+            console.log("complete");
+        });
+    });
+
+}
+
+(function($){
+    var  $doc = $(document);
+
+    /** create mod exec controller */
+    $.readyFn = {
+        list: [
+            App.inquire
+        ],
+        register: function(fn) {
+            $.readyFn.list.push(fn);
+        },
+        execute: function() {
+            for (var i = 0; i < $.readyFn.list.length; i++) {
+                try {
+                   $.readyFn.list[i].apply(document, [$]);
+                }
+                catch (e) {
+                    throw e;
+                }
+            };
+        }
+    };
+
+    /** run all functions */
+    $doc.ready(function(){
+        $.readyFn.execute();
+    });
+
+    /** register function */
+    $.fn.ready = function(fn) {
+        $.readyFn.register(fn);
+    };
+
+})(jQuery);
 // $(document).scroll(function() {
 //   var z = $(this).scrollTop();
 //   if (z > height - 400 ) {

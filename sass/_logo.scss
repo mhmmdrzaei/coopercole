@@ -2,6 +2,10 @@
 	display: flex;
 }
 
+svg {
+	background-color: none !important;
+}
+
 .logoall{
 	// margin:100px auto;
 	width: 420px;
@@ -233,5 +237,68 @@ section.logo {
 	}
 }
 
+//CLOSED SVG
+.noShowContainer {
+	h2 {
+		text-align: center;
+		font-size: 1.5vw;
+		position: relative;
+		top: -9vw;
+	}
+	p a {
+		text-decoration: underline;
+	}
+	margin: 100px 0;
+}
+.closedSVG {
+	display: flex;
+	max-width: 95%;
+	margin:0 auto;
+	svg {
+		position: relative;
+		// width: 10vw;
 
+	}
+	.st0{fill:#FFFFFF;}
+}
+.closedC {
+	left: 18%;
+	animation: fadeIn 3s, cTwoA 1s ease-in-out infinite;
+}
+.closedL {
+	left: 7%;
+	animation: fadeIn 3s, cTwoA 1s ease-in-out infinite;
+}
+.closedO {
+	width: 65%;
+    right: 1%;
+}
+.closedS {
+	right: 3%;
+	 top: -4vw;
+	 width: 90%;
+	 animation: fadeIn 3s, cTwoA 1s ease-in-out infinite;
+}
+.closedE {
+	width: 66%;
+	right: 9%;
+}
+.closedD {
+	top: 2vw;
+	right: 15%;
+	animation: fadeIn 3s, cTwoA 1s ease-in-out infinite;
+}
+
+// .closedSVG:hover > .closedC {
+// 	animation: fadeIn 3s, cTwoA 1s ease-in-out infinite;
+// }
+// .closedSVG:hover > .closedD {
+// 	animation: fadeIn 3s, cTwoA 1s ease-in-out infinite;
+// }
+// .closedSVG:hover > .closedS {
+// 	animation: fadeIn 3s, cTwoA 1s ease-in-out infinite;
+// }
+// .closedSVG:hover > .closedL {
+// 	animation: fadeIn 3s, cTwoA 1s ease-in-out infinite;
+// }
 

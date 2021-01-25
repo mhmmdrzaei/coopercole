@@ -1,11 +1,17 @@
 <?php get_header(); ?>
-<main>
+<main class="searchResultsPage">
 	<?php if ( have_posts() ) : ?>
-		<h1>Search Results for: <?php echo get_search_query(); ?></h1>
+		<p>Search Results for <strong>" <?php echo get_search_query(); ?>":</strong></p>
 		<?php get_template_part( 'loop', 'search' ); ?>
 		<?php else : ?>
-			<h2>Nothing Found</h2>
-				<p>Sorry, but nothing matched your search criteria. Please try again with some different keywords.</p>
+			<section class="noResults">
+				<figure>
+					<img src="<?php bloginfo('template_directory'); ?>/images/noresults.png">
+				</figure>
+
+				<h2>No Search Results Found</h2>
+
+			</section>
 		<?php endif; ?>
 
 </main>

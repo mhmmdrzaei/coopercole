@@ -116,11 +116,12 @@ li.menu-item-14929{
 		text-transform: uppercase;
 		background: black;
 		padding: 10px;
-		min-height: 43px;
-		@include fontSize(9);
+		// min-height: 43px;
+		font-size: 1vw;
+		// @include fontSize(9);
 		outline: none;
 		border: none;
-		width: 162px !important;
+		width: 15% !important;
 		text-align: center;
 
 }

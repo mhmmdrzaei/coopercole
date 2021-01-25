@@ -93,6 +93,16 @@
       </section>
       <button id="readMore1" class="btn btn-info">Read more</button> 
       <p class="artworksLink"><a href="#artworks">Artworks</a></p>
+        <?php if( have_rows('online_exhibition_link') ): ?>
+        <?php while( have_rows('online_exhibition_link') ): the_row(); 
+          $onlineLink = get_sub_field('link_label');
+          if( $onlineLink ) {; ?>
+          <section class="onlineExhibition">
+            <a href="<?php the_sub_field('link_address'); ?>"><?php the_sub_field('link_label'); ?> <i class="fas fa-external-link-alt"></i></a>
+          </section>
+          <?php } ?> 
+        <?php endwhile; ?>
+         <?php endif; ?>  
       
            <?php if( have_rows('related_featured_video') ): ?>
            <?php while( have_rows('related_featured_video') ): the_row(); 
@@ -148,7 +158,18 @@
               <?php echo get_the_post_thumbnail( get_the_id(), 'medium' ); ?>
             </figure>
            
-              <p class="toggleTextTitle"><?php the_title ();?></p>
+              <?php
+              $title = get_the_title(); // This must be!, because this is the return - the_title would be echo
+              $title_array = explode('&#8211;', $title);
+              $first_word = $title_array[0];
+              $second_word = $title_array[1];
+
+              ?>
+              <section class="titleToggle">
+                <p class="toggleTextTitle"><?php echo $first_word; ?></p>
+                <div class="line"></div>
+                <p class="toggleTextWork"><?php echo $second_word; ?></p>
+              </section>
               <section class="infoAnimated">
 <!--                 <div>I</div>
                   <div>n</div>
@@ -194,6 +215,11 @@
                  <?php if(get_field('notes', $curr_id)) { echo get_field('notes', $curr_id).''; }
                   ?>
                </p>
+               <p>
+                 <?php if(get_field('inventory', $curr_id)) { echo get_field('inventory', $curr_id).''; }
+                  ?>
+               </p>
+
                <section class="dimentions">
                        <?php 
                        $height = get_field('height', $curr_id);
@@ -320,8 +346,19 @@
             <figure>
               <?php echo get_the_post_thumbnail( get_the_id(), 'medium' ); ?>
             </figure>
-           
-              <p class="toggleTextTitle"><?php the_title ();?></p>
+            <?php
+            $title = get_the_title(); // This must be!, because this is the return - the_title would be echo
+            $title_array = explode('&#8211;', $title);
+            $first_word = $title_array[0];
+            $second_word = $title_array[1];
+
+            ?>
+            <section class="titleToggle">
+              <p class="toggleTextTitle"><?php echo $first_word; ?></p>
+              <div class="line"></div>
+              <p class="toggleTextWork"><?php echo $second_word; ?></p>
+            </section>
+              
               <section class="infoAnimated">
                 <!-- <div>I</div>
                   <div>n</div>
@@ -365,6 +402,10 @@
                                ?></p>
                                <p>
                                  <?php if(get_field('notes', $curr_id)) { echo get_field('notes', $curr_id).''; }
+                                  ?>
+                               </p>
+                               <p>
+                                 <?php if(get_field('inventory', $curr_id)) { echo get_field('inventory', $curr_id).''; }
                                   ?>
                                </p>
                                <section class="dimentions">

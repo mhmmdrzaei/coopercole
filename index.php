@@ -209,7 +209,8 @@ if($currentArtF->have_posts()) : while($currentArtF->have_posts()) : $currentArt
 					<figure class="page-banner"><img src="<?php echo get_field('page_banner')['sizes']['large']; ?>"></figure>
 				<?php endif; ?>
 
-				<div class="page-header container">
+				<div class="noShowContainer">
+					<?php require 'partials/closed.php'; ?>
 					<?php if(get_field('page_subtitle')): ?>
 						<h2><?php the_field('page_subtitle'); ?></h2>
 					<?php
