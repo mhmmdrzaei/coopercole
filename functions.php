@@ -15,6 +15,7 @@ function theme_setup() {
 	add_image_size('square', 150, 150, true);
 
 
+
 	// Add default posts and comments RSS feed links to head
 	add_theme_support( 'automatic-feed-links' );
 
@@ -494,8 +495,52 @@ function my_connection_types() {
 		)
 	);
 }
-add_action( 'p2p_init', 'my_connection_types' );
 
+
+
+
+
+
+function register_my_meta_box() {
+	add_meta_box( 'my-box', 'Connected Artworks Images', 'render_my_meta_box', 'exhibition', );
+}
+
+
+	p2p_create_connection( 'art_to_exhibition', array(
+		'from' => $from_id,
+		'to' => $to_id,
+		'meta' => array(
+			'date' => current_time('mysql')
+		)
+	) );
+
+	// p2p_type( 'art_to_exhibition' )->connect( $from, $to, array(
+	// 	'date' => current_time('mysql')
+	// ) );
+
+function render_my_meta_box( $post ) {
+	echo 'Connected Artworks Images to Check';
+	$connected = p2p_type( 'art_to_exhibition' )->get_connected( $post );
+
+	// $connected= new WP_Query( array(
+	//       'connected_type' => 'art_to_exhibition',
+	//       'connected_items' => get_the_id(),
+	//       'nopaging' => true,
+	//     ) )
+?>
+
+
+
+<ul>
+<?php while ( $connected->have_posts() ) : $connected->the_post(); ?>
+	<?php the_post_thumbnail('square'); ?>
+<?php endwhile; ?>
+</ul>
+<?php
+}
+
+add_action( 'p2p_init', 'my_connection_types' );
+add_action( 'add_meta_boxes', 'register_my_meta_box' );
 
 //convert to cm
 function convert_to_cm($inches = 0) {
