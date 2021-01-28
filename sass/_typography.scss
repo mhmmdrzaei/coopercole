@@ -157,34 +157,39 @@ h2.artFairTitle {
 
 //rainbow
 
-$colors: #7F00FF, #00416A, green, blue, yellow, orange, red;
-$size: 10;
+// $colors: #7F00FF, #00416A, green, blue, yellow, orange, red;
+// $size: 10;
 
-@mixin rainbow-shadow($colors, $offset: 0, $size: $size) {
-  $len: length($colors);
-  $outp: 0px 0px transparent;
-  @for $i from 1 through $size {
-    $ind: floor( max($i + $offset, 1) / $size * length($colors) ) % $len + 1;
-    $col: nth($colors, $ind);
-    $outp: #{$outp}, #{$i}px #{$i}px #{$col};
-  }
+// @mixin rainbow-shadow($colors, $offset: 0, $size: $size) {
+//   $len: length($colors);
+//   $outp: 0px 0px transparent;
+//   @for $i from 1 through $size {
+//     $ind: floor( max($i + $offset, 1) / $size * length($colors) ) % $len + 1;
+//     $col: nth($colors, $ind);
+//     $outp: #{$outp}, #{$i}px #{$i}px #{$col};
+//   }
   
-  text-shadow: $outp;
-}
+//   text-shadow: $outp;
+// }
 
 .rainbow {
   &:hover {
-    animation: animated-rainbow-shadow 1s infinite;      
+        background-image: linear-gradient(to right, #DC03FC, #0322FC, #03FCEF, #23FC03, #FCE303, #FC7A03, #FC0303);
+          -webkit-background-clip: text;
+          // text-shadow: 2px 5px 10px #f1f1f1;
+          color: transparent !important;
+          background-size: 60%;
+    // animation: animated-rainbow-shadow 1s infinite;      
 
   }
   
 }
 
-@keyframes animated-rainbow-shadow {
-  @for $i from 0 to $size + 1 {
-    #{$i / $size * 100}% {
-      @include rainbow-shadow($colors, $i);
-    }
-  }
-}
+// @keyframes animated-rainbow-shadow {
+//   @for $i from 0 to $size + 1 {
+//     #{$i / $size * 100}% {
+//       @include rainbow-shadow($colors, $i);
+//     }
+//   }
+// }
 

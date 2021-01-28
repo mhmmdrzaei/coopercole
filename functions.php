@@ -73,6 +73,14 @@ function hackeryou_scripts() {
   	null, //version number
   	true //load in footer
   );
+  	wp_deregister_script('masonryjs');
+    wp_enqueue_script(
+    	'masonaryjs',
+    	"http" . ($_SERVER['SERVER_PORT'] == 443 ? "s" : "") . "://masonry.desandro.com/masonry.pkgd.js",
+    	false, //dependencies
+    	null, //version number
+    	true //load in footer
+    );
 	wp_deregister_script('swiperjs');
   wp_enqueue_script(
   	'swiperjs',

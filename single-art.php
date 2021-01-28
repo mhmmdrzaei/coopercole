@@ -1,206 +1,216 @@
 <?php get_header(); ?>
-
+<main>
 
   <?php if(have_posts()) : while(have_posts()) : the_post(); ?>
 
     <?php $curr_id = get_the_id(); ?>
-    <section class="featuredImage">
-        <?php the_post_thumbnail('large'); ?>
-    </section>
-
-    <section class="connectedArtists">
-      <?php
-
-      $connected = new WP_Query( array(
-        'connected_type' => 'art_to_artist',
-        'connected_items' => get_the_id(),
-        'nopaging' => true,
-      ) );
-
-      $artist_name = '';
-
-      if ( $connected->have_posts() ) :
-
-        while ( $connected->have_posts() ) : $connected->the_post();
-
-        $artist_name = get_the_title();
-
-      ?>
-
-
-          <h2><a style="border:none" href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
-
+    <section class="singleArtFull">
+      <section class="singleArtImages">
         <?php
 
-        endwhile;
 
-        wp_reset_postdata();
+               if(have_rows('videos')){
 
-      else:
+                 while(have_rows('videos')) { the_row();
 
-        echo '<h2>'.get_field("artist_name", $curr_id).'</h2>';
+                   echo '<div class="wrap-video">';
+                     the_sub_field('video');
+                   echo '</div>';
 
-      endif;
+                 }
 
-      ?>
-      
-    </section>
-    <section class="connectedExhibition">
-      <?php
+               } else if(get_field('gallery')){
 
-      $connected = new WP_Query( array(
-        'connected_type' => 'art_to_exhibition',
-        'connected_items' => get_the_id(),
-        'nopaging' => true,
-      ) );
+                 $gallery = get_field('gallery');
 
-      $artist_name = '';
+                 foreach($gallery as $image) {
 
-      if ( $connected->have_posts() ) :
+                   echo '<img src="'.$image['sizes']['large'].'" />';
 
-        while ( $connected->have_posts() ) : $connected->the_post();
+                 }
 
-        $artist_name = get_the_title();
+               }
 
-      ?>
+               else {
 
-          <p>Featured In:</p>
-          <h2><a style="border:none" href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
+                 the_post_thumbnail('large');
 
-        <?php
+               }
 
-        endwhile;
+               ?>
+      </section>
+      <section class="singleArtInfo">
+        <section class="connectedArtists">
+          <?php
 
-        wp_reset_postdata();
+          $connected = new WP_Query( array(
+            'connected_type' => 'art_to_artist',
+            'connected_items' => get_the_id(),
+            'nopaging' => true,
+          ) );
 
-      else:
+          $artist_name = '';
 
-        
+          if ( $connected->have_posts() ) :
 
-      endif;
+            while ( $connected->have_posts() ) : $connected->the_post();
 
-      ?>
-      
-    </section>
+            $artist_name = get_the_title();
 
-    <section class="artworkDetail">
-
-      <?php echo get_field('title', $curr_id); ?><?php if(get_field('year', $curr_id)) { echo ', '.get_field('year', $curr_id).'<br/>'; } ?>
+          ?>
 
 
-      <?php
+              <h2><a style="border:none" href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
 
-      if(get_field('media', $curr_id)) { echo get_field('media', $curr_id).'<br/>'; }
+            <?php
 
-      if(get_field('edition', $curr_id)) { echo get_field('edition', $curr_id).'<br/>'; }
+            endwhile;
 
-      if(get_field('notes', $curr_id)) { echo get_field('notes', $curr_id).'<br/>'; }
+            wp_reset_postdata();
+
+          else:
+
+            echo '<h2>'.get_field("artist_name", $curr_id).'</h2>';
+
+          endif;
+
+          ?>
+          
+        </section>
+        <section class="connectedExhibition">
+          <?php
+
+          $connected = new WP_Query( array(
+            'connected_type' => 'art_to_exhibition',
+            'connected_items' => get_the_id(),
+            'nopaging' => true,
+          ) );
+
+          $artist_name = '';
+
+          if ( $connected->have_posts() ) :
+
+            while ( $connected->have_posts() ) : $connected->the_post();
+
+            $artist_name = get_the_title();
+
+          ?>
+
+              <p>Featured In:</p>
+              <h2><a style="border:none" href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
+
+            <?php
+
+            endwhile;
+
+            wp_reset_postdata();
+
+          else:
+
+            
+
+          endif;
+
+          ?>
+          
+        </section>
+            <section class="artworkDetail">
+
+              <?php echo get_field('title', $curr_id); ?><?php if(get_field('year', $curr_id)) { echo ', '.get_field('year', $curr_id).'<br/>'; } ?>
+
+
+              <?php
+
+              if(get_field('media', $curr_id)) { echo get_field('media', $curr_id).'<br/>'; }
+
+              if(get_field('edition', $curr_id)) { echo get_field('edition', $curr_id).'<br/>'; }
+
+              if(get_field('notes', $curr_id)) { echo get_field('notes', $curr_id).'<br/>'; }
 
 
 
 
-      ?>
-      <?php 
-      $height = get_field('height', $curr_id);
-      $width = get_field('width', $curr_id);
-      $depth = get_field('depth', $curr_id);
+              ?>
+              <?php 
+              $height = get_field('height', $curr_id);
+              $width = get_field('width', $curr_id);
+              $depth = get_field('depth', $curr_id);
 
-      if( $height && $width) {
+              if( $height && $width) {
 
-        $height_metric = convert_to_cm($height);
-        $width_metric = convert_to_cm($width);
-}
-        if($depth) {
-          $depth_metric = convert_to_cm($depth);
-          echo $height . '" X ' . $width . '" X ' . $depth .'"<br/>';
-
-          echo $height_metric . 'cm X ' . $width_metric .'cm X ' . $depth_metric .'cm<br/>';
+                $height_metric = convert_to_cm($height);
+                $width_metric = convert_to_cm($width);
         }
+                if($depth) {
+                  $depth_metric = convert_to_cm($depth);
+                  echo $height . '" X ' . $width . '" X ' . $depth .'"<br/>';
 
-        else {
-          echo $height . 'in X ' . $width . 'in<br/>';
+                  echo $height_metric . 'cm X ' . $width_metric .'cm X ' . $depth_metric .'cm<br/>';
+                }
 
-          echo $height_metric . 'cm X ' . $width_metric . 'cm<br/>';
-        }
+                else {
+                  echo $height . 'in X ' . $width . 'in<br/>';
 
-
-
-
-       ?>
-    </section>
-    <section class="inquiry">
-      <?php
-
-      $inquiry_email  = '';
-      $inquiry_email .= '<p>Thanks for inquiring. We will be in touch shortly with more information.</p>';
-      $inquiry_email .= '<p>For a quicker response feel free to call us at +1.416.531.8000.</p>';
-      $inquiry_email .= get_the_post_thumbnail( $curr_id, 'medium' );
-      $inquiry_email .= '<p>';
-      $inquiry_email .= $artist_name.'<br/>';
-      $inquiry_email .= get_field('title', $curr_id).', '.get_field('year', $curr_id).'<br/>';
-      if(get_field('media', $curr_id)) {
-        $inquiry_email .= get_field('media', $curr_id).'<br/>';
-      }
-      if(
-        get_field('edition', $curr_id)) {$inquiry_email .= get_field('edition', $curr_id).'<br/>';
-      }
-      if( $height && $width) {
-        if($depth) {
-          $inquiry_email .= $height . '" X ' . $width .'" X ' . $depth.'"<br/>';
-          $inquiry_email .= 'cm X ' . $width_metric .'cm X ' . $depth_metric .'cm<br/>';
-        }
-        else {
-          $inquiry_email .= $height . '" X ' . $width . '"<br/>';
-          $inquiry_email .= $height_metric . 'cm X ' . $width_metric . 'cm<br/>';
-        }
-      }
-      $inquiry_email .= 'Website Link: <a href="'.get_permalink( $curr_id ).'">'.get_the_title($curr_id).'</a>';
-      $inquiry_email .= '</p>';
-
-      ?>
-
-      <form id="submit-inquiry" class="no-smoothState">
-        <input type="text" name="name" placeholder="name">
-        <input type="email" name="email" placeholder="email">
-        <input type="text" name="phone" placeholder="phone">
-        <input type="hidden" name="subject" value="Website Inquiry: <?php echo get_the_title($curr_id); ?>">
-        <input type="text" name="message" value="" style="display:none;">
-        <input type="hidden" name="inquiry_message" value="<?php echo htmlspecialchars($inquiry_email); ?>" style="display:none;">
-        <input type="submit" value="inquire">
-      </form>
-    </section>
-     <?php
+                  echo $height_metric . 'cm X ' . $width_metric . 'cm<br/>';
+                }
 
 
-            if(have_rows('videos')){
 
-              while(have_rows('videos')) { the_row();
 
-                echo '<div class="wrap-video">';
-                  the_sub_field('video');
-                echo '</div>';
+               ?>
+            </section>
+            <section class="inquiry">
+              <?php
 
+              $inquiry_email  = '';
+              $inquiry_email .= '<p>Thanks for inquiring. We will be in touch shortly with more information.</p>';
+              $inquiry_email .= '<p>For a quicker response feel free to call us at +1.416.531.8000.</p>';
+              $inquiry_email .= get_the_post_thumbnail( $curr_id, 'medium' );
+              $inquiry_email .= '<p>';
+              $inquiry_email .= $artist_name.'<br/>';
+              $inquiry_email .= get_field('title', $curr_id).', '.get_field('year', $curr_id).'<br/>';
+              if(get_field('media', $curr_id)) {
+                $inquiry_email .= get_field('media', $curr_id).'<br/>';
               }
-
-            } else if(get_field('gallery')){
-
-              $gallery = get_field('gallery');
-
-              foreach($gallery as $image) {
-
-                echo '<img src="'.$image['sizes']['large'].'" />';
-
+              if(
+                get_field('edition', $curr_id)) {$inquiry_email .= get_field('edition', $curr_id).'<br/>';
               }
+              if( $height && $width) {
+                if($depth) {
+                  $inquiry_email .= $height . '" X ' . $width .'" X ' . $depth.'"<br/>';
+                  $inquiry_email .= 'cm X ' . $width_metric .'cm X ' . $depth_metric .'cm<br/>';
+                }
+                else {
+                  $inquiry_email .= $height . '" X ' . $width . '"<br/>';
+                  $inquiry_email .= $height_metric . 'cm X ' . $width_metric . 'cm<br/>';
+                }
+              }
+              $inquiry_email .= 'Website Link: <a href="'.get_permalink( $curr_id ).'">'.get_the_title($curr_id).'</a>';
+              $inquiry_email .= '</p>';
 
-            }
+              ?>
 
-            else {
+              <form id="submit-inquiry" class="no-smoothState">
+                <input type="text" name="name" placeholder="name">
+                <input type="email" name="email" placeholder="email">
+                <input type="text" name="phone" placeholder="phone">
+                <input type="hidden" name="subject" value="Website Inquiry: <?php echo get_the_title($curr_id); ?>">
+                <input type="text" name="message" value="" style="display:none;">
+                <input type="hidden" name="inquiry_message" value="<?php echo htmlspecialchars($inquiry_email); ?>" style="display:none;">
+                <input class="inquireSubmit" type="submit" value="inquire">
+              </form>
+            </section>
 
-              
+      </section>
+    </section>
+  </main>
+    
 
-            }
 
-            ?>
+
+
+
+
 
 
 

@@ -15,7 +15,7 @@
 
 	<p class="copyright"><?php the_field('copyright_text', 'options'); ?></p>
 	<form class="mailing-list" method="post" action="http://www.ymlp.com/subscribe.php?ymlpid=guqjmseg" >
-		<p class="closelistML">x</p>
+		<p class="closelistML">CLOSE</p>
 	    <div class="containerML">
 	        <input type="email" class="span3 mlist_email" placeholder="Enter Email Address" name="YMLP0">
 	        <button type="submit" class="subscribe-to-mailing-list">Subscribe</button>

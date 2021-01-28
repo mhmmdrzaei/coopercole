@@ -331,7 +331,7 @@
       <?php endwhile; 
         echo '</section>';
       wp_reset_postdata(); endif; ?>
-        <?php
+<!-- <?php
       $featured_posts = get_field('connected_art_1');
       if( $featured_posts ): 
         echo '<section class="artworksNew" id="artworskPages">';
@@ -360,20 +360,6 @@
             </section>
               
               <section class="infoAnimated">
-                <!-- <div>I</div>
-                  <div>n</div>
-                  <div>f</div>
-                  <div>o</div>
-                  <div>r</div>
-                  <div>m</div>
-                  <div>a</div>
-                  <div>t</div>
-                  <div>i</div>
-                  <div>o</div>
-                  <div>n</div>
-                                    
-                  <div>&</div>
-                    -->
                   <div>I</div>
                   <div>n</div>
                   <div>q</div>
@@ -519,7 +505,7 @@
           <?php 
           echo '</section>';
           // Reset the global post object so that the rest of the page works correctly.
-          wp_reset_postdata(); ?>
+          wp_reset_postdata(); ?> -->
       <?php endif; ?>
 
 

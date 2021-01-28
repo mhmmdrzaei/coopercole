@@ -277,7 +277,7 @@ $(document).scroll(function() {
     $(".artFairTitle").css({"position": "relative"});
     $(".artFairArtists").css({"position": "relative"});
 
-  } else if (y < 700) {
+  } else if (y < 600) {
     $('.outer').fadeOut();
     $(".exhibtionArtists").css({"position": "relative"});
     $(".artFairTitle").css({"position": "relative"});
@@ -314,6 +314,13 @@ $(buttonUp).click(function(){
            });
 
 });
+
+// $('.grid').masonry({
+//   itemSelector: '.grid-item',
+//   // use element for option
+//   columnWidth: '.grid-sizer',
+//   percentPosition: true
+// });
 
 //Artworks
 
@@ -466,12 +473,12 @@ $('.closeBox').click(function () {
 
 $(document).scroll(function() {
   var y = $(this).scrollTop();
-  if (y > 400) {
+  if (y > 500) {
     $("#topMenu").addClass('stickyMenu');
     $('.ccLogo').fadeIn();
   } else {
     $("#topMenu").removeClass('stickyMenu');
-    $('.ccLogo').fadeOut();
+    $('.ccLogo').fadeOut(100);
   }
 });
 // $(document).scroll(function() {
