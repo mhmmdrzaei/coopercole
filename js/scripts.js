@@ -191,16 +191,15 @@ $('.menu-wrapper').click(function(){
   $('.hamburger-menu').toggleClass('animate');
   $('.dropdown').toggleClass('openMobileMenu');
 });
+// $(window).resize(function(){
 
-$(window).resize(function(){
+//        if ($(window).width() < 620) {  
 
-       if ($(window).width() < 620) {  
+//               $('#header').html('\<\? php require \"partials/logoTwo.php\"; \?\>');
 
-              $('#header').add("<\?php require \'partials/logoTwo.php\'; \?>");
+//        }     
 
-       }     
-
-});
+// });
   
 
 
