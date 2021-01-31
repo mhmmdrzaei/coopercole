@@ -69,6 +69,7 @@ if( get_field('end_date') ) {
 					echo '</h4></li>';
 
 				endwhile;
+				echo "<section class='moreArtistNamesOpen'></section>";
 				echo '</ul>';
 
 		 endif;
@@ -76,6 +77,7 @@ if( get_field('end_date') ) {
 			wp_reset_query($connected);
 
 		?>
+		<!-- <button class="moreArtistNamesOpen">More Artists</button> -->
 	</section>
 	<figure class="image">
 			<img src="<?php echo $exhibitionImage ?>" alt="an image from the exhibtion <?php echo $titleExhibit ?>">

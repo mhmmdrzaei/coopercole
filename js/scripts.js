@@ -1,40 +1,6 @@
-/*!
-  Read more / read less jQuery plugin.
-  https://github.com/AndreF010203/jQuery-Read-More.git
-  version 1.0.0 (Nov, 2020)
 
-  Copyright (c) 2020 Andrea Facchini
-  Licensed under the MIT (http://www.opensource.org/licenses/mit-license.php) license.
-*/
 (function($) {
-  // console.log('tessst');
 
-  // var main = document.getElementById('artworksPages');
-
-  // /* Register main to the click event 
-  // || when clicked ANYWHERE within main 
-  // || toggle() is called
-  // */
-  // main.addEventListener('click', toggle, false);
-
-  // function toggle(e) {
-  //    Determine if the current element in the
-  //   || event chain is the anchor that was 
-  //   || clicked.
-    
-
-  //   if (e.target !== e.currentTarget && e.target.class('toggleText')) {
-  //     console.log('fuck');
-  //     /* tgt is the clicked link
-  //     || txt is the div that follows tgt
-  //     */
-  //     var tgt = e.target;
-  //     var txt = tgt.nextElementSibling;
-  //     // Toggle classes .on and .off
-  //     txt.classList.toggle('on');
-  //     txt.classList.toggle('off');
-  //   }
-  // }
   $(".artworkItemEach").click(function() {
       $(this).find('.artworkIteminfo').addClass("open");
        // $(this).find('.artworkIteminfo').toggleClass("closed");
@@ -43,14 +9,8 @@
   });
 
  $(".closeInfo").click(function() {
-  // if($('#artworksOpenItem').hasClass('open')){
-  //    $('#artworksOpenItem').removeClass('open')
-  // }else{
-    // parent = el.closest('.displayText');
-  // }
-  // $(".artworkItemEach").find('.artworkIteminfo').removeClass("open");
+
     if ($('.artworkIteminfo').hasClass('open')) {
-      // parent.find('.displayText').slideToggle();
       $('.artworkIteminfo').removeClass('open');
     } 
     return false;
@@ -59,30 +19,6 @@
 
   });
 
-  
-  // $( ".toggleText" ).each(function(index) {
-  //     $(this).on("click", function(){
-  //       console.log('bitchface')
-  //       $('.artworkItemEach').each(function(){
-  //         $(this).toggleClass('on');
-  //       });
-  //         // // For the boolean value
-  //         // var boolKey = $(this).data('selected');
-  //         // // For the mammal value
-  //         // var mammalKey = $(this).attr('id'); 
-  //     });
-  // });
-
-
-  /**
-   *  
-   * @param {*} options Options object: 
-   *    lines           int     number of lines to show
-   *    readMoreLabel   string  Label for the expand action default Read more
-   *    readLessLabel   string  Label for the collapse action default Read less
-   *    ellipsis        string  Label for the separator, default ...
-   *    splitOn         string/regex  split on the defined character/regex
-   */
   $.fn.readMore = function(options) {
     if(options === 'destroy') {
       $(this).each(function (_j, element) {
@@ -233,6 +169,43 @@ $(document).ready(function(){
 
     }
 
+    //more than 4 artists listed in Exhibition 
+    $('.mohammadUl').each(function() {
+      var $this = $(this);
+      if ($this.find('li').length > 7) { //if looking for direct descendants then do .children('div').length
+          $this.find('li:nth-child(n+9)').addClass('artistNameHidden');
+          $this.find('.moreArtistNamesOpen').html('<p>+ More Artists</p>');
+      }
+        $('.moreArtistNamesOpen').hover(function(){
+          $('.artistNameHidden').fadeIn();
+          $(this).fadeOut();
+          $('.exhibitionDateLocation').css('top','24vw');
+        
+
+      });
+
+    });
+//hamburger menu
+
+$('.menu-wrapper').click(function(){
+  $('.hamburger-menu').toggleClass('animate');
+  $('.dropdown').toggleClass('openMobileMenu');
+});
+
+$(window).resize(function(){
+
+       if ($(window).width() < 620) {  
+
+              $('#header').add("<\?php require \'partials/logoTwo.php\'; \?>");
+
+       }     
+
+});
+  
+
+
+
+
 
   //smooth scroll
   // Add smooth scrolling to all links
@@ -263,13 +236,14 @@ $(document).ready(function(){
 
 //scrolling fade in and out
 var height = $('.exhibitionMain').height();
-var detailHeights = $('.exhibtionArtists').height();
-var detailArtFairHeight = $('.exhibtionArtists').height();
+var detailHeights = $('.exhibitors').height();
+// var detailArtFairHeight = $('.exhibtionArtists').height();
 $(document).scroll(function() {
   var y = $(this).scrollTop();
   if (y > height - (detailHeights + 200) ) {
-    // $('.outer').fadeOut();
+    $('.outer').fadeOut();
     $(".exhibtionArtists").css({"position": "relative"});
+     $(".exhibtionArtists").css({"bottom": "0"});
 
 
   } else if (y > height - 500) {
@@ -277,9 +251,10 @@ $(document).scroll(function() {
     $(".artFairTitle").css({"position": "relative"});
     $(".artFairArtists").css({"position": "relative"});
 
-  } else if (y < 600) {
+  } else if (y < 900) {
     $('.outer').fadeOut();
     $(".exhibtionArtists").css({"position": "relative"});
+    $(".exhibtionArtists").css({"bottom": "0"});
     $(".artFairTitle").css({"position": "relative"});
     // $(".artFairDates").css({"position": "relative"});
     $(".artFairArtists").css({"position": "relative"});
@@ -287,6 +262,8 @@ $(document).scroll(function() {
   } else {
     $('.outer').fadeIn();
     $(".exhibtionArtists").css({"position": "fixed"});
+    $(".exhibtionArtists").css({"bottom": "50px"});
+
     $(".artFairTitle").css({"position": "fixed"});
     // $(".artFairDates").css({"position": "fixed"});
     $(".artFairArtists").css({"position": "fixed"});
