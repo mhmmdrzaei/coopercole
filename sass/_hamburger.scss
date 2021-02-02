@@ -20,6 +20,8 @@ $bar-spacing: 10px;
   transform: translateY($bar-spacing);
   background: black;
   transition: all 0ms 300ms;
+  z-index: 1002;
+  display: none;
   
   &.animate {
     background: rgba(255, 255, 255, 0); 
@@ -64,4 +66,7 @@ $bar-spacing: 10px;
 
 .openMobileMenu {
   display: block;
+}
+.dropdownMobile {
+  display: none;
 }

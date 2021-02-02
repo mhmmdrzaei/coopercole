@@ -15,8 +15,6 @@
 
 <header id="header">
   <main class="headerMain">
-    <section class="mobileMenu">
-    </section>
     <input type="checkbox" id="menu__check">
     <div class="menu__hero">
       <nav class="menu__nav">

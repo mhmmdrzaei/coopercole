@@ -187,9 +187,10 @@ $(document).ready(function(){
     });
 //hamburger menu
 
-$('.menu-wrapper').click(function(){
+$('.headerMainMenu').click(function(){
   $('.hamburger-menu').toggleClass('animate');
-  $('.dropdown').toggleClass('openMobileMenu');
+  $('.language').toggleClass('languageIn', 1500);
+  $('.search').toggleClass('searchIn', 1500);
 });
 // $(window).resize(function(){
 

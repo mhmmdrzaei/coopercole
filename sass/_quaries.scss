@@ -1,8 +1,79 @@
-@media (max-width: 600px) {
+@media (max-width: 800px) {
+	.hamburger-menu {
+		display: block;
+	}
+	.dropdownMobile {
+		display: block;
+	}
   .mobileMenu {
     display: block;
   }
-  #topMenu {
+  .Menu {
+  	display: none;
+  }
+  .menuMain {
     display: none;
   }
+  .language {
+  	display: none;
+  }
+  .search {
+  	display: none;
+  }
+  .languageIn, .searchIn {
+  	display: block;
+  	z-index: 801;
+  }
+  .languageIn {
+  	position: fixed;
+  	right: 5%;
+  	top: 29px;
+  }
+  #topMenu {
+
+  	height: 38px;
+  	width: 35px;
+  	margin-right: 0;
+  	position: fixed;
+  	 top: 20px;
+  	 left: 3%;
+
+  }
+  .menu__nav {
+  	position: fixed;
+  	width: 100%;
+  	height: 100vh;
+  	padding-top: 50px;
+  }
+  .fl-prefsEditor-buttons {
+  	top: 0;
+  	right: 0;
+  	
+  	height: 20px;
+  }
+  .fl-prefsEditor-separatedPanel {
+  	// position: fixed;
+   //  top: 20px;
+   //  right: 5%;
+  }
+  .flc-slidingPanel-toggleButton {
+  	text-align: right !important;
+  }
+  //logo 
+  .logo {
+  	margin: 50px auto 0;
+
+  }
+  .fl-panelBar-smallScreen  {
+  	max-width: 180px;
+  	position: fixed;
+  	top: 0;
+  	right: 0;
+  }
+
+  //footer 
+  nav.Footermenu , .addressFooter {
+  	display: none;
+  }
+
 }
