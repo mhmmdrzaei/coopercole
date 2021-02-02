@@ -191,6 +191,9 @@ $('.headerMainMenu').click(function(){
   $('.hamburger-menu').toggleClass('animate');
   $('.language').toggleClass('languageIn', 1500);
   $('.search').toggleClass('searchIn', 1500);
+  $('.menu-item-15020 a').toggleClass('mobileSocialVisIG');
+  $('.mailing-list-open').toggleClass('mobileSocialVis');
+
 });
 // $(window).resize(function(){
 

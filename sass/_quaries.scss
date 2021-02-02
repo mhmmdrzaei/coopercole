@@ -1,4 +1,4 @@
-@media (max-width: 800px) {
+@media (max-width: 500px) {
 	.hamburger-menu {
 		display: block;
 	}
@@ -27,7 +27,11 @@
   .languageIn {
   	position: fixed;
   	right: 5%;
-  	top: 29px;
+  }
+  .searchIn {
+    position: fixed;
+    bottom: 10%;
+    left: 15%;
   }
   #topMenu {
 
@@ -37,17 +41,56 @@
   	position: fixed;
   	 top: 20px;
   	 left: 3%;
+     z-index: 900;
 
   }
   .menu__nav {
   	position: fixed;
   	width: 100%;
   	height: 100vh;
-  	padding-top: 50px;
+
+    top: 0;
   }
+  #menu-primary-menu {
+    padding-top: 30%;
+    li {
+      a {
+        text-align: center;
+      }
+    }
+  }
+#menu-item-15019 a {
+  text-align: center;
+
+}
+#menu-item-15020 a {
+  @include fontSize(9);
+  position: fixed;
+  display: block;
+  bottom: 0;
+  right: 10px;
+  display: none;
+}
+.mailing-list-open {
+  position: fixed;
+  bottom: 0;
+  background: transparent;
+  @include fontSize(9);
+  color: black;
+  width: auto !important;
+  top: auto;
+  right: auto;
+  font-weight: 700;
+  left: 0px;
+  display: none;
+}
+.mobileSocialVis, .mobileSocialVisIG {
+  display: block !important;
+}
+  //access
   .fl-prefsEditor-buttons {
   	top: 0;
-  	right: 0;
+  	left: -10px;
   	
   	height: 20px;
   }
@@ -62,6 +105,8 @@
   //logo 
   .logo {
   	margin: 50px auto 0;
+    transform: scale(1.0);
+    width: 200px;
 
   }
   .fl-panelBar-smallScreen  {
@@ -70,6 +115,7 @@
   	top: 0;
   	right: 0;
   }
+
 
   //footer 
   nav.Footermenu , .addressFooter {
