@@ -50,6 +50,11 @@
       </a>
      
     </section>
+    <section class="logoMobile">
+      <a href="<?php echo home_url( '/' ); ?>" title="<?php bloginfo( 'name', 'display' ); ?>" rel="home">
+      <?php require 'partials/logoTwo.php'; ?> 
+    </a>
+    </section>
     <nav class="language">
        <button onclick="myFunction()" class="dropbtn">lang ▼</button>
                 <?php wp_nav_menu( array(

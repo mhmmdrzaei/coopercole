@@ -48,7 +48,7 @@ body {
 }
 main, .container {
 	width: 95%;
-	max-width: 900px;
+	max-width: 930px;
 	margin: 0 auto 30px;
 }
 a {
@@ -152,6 +152,7 @@ a {
 	}
 	.exhibitionContainer {
 		width: 95%;
+		margin: 0 auto;
 	}
 }
 .artistNameHidden {
@@ -345,11 +346,15 @@ article.exhibition {
 		}
 		figure {
 			width: 56%;
+
 			img {
-				// max-width: 700px;
+				border: 1px solid black;
 			}
 		}
 	}
+}
+.exhibitionDateLocationMobile {
+	display: none;
 }
 article.exhibition:nth-child(1) {
   border: none;
@@ -1172,3 +1177,257 @@ input.inquireSubmit {
 		}
 	}
 }
+
+//QUARIES
+
+@media (max-width: 700px) {
+	.hamburger-menu {
+		display: block;
+	}
+	.dropdownMobile {
+		display: block;
+	}
+  .mobileMenu {
+    display: block;
+  }
+  .Menu {
+  	display: none;
+  }
+  .menuMain {
+    display: none;
+  }
+  .language {
+  	display: none;
+  }
+  .search {
+  	display: none;
+  }
+  .languageIn, .searchIn {
+  	display: block;
+  	z-index: 801;
+  }
+  .languageIn {
+  	position: fixed;
+  	right: 5%;
+  }
+  .searchIn {
+    position: fixed;
+    bottom: 50px;
+    left: 25%;
+  }
+  #topMenu {
+
+  	height: 38px;
+  	width: 35px;
+  	margin-right: 0;
+  	position: fixed;
+  	 top: 20px;
+  	 left: 3%;
+     z-index: 900;
+
+  }
+  .menu__nav {
+  	position: fixed;
+  	width: 100%;
+  	height: 100vh;
+
+    top: 0;
+  }
+  #menu-primary-menu {
+    padding-top: 70px;
+    li {
+      a {
+        text-align: center;
+      }
+    }
+  }
+#menu-item-15019 a {
+  text-align: center;
+
+}
+#menu-item-15020 a {
+  @include fontSize(9);
+  position: fixed;
+  display: block;
+  bottom: 0;
+  right: 10px;
+  display: none;
+}
+.mailing-list-open {
+  position: fixed;
+  bottom: 0;
+  background: transparent;
+  @include fontSize(9);
+  color: black;
+  width: auto !important;
+  top: auto;
+  right: auto;
+  font-weight: 700;
+  left: 0px;
+  display: none;
+}
+.mobileSocialVis, .mobileSocialVisIG {
+  display: block !important;
+}
+  //access
+  .fl-prefsEditor-buttons {
+  	top: 0;
+  	left: -10px;
+  	
+  	height: 20px;
+  }
+  .fl-prefsEditor-separatedPanel {
+  	// position: fixed;
+   //  top: 20px;
+   //  right: 5%;
+  }
+  .flc-slidingPanel-toggleButton {
+  	text-align: right !important;
+  }
+  //logo 
+  .logo {
+  	margin: 50px auto 0;
+    transform: scale(1.0);
+    width: 200px;
+
+  }
+  .fl-panelBar-smallScreen  {
+  	max-width: 180px;
+  	position: absolute;
+  	top: -10px;
+  	right: 0;
+  }
+  body.page, body.single {
+  	.logo {
+  		display: none;
+  	}
+  	.logoMobile {
+  		display: block;
+  		position: absolute;
+  		left: 45%;
+  		transform: scale(2.1);
+  		margin: 20px 0 40px;
+  		.logoTwo {
+  			margin: 0 auto;
+  		}
+
+
+  	}
+  }
+  header {
+  	margin-bottom: 70px;
+  }
+  //closed svg 
+  .closedSVG {
+
+    transform: scale(1.7);
+    position: relative;
+    left: -8px;
+
+  }
+.noShowContainer h2 {
+  font-size: 6.5vw;
+  position: relative;
+  top: 4vw;
+}
+
+  //footer 
+  footer {
+  	border: none;
+  }
+  nav.Footermenu , .addressFooter {
+  	display: none;
+  }
+.copyright {
+  border-top: 0px;
+  @include fontSize(6);
+  padding: 10px 6px;
+  bottom: 0;
+}
+
+//exhibitions Main page 
+
+.exhibitionsMainPage {
+	display: block;
+	.exhibitionYearsSide {
+		
+		width: 100%;
+		margin: 0 auto;
+		.exhibitionYearsSideInner {
+			position: inherit;
+			display: flex;
+			align-items: center;
+			width: 147px;
+			margin: 0 auto;
+			#upClick {
+				transform: rotate(-90deg);
+			}
+			#menu-exhibition-years{
+				width: 101px;
+				height: 20px;
+			}
+
+		}
+
+	}
+}
+	.exhibitionsMainPage .exhibitionYearsSide #downClick {
+		transform: rotate(90deg);
+	}
+
+	article.exhibition {
+    top: 0px;
+    padding: 25px 0;
+    a {
+    	.artistNameExhibition {
+    		order: 3;
+    		width: 100%;
+    		text-align: center;
+
+    	}
+    	.image {
+    		order: 1;
+    		width: 100%;
+    	}
+    	.exhibitionDetails {
+    		order: 2;
+    		width: 100%;
+    		h3 {
+    			text-align: center;
+    			margin: 10px 0;
+    		}
+    		.exhibitionDateLocation {
+    			display: none;
+    		}
+    	}
+    	.exhibitionDateLocationMobile {
+    			display: block;
+    			order: 4;
+    			@include fontSize(8);
+    			width: 100%;
+    			margin-top: 10px;
+    			text-align: center;
+
+
+    			.date {
+    				font-weight: 700;
+    				margin-bottom: 20px;
+    			}
+    			.location {
+    				font-style: oblique;
+    				
+    			}
+    		}
+    }
+	}
+
+
+
+
+
+
+
+}
+
+
+

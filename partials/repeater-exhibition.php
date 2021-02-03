@@ -89,6 +89,10 @@ if( get_field('end_date') ) {
 			<div class="location"><?php echo $exhibitlocation ?></div>
 		</aside>
 	</section>
+	<aside class="exhibitionDateLocationMobile">
+		<div class="date"><?php echo $start_date->format('F j, Y'); if($end_date) { echo ' - '.$end_date->format('F j, Y'); } ?></div>
+		<div class="location"><?php echo $exhibitlocation ?></div>
+	</aside>
 
 
 	</a>

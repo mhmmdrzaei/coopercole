@@ -52,7 +52,7 @@
     flex-direction: column;
     text-transform: uppercase;
     outline: none;
-    transition: transform ease-in-out 0.7s, background-color ease-in-out 0.3s;
+    transition: transform ease-in-out 0.1s, background-color ease-in-out 0.3s;
     cursor: pointer;
     h3.Menu {
       @include fontSize(15);
@@ -62,7 +62,7 @@
 
     #menu__check:checked ~ & {
       // transform: rotate(-360deg);
-      transition: transform ease-in-out 0.7s, background-color ease-in-out 0.3s;
+      transition: transform ease-in-out 0.1s, background-color ease-in-out 0.3s;
     }
 
     .item {
