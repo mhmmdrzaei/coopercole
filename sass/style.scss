@@ -638,7 +638,7 @@ article.post:nth-child(1) {
 		margin: 0;
 		padding: 0;
 		@extend .flex;
-		@include fontSize(28);	
+		font-size: clamp(1rem, 10vw, 3rem); 
 		li {
 			margin-right:20px;
 			margin-bottom: 20px;
@@ -923,7 +923,7 @@ input.inquireSubmit {
 	text-transform: uppercase;
 	cursor: pointer;
 	position: fixed;
-	top: 45px;
+	top: 15px;
 	@include fontSize(12);
 }
 
@@ -1212,7 +1212,7 @@ input.inquireSubmit {
   }
   .searchIn {
     position: fixed;
-    bottom: 20%;
+    bottom: 12%;
     left: 25%;
   }
   #topMenu {
@@ -1320,8 +1320,9 @@ input.inquireSubmit {
   		.logoTwo {
   			margin: 0 auto;
   		}
-
-
+  	}
+  	main {
+  		padding-top: 20px;
   	}
   }
   header {
@@ -1442,11 +1443,107 @@ input.inquireSubmit {
 		padding-top: 0;
 	}
 
+	//single exhibition Page
+
+	.exhibitionMain {
+		display: block;
+		.exhibitionSide {
+			width: 100%;
+			.outer {
+				left: 0;
+			}
+		}
+		.exhibitionCenter {
+			width: 100%;
+			.artworksLink {
+				margin: 5px 0;
+			}
+			.featuredVideo {
+				text-align: left;
+				@include fontSize(7);
+			}
+		}
+	}
+
+	.artworkItemInfoInnner{
+		display: block;
+		.artworkItemInfoText {
+			width: 95%;
+			.artworkInfoTextFixed {
+				position: inherit;
+			}
+		}
+		.galleryContainer{
+			width: 96%;
+			margin-top: 10px;
+			order: 1;
+		}
+	}
+	#submit-inquiry {
+		input {
+			width: 100%;
+		}
+		.inquireSubmit {
+			position: inherit;
+		}
+	}
+	.closeInfo{
+		right: 5%;
+	}
+	.artworkItemEach {
+		width: 32%;
+	}
 
 
+// artist single page
+.artistMain {
+	display: block;
+	.artistsMainSide {
+		width: 100%;
+	}
+	.artistMainCenter {
+		width: 100%;
+	}
+}
+.exhibitionsOpen {
+    margin: 20px 0;
+}
+.newsOpen {
+	margin: 0;
+}
+.featuredVideoTitle {
+	text-align: left;
+	@include fontSize(7);
+}
+.artworksMainAritsts {
+    margin-top: 10px;
+}
+//contact page 
+.contactContainer {
+	.galleryAddress, .galleryContact {
+		width: 49%;
+		p, a {
+			@include fontSize(8);
+		}
+	}
+	.galleryHours {
+		p {
+			@include fontSize(8);
+		}
+	}
+}
+main.contactMain .galleryAdditionalInfo .paragraphHalf  {
+	width: 100%;
+	margin-right: 0;
+}
 
 
+}
+@media (max-width: 500px){
 
+	.artworkItemEach {
+		width: 49%;
+	}
 
 }
 

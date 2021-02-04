@@ -245,9 +245,11 @@ $('.headerMainMenu').click(function(){
 //scrolling fade in and out
 var height = $('.exhibitionMain').height();
 var detailHeights = $('.exhibitors').height();
+
 // var detailArtFairHeight = $('.exhibtionArtists').height();
 $(document).scroll(function() {
   var y = $(this).scrollTop();
+  var x = $(window).width();
   if (y > height - (detailHeights + 200) ) {
     $('.outer').fadeOut();
     $(".exhibtionArtists").css({"position": "relative"});
@@ -267,7 +269,7 @@ $(document).scroll(function() {
     // $(".artFairDates").css({"position": "relative"});
     $(".artFairArtists").css({"position": "relative"});
 
-  } else {
+  } else if (x > 700){
     $('.outer').fadeIn();
     $(".exhibtionArtists").css({"position": "fixed"});
     $(".exhibtionArtists").css({"bottom": "50px"});
@@ -276,7 +278,8 @@ $(document).scroll(function() {
     // $(".artFairDates").css({"position": "fixed"});
     $(".artFairArtists").css({"position": "fixed"});
 
-
+  } else {
+    $('.outer').fadeIn();
   }
 });
 const buttonDown = document.getElementById('downClick');
