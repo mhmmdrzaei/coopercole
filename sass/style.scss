@@ -1212,7 +1212,7 @@ input.inquireSubmit {
   }
   .searchIn {
     position: fixed;
-    bottom: 50px;
+    bottom: 20%;
     left: 25%;
   }
   #topMenu {
@@ -1234,15 +1234,17 @@ input.inquireSubmit {
     top: 0;
   }
   #menu-primary-menu {
-    padding-top: 70px;
+    padding-top: 30%;
     li {
       a {
         text-align: center;
+        font-size: clamp(1rem, 10vw, 2rem); 
       }
     }
   }
 #menu-item-15019 a {
   text-align: center;
+  font-size: clamp(1rem, 10vw, 2rem); 
 
 }
 #menu-item-15020 a {
@@ -1287,7 +1289,7 @@ input.inquireSubmit {
   //logo 
   .logo {
   	margin: 50px auto 0;
-    transform: scale(1.0);
+    transform: scale(.8);
     width: 200px;
 
   }
@@ -1296,6 +1298,14 @@ input.inquireSubmit {
   	position: absolute;
   	top: -10px;
   	right: 0;
+  }
+  body.home {
+  	footer {
+  		.copyright {
+  			position: fixed;
+  			bottom: 0;
+  		}
+  	}
   }
   body.page, body.single {
   	.logo {
@@ -1320,15 +1330,21 @@ input.inquireSubmit {
   //closed svg 
   .closedSVG {
 
-    transform: scale(1.7);
+    transform: scale(1.2);
     position: relative;
     left: -8px;
+    max-width: 80%;
 
   }
-.noShowContainer h2 {
-  font-size: 6.5vw;
-  position: relative;
-  top: 4vw;
+
+.noShowContainer {
+	 margin: 60px 0;
+
+	h2 {
+	  font-size: 6.5vw;
+	  position: relative;
+	  top: 4vw;
+	}
 }
 
   //footer 
@@ -1343,6 +1359,8 @@ input.inquireSubmit {
   @include fontSize(6);
   padding: 10px 6px;
   bottom: 0;
+  // position: absolute;
+
 }
 
 //exhibitions Main page 
@@ -1350,9 +1368,9 @@ input.inquireSubmit {
 .exhibitionsMainPage {
 	display: block;
 	.exhibitionYearsSide {
-		
+		padding-top: 20px;
 		width: 100%;
-		margin: 0 auto;
+		margin: 0 auto ;
 		.exhibitionYearsSideInner {
 			position: inherit;
 			display: flex;
@@ -1419,6 +1437,9 @@ input.inquireSubmit {
     			}
     		}
     }
+	}
+	article.exhibition:nth-child(1) {
+		padding-top: 0;
 	}
 
 
