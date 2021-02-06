@@ -62,7 +62,7 @@
       'theme_location' => 'languages_menu'
     )); ?>
     </nav>
-    <section class="search">
+    <section class="searchField">
       <?php get_search_form(); ?>
     </section>
 

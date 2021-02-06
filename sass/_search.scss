@@ -19,7 +19,7 @@ form.searchForm{
 input.searchSubmit{
 	display: none;
 }
-.search {
+.searchField {
 	margin: 1em 0;
 }
 input#s{
@@ -29,7 +29,7 @@ input#s{
 //no results 
 .noResults {
 	width: 95;
-	margin: 0 auto;
+	margin: 15% auto;
 	figure {
 		width: 50%;
 		max-width: 250px;

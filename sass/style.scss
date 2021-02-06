@@ -588,10 +588,12 @@ article.post:nth-child(1) {
 .tags {
 	margin-top: 25px;
 	@include fontSize(8);
+	@extend .flex;
 	a {
 		padding: 2px 5px;
 		border: 1px solid #000;
 		margin-right: 7px; 
+		margin-bottom: 6px;
 		text-decoration: none;
 		&:hover{
 			background: black;
@@ -899,7 +901,7 @@ input.inquireSubmit {
 	animation: splash 1s normal forwards ease-in-out;
 	z-index: 100;
 	background: white;
-	min-width: 320px;
+	min-width: 300px;
 	max-width: 800px;
 	height: 100vh;
 	padding: 80px 0 0 10px;
@@ -958,7 +960,7 @@ input.inquireSubmit {
 		padding: 10px;
 		margin: 0;
 		@extend .whiteText;
-		@include fontSize(12);
+		@include fontSize(11);
 
 	}
 	.toggleTextWork {
@@ -1179,8 +1181,14 @@ input.inquireSubmit {
 }
 
 //QUARIES
+@media (max-width: 940px) {
+	.fl-panelBar-wideScreen {
+		left: 12%;
+	}
 
-@media (max-width: 700px) {
+}
+
+@media (max-width: 650px) {
 	.hamburger-menu {
 		display: block;
 	}
@@ -1199,7 +1207,7 @@ input.inquireSubmit {
   .language {
   	display: none;
   }
-  .search {
+  .searchField {
   	display: none;
   }
   .languageIn, .searchIn {
@@ -1209,11 +1217,27 @@ input.inquireSubmit {
   .languageIn {
   	position: fixed;
   	right: 5%;
+  	top: 3%;
+  	margin: 0;
   }
   .searchIn {
     position: fixed;
     bottom: 12%;
-    left: 25%;
+    // left: 25%;
+    width: 100%;
+    .searchForm {
+
+    	width: 80%;
+    	margin: 0 auto;
+    	input {
+    		width: 81%;
+    		height: 39px;
+    		@include fontSize (15);
+    	}
+    	svg {
+    		width: 47px;
+    	}
+    }
   }
   #topMenu {
 
@@ -1226,25 +1250,33 @@ input.inquireSubmit {
      z-index: 900;
 
   }
-  .menu__nav {
+ 
+#menu__check:checked~.menu__hero , .menu__hero{
+  	transition: initial;
+  }
+
+  .menu__hero .menu__nav {
   	position: fixed;
   	width: 100%;
   	height: 100vh;
+  	padding: 50% 0 0;
 
     top: 0;
   }
   #menu-primary-menu {
-    padding-top: 30%;
+    // padding-top: 30%; 
     li {
       a {
         text-align: center;
-        font-size: clamp(1rem, 10vw, 2rem); 
+        @include fontSize(25);
+        font-size: clamp(2rem, 9vw, 3rem); 
       }
     }
   }
 #menu-item-15019 a {
   text-align: center;
-  font-size: clamp(1rem, 10vw, 2rem); 
+  @include fontSize(25);
+  font-size: clamp(2rem, 9vw, 3rem); 
 
 }
 #menu-item-15020 a {
@@ -1302,7 +1334,7 @@ input.inquireSubmit {
   body.home {
   	footer {
   		.copyright {
-  			position: fixed;
+  			// position: fixed;
   			bottom: 0;
   		}
   	}
@@ -1376,7 +1408,7 @@ input.inquireSubmit {
 			position: inherit;
 			display: flex;
 			align-items: center;
-			width: 147px;
+			width: 50%;
 			margin: 0 auto;
 			#upClick {
 				transform: rotate(-90deg);
@@ -1532,17 +1564,134 @@ input.inquireSubmit {
 		}
 	}
 }
-main.contactMain .galleryAdditionalInfo .paragraphHalf  {
+main.contactMain .galleryAdditionalInfo .paragraphHalf {
 	width: 100%;
 	margin-right: 0;
 }
 
+//artfair 
+.artFairEach{
+	display: block;
+	.description {
+		width: 100%;
+		.date, .location {
+			@include fontSize(11);
+		}
+		h2  {
+			a {
+				@include fontSize(19);
+			}
+			
+		}
 
+	}
+}
+//single artfair page 
+
+	.artFairLogo  {
+
+		width: 50%;
+	}
+	.artFairArtists {
+		margin: 20px 0;
+		h4 {
+			display: none;
+		}
+	}
+//news page 
+.newsPostImage {
+	display: none;
+}
+.newsMainBody .withFI {
+	width: 100%;
+}
+//single news page
+.newsBody {
+	display: block;
+	.newsMain {
+		width: 100%;
+	}
+	.newsSide {
+		width: 100%;
+		h4 {
+			margin: 5px 0;
+		}
+		.NewsTags{
+			.tagsInner{
+				margin: 10px 0;
+			}
+		}
+	}
+}
+.exhibtionNews {
+	margin: 20px 0 10px;
+}
+}
+
+
+@media (max-height: 600px) and (max-width: 650px) {
+	.menu__hero .menu__nav {
+
+		padding: 12% 0;
+	}
+	  #menu-primary-menu {
+	    // padding-top: 30%; 
+	    li {
+	      a {
+	        text-align: center;
+	        @include fontSize(25);
+	        font-size: clamp(1.5rem, 9vw, 2rem); 
+	      }
+	    }
+	  }
+	#menu-item-15019 a {
+	  text-align: center;
+	  @include fontSize(25);
+	  font-size: clamp(1.5rem, 9vw, 2rem); 
+
+	}
+}
+@media (min-height: 600px){
+.noShowContainer {
+	margin: 40% auto;
+}
+.searchResultsPage {
+	min-height: 50vh;
+}
+		.noResults{
+			margin: 40% auto;
+		}
+
+}
+@media (min-height: 800px){
+.artistsMain {
+			min-height: 71vh;
+		}
+		
+
+}
+
+@media (max-height: 600px) and (max-width: 500px) {
+	.menu__hero .menu__nav {
+
+		padding: 19% 0;
+	}
 }
 @media (max-width: 500px){
 
 	.artworkItemEach {
 		width: 49%;
+	}
+	h3.toggle-mailing-list {
+		white-space: normal;
+		&:after, &:before{
+			display: none;
+		}
+	}
+
+
+	.contactContainer .galleryAddress, .contactContainer .galleryContact {
+		width: 100%;
 	}
 
 }

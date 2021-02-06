@@ -8,7 +8,7 @@
 
 	<?php $artist_types = get_terms( 'artist_type', array('hide_empty' => true) ); ?>
 
-	<main>
+	<main class="artistsMain">
 		<h1>Artists:</h1>
 		<section class="artists">
 

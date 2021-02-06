@@ -202,10 +202,10 @@ $('.headerMainMenu').click(function(){
   $('.hamburger-menu').toggleClass('animate');
   window.setTimeout(function() {
     $('.language').toggleClass('languageIn');
-    $('.search').toggleClass('searchIn');
+    $('.searchField').toggleClass('searchIn');
     $('.menu-item-15020 a').toggleClass('mobileSocialVisIG');
     $('.mailing-list-open').toggleClass('mobileSocialVis');
-  }, 500);
+  }, 0);
 
 
 });
