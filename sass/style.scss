@@ -129,7 +129,7 @@ a {
 		ul {
 			list-style: none;
 			padding: 0;
-			height: 73px;
+			height: 74px;
     		overflow: scroll;
 
 
@@ -335,7 +335,7 @@ article.exhibition {
 				left: 0;
 				.date {
 					font-weight: 700;
-					width: 60%;
+					width: 80%;
 					margin-bottom: 20px;
 				}
 				.location {
@@ -640,6 +640,7 @@ article.post:nth-child(1) {
 		margin: 0;
 		padding: 0;
 		@extend .flex;
+		@include fontSize(15);
 		font-size: clamp(1rem, 10vw, 3rem); 
 		li {
 			margin-right:20px;

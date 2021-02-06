@@ -44,13 +44,13 @@ add_action( 'after_setup_theme', 'theme_setup' );
 We'll let WordPress add them to our templates automatically instead
 of writing our own link tags in the header. */
 
-function hackeryou_styles(){
+function cooper_styles(){
 	wp_enqueue_style('style', get_stylesheet_uri() );
 
 	wp_enqueue_style('fontawesome', '//use.fontawesome.com/releases/v5.0.7/css/all.css');
 }
 
-add_action( 'wp_enqueue_scripts', 'hackeryou_styles');
+add_action( 'wp_enqueue_scripts', 'cooper_styles');
 
 function wpb_add_google_fonts() {
  
@@ -62,7 +62,7 @@ add_action( 'wp_enqueue_scripts', 'wpb_add_google_fonts' );
 We'll let WordPress add them to our templates automatically instead
 of writing our own script tags in the header and footer. */
 
-function hackeryou_scripts() {
+function cooper_scripts() {
 
 	//Don't use WordPress' local copy of jquery, load our own version from a CDN instead
 	wp_deregister_script('ymlp');
@@ -113,9 +113,10 @@ function hackeryou_scripts() {
     null, // version number
     true //load in footer
   );
+  wp_enqueue_script( 'modernizr', get_template_directory_uri() . '/js/modernizr/modernizr-2.8.3.min.js', null, null, false );
 }
 
-add_action( 'wp_enqueue_scripts', 'hackeryou_scripts');
+add_action( 'wp_enqueue_scripts', 'cooper_scripts');
 
 
 
