@@ -281,6 +281,8 @@
 
                  ?>
 
+                 
+
                  <form id="submit-inquiry">
                    <input type="text" name="name" placeholder="name">
                    <input type="email" name="email" placeholder="email">

@@ -1396,6 +1396,24 @@ input.inquireSubmit {
   // position: absolute;
 
 }
+//mailing list 
+
+.mailing-list {
+    z-index: 10000;
+    width: 100%;
+    padding: 18px;
+    height: 100vh;
+    top: 0;
+    left: 0px;
+    margin: 0 auto;
+    max-width: 100%;
+    min-width: 100px;
+    .subscribe-to-mailing-list {
+    	bottom: 46%;
+    	right: 6%;
+    }
+
+}
 
 //exhibitions Main page 
 
