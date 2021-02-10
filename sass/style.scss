@@ -1189,7 +1189,7 @@ input.inquireSubmit {
 
 }
 
-@media (max-width: 650px) {
+@media (max-width: 730px) {
 	.hamburger-menu {
 		display: block;
 	}
@@ -1645,6 +1645,15 @@ main.contactMain .galleryAdditionalInfo .paragraphHalf {
 .exhibtionNews {
 	margin: 20px 0 10px;
 }
+
+//single artworks page
+
+.singleArtFull {
+	display: block;
+	.singleArtImages {
+		width: 100%;
+	}
+}
 }
 
 
@@ -1686,6 +1695,12 @@ main.contactMain .galleryAdditionalInfo .paragraphHalf {
 .artistsMain {
 			min-height: 71vh;
 		}
+body.home {
+	footer {
+		position: absolute;
+	}
+}
+
 		
 
 }
@@ -1697,7 +1712,9 @@ main.contactMain .galleryAdditionalInfo .paragraphHalf {
 	}
 }
 @media (max-width: 500px){
-
+	.singleArtFull .singleArtInfo {
+		width: 100%;
+	}
 	.artworkItemEach {
 		width: 49%;
 	}

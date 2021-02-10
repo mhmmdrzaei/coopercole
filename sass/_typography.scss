@@ -71,6 +71,12 @@ button {
   
 }
 .whiteText {
+  // text-shadow:
+  //      1px 1px 0 #000,
+  //    -1px -1px 0 #000,  
+  //     1px -1px 0 #000,
+  //     -1px 1px 0 #000,
+  //      1px 1px 0 #000;
   -webkit-text-stroke: .8px black;
   color: white;
   font-weight: 700;
