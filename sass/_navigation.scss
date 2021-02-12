@@ -17,7 +17,7 @@
 .fl-panelBar-wideScreen{
   width: 20%;
   position: relative;
-  left: 17%;
+  left: 15em;
 }
 
 #menu__check {
@@ -31,7 +31,7 @@
   left: -800px;
   right: 0;
   z-index: 101;
-  max-width: 20%;
+  max-width: 24%;
   transition: left ease-in-out .7s;
   #menu__check:checked ~ & {
     left: 0;
@@ -81,6 +81,7 @@
   }
   .menu__nav {
     // background-color: #ccc;
+    width: 100%;
     // min-width: 230px;
     z-index: 800;
     ul {
@@ -159,7 +160,7 @@ h3.menuMain{
 .stickyMenu{
     position: fixed;
     top: 0px;
-    left: 20px;
+    left: 3%;
     align-items: center;
     display: flex;
     z-index: 100;
