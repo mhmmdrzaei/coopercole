@@ -1126,11 +1126,10 @@ input.inquireSubmit {
 
 .artworkItemEach {
 	width: 24%;
-	margin: 0 0px 65px 0;
+	margin: 0 1% 65px 0;
 }
 .artworksNew, .artworksOld {
 	@extend .flex;
-	justify-content:space-between;
 }
 
 
@@ -1543,6 +1542,7 @@ input.inquireSubmit {
 	}
 	.artworkItemEach {
 		width: 32%;
+
 	}
 
 

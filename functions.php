@@ -113,8 +113,13 @@ function cooper_scripts() {
     null, // version number
     true //load in footer
   );
+  wp_localize_script( 'scripts', 'AjaxHandler', array( 'ajaxurl' => admin_url( 'admin-ajax.php' ) ) );
+
+
+
   wp_enqueue_script( 'modernizr', get_template_directory_uri() . '/js/modernizr/modernizr-2.8.3.min.js', null, null, false );
 }
+
 
 add_action( 'wp_enqueue_scripts', 'cooper_scripts');
 

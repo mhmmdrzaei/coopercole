@@ -283,7 +283,7 @@
 
                  
 
-                 <form id="submit-inquiry">
+                 <form id="submit-inquiry" class="inquireFormFull">
                    <input type="text" name="name" placeholder="name">
                    <input type="email" name="email" placeholder="email">
                    <input type="text" name="phone" placeholder="phone">

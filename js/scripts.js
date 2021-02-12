@@ -344,59 +344,59 @@ $(document).scroll(function() {
   }
 });
 
-// messages back inquire / confimration box mailing list
+// // messages back inquire / confimration box mailing list
 
-var App = App || {};
+// var App = App || {};
 
-App.constants = {
-    win : $(window),
-    document : $(document),
-    html : $('html'),
-    body : $('body'),
-    body_html : $('html, body')
-};
+// App.constants = {
+//     win : $(window),
+//     document : $(document),
+//     html : $('html'),
+//     body : $('body'),
+//     body_html : $('html, body')
+// };
 
 
-App.mailingList = function() {
+// App.mailingList = function() {
 
-    var emailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
+//     var emailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
 
-    var trigger = $('.toggle-mailing-list');
-    var body = App.constants.body;
-    var form = $('.mailing-list');
-    var close = $('.close-mailing-list');
+//     var trigger = $('.toggle-mailing-list');
+//     var body = App.constants.body;
+//     var form = $('.mailing-list');
+//     var close = $('.close-mailing-list');
 
-    trigger.on('click', function(event) {
-        event.preventDefault();
-        body.toggleClass('mailing-list--visible');
-        form.find('.email-address').focus();
-    });
+//     trigger.on('click', function(event) {
+//         event.preventDefault();
+//         body.toggleClass('mailing-list--visible');
+//         form.find('.email-address').focus();
+//     });
 
-    close.on('click', function(event) {
-        event.preventDefault();
-        body.removeClass('mailing-list--visible');
-    });
+//     close.on('click', function(event) {
+//         event.preventDefault();
+//         body.removeClass('mailing-list--visible');
+//     });
 
-    // form.on('submit', function(event) {
-    //     event.preventDefault();
-    //     console.log('submit');
-    //     if (!emailRegex.test($(this).find('[type="email"]').val())) {
-    //       return false;
-    //     }
-    //     $('.subscribe-to-mailing-list').addClass('loading');
-    // });
+//     // form.on('submit', function(event) {
+//     //     event.preventDefault();
+//     //     console.log('submit');
+//     //     if (!emailRegex.test($(this).find('[type="email"]').val())) {
+//     //       return false;
+//     //     }
+//     //     $('.subscribe-to-mailing-list').addClass('loading');
+//     // });
 
    var emailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
 
-    $('#submit-inquiry').on('submit', function(event) {
+    $('.inquireSubmit').click(function(event) {
       console.log('fuck');
         event.preventDefault();
         
-        var $this = $(this);
-        var email = $(this).find('[name="email"]');
-        var name = $(this).find('[name="name"]');
-        var phone = $(this).find('[name="phone"]');
-        var data = $(this).serialize();
+        var $this = $(this).parent()
+        var email = $($this).find('[name="email"]');
+        var name = $($this).find('[name="name"]');
+        var phone = $($this).find('[name="phone"]');
+        var data = $($this).serialize();
 
         var valid_name = true;
         var valid_email = true;
