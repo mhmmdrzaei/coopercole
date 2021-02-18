@@ -36,7 +36,8 @@
           'connected_type' => 'post_to_artist',
           'connected_items' => get_the_id(),
           'post_not_in'=> $postTitle,
-          'nopaging' => true
+          'nopaging' => true,
+          // 'posts_per_page'=> 10
         ) );
 
         if($connectedTwo->have_posts()):
