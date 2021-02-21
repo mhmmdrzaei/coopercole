@@ -8,7 +8,7 @@
 }
 
 .headerMain{
-  @extend .flex;
+  display: flex;
   // padding-top: 30px;
   // align-items: center;
   align-items: flex-start;
@@ -101,7 +101,7 @@
       }
     }
     padding: 0 20px 14px 10px;
-    border: 2px solid black;
+    border: 1px solid black;
     border-left: none;
     ul {
       padding: 0;

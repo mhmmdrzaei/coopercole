@@ -56,11 +56,8 @@
     </a>
     </section>
     <nav class="language">
-       <button onclick="myFunction()" class="dropbtn">lang ▼</button>
-                <?php wp_nav_menu( array(
-      'container' => false,
-      'theme_location' => 'languages_menu'
-    )); ?>
+      <?php echo do_shortcode('[gtranslate]'); ?>
+
     </nav>
     <section class="searchField">
       <?php get_search_form(); ?>
