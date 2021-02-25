@@ -17,7 +17,9 @@
         <?php $postTitle = get_the_title(); 
 
         ?>
-
+      <button class="newsOpen">Related News</button>
+      <div id="newsContentID">
+      <ul class="newsContent">
       <?php
 
       $connected = new WP_Query( array(
@@ -43,10 +45,6 @@
         if($connectedTwo->have_posts()):
 
         ?>
-        <button class="newsOpen">Related News</button>
-        <div id="newsContentID">
-        <ul class="newsContent">
-
           <?php while($connectedTwo->have_posts()) : $connectedTwo->the_post(); 
            
             $title = get_the_title();
@@ -62,13 +60,16 @@
 
 
           <?php endwhile; ?>
-        </ul>
+        
         <?php wp_reset_postdata(); endif; ?>
-        </div>
+        
 
-    </nav>
+   
    <?php endwhile; ?>
   <?php wp_reset_postdata(); endif; ?>
+  </ul>
+  </div>
+   </nav>
   </section>
   <section class="newsMain">
 
