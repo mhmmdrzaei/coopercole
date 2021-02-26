@@ -81,6 +81,9 @@
           <?php while($connected->have_posts()) : $connected->the_post(); ?>
             <li><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></li>
           <?php endwhile; ?>
+          <div class="moreNewsOpen">
+            
+          </div>
         </ul>
         </div>
          <?php wp_reset_postdata(); endif; ?>
