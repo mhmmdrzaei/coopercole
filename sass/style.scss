@@ -124,6 +124,7 @@ a {
 	.exhibitionYearsSide {
 		.exhibitionYearsSideInner {
 			position: fixed;
+			top:40%;
 		}
 		width: 2%;
 		ul {
@@ -155,8 +156,12 @@ a {
 		margin: 0 auto;
 	}
 }
-.artistNameHidden {
+.artistNameHidden,.newsHidden {
 	display: none;
+}
+.moreNewsOpen {
+	cursor: pointer;
+	font-style: italic;
 }
 .moreArtistNamesOpen {
 	p {

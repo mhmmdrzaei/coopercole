@@ -67,6 +67,9 @@
    
    <?php endwhile; ?>
   <?php wp_reset_postdata(); endif; ?>
+  <div class="moreNewsOpen">
+    
+  </div>
   </ul>
   </div>
    </nav>
@@ -89,11 +92,11 @@
     <aside class="newsContentMain">
        <?php the_content(); ?>
     </aside>
-    <?php if(has_post_thumbnail()): ?>
+<!--     <?php if(has_post_thumbnail()): ?>
       <figure>
         <?php the_post_thumbnail( 'large' ); ?>
       </figure>
-    <?php endif; ?>
+    <?php endif; ?> -->
 
   </section>
   </section>

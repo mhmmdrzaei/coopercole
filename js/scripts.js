@@ -173,6 +173,11 @@ $(document).ready(function(){
 
     }
 
+    if(($('.noShowContainer')[0]) && (($(window).width()) < 700)) {
+      console.log('fuck');
+      $('footer').css('position','absolute');
+    }
+
 //mobile exhibition date time move 
 // var windoSize = $(window).width();
 // var artistNames = $('.artistNameExhibition').height();;
@@ -199,11 +204,31 @@ $(document).ready(function(){
 
     });
 
+//news items more than 10
+
+   $('.newsContent').each(function() {
+     var $this = $(this);
+     var x = $(window).width();
+     if ($this.find('li').length > 13) { //if looking for direct descendants then do .children('div').length
+         $this.find('li:nth-child(n+13)').addClass('newsHidden');
+         $this.find('.moreNewsOpen').html('<p>+ More News</p>');
+     }
+       $('.moreNewsOpen').click(function(){
+         $('.newsHidden').fadeIn();
+         $(this).fadeOut();
+         
+       
+
+     });
+
+   });
+
 
 //hamburger menu
 
 $('.headerMainMenu').click(function(){
   $('.hamburger-menu').toggleClass('animate');
+  // $(body).toggleClass('hidden');
   window.setTimeout(function() {
     $('.language').toggleClass('languageIn');
     $('.searchField').toggleClass('searchIn');
