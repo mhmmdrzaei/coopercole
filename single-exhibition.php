@@ -6,7 +6,9 @@
       <!-- <section class="exhibitionsideInnner"> -->
       <div class="outer">
         <a href="#pageTop">↑ Back to the Top</a>
-        <a href="#artworks">↓ Artworks</a>
+        <section class="outerArtworks">
+          <a href="#artworks">↓ Artworks</a>
+        </section>
       </div>
                   <?php
         $connected_artists = new WP_Query( array(
@@ -96,7 +98,7 @@
         
       </section>
       <button id="readMore1" class="btn btn-info">Read more</button> 
-      <p class="artworksLink"><a href="#artworks">Artworks</a></p>
+      <p class="artworksLink outerArtworks"><a href="#artworks">Artworks</a></p>
         <?php if( have_rows('online_exhibition_link') ): ?>
         <?php while( have_rows('online_exhibition_link') ): the_row(); 
           $onlineLink = get_sub_field('link_label');
@@ -141,8 +143,7 @@
     </section>
 
   </section>
-  <section class="artworksMain">
-    <h3 id="artworks">Artworks</h3>
+  
     <?php
 
     $connected = new WP_Query( array(
@@ -153,7 +154,9 @@
 
     if ( $connected->have_posts() ) :
 
-      echo '<section class="artworksOld" id="artworksPages">';
+      echo '<section class="artworksMain">
+    <h3 id="artworks">Artworks</h3>
+    <section class="artworksOld" id="artworksPages">';
 
       while($connected->have_posts() ) : $connected->the_post(); ?>
         <div class="artworkItemEach" >

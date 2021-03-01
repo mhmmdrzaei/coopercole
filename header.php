@@ -46,7 +46,9 @@
 
     <section class="logo">
        <a href="<?php echo home_url( '/' ); ?>" title="<?php bloginfo( 'name', 'display' ); ?>" rel="home">
-        <?php require 'partials/logo.php'; ?>
+          <?php require 'partials/logo.php'; ?>
+          <img src="<?php bloginfo('template_directory'); ?>/images/ccfullLogoMobile.png" alt="Cooper Cole Gallery Logo"class="exhibitionImgsLL">
+        
       </a>
      
     </section>

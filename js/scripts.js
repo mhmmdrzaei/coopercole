@@ -194,13 +194,22 @@ $(document).ready(function(){
           $this.find('li:nth-child(n+9)').addClass('artistNameHidden');
           $this.find('.moreArtistNamesOpen').html('<p>+ More Artists</p>');
       }
-        $('.moreArtistNamesOpen').hover(function(){
-          $('.artistNameHidden').fadeIn();
+
+       // $('.moreArtistNamesOpen').hover(function(){
+       //    $this.find('.artistNameHidden').fadeIn();
+       //    $(this).fadeOut();
+       //    $this.find('.exhibitionDateLocation').css('top','49%');
+       //  });
+
+
+    });
+
+      $('.moreArtistNamesOpen').each(function(){
+        $(this).hover(function(){
+          $('.mohammadUl').find('.artistNameHidden').fadeIn();
           $(this).fadeOut();
           $('.exhibitionDateLocation').css('top','49%');
-        
-
-      });
+        });
 
     });
 
@@ -222,17 +231,24 @@ $(document).ready(function(){
      });
 
    });
-
+//Artworks
+$('.single').each(function(){
+  if ($('.artworksMain').length){
+    $('.outerArtworks').css('display','block');
+  }
+});
 
 //hamburger menu
 
 $('.headerMainMenu').click(function(){
   $('.hamburger-menu').toggleClass('animate');
+  $('.menu__hero').toggleClass('menuvisibleMobile');
   // $(body).toggleClass('hidden');
   window.setTimeout(function() {
     $('.language').toggleClass('languageIn');
     $('.searchField').toggleClass('searchIn');
     $('.menu-item-15020 a').toggleClass('mobileSocialVisIG');
+    $('.menu-instagram a').toggleClass('mobileSocialVisIG');
     $('.mailing-list-open').toggleClass('mobileSocialVis');
   }, 0);
 

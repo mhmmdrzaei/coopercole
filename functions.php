@@ -67,7 +67,7 @@ function cooper_scripts() {
 	//Don't use WordPress' local copy of jquery, load our own version from a CDN instead
 	wp_deregister_script('ymlp');
   wp_enqueue_script(
-  	'jquery',
+  	'ymlp',
   	"http" . ($_SERVER['SERVER_PORT'] == 443 ? "s" : "") . "://signup.ymlp.com/signup.js?id=guqjmsegmgs",
   	false, //dependencies
   	null, //version number
@@ -76,7 +76,7 @@ function cooper_scripts() {
   	wp_deregister_script('masonryjs');
     wp_enqueue_script(
     	'masonaryjs',
-    	"http" . ($_SERVER['SERVER_PORT'] == 443 ? "s" : "") . "://masonry.desandro.com/masonry.pkgd.js",
+    	"https" . ($_SERVER['SERVER_PORT'] == 443 ? "s" : "") . "://masonry.desandro.com/masonry.pkgd.js",
     	false, //dependencies
     	null, //version number
     	true //load in footer
@@ -84,7 +84,7 @@ function cooper_scripts() {
 	wp_deregister_script('swiperjs');
   wp_enqueue_script(
   	'swiperjs',
-  	"http" . ($_SERVER['SERVER_PORT'] == 443 ? "s" : "") . "://unpkg.com/swiper/swiper-bundle.min.js",
+  	"https" . ($_SERVER['SERVER_PORT'] == 443 ? "s" : "") . "://unpkg.com/swiper/swiper-bundle.min.js",
   	false, //dependencies
   	null, //version number
   	true //load in footer
@@ -92,7 +92,7 @@ function cooper_scripts() {
   	wp_deregister_script('jquery');
   wp_enqueue_script(
   	'jquery',
-  	"http" . ($_SERVER['SERVER_PORT'] == 443 ? "s" : "") . "://code.jquery.com/jquery-latest.min.js",
+  	"https" . ($_SERVER['SERVER_PORT'] == 443 ? "s" : "") . "://code.jquery.com/jquery-latest.min.js",
   	false, //dependencies
   	null, //version number
   	true //load in footer

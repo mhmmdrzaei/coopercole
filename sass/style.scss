@@ -220,6 +220,9 @@ a {
     @include fontSize(9);
   }
 }
+.exhibtionArtists {
+	max-width: 300px;
+}
 
 .btn-info {
 	margin: 10px 0;
@@ -251,7 +254,9 @@ a {
 .artworksLink{
 	@include fontSize(8);
 	 text-align: right;
-	 margin: 0 0 -40px;
+	 margin: 0 0 10px;
+	 // position: relative;
+	 // top: -21px;
 	 // width: 30px;
 	a {
 		color: black;
@@ -291,6 +296,9 @@ a {
 	}
 	
 	// display: none;
+}
+.outerArtworks {
+	display: none;
 }
 
 //exhibition main and main page
@@ -496,6 +504,7 @@ article.exhibition:nth-child(1) {
 	figure {
 		width: 35%;
 		max-width: 440px;
+		margin-top: 20px;
 		img {
 			width: 100%;
 			height: auto;
@@ -640,7 +649,7 @@ article.post:nth-child(1) {
 //artists main page
 
 .artists {
-	ul {
+	ul.artistsNames {
 		list-style: none;
 		margin: 0;
 		padding: 0;
@@ -1201,12 +1210,18 @@ section.inquiry form input:nth-child(2).invalid {
 	}
 	.singleArtInfo {
 		width: 40%;
-		h2 {
+		.connectedArtists h2 {
 			margin: 0 0 15px;
 			@include fontSize(12);
 			a {
 				@extend .arrow;
 
+			}
+		}
+		.connectedExhibition {
+			h2 {
+				margin: 0 0 15px;
+			@include fontSize(12);
 			}
 		}
 	}
@@ -1297,6 +1312,12 @@ section.inquiry form input:nth-child(2).invalid {
      z-index: 900;
 
   }
+  .menu__hero {
+  	display: none;
+  }
+  .menuvisibleMobile {
+  	display: block;
+  }
  
 #menu__check:checked~.menu__hero , .menu__hero{
   	transition: initial;
@@ -1324,11 +1345,37 @@ section.inquiry form input:nth-child(2).invalid {
       }
     }
   }
-#menu-item-15019 a {
+#menu-item-15019 a{
   text-align: center;
   @include fontSize(25);
   font-size: clamp(2rem, 9vw, 3rem); 
 
+}
+#menu-mobile-menu {
+	.menu-book-an-appointment {
+		width: 100% !important;
+		position: inherit;
+		left: auto;
+		top: auto;
+		a {
+			text-align: center;
+			@include fontSize(25);
+			font-size: clamp(2rem, 9vw, 3rem); 
+			color: black !important;
+			    background: transparent;
+			    width: 95%!important;
+			    margin: 0 auto;
+			    text-align: center;
+		}
+	}
+	.menu-instagram a {
+		@include fontSize(9);
+		position: fixed;
+		display: none;
+		bottom: 0;
+		right: 10px;
+		display: none;
+	}
 }
 #menu-item-15020 a {
   @include fontSize(9);
@@ -1370,7 +1417,7 @@ section.inquiry form input:nth-child(2).invalid {
   	text-align: right !important;
   }
   //logo 
-  .logo {
+  section.logo {
   	margin: 50px auto 0;
     transform: scale(.8);
     width: 200px;
@@ -1383,6 +1430,20 @@ section.inquiry form input:nth-child(2).invalid {
   	right: 0;
   }
   body.home {
+  	section.logo {
+  		width: 75%;
+  		margin: 0 auto;
+  		height: auto;
+  		max-width: 280px;
+  		.logoall {
+  			display: none;
+  		}
+  		img {
+  			display: block
+  			
+  		}
+  	}
+
   	footer {
   		.copyright {
   			// position: fixed;
@@ -1390,7 +1451,7 @@ section.inquiry form input:nth-child(2).invalid {
   		}
   	}
   }
-  body.page, body.single {
+  body.page, body.search, body.single {
   	.logo {
   		display: none;
   	}
@@ -1413,7 +1474,7 @@ section.inquiry form input:nth-child(2).invalid {
   }
   //closed svg 
   .closedSVG {
-
+  	display: none;
     transform: scale(1.2);
     position: relative;
     left: -8px;
@@ -1422,7 +1483,11 @@ section.inquiry form input:nth-child(2).invalid {
   }
 
 .noShowContainer {
-	 margin: 60px 0;
+	 margin: 0 auto;
+	 width: 90%;
+	 img {
+	 	display: block;
+	 }
 
 	h2 {
 	  font-size: 6.5vw;
@@ -1723,11 +1788,29 @@ main.contactMain .galleryAdditionalInfo .paragraphHalf {
 	      }
 	    }
 	  }
-	#menu-item-15019 a {
+	#menu-item-15019 a{
 	  text-align: center;
 	  @include fontSize(25);
 	  font-size: clamp(1.5rem, 9vw, 2rem); 
 
+	}
+	#menu-mobile-menu {
+		.menu-book-an-appointment {
+			width: 100%;
+			position: inherit;
+			left: auto;
+			top: auto;
+			a {
+				text-align: center;
+				@include fontSize(25);
+				font-size: clamp(1.5rem, 9vw, 2rem); 
+				color: black !important;
+				    background: transparent;
+				    width: 95%;
+				    margin: 0 auto;
+				    text-align: center;
+			}
+		}
 	}
 }
 @media (min-height: 600px){

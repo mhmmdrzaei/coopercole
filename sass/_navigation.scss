@@ -86,6 +86,7 @@
     z-index: 800;
     ul {
       @include fontSize(15);
+      padding: 0;
 
       // text-shadow:
       //   -1px -1px 0 #000,  
@@ -103,9 +104,6 @@
     padding: 0 20px 14px 10px;
     border: 1px solid black;
     border-left: none;
-    ul {
-      padding: 0;
-    }
     // width: 400px;
     background: white;
     
@@ -146,6 +144,11 @@
       }
     }
   }
+}
+#menu-mobile-menu {
+  @include fontSize(15);
+  padding: 0;
+
 }
 h3.menuMain{
   text-transform: uppercase;

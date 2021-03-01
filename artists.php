@@ -12,7 +12,7 @@
 		<h1>Artists:</h1>
 		<section class="artists">
 
-			<ul>
+			<ul class="artistsNames">
 
 			<?php 
 

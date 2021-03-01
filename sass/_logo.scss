@@ -26,6 +26,9 @@ section.logo {
 	    height: 140px;
 	    transform: scale(1.2);
 	     z-index: 3;
+	     img {
+	     	display: none;
+	     }
 }
 .logoSvgOne{
 	.cOne{
@@ -246,6 +249,9 @@ section.logo {
 
 //CLOSED SVG
 .noShowContainer {
+	img {
+		display: none;
+	}
 	h2 {
 		text-align: center;
 		font-size: 1.5vw;

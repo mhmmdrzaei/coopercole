@@ -5,7 +5,9 @@
 			<section class="exhibitionSide" id="exhibtionSideScroll">
 				<div class="outer">
 				  <a href="#pageTop">↑ Back to the Top</a>
-				  <a href="#artworks">↓ Artworks</a>
+				  <section class="outerArtworks">
+				    <a href="#artworks">↓ Artworks</a>
+				  </section>
 				</div>
 				<figure class="artFairLogo">
 					<?php the_post_thumbnail('medium'); ?>
@@ -84,7 +86,7 @@
 			<?php the_content(); ?>
 		</section>
 		<button id="readMore1" class="btn btn-info">Read more</button> 
-		<p class="artworksLink"><a href="#artworks">Artworks</a></p>
+		<p class="artworksLink outerArtworks"><a href="#artworks">Artworks</a></p>
 		<section class="featuredVideo">
 		  
 		    <?php if( have_rows('related_featured_video') ): ?>
@@ -113,8 +115,6 @@
 		   <?php endif; ?>
 	</section>
 </section>
-<section class="artworksMain">
-	    <h3 id="artworks">Artworks</h3>
 	    <?php
 
 	    $connected = new WP_Query( array(
@@ -125,7 +125,9 @@
 
 	    if ( $connected->have_posts() ) :
 
-	      echo '<section class="artworksOld" id="artworksPages">';
+	      echo '<section class="artworksMain">
+	    <h3 id="artworks">Artworks</h3>
+	      <section class="artworksOld" id="artworksPages">';
 
 	      while($connected->have_posts() ) : $connected->the_post(); ?>
 	        <div class="artworkItemEach" >
