@@ -211,7 +211,8 @@ if($currentArtF->have_posts()) : while($currentArtF->have_posts()) : $currentArt
 
 				<div class="noShowContainer">
 					<?php require 'partials/closed.php'; ?>
-					<img src="<?php bloginfo('template_directory'); ?>/images/ccClosed.png" alt="Cooper Cole Gallery is currently closed for installation"class="exhibitionImgsLL">
+					<figure><img src="<?php bloginfo('template_directory'); ?>/images/ccClosed.png" alt="Cooper Cole Gallery is currently closed for installation"class="exhibitionImgsLL"></figure>
+					
 					<?php if(get_field('page_subtitle')): ?>
 						<h2><?php the_field('page_subtitle'); ?></h2>
 					<?php

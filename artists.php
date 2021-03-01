@@ -9,7 +9,7 @@
 	<?php $artist_types = get_terms( 'artist_type', array('hide_empty' => true) ); ?>
 
 	<main class="artistsMain">
-		<h1>Artists:</h1>
+		<h1 style="padding-left: 5px;">Artists:</h1>
 		<section class="artists">
 
 			<ul class="artistsNames">
@@ -43,7 +43,7 @@
 
 				<li>
 					<a class="rainbow" href="<?php the_permalink(); ?>">
-						<?php the_title(); ?> . 
+						<?php the_title(); ?> <span style="color: white">.</span> 
 					</a>
 				</li>
 			

@@ -5,7 +5,7 @@
 
       <section class="news">
     
-        <?php $args = array( 'post_type' => 'post', 'order' => 'DCS', 'posts_per_page' => 25 );
+        <?php $args = array( 'post_type' => 'post', 'order' => 'DCS', 'posts_per_page' => 100 );
           query_posts( $args ); // hijack the main loop
           while ( have_posts() ) : the_post();
             ?>

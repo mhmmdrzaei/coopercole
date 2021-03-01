@@ -65,22 +65,22 @@ of writing our own script tags in the header and footer. */
 function cooper_scripts() {
 
 	//Don't use WordPress' local copy of jquery, load our own version from a CDN instead
-	wp_deregister_script('ymlp');
-  wp_enqueue_script(
-  	'ymlp',
-  	"http" . ($_SERVER['SERVER_PORT'] == 443 ? "s" : "") . "://signup.ymlp.com/signup.js?id=guqjmsegmgs",
-  	false, //dependencies
-  	null, //version number
-  	true //load in footer
-  );
-  	wp_deregister_script('masonryjs');
-    wp_enqueue_script(
-    	'masonaryjs',
-    	"https" . ($_SERVER['SERVER_PORT'] == 443 ? "s" : "") . "://masonry.desandro.com/masonry.pkgd.js",
-    	false, //dependencies
-    	null, //version number
-    	true //load in footer
-    );
+	// wp_deregister_script('ymlp');
+ //  wp_enqueue_script(
+ //  	'ymlp',
+ //  	"https" . ($_SERVER['SERVER_PORT'] == 443 ? "s" : "") . "://signup.ymlp.com/signup.js?id=guqjmsegmgs",
+ //  	false, //dependencies
+ //  	null, //version number
+ //  	true //load in footer
+ //  );
+  	// wp_deregister_script('masonryjs');
+   //  wp_enqueue_script(
+   //  	'masonaryjs',
+   //  	"https" . ($_SERVER['SERVER_PORT'] == 443 ? "s" : "") . "://masonry.desandro.com/masonry.pkgd.js",
+   //  	false, //dependencies
+   //  	null, //version number
+   //  	true //load in footer
+   //  );
 	wp_deregister_script('swiperjs');
   wp_enqueue_script(
   	'swiperjs',

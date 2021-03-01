@@ -122,12 +122,13 @@
         text-align: right;
         line-height: 40px;
         text-decoration: none;
-        color:black;
+        color:white;
         font-weight:700;
+        -webkit-text-stroke: .7px black;
         text-align: right;
         &:hover {
           // color: white;
-          -webkit-text-stroke: .7px black;
+          
 
           /* background-position: right 20px bottom 10px; */
     background-image: linear-gradient(to right, #DC03FC, #0322FC, #03FCEF, #23FC03, #FCE303, #FC7A03, #FC0303);
@@ -163,7 +164,7 @@ h3.menuMain{
 }
 .stickyMenu{
     position: fixed;
-    top: 0px;
+    top: 30px;
     left: 3%;
     align-items: center;
     display: flex;

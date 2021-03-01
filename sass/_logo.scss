@@ -249,7 +249,7 @@ section.logo {
 
 //CLOSED SVG
 .noShowContainer {
-	img {
+	figure {
 		display: none;
 	}
 	h2 {
@@ -267,6 +267,8 @@ section.logo {
 	display: flex;
 	max-width: 95%;
 	margin:0 auto;
+	position: relative;
+	left: -4%;
 	svg {
 		position: relative;
 		// width: 10vw;

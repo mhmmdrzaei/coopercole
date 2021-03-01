@@ -183,6 +183,7 @@ h2.artFairTitle {
 // }
 
 .rainbow {
+  padding-left: 5px;
   &:hover {
         background-image: linear-gradient(to right, #DC03FC, #0322FC, #03FCEF, #23FC03, #FCE303, #FC7A03, #FC0303);
           -webkit-background-clip: text;

@@ -117,19 +117,19 @@ function myFunction() {
   document.getElementById("menu-languages-menu").classList.toggle("show");
 }
 
-// Close the dropdown if the user clicks outside of it
-window.onclick = function(event) {
-  if (!event.target.matches('.dropbtn')) {
-    var dropdowns = document.getElementById("menu-languages-menu");
-    var i;
-    for (i = 0; i < dropdowns.length; i++) {
-      var openDropdown = dropdowns[i];
-      if (openDropdown.classList.contains('show')) {
-        openDropdown.classList.remove('show');
-      }
-    }
-  }
-} 
+// // Close the dropdown if the user clicks outside of it
+// window.onclick = function(event) {
+//   if (!event.target.matches('.dropbtn')) {
+//     var dropdowns = document.getElementById("menu-languages-menu");
+//     var i;
+//     for (i = 0; i < dropdowns.length; i++) {
+//       var openDropdown = dropdowns[i];
+//       if (openDropdown.classList.contains('show')) {
+//         openDropdown.classList.remove('show');
+//       }
+//     }
+//   }
+// } 
 //video Link
 $(document).ready(function(){
   $(".featuredVideoTitle").click(function(){
@@ -169,14 +169,19 @@ $(document).ready(function(){
 
         $("body").css('background-image', 'linear-gradient(to right, #DC03FC, #0322FC, #03FCEF, #23FC03, #FCE303, #FC7A03, #FC0303)');
         $('footer').css('background','white');
+        $('.logoall').css('fill','white');
+        $('#gtranslate_selector').css('color','white');
+        $('form.searchForm input').css('border-bottom','1px solid #ffffff');
         $('.artFairHome').css('background','white');
+        $('.searchForm label svg g path').css('fill','white');
 
     }
 
     if(($('.noShowContainer')[0]) && (($(window).width()) < 700)) {
-      console.log('fuck');
-      $('footer').css('position','absolute');
+      $('section.logo').html('<img src="https://coopercolegallery.com/wp-content/uploads/2021/03/Cooper-Coole-Logos-Full-W-Small.png" alt="Cooper Cole Gallery Logo"class="exhibitionImgsLL">');
+      // $('footer').css('position','absolute');
     }
+
 
 //mobile exhibition date time move 
 // var windoSize = $(window).width();
@@ -190,28 +195,23 @@ $(document).ready(function(){
     $('.mohammadUl').each(function() {
       var $this = $(this);
       var x = $(window).width();
-      if ($this.find('li').length > 7) { //if looking for direct descendants then do .children('div').length
+      if ($this.find('li').length > 9) { //if looking for direct descendants then do .children('div').length
           $this.find('li:nth-child(n+9)').addClass('artistNameHidden');
           $this.find('.moreArtistNamesOpen').html('<p>+ More Artists</p>');
-      }
-
-       // $('.moreArtistNamesOpen').hover(function(){
-       //    $this.find('.artistNameHidden').fadeIn();
-       //    $(this).fadeOut();
-       //    $this.find('.exhibitionDateLocation').css('top','49%');
-       //  });
+      };
 
 
     });
 
-      $('.moreArtistNamesOpen').each(function(){
-        $(this).hover(function(){
-          $('.mohammadUl').find('.artistNameHidden').fadeIn();
-          $(this).fadeOut();
-          $('.exhibitionDateLocation').css('top','49%');
+    $('.moreArtistNamesOpen').each(function (i, value) {
+        $(this).hover(function (e) {
+            $(this).fadeOut();
+            $(this).parent().find('.artistNameHidden').fadeIn();
+            $(this).parent().next('.exhibitionDateLocation').css('top','49%');
+            // $(this).prev('.artistNameHidden').fadeIn();
         });
-
     });
+
 
 //news items more than 10
 
@@ -250,6 +250,10 @@ $('.headerMainMenu').click(function(){
     $('.menu-item-15020 a').toggleClass('mobileSocialVisIG');
     $('.menu-instagram a').toggleClass('mobileSocialVisIG');
     $('.mailing-list-open').toggleClass('mobileSocialVis');
+    $('#gtranslate_selector').css('color','black');
+    $('form.searchForm input').css('border-bottom','1px solid black');
+    $('.artFairHome').css('background','black');
+    $('.searchForm label svg g path').css('fill','black');
   }, 0);
 
 
@@ -378,10 +382,13 @@ $(document).scroll(function() {
   var x = $(window).width();
   if ((y > 500) && (x > 700)) {
     $("#topMenu").addClass('stickyMenu');
+    $('#topMenu h3').css('display','none');
     $('.ccLogo').fadeIn();
   } else if ((y < 500) && (x > 700)) {
     $("#topMenu").removeClass('stickyMenu');
     $('.ccLogo').fadeOut(100);
+    $('#topMenu h3').css('display','block');
+
   }
 });
 

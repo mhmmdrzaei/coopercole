@@ -71,7 +71,7 @@ a {
 
 .headerMain {
 	max-width: 930px;
-	margin: 0 auto;
+	margin: 45px auto 0;
 }
 .show-read-more .more-text{
     display: none;
@@ -1178,10 +1178,15 @@ section.inquiry form input:nth-child(2).invalid {
 	background: transparent !important;
 	font-size: 11px !important;
 }
+.noShowContainer {
+	h3 a {
+		@extend .whiteText;
+	}
+}
 
-//MASONARY
+// MASONARY
 
-//masonary
+// masonary
 
 // .grid {
 //   width: 95%;
@@ -1225,7 +1230,15 @@ section.inquiry form input:nth-child(2).invalid {
 			}
 		}
 	}
+} 
+body.home {
+	.exhibitions {
+		article.exhibition {
+			padding: 50px 0 0;
+		}
+	}
 }
+
 
 //QUARIES
 @media (max-width: 1100px) {
@@ -1250,7 +1263,9 @@ section.inquiry form input:nth-child(2).invalid {
 
 
 @media (max-width: 730px) {
-
+	.headerMain {
+	margin: 15px auto 0;
+	}
 	.hamburger-menu {
 		display: block;
 	}
@@ -1361,11 +1376,13 @@ section.inquiry form input:nth-child(2).invalid {
 			text-align: center;
 			@include fontSize(25);
 			font-size: clamp(2rem, 9vw, 3rem); 
-			color: black !important;
+			color: #fff;
+			    -webkit-text-stroke: .7px #000;
 			    background: transparent;
 			    width: 95%!important;
 			    margin: 0 auto;
 			    text-align: center;
+
 		}
 	}
 	.menu-instagram a {
@@ -1375,6 +1392,8 @@ section.inquiry form input:nth-child(2).invalid {
 		bottom: 0;
 		right: 10px;
 		display: none;
+		color: black;
+		-webkit-text-stroke: 0px #000;
 	}
 }
 #menu-item-15020 a {
@@ -1384,6 +1403,8 @@ section.inquiry form input:nth-child(2).invalid {
   bottom: 0;
   right: 10px;
   display: none;
+  color: black;
+  -webkit-text-stroke: 0px #000;
 }
 .mailing-list-open {
   position: fixed;
@@ -1485,7 +1506,10 @@ section.inquiry form input:nth-child(2).invalid {
 .noShowContainer {
 	 margin: 0 auto;
 	 width: 90%;
-	 img {
+	 min-height: 410px;
+	 figure {
+	 	width: 85%;
+	 	margin: 0 auto;
 	 	display: block;
 	 }
 
@@ -1607,6 +1631,12 @@ section.inquiry form input:nth-child(2).invalid {
 	}
 	article.exhibition:nth-child(1) {
 		padding-top: 0;
+	}
+	.moreArtistNamesOpen {
+		display: none;
+	}
+	.artistNameHidden {
+		display: block;
 	}
 
 	//single exhibition Page
@@ -1804,7 +1834,8 @@ main.contactMain .galleryAdditionalInfo .paragraphHalf {
 				text-align: center;
 				@include fontSize(25);
 				font-size: clamp(1.5rem, 9vw, 2rem); 
-				color: black !important;
+				color: #fff;
+				    -webkit-text-stroke: .7px #000;
 				    background: transparent;
 				    width: 95%;
 				    margin: 0 auto;
@@ -1861,6 +1892,9 @@ body.home {
 		&:after, &:before{
 			display: none;
 		}
+	}
+	.artists ul.artistsNames li {
+		margin-right: 0;
 	}
 
 
