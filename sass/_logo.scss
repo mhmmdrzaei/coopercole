@@ -67,23 +67,23 @@ section.logo {
 
 }
 .logoall:hover > .logoSvgOne > .rSvg {
-	animation: fadeIn 3s, cTwoA 5s ease-in-out infinite;
+	animation:  cTwoA 5s ease-in-out infinite;
 }
 .logoall:hover > .logoSvgOne > .eOne {		
-	animation: fadeIn 7s, oThreeA 7s ease-in-out infinite;
+	animation:  oThreeA 7s ease-in-out infinite;
 }
 .logoall:hover > .logoSvgOne > .pSvg {
-	animation: fadeIn 10s, waveRight 4s ease-in-out infinite; 
+	animation:  waveRight 4s ease-in-out infinite; 
 }
 .logoall:hover > .logoSvgOne > .oTwo {
-	animation: fadeIn 7s, oTwo 7s ease-in-out infinite;
+	animation:  oTwo 7s ease-in-out infinite;
 
 }
 .logoall:hover > .logoSvgOne > .oOne {
-	animation: fadeIn 10s, oOne 12s ease-in-out infinite;
+	animation:  oOne 12s ease-in-out infinite;
 }
 .logoall:hover > .logoSvgOne > .cOne {
-		animation: fadeIn 10s, cOne 4s ease-in-out infinite;
+		animation:  cOne 4s ease-in-out infinite;
 }
 
 .logoSvgTwo {
@@ -115,20 +115,20 @@ section.logo {
 	}
 }
 .logoall:hover > .logoSvgTwo > .eTwo {
-	animation: fadeIn 10s, waveRight 4s ease-in-out infinite;
+	animation: waveRight 4s ease-in-out infinite;
 }
 
 .logoall:hover > .logoSvgTwo > .lSvg {
-	animation: fadeIn 10s, lUpDown 4s ease-in-out infinite;
+	animation:  lUpDown 4s ease-in-out infinite;
 
 }
 
 .logoall:hover > .logoSvgTwo > .oThree {
-	animation: fadeIn 7s, oThreeA 7s ease-in-out infinite;
+	animation:  oThreeA 7s ease-in-out infinite;
 }
 
 .logoall:hover > .logoSvgTwo > .cTwo {
-	animation: fadeIn 3s, cTwoA 5s ease-in-out infinite;
+	animation:  cTwoA 5s ease-in-out infinite;
 
 }
 @keyframes waveRight {
@@ -278,11 +278,11 @@ section.logo {
 }
 .closedC {
 	left: 18%;
-	animation: fadeIn 3s, cTwoA 1s ease-in-out infinite;
+	animation: cTwoA 1s ease-in-out infinite;
 }
 .closedL {
 	left: 7%;
-	animation: fadeIn 3s, cTwoA 1s ease-in-out infinite;
+	animation:  cTwoA 1s ease-in-out infinite;
 }
 .closedO {
 	width: 65%;
@@ -292,7 +292,7 @@ section.logo {
 	right: 3%;
 	 top: -4vw;
 	 width: 90%;
-	 animation: fadeIn 3s, cTwoA 1s ease-in-out infinite;
+	 animation:  cTwoA 1s ease-in-out infinite;
 }
 .closedE {
 	width: 66%;
@@ -301,7 +301,7 @@ section.logo {
 .closedD {
 	top: 2vw;
 	right: 15%;
-	animation: fadeIn 3s, cTwoA 1s ease-in-out infinite;
+	animation:  cTwoA 1s ease-in-out infinite;
 }
 
 // .closedSVG:hover > .closedC {

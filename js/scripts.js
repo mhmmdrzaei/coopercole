@@ -6,6 +6,7 @@
       $('.artworkIteminfo').removeClass('open');
     } 
       $(this).find('.artworkIteminfo').addClass("open");
+      $('body').addClass('bodyOveflow');
       // $(this).find('.inquiry').html("<div><p>[forminator_form id=\"15029\"]</p></div>");
        // $(this).find('.artworkIteminfo').toggleClass("closed");
       // $(this).find('.artworkIteminfo').css("display","block");
@@ -13,6 +14,7 @@
   });
 
  $(".closeInfo").click(function() {
+    $('body').removeClass('bodyOveflow');
 
     if ($('.artworkIteminfo').hasClass('open')) {
       $('.artworkIteminfo').removeClass('open');
@@ -243,6 +245,7 @@ $('.single').each(function(){
 $('.headerMainMenu').click(function(){
   $('.hamburger-menu').toggleClass('animate');
   $('.menu__hero').toggleClass('menuvisibleMobile');
+  $('body').toggleClass('bodyOveflow');
   // $(body).toggleClass('hidden');
   window.setTimeout(function() {
     $('.language').toggleClass('languageIn');
@@ -337,7 +340,7 @@ const buttonDown = document.getElementById('downClick');
 const buttonUp = document.getElementById('upClick');
 var scrolled = 0;
 $(buttonDown).click(function(){
-   scrolled=scrolled+19;
+   scrolled=scrolled+22;
         
         $("#menu-exhibition-years").animate({
                 scrollTop:  scrolled
@@ -346,7 +349,7 @@ $(buttonDown).click(function(){
 });
 
 $(buttonUp).click(function(){
-   scrolled=scrolled-19;
+   scrolled=scrolled-22;
         
         $("#menu-exhibition-years").animate({
                 scrollTop:  scrolled

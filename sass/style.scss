@@ -130,7 +130,7 @@ a {
 		ul {
 			list-style: none;
 			padding: 0;
-			height: 74px;
+			height: 83px;
     		overflow: scroll;
 
 
@@ -553,6 +553,13 @@ article.exhibition:nth-child(1) {
 }
 .newsMain {
 	width: 65%;
+	.newsContentMain {
+		
+		img {
+				border: 1px solid black;
+			}
+		
+	}
 }
 //news page 
 article.post{ 
@@ -878,6 +885,7 @@ section.inquiry {
 	form {
 		margin-top: 15px;
 		input {
+			border-radius: 0;
 			border: 1px solid black;
 			color: black;
 			outline: none;
@@ -1027,7 +1035,7 @@ section.inquiry form input:nth-child(2).invalid {
 		animation: bounce .3s ease infinite alternate;
 	}
 	.infoAnimated{
-				padding: 10px 18px;
+				padding: 10px 12px;
 				width: 115px;
 				position: absolute;
 				right: -1px;
@@ -1263,6 +1271,17 @@ body.home {
 
 
 @media (max-width: 730px) {
+	body.home {
+		header {
+			margin-bottom: 0;
+		}
+		.exhibitions {
+			article.exhibition {
+				padding:0;
+				top: -15px;
+			}
+		}
+	}
 	.headerMain {
 	margin: 15px auto 0;
 	}
@@ -1355,14 +1374,14 @@ body.home {
     li {
       a {
         text-align: center;
-        @include fontSize(25);
+        @include fontSize(22);
         font-size: clamp(2rem, 9vw, 3rem); 
       }
     }
   }
 #menu-item-15019 a{
   text-align: center;
-  @include fontSize(25);
+  @include fontSize(22);
   font-size: clamp(2rem, 9vw, 3rem); 
 
 }
@@ -1374,7 +1393,7 @@ body.home {
 		top: auto;
 		a {
 			text-align: center;
-			@include fontSize(25);
+			@include fontSize(22);
 			font-size: clamp(2rem, 9vw, 3rem); 
 			color: #fff;
 			    -webkit-text-stroke: .7px #000;
@@ -1481,7 +1500,7 @@ body.home {
   		position: absolute;
   		left: 45%;
   		transform: scale(2.1);
-  		margin: 20px 0 40px;
+  		margin: 0px 0 40px;
   		.logoTwo {
   			margin: 0 auto;
   		}
@@ -1504,9 +1523,9 @@ body.home {
   }
 
 .noShowContainer {
-	 margin: 0 auto;
+	 margin: 50px auto;
 	 width: 90%;
-	 min-height: 410px;
+	 min-height: 400px;
 	 figure {
 	 	width: 85%;
 	 	margin: 0 auto;
@@ -1534,6 +1553,9 @@ body.home {
   bottom: 0;
   // position: absolute;
 
+}
+.bodyOveflow {
+	overflow: hidden;
 }
 //mailing list 
 
@@ -1659,6 +1681,10 @@ body.home {
 				@include fontSize(7);
 			}
 		}
+	}
+	.artworkIteminfo {
+		width: 100%;
+		max-width: 100%;
 	}
 
 	.artworkItemInfoInnner{
@@ -1808,6 +1834,40 @@ main.contactMain .galleryAdditionalInfo .paragraphHalf {
 
 		padding: 12% 0;
 	}
+
+}
+@media (min-height: 600px){
+
+.searchResultsPage {
+	min-height: 50vh;
+}
+		.noResults{
+			margin: 40% auto;
+		}
+
+}
+@media (min-height: 800px){
+.artistsMain {
+			min-height: 71vh;
+		}
+body.home {
+	footer {
+		position: absolute;
+	}
+}
+.noShowContainer {
+	margin: 30% auto;
+}
+
+		
+
+}
+
+@media (max-height: 820px) and (max-width: 550px) {
+	.menu__hero .menu__nav {
+
+		padding: 30% 0;
+	}
 	  #menu-primary-menu {
 	    // padding-top: 30%; 
 	    li {
@@ -1843,42 +1903,47 @@ main.contactMain .galleryAdditionalInfo .paragraphHalf {
 			}
 		}
 	}
-}
-@media (min-height: 600px){
 
-.searchResultsPage {
-	min-height: 50vh;
-}
-		.noResults{
-			margin: 40% auto;
-		}
-
-}
-@media (min-height: 800px){
-.artistsMain {
-			min-height: 71vh;
-		}
-body.home {
-	footer {
-		position: absolute;
-	}
-}
-.noShowContainer {
-	margin: 30% auto;
+	
 }
 
-		
-
-}
-
-@media (max-height: 740px) and (max-width: 550px) {
+@media (max-height: 620px) and (max-width: 550px) {
 	.menu__hero .menu__nav {
 
-		padding: 30% 0;
+		padding: 18% 0 0;
 	}
 	.menu__hero .menu__nav li {
 		margin: 0 auto;
 	}
+		  #menu-primary-menu {
+		    // padding-top: 30%; 
+		    li {
+		      a {
+		        line-height: 30px;
+		        @include fontSize(15);
+		       
+		      }
+		    }
+		  }
+		#menu-item-15019 a{
+		  
+		  @include fontSize(15);
+		  
+
+		}
+		#menu-mobile-menu {
+			width: 90%;
+			margin: 0 auto;
+			.menu-book-an-appointment {
+				
+				a {
+					line-height: 30px;
+					@include fontSize(15);
+					
+				}
+			}
+		}
+	
 }
 @media (max-width: 500px){
 	.singleArtFull .singleArtInfo {
