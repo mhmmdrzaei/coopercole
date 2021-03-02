@@ -294,14 +294,15 @@ $('.headerMainMenu').click(function(){
 
 
 
-//scrolling fade in and out
-var height = $('.exhibitionMain').height();
-var detailHeights = $('.exhibitors').height();
+
 
 // var detailArtFairHeight = $('.exhibtionArtists').height();
-$(document).scroll(function() {
+$(window).scroll(function() {
   var y = $(this).scrollTop();
   var x = $(window).width();
+  //scrolling fade in and out
+  var height = $('.exhibitionMain').height();
+  var detailHeights = $('.exhibitors').height();
   if (y > height - (detailHeights + 200) ) {
     $('.outer').fadeOut();
     $(".exhibtionArtists").css({"position": "relative"});
@@ -380,7 +381,7 @@ $('.closeBox').click(function () {
 
 // sticky menu
 
-$(document).scroll(function() {
+$(window).scroll(function() {
   var y = $(this).scrollTop();
   var x = $(window).width();
   if ((y > 500) && (x > 700)) {
@@ -521,6 +522,9 @@ $(document).scroll(function() {
             console.log("complete");
         });
     });
+
+
+
 
 
 
