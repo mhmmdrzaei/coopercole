@@ -15,10 +15,10 @@
           $videoLink = get_field('video_link_newsPage');
           $featuredImage = get_the_post_thumbnail();
           if( $videoLink ) {; ?>
-        <section class="newsTitle">
+<!--         <section class="newsTitle">
             <a href="<?php the_permalink(); ?>"><h1 class="title"><?php the_title(); ?></h1></a>          
             <aside class="date"><?php the_time('F j, Y'); ?></aside>
-          </section>  
+          </section>   -->
           <section class="featuredVideo">
             <div class="video-responsive">  
               <?php the_field('video_link_newsPage') ?>
