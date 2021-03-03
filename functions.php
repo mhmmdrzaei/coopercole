@@ -545,9 +545,11 @@ function render_my_meta_box( $post ) {
 
 
 
-<ul>
+<ul style="list-style: none; display: flex; flex-flow:wrap; width: 100%;">
 <?php while ( $connected->have_posts() ) : $connected->the_post(); ?>
-	<?php the_post_thumbnail('square'); ?>
+	<figure>
+		<?php the_post_thumbnail('thumbnail'); ?>
+	</figure>
 <?php endwhile; ?>
 </ul>
 <?php

@@ -99,30 +99,37 @@
       </section>
       <button id="readMore1" class="btn btn-info">Read more</button> 
       <p class="artworksLink outerArtworks"><a href="#artworks">Artworks</a></p>
-        <?php if( have_rows('online_exhibition_link') ): ?>
-        <?php while( have_rows('online_exhibition_link') ): the_row(); 
-          $onlineLink = get_sub_field('link_label');
-          if( $onlineLink ) {; ?>
-          <section class="onlineExhibition">
-            <a href="<?php the_sub_field('link_address'); ?>"><?php the_sub_field('link_label'); ?> <i class="fas fa-external-link-alt"></i></a>
-          </section>
-          <?php } ?> 
-        <?php endwhile; ?>
-         <?php endif; ?>  
-      
-           <?php if( have_rows('related_featured_video') ): ?>
-           <?php while( have_rows('related_featured_video') ): the_row(); 
-             $videoLink = get_sub_field('video_link');
-             if( $videoLink ) {; ?>
-             <section class="featuredVideo">
-             <button class="featuredVideoTitle"><img src="<?php bloginfo('template_directory'); ?>/images/movie_icon.svg"> <?php the_sub_field('video_text') ?></button> 
-             <div id="featuredVideoLink" class="video-responsive">
-               <?php the_sub_field('video_link'); ?>
-             </div>
-             </section>
-             <?php } ?> 
-           <?php endwhile; ?>
-            <?php endif; ?>   
+      <?php if( have_rows('additional_video_and_links') ): ?>
+          <?php while( have_rows('additional_video_and_links') ): the_row(); ?>
+              <?php if( get_row_layout() == 'add_video_additional' ): ?>
+                <?php if( have_rows('video_additionalMediaContent') ): ?>
+                <?php while( have_rows('video_additionalMediaContent') ): the_row(); 
+                  $videoLink = get_sub_field('video_link_additionalMedia');
+                  if( $videoLink ) {; ?>
+                  <section class="featuredVideo">
+                  <button class="featuredVideoTitle"><img src="<?php bloginfo('template_directory'); ?>/images/movie_icon.svg"> <?php the_sub_field('video_label_additionalMedia') ?></button> 
+                  <div id="featuredVideoLink" class="video-responsive">
+                    <?php the_sub_field('video_link_additionalMedia'); ?>
+                  </div>
+                  </section>
+                  <?php } ?> 
+                <?php endwhile; ?>
+                 <?php endif; ?>   
+              <?php elseif( get_row_layout() == 'add_link_additional' ): ?>
+                  <?php if( have_rows('outwardLink_additionalMediaContent') ): ?>
+                  <?php while( have_rows('outwardLink_additionalMediaContent') ): the_row(); 
+                    $onlineLink = get_sub_field('link_label_additionalMedia');
+                    if( $onlineLink ) {; ?>
+                    <section class="onlineExhibition">
+                      <a href="<?php the_sub_field('actual_link_additionalMedia'); ?>"><?php the_sub_field('link_label_additionalMedia'); ?> <i class="fas fa-external-link-alt"></i></a>
+                    </section>
+                    <?php } ?> 
+                  <?php endwhile; ?>
+                   <?php endif; ?>  
+
+              <?php endif; ?>
+          <?php endwhile; ?>
+      <?php endif; ?>
        
 
       <?php if(get_field('carousel')): ?>

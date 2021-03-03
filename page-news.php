@@ -10,18 +10,18 @@
           while ( have_posts() ) : the_post();
             ?>
   <article class="post"> 
-        <?php if( have_rows('related_featured_video') ): ?>
-        <?php while( have_rows('related_featured_video') ): the_row(); 
-          $videoLink = get_sub_field('video_link');
+
+        <?php  
+          $videoLink = get_field('video_link_newsPage');
           $featuredImage = get_the_post_thumbnail();
           if( $videoLink ) {; ?>
-<!--           <section class="newsTitle">
+        <section class="newsTitle">
             <a href="<?php the_permalink(); ?>"><h1 class="title"><?php the_title(); ?></h1></a>          
             <aside class="date"><?php the_time('F j, Y'); ?></aside>
-          </section>    -->
+          </section>  
           <section class="featuredVideo">
             <div class="video-responsive">  
-              <?php echo $videoLink; ?>
+              <?php the_field('video_link_newsPage') ?>
             </div>
             </section>
          <?php } else if ( $featuredImage ) {; ?> 
@@ -31,9 +31,6 @@
             </figure>
             
           <?php }; ?>
-  
-        <?php endwhile; ?>
-         <?php endif; ?> 
          <?php 
           if ( (has_post_thumbnail()) && ($videoLink) ) {; ?>
             <section class="newsDetails">

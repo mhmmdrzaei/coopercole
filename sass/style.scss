@@ -239,6 +239,7 @@ a {
 }
 
 .onlineExhibition {
+	margin: 10px 0;
 	a {
 		text-transform: uppercase;
 		font-weight: 700;
@@ -558,6 +559,9 @@ article.exhibition:nth-child(1) {
 		img {
 				border: 1px solid black;
 			}
+		.featuredVideoTitle img {
+			border: none;
+		}
 		
 	}
 }
