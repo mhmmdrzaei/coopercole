@@ -178,8 +178,9 @@ $(document).ready(function(){
         $('.searchForm label svg g path').css('fill','white');
 
     }
+ 
 
-    if(($('.noShowContainer')[0]) && (($(window).width()) < 700)) {
+    if(($('.noShowContainer')[0]) && (($(window).width()) < 730)) {
       $('section.logo').html('<img src="https://coopercolegallery.com/wp-content/uploads/2021/03/Cooper-Coole-Logos-Full-W-Small.png" alt="Cooper Cole Gallery Logo"class="exhibitionImgsLL">');
       // $('footer').css('position','absolute');
     }
@@ -253,11 +254,14 @@ $('.headerMainMenu').click(function(){
     $('.menu-item-15020 a').toggleClass('mobileSocialVisIG');
     $('.menu-instagram a').toggleClass('mobileSocialVisIG');
     $('.mailing-list-open').toggleClass('mobileSocialVis');
-    $('#gtranslate_selector').css('color','black');
+  }, 0);
+     if(($(window).width()) < 730) {
+      $('#gtranslate_selector').css('color','black');
     $('form.searchForm input').css('border-bottom','1px solid black');
     $('.artFairHome').css('background','black');
     $('.searchForm label svg g path').css('fill','black');
-  }, 0);
+      // $('footer').css('position','absolute');
+    }
 
 
 });
