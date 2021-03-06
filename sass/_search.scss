@@ -30,19 +30,23 @@ input#s{
 //no results 
 .noResults {
 	width: 95;
-	margin: 15% auto;
+	margin: 0 auto 50px;
+
+	position: relative;
+	left: -3%;
 	figure {
+
 		width: 50%;
 		max-width: 250px;
-		margin: 0 auto;
+		margin: 40px auto;
 	}
-	img {
-		
-	}
+
 	h2 {
 		@extend .whiteText;
 		text-align: center;
 		text-transform: uppercase;
+				width: 80%;
+				margin: 20px auto 0;
 	}
 }
 
@@ -61,4 +65,8 @@ input#s{
 		border-bottom: 1px solid black;
 		border-top: 0 !important;
 	}
+	article::nth-child(last) {
+	border-bottom: none;
 }
+}
+

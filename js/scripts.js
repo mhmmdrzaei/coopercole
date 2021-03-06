@@ -6,7 +6,7 @@
       $('.artworkIteminfo').removeClass('open');
     } 
       $(this).find('.artworkIteminfo').addClass("open");
-      $('body').addClass('bodyOveflow');
+      $('body').addClass('bodyOveflowArt');
       // $(this).find('.inquiry').html("<div><p>[forminator_form id=\"15029\"]</p></div>");
        // $(this).find('.artworkIteminfo').toggleClass("closed");
       // $(this).find('.artworkIteminfo').css("display","block");
@@ -14,7 +14,7 @@
   });
 
  $(".closeInfo").click(function() {
-    $('body').removeClass('bodyOveflow');
+    $('body').removeClass('bodyOveflowArt');
 
     if ($('.artworkIteminfo').hasClass('open')) {
       $('.artworkIteminfo').removeClass('open');

@@ -1,12 +1,15 @@
 <?php get_header(); ?>
 
 <div class="main">
-  <div class="container">
+  <section class="noResults">
+  	<figure>
+  		<img src="<?php bloginfo('template_directory'); ?>/images/noresults.png">
+  	</figure>
 
-    <h1>Not Found</h1>
-    <p>Apologies, but the page you requested could not be found. Perhaps searching will help.</p>
+  	<h2>Not Found</h2>
+    <h2>Apologies, but the page you requested could not be found. Perhaps searching will help.</h2>
 
-  </div> <!-- /.container -->
+  </section>
 </div> <!-- /.main -->
 
 <?php get_footer(); ?>

@@ -349,7 +349,7 @@ article.exhibition {
 				left: 0;
 				.date {
 					font-weight: 700;
-					width: 80%;
+					// width: 80%;
 					margin-bottom: 20px;
 				}
 				.location {
@@ -573,6 +573,10 @@ article.post{
 article.post:nth-child(1) {
 	border-top: none;
 }
+
+
+	
+
 .newsMainBody{
 	@extend .flex;
 	justify-content: space-between;
@@ -870,7 +874,7 @@ h3#artworks {
 	justify-content:space-around;
 	flex-direction:row-reverse;
 	.artworkItemInfoText {
-			width: 40%;
+			width: 37%;
 			p {
 				margin: 0;
 			}
@@ -882,7 +886,7 @@ h3#artworks {
 			}
 	}
 	.galleryContainer {
-			width: 57%;
+			width: 60%;
 	}
 }
 section.inquiry {
@@ -929,7 +933,7 @@ input.inquireSubmit {
 	z-index: 100;
 	background: white;
 	min-width: 300px;
-	max-width: 800px;
+	max-width:1000px;
 	height: 100vh;
 	padding: 55px 0 0 10px;
 	border-left: 1px solid black;
@@ -1250,7 +1254,21 @@ body.home {
 		}
 	}
 }
-
+#gtranslate_selector {
+	max-width: 80px;
+	font-weight:700;
+	background: transparent;
+	border:none;
+	outline:none;
+	text-transform: uppercase;
+	font-size: 14px;
+	-webkit-appearance: none;
+	 -moz-appearance: none;
+	 appearance: none;
+}
+.bodyOveflowArt {
+	overflow: hidden;
+}
 
 //QUARIES
 @media (max-width: 1100px) {
@@ -1260,6 +1278,9 @@ body.home {
 		.menu__hero {
 		max-width: 33%;
 	}
+	.copyright {
+		width: 50%;
+	}
 
 
 
@@ -1268,13 +1289,19 @@ body.home {
 	.fl-panelBar-wideScreen {
 		left: 5rem;
 	}
-
+	.copyright {
+		width: 40%;
+	}
 
 
 }
 
 
 @media (max-width: 730px) {
+	#gtranslate_selector {
+	 position: relative;
+    left: 10px;
+	}
 	body.home {
 		header {
 			margin-bottom: 0;
@@ -1432,6 +1459,7 @@ body.home {
 .mailing-list-open {
   position: fixed;
   bottom: 0;
+  line-height: 40px;
   background: transparent;
   @include fontSize(9);
   color: black;
@@ -1495,7 +1523,7 @@ body.home {
   		}
   	}
   }
-  body.page, body.search, body.single {
+  body.page, body.search, body.single, body.error404 {
   	.logo {
   		display: none;
   	}
@@ -1546,6 +1574,11 @@ body.home {
   //footer 
   footer {
   	border: none;
+  	.footerInner {
+  		a, button, .buttonOuter {
+  			display: none;
+  		}
+  	}
   }
   nav.Footermenu , .addressFooter {
   	display: none;
@@ -1555,6 +1588,7 @@ body.home {
   @include fontSize(6);
   padding: 10px 6px;
   bottom: 0;
+  width: 90%;
   // position: absolute;
 
 }
@@ -1573,9 +1607,13 @@ body.home {
     margin: 0 auto;
     max-width: 100%;
     min-width: 100px;
+    box-shadow: none;
+    .mlist_email {
+    	width: 90%;
+    }
     .subscribe-to-mailing-list {
-    	bottom: 46%;
-    	right: 6%;
+    	bottom: 2%;
+    	right: 4.5%;
     }
 
 }
@@ -1840,13 +1878,18 @@ main.contactMain .galleryAdditionalInfo .paragraphHalf {
 	}
 
 }
-@media (min-height: 600px){
+@media (max-width: 730px) and (min-height: 600px) {
 
 .searchResultsPage {
 	min-height: 50vh;
 }
 		.noResults{
-			margin: 40% auto;
+			margin: 30% auto;
+			left: 0; 
+			h2 {
+				width: 80%;
+				margin: 0 auto;
+			}
 		}
 
 }
@@ -1861,6 +1904,14 @@ body.home {
 }
 .noShowContainer {
 	margin: 30% auto;
+}
+.noResults{
+	margin: 36% auto;
+	left: 0; 
+	h2 {
+		width: 80%;
+		margin: 0 auto;
+	}
 }
 
 		
@@ -1923,7 +1974,7 @@ body.home {
 		    // padding-top: 30%; 
 		    li {
 		      a {
-		        line-height: 30px;
+		        line-height: 35px;
 		        @include fontSize(15);
 		       
 		      }
@@ -1939,13 +1990,17 @@ body.home {
 			width: 90%;
 			margin: 0 auto;
 			.menu-book-an-appointment {
+				margin-top: 20px;
 				
 				a {
-					line-height: 30px;
+					line-height: 35px;
 					@include fontSize(15);
 					
 				}
 			}
+		}
+		.mailing-list .subscribe-to-mailing-list {
+			bottom: 15%;
 		}
 	
 }

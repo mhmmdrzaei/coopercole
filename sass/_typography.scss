@@ -161,6 +161,9 @@ h2.artFairTitle {
   @extend .whiteText;
   @include fontSize(60);
   font-size: clamp(2.3rem, 9vw, 8rem); 
+  &:hover {
+    @extend .rainbow;
+  }
   // white-space: nowrap;
   text-align: center;
 }

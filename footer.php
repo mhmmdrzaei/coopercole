@@ -1,19 +1,20 @@
 <footer>
-	<div class="addressFooter">
-		<p><?php the_field('gallery_address_footer', 'options'); ?></p>
-	</div>
-	
-	<nav class="Footermenu">
-		
-		<?php wp_nav_menu( array(
-		  'container' => false,
-		  'theme_location' => 'footer_menu'
-		)); ?>
-		<button class="mailing-list-open" alt="Opens Mailing List Subscription form">Mailing List</button>
-	</nav>
+	<section class="footerInner">
+		<a href="/index.php?page_id=70">Contact Us</a>
+		<section class="buttonOuter">
+			<button class="bookAnAppointment"><a href="https://calendly.com/coopercole" target="_blank">
+			Book An Appointment</a></button>
+		</section>
+
+		<p class="copyright"><?php the_field('copyright_text', 'options'); ?></p>
+		<section class="buttonOuter">
+			<button class="mailing-list-open" alt="Opens Mailing List Subscription form">Mailing List</button>
+		</section>
+		<a href="https://www.instagram.com/coopercole/" target="_blank">Instagram</a>
+	</section>
 
 
-	<p class="copyright"><?php the_field('copyright_text', 'options'); ?></p>
+
 	<form class="mailing-list" method="post" action="https://ymlp.com/subscribe.php?id=guqjmsegmgs" >
 		<p class="closelistML">CLOSE</p>
 	    <div class="containerML">

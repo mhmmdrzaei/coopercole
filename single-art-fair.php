@@ -222,25 +222,22 @@
 	                       $height = get_field('height', $curr_id);
 	                       $width = get_field('width', $curr_id);
 	                       $depth = get_field('depth', $curr_id);
+	                       $height_metric = convert_to_cm($height);
+	                        $width_metric = convert_to_cm($width);
+	                        $depth_metric = convert_to_cm($depth);
 
-	                       if( $height && $width) {
+	                       if($depth) {
 
-	                         $height_metric = convert_to_cm($height);
-	                         $width_metric = convert_to_cm($width);
-	                 }
-	                         if($depth) {
-	                           $depth_metric = convert_to_cm($depth);
-	                           echo $height . '" X ' . $width . '" X ' . $depth .'"<br/>';
+	                          echo $height . '" X ' . $width . '" X ' . $depth .'"<br/>';
 
-	                           echo $height_metric . 'cm X ' . $width_metric .'cm X ' . $depth_metric .'cm<br/>';
-	                         }
+	                          echo $height_metric . 'cm X ' . $width_metric .'cm X ' . $depth_metric .'cm<br/>';
+	                        } else if ( $height && $width) {
+	                          echo $height . '" X ' . $width .'"<br/>';
+	                         echo $height_metric . 'cm X ' . $width_metric .'cm<br/>';
 
-	                         else {
-	                           echo $height . 'in X ' . $width . 'in<br/>';
-
-	                           echo $height_metric . 'cm X ' . $width_metric . 'cm<br/>';
-	                         }
-
+	                        } else {
+	                         
+	                        }
 
 
 
