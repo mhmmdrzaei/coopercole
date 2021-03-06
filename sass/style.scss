@@ -1251,6 +1251,7 @@ body.home {
 	.exhibitions {
 		article.exhibition {
 			padding: 50px 0 0;
+			min-height: 410px;
 		}
 	}
 }
@@ -1306,12 +1307,17 @@ body.home {
 		header {
 			margin-bottom: 0;
 		}
+		footer {
+			position: absolute;
+		}
 		.exhibitions {
 			article.exhibition {
 				padding:0;
 				top: -15px;
+				min-height: 0;
 			}
 		}
+
 	}
 	.headerMain {
 	margin: 15px auto 0;
@@ -2001,6 +2007,13 @@ body.home {
 		}
 		.mailing-list .subscribe-to-mailing-list {
 			bottom: 15%;
+		}
+
+		body.home {
+			footer {
+				position: inherit;
+			}
+
 		}
 	
 }
