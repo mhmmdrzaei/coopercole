@@ -45,6 +45,7 @@ body {
 	font-family: 'Open Sans', sans-serif;
 	width: 100%;
 	margin: 0 auto;
+	min-height: 100vh;
 }
 main, .container {
 	width: 95%;
@@ -179,9 +180,12 @@ a {
   }
   .exhibitionSide{
   	width: 30%;
+  	.nonRepArtists {
+  		@include fontSize(20);
+  		font-size: clamp(1rem, 10vw, 1.5rem);
+  	}
   }
 }
-
 #newsContentID, #exhibitionContentID {
 	display: none;
 } 
@@ -316,20 +320,23 @@ article.exhibition {
 
 
 		.artistNameExhibition{
-			width: 20%;
+			width: 16%;
 			.mohammadUl{
 				margin: 0;
 				padding: 0;
 				list-style: none;
 				-webkit-text-stroke: .7px black;
 				color: white;
-				@include fontSize(12);
+				@include fontSize(11);
 				li {
 					h4{
 						margin: 0 0 10px;
 
 					}
 				}
+			}
+			.nonRepArtists {
+				@include fontSize(11);
 			}
 		}
 		.exhibitionDetails {
@@ -466,6 +473,12 @@ article.exhibition:nth-child(1) {
 	}
 
 }
+.exhibitionMain .exhibitionSide .artFairArtists{
+  .nonRepArtists {
+    @include fontSize(10);
+    text-transform: uppercase;
+  }
+}
 
 .artFairEach {
 	@extend .flex;
@@ -514,10 +527,20 @@ article.exhibition:nth-child(1) {
 	}
 
 }
+.nonRepArtists {
+	list-style: none;
+	margin: 0px 0;
+	padding: 0;
+	// text-transform: uppercase;
+	font-weight: 700;
+	li {
+		margin-bottom: 7px;
+	}
+}
+
 .artFairEach:nth-child(1) {
   border: none;
 }
-
 //news
 .newsNavigation {
 	@extend .flex;
@@ -1832,6 +1855,7 @@ main.contactMain .galleryAdditionalInfo .paragraphHalf {
 		width: 50%;
 	}
 	.artFairArtists {
+
 		margin: 20px 0;
 		h4 {
 			display: none;
@@ -1899,11 +1923,16 @@ main.contactMain .galleryAdditionalInfo .paragraphHalf {
 		}
 
 }
+body.search-no-results {
+	footer {
+		position: absolute;
+	}
+}
 @media (min-height: 800px){
 .artistsMain {
 			min-height: 71vh;
 		}
-body.home {
+body.home, body.search-no-results {
 	footer {
 		position: absolute;
 	}

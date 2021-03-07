@@ -136,6 +136,9 @@ h2.artFairTitle {
     @extend .whiteText;
     @include fontSize(14);
   }
+  .nonRepArtists {
+    @include fontSize(12);
+  }
 }
 .artFairExhibitors {
     list-style: none;

@@ -20,7 +20,6 @@ if( get_field('end_date') ) {
 	$titleExhibit = get_the_title();
 	$exhibitlocation = get_field('location');
 
-
  ?>
 <?php 
 	$exhibitionImage = get_the_post_thumbnail_url(null, 'full');
@@ -31,6 +30,16 @@ if( get_field('end_date') ) {
 	<a href="<?php the_permalink(); ?>">
 
 	<section class="artistNameExhibition">
+		<?php if( have_rows('artist_with_no_artist_page') ): ?>
+		    <ul class="nonRepArtists">
+		    <?php while( have_rows('artist_with_no_artist_page') ): the_row(); 
+		        ?>
+		        <li>
+		            <?php the_sub_field('artist_name_noArtistPage'); ?>
+		        </li>
+		    <?php endwhile; ?>
+		    </ul>
+		<?php endif; ?>
 		<?php
 
 			$connected = new WP_Query( array(
@@ -96,5 +105,6 @@ if( get_field('end_date') ) {
 
 
 	</a>
+
 
 </article>

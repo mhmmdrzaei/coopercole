@@ -237,5 +237,5 @@ if($currentArtF->have_posts()) : while($currentArtF->have_posts()) : $currentArt
 
 
 
-
+ 
 <?php get_footer(); ?>

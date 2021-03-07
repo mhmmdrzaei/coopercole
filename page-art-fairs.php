@@ -100,6 +100,16 @@ if( get_field('end_date') ) {
 	      				remove_filter( 'posts_orderby' , 'posts_orderby_lastname' );
 
 	      			?>
+	      			<?php if( have_rows('artist_with_no_artist_page') ): ?>
+	      			    <ul class="nonRepArtists">
+	      			    <?php while( have_rows('artist_with_no_artist_page') ): the_row(); 
+	      			        ?>
+	      			        <li>
+	      			            <?php the_sub_field('artist_name_noArtistPage'); ?>
+	      			        </li>
+	      			    <?php endwhile; ?>
+	      			    </ul>
+	      			<?php endif; ?>
 		      	</div>
 		      	<figure>
 		      		<a href="<?php the_permalink(); ?>"><?php the_post_thumbnail('large'); ?></a>
