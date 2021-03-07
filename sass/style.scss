@@ -1279,13 +1279,15 @@ body.home {
 	}
 }
 #gtranslate_selector {
-	max-width: 80px;
+	// max-width: 80px;
+	text-align: right;
 	font-weight:700;
 	background: transparent;
 	border:none;
 	outline:none;
 	text-transform: uppercase;
 	font-size: 14px;
+	text-align-last:right;
 	-webkit-appearance: none;
 	 -moz-appearance: none;
 	 appearance: none;
@@ -1323,8 +1325,8 @@ body.home {
 
 @media (max-width: 730px) {
 	#gtranslate_selector {
-	 position: relative;
-    left: 10px;
+	 // position: relative;
+    // left: 10px;
 	}
 	body.home {
 		header {
@@ -1372,8 +1374,8 @@ body.home {
   }
   .languageIn {
   	position: fixed;
-  	right: 5%;
-  	top: 3%;
+  	right:10px;
+  	top: 15px;
   	margin: 0;
   }
   .searchIn {
