@@ -183,6 +183,9 @@ a {
   	.nonRepArtists {
   		@include fontSize(20);
   		font-size: clamp(1rem, 10vw, 1.5rem);
+  		-webkit-text-stroke: .7px black;
+  		color: white;
+
   	}
   }
 }
@@ -337,6 +340,8 @@ article.exhibition {
 			}
 			.nonRepArtists {
 				@include fontSize(11);
+				-webkit-text-stroke: .7px black;
+				color: white;
 			}
 		}
 		.exhibitionDetails {
@@ -477,6 +482,12 @@ article.exhibition:nth-child(1) {
   .nonRepArtists {
     @include fontSize(10);
     text-transform: uppercase;
+    color: black;
+    li {
+    	margin-top: 7px;
+    }
+    -webkit-text-stroke: 0;
+
   }
 }
 
@@ -529,12 +540,12 @@ article.exhibition:nth-child(1) {
 }
 .nonRepArtists {
 	list-style: none;
-	margin: 0px 0;
+	margin: 10px 0 0;
 	padding: 0;
 	// text-transform: uppercase;
 	font-weight: 700;
 	li {
-		margin-bottom: 7px;
+		// margin-top: 7px;
 	}
 }
 
