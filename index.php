@@ -78,6 +78,7 @@ if($currentArtF->have_posts()) : while($currentArtF->have_posts()) : $currentArt
 
 
 <?php endif; ?>
+<div class="homepageFooter">
 <div class="exhibitions container">
 
 		<?php
@@ -234,8 +235,5 @@ if($currentArtF->have_posts()) : while($currentArtF->have_posts()) : $currentArt
 		<?php endif; ?>
 
 	</div>
-
-
-
- 
 <?php get_footer(); ?>
+</div>

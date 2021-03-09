@@ -1,4 +1,5 @@
 <?php get_header(); ?>
+<div class="homepageFooter">
 <main class="searchResultsPage">
 	<?php if ( have_posts() ) : ?>
 		<p>Search Results for <strong>" <?php echo get_search_query(); ?>":</strong></p>
@@ -17,3 +18,4 @@
 </main>
 
 <?php get_footer(); ?>
+</div>

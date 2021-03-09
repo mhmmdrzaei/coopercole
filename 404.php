@@ -1,5 +1,5 @@
 <?php get_header(); ?>
-
+<div class="searchpageFooter">
 <div class="main">
   <section class="noResults">
   	<figure>
@@ -13,3 +13,4 @@
 </div> <!-- /.main -->
 
 <?php get_footer(); ?>
+</div>

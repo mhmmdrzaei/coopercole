@@ -1273,13 +1273,13 @@ section.inquiry form input:nth-child(2).invalid {
 body.home {
 	.exhibitions {
 		article.exhibition {
-			padding: 50px 0 0;
-			min-height: 410px;
+			padding: 50px 0;
+			// min-height: 410px;
 		}
 	}
 }
 #gtranslate_selector {
-	// max-width: 80px;
+	max-width: 100px;
 	text-align: right;
 	font-weight:700;
 	background: transparent;
@@ -1294,6 +1294,12 @@ body.home {
 }
 .bodyOveflowArt {
 	overflow: hidden;
+}
+.homepageFooter,.searchpageFooter {
+	min-height: 75vh;
+	footer {
+		position: absolute;
+	}
 }
 
 //QUARIES
@@ -1318,12 +1324,21 @@ body.home {
 	.copyright {
 		width: 40%;
 	}
+	.headerMainMenu {
+    margin-right: 17%;
+	}
+	.exhibitionsMainPage .exhibitionYearsSide {
+    width: 4%;
+	}
 
 
 }
 
 
 @media (max-width: 730px) {
+	.noResults {
+		left: 0;
+	}
 	#gtranslate_selector {
 	 // position: relative;
     // left: 10px;
@@ -1332,12 +1347,9 @@ body.home {
 		header {
 			margin-bottom: 0;
 		}
-		footer {
-			position: absolute;
-		}
 		.exhibitions {
-			article.exhibition {
-				padding:0;
+			article.exhibition:nth-child(1) {
+				padding-bottom:50px;
 				top: -15px;
 				min-height: 0;
 			}
@@ -1588,7 +1600,7 @@ body.home {
 .noShowContainer {
 	 margin: 50px auto;
 	 width: 90%;
-	 min-height: 400px;
+	 // min-height: 400px;
 	 figure {
 	 	width: 85%;
 	 	margin: 0 auto;
@@ -1927,7 +1939,7 @@ main.contactMain .galleryAdditionalInfo .paragraphHalf {
 }
 body.search-no-results {
 	footer {
-		position: absolute;
+		// position: absolute;
 	}
 }
 @media (min-height: 800px){
@@ -1936,14 +1948,14 @@ body.search-no-results {
 		}
 body.home, body.search-no-results {
 	footer {
-		position: absolute;
+		// position: absolute;
 	}
 }
 .noShowContainer {
 	margin: 30% auto;
 }
 .noResults{
-	margin: 36% auto;
+	margin: 30px auto;
 	left: 0; 
 	h2 {
 		width: 80%;
@@ -2042,7 +2054,7 @@ body.home, body.search-no-results {
 
 		body.home {
 			footer {
-				position: inherit;
+				// position: inherit;
 			}
 
 		}
@@ -2068,6 +2080,9 @@ body.home, body.search-no-results {
 
 	.contactContainer .galleryAddress, .contactContainer .galleryContact {
 		width: 100%;
+	}
+	.searchpageFooter {
+		min-height: 100vh;
 	}
 
 }
