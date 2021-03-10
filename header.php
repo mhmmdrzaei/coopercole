@@ -44,7 +44,7 @@
      <h3 class="menuMain">Menu</h3>
     </label>
 
-    <section class="logo">
+    <section class="logo" id="logoMain">
        <a href="<?php echo home_url( '/' ); ?>" title="<?php bloginfo( 'name', 'display' ); ?>" rel="home">
           <?php require 'partials/logo.php'; ?>
           <img src="<?php bloginfo('template_directory'); ?>/images/ccfullLogoMobile.png" alt="Cooper Cole Gallery Logo"class="exhibitionImgsLL">
