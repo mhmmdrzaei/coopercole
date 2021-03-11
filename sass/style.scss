@@ -1664,6 +1664,7 @@ body.home {
     box-shadow: none;
     .mlist_email {
     	width: 90%;
+    	border-radius: 0;
     }
     .subscribe-to-mailing-list {
     	bottom: 2%;
@@ -1923,6 +1924,9 @@ main.contactMain .galleryAdditionalInfo .paragraphHalf {
 		width: 100%;
 	}
 }
+.mailing-list .subscribe-to-mailing-list {
+	bottom: 50%;
+}
 }
 
 
@@ -1979,6 +1983,7 @@ body.home, body.search-no-results {
 }
 
 @media (max-height: 820px) and (max-width: 550px) {
+
 	.menu__hero .menu__nav {
 
 		padding: 30% 0;
@@ -2059,9 +2064,7 @@ body.home, body.search-no-results {
 				}
 			}
 		}
-		.mailing-list .subscribe-to-mailing-list {
-			bottom: 15%;
-		}
+
 
 		body.home {
 			footer {
