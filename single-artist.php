@@ -168,20 +168,14 @@
 		            <section class="artworkItemInfoText">
 		              <div class="artworkInfoTextFixed">
 		              <p class="artworkInfoTitle"><?php echo get_field('title', $curr_id); ?><?php if(get_field('year', $curr_id)) { echo ', '.get_field('year', $curr_id).''; } ?></p>
-		              <p>
-		                <?php if(get_field('media', $curr_id)) { echo get_field('media', $curr_id).''; } ?>
-		              </p>
-		              <p><?php 
-		                if(get_field('edition', $curr_id)) { echo get_field('edition', $curr_id).''; }
-		               ?></p>
-		               <p>
-		                 <?php if(get_field('notes', $curr_id)) { echo get_field('notes', $curr_id).''; }
+		                <?php if(get_field('media', $curr_id)) { echo'<p>' .get_field('media', $curr_id).' </p>'; } ?>
+		              <?php 
+		                if(get_field('edition', $curr_id)) { echo '<p>'.get_field('edition', $curr_id).' </p>'; }
+		               ?>
+		                 <?php if(get_field('notes', $curr_id)) { echo '<p>'.get_field('notes', $curr_id).' </p>'; }
 		                  ?>
-		               </p>
-		               <p>
-		                 <?php if(get_field('inventory', $curr_id)) { echo get_field('inventory', $curr_id).''; }
+		                 <?php if(get_field('inventory', $curr_id)) { echo '<p>'.get_field('inventory', $curr_id).' </p>'; }
 		                  ?>
-		               </p>
 
 		               <section class="dimentions">
 		                       <?php 

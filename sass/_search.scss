@@ -30,14 +30,15 @@ input#s{
 //no results 
 .noResults {
 	width: 95;
-	margin: 0 auto 50px;
+	margin: 0 auto;
+	// padding-bottom: 60px;
 
 	position: relative;
 	left: -3%;
 	figure {
 
-		width: 50%;
-		max-width: 250px;
+		// width: 50%;
+		max-width: 150px;
 		margin: 40px auto;
 	}
 
