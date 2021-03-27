@@ -1,10 +1,9 @@
 /*
-* Theme Name: HackerYou Starter Theme
-* Theme URI: http://hackeryou.com;
-* Description: Starter theme for building any website. Created by HackerYou. * Rename this to your own theme page.
-* Version: 1.0
-* Author: HackerYou
-* Author URI: http://hackeryou.com
+* Theme Name: Cooper Cole 2021
+* Theme URI: Coopercole.com
+* Description:  Created by Mohammad Rezaei. 
+* Author: Mohammad Rezaei
+* Author URI: http://mohammadrezaei.com
 */
 
 @import 'normalize';
@@ -1332,7 +1331,9 @@ body.home {
 	.copyright {
 		width: 50%;
 	}
-
+	.stickyMenu {
+		left: 2%;
+	}
 
 
 }
@@ -1355,6 +1356,7 @@ body.home {
 
 
 @media (max-width: 730px) {
+	
 	.noResults {
 		left: 0;
 	}
