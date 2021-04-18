@@ -171,6 +171,7 @@ $(document).ready(function(){
 
         $("body").css('background-image', 'linear-gradient(to right, #DC03FC, #0322FC, #03FCEF, #23FC03, #FCE303, #FC7A03, #FC0303)');
         $('footer').css('background','white');
+        $('footer').css('position','inherit');
         $('.logoall').css('fill','white');
         $('#gtranslate_selector').css('color','white');
         $('form.searchForm input').css('border-bottom','1px solid #ffffff');
