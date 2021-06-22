@@ -171,7 +171,7 @@ $(document).ready(function(){
 
         $("body").css('background-image', 'linear-gradient(to right, #DC03FC, #0322FC, #03FCEF, #23FC03, #FCE303, #FC7A03, #FC0303)');
         $('footer').css('background','white');
-        $('footer').css('position','inherit');
+        $('footer').css('position','absolute');
         $('.logoall').css('fill','white');
         $('#gtranslate_selector').css('color','white');
         $('form.searchForm input').css('border-bottom','1px solid #ffffff');
@@ -199,8 +199,8 @@ $(document).ready(function(){
     $('.mohammadUl').each(function() {
       var $this = $(this);
       var x = $(window).width();
-      if ($this.find('li').length > 9) { //if looking for direct descendants then do .children('div').length
-          $this.find('li:nth-child(n+9)').addClass('artistNameHidden');
+      if ($this.find('li').length > 5) { //if looking for direct descendants then do .children('div').length
+          $this.find('li:nth-child(n+5)').addClass('artistNameHidden');
           $this.find('.moreArtistNamesOpen').html('<p>+ More Artists</p>');
       };
 

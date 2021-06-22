@@ -1963,9 +1963,16 @@ main.contactMain .galleryAdditionalInfo .paragraphHalf {
 		}
 
 }
-body.search-no-results {
+// body.search-no-results {
+// 	footer {
+// 		position: inherit;
+// 	}
+// }
+
+.homepageFooter,.searchpageFooter {
+	// min-height: 75vh;
 	footer {
-		// position: absolute;
+		position: inherit;
 	}
 }
 @media (min-height: 800px){

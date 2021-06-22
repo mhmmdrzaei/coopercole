@@ -35,7 +35,7 @@ if( get_field('end_date') ) {
 		    <?php while( have_rows('artist_with_no_artist_page') ): the_row(); 
 		        ?>
 		        <li>
-		            <?php the_sub_field('artist_name_noArtistPage'); ?>
+		            <h3><?php the_sub_field('artist_name_noArtistPage'); ?></h3>
 		        </li>
 		    <?php endwhile; ?>
 		    </ul>
@@ -70,12 +70,12 @@ if( get_field('end_date') ) {
 
 				while ( $connected->have_posts() ) : $connected->the_post();
 
-					echo '<li><h4>';
+					echo '<li><h3 class="artistnameH3">';
 
 					echo get_the_title(get_the_id());
 
 
-					echo '</h4></li>';
+					echo '</h3></li>';
 
 				endwhile;
 				echo "<section class='moreArtistNamesOpen'></section>";
