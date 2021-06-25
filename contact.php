@@ -5,7 +5,7 @@
 	<section class="contactContainer">
 		<aside class="galleryAddress">
 			<h1>Address</h1>
-			<p><?php echo get_field('location')['address']; ?></p>
+			<p><?php the_field('gallery_address_footer','options') ?></p>
 			<a class="addressMap"href="#map" class="contactMapLink">Map</a>
 			
 		</aside>
