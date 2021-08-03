@@ -134,10 +134,16 @@ function myFunction() {
 // } 
 //video Link
 $(document).ready(function(){
-  $(".featuredVideoTitle").click(function(){
-    $("#featuredVideoLink").toggle(1000);
-    
+  $(".featuredVideo").each(function(){
+    $(this).click(function() {
+    $(this).find("#featuredVideoLink").toggle(1000);
+   });   
   });
+  //   $(".featuredVideo").each(function(){
+  //   $( ".featuredVideoTitle" ).click(function() {
+  //   $(this).find("#featuredVideoLink").toggle(1000);
+  //  });   
+  // });
 
   $(".newsOpen").click(function(){
     $("#newsContentID").toggle(500);

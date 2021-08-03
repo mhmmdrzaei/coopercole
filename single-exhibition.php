@@ -131,7 +131,7 @@
                     $onlineLink = get_sub_field('link_label_additionalMedia');
                     if( $onlineLink ) {; ?>
                     <section class="onlineExhibition">
-                      <a href="<?php the_sub_field('actual_link_additionalMedia'); ?>"><?php the_sub_field('link_label_additionalMedia'); ?> <i class="fas fa-external-link-alt"></i></a>
+                      <a href="<?php the_sub_field('actual_link_additionalMedia'); ?>" target="_blank"><?php the_sub_field('link_label_additionalMedia'); ?> <i class="fas fa-external-link-alt"></i></a>
                     </section>
                     <?php } ?> 
                   <?php endwhile; ?>
