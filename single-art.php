@@ -6,6 +6,13 @@
     <?php $curr_id = get_the_id(); ?>
     <section class="singleArtFull">
       <section class="singleArtImages">
+           <?php if(have_rows('not_embedded_video')){
+            while(have_rows('not_embedded_video')) {
+            the_row(); ?>
+            <video controls>
+              <source src="<?php the_sub_field('video_file')?>" type="video/mp4" controls controlsList="nodownload">
+              Your browser does not support the video tag. </video></div>
+        <?php } }; ?>
         <?php
 
 
@@ -29,9 +36,7 @@
 
                  }
 
-               }
-
-               else {
+               } else {
 
                  the_post_thumbnail('large');
 

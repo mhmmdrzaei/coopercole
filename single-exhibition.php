@@ -140,10 +140,19 @@
               <?php endif; ?>
           <?php endwhile; ?>
       <?php endif; ?>
+
+         <?php if(have_rows('not_embedded_video')){
+          while(have_rows('not_embedded_video')) {
+          the_row(); ?>
+          <video controls>
+            <source src="<?php the_sub_field('video_file')?>" type="video/mp4" controls controlsList="nodownload">
+            Your browser does not support the video tag. </video>
+      <?php } }; ?>
        
 
       <?php if(get_field('carousel')): ?>
       <section class="exhibitionImages">
+
           <?php
             $slides = get_field('carousel');
             $slide_amount = count($slides);
@@ -314,8 +323,14 @@
             </section>
                   
 
-   
-
+                <div class="galleryContainer">
+                <?php if(have_rows('not_embedded_video')){
+                      while(have_rows('not_embedded_video')) {
+                      the_row(); ?>
+                      <video controls>
+                        <source src="<?php the_sub_field('video_file')?>" type="video/mp4" controls controlsList="nodownload">
+                        Your browser does not support the video tag. </video>
+                  <?php } }; ?>
 
                  <?php if(have_rows('videos')){
                     while(have_rows('videos')) { the_row();
@@ -328,14 +343,14 @@
                      else if(get_field('gallery')){
 
                       $gallery = get_field('gallery');
-                        echo '<div class="galleryContainer">';
+                        // echo '<div class="galleryContainer">';
                   
                         foreach($gallery as $image) {
 
                           echo '<img class="" src="'.$image['sizes']['large'].'" />';
 
                           }
-                          echo' </div>';
+                          // echo' </div>';
                       }
 
                       else {  
@@ -343,6 +358,7 @@
                         }
 
                       ?>
+                      </div>
                 </section>
               </section>
           </div>

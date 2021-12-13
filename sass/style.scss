@@ -77,6 +77,11 @@ a {
 .show-read-more .more-text{
     display: none;
 }
+//html video 
+video {
+	width: 100%;
+	border: 1px solid black;
+}
 
 //featured video
 #featuredVideoLink{
