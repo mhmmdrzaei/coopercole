@@ -141,13 +141,7 @@
           <?php endwhile; ?>
       <?php endif; ?>
 
-         <?php if(have_rows('not_embedded_video')){
-          while(have_rows('not_embedded_video')) {
-          the_row(); ?>
-          <video controls>
-            <source src="<?php the_sub_field('video_file')?>" type="video/mp4" controls controlsList="nodownload">
-            Your browser does not support the video tag. </video>
-      <?php } }; ?>
+
        
 
       <?php if(get_field('carousel')): ?>
@@ -163,9 +157,16 @@
             <img class="exhibitionImgsLL" src="<?php echo $slide['sizes']['large']; ?>" alt="" id="<?php echo $slide['id'];?>"/>
 
             <?php endforeach; ?>
+            
       </section>
         <?php endif; ?>
-      
+         <?php if(have_rows('not_embedded_video')){
+          while(have_rows('not_embedded_video')) {
+          the_row(); ?>
+          <video controls>
+            <source src="<?php the_sub_field('video_file')?>" type="video/mp4" controls controlsList="nodownload">
+            Your browser does not support the video tag. </video>
+      <?php } }; ?>
     </section>
 
   </section>
