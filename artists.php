@@ -31,6 +31,12 @@
 				if(sizeof($lastname) == 3) {
 					$p->lastname = $lastname[2];
 				}
+				if(sizeof($lastname) == 4) {
+					$p->lastname = $lastname[1];
+				}
+				if(sizeof($lastname) == 5) {
+					$p->lastname = $lastname[1];
+				}
 			}
 
 			usort($artists->posts, 'cmp');
