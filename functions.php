@@ -564,7 +564,7 @@ function convert_to_cm($inches = 0) {
 }
 
 function cmp($a, $b) {
-    return strcmp($a->lastname, $b->lastname);
+    return strcasecmp($a->lastname, $b->lastname);
 }
 
 function coopercole_tags() {
