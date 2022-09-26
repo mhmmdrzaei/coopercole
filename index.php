@@ -78,7 +78,7 @@ if($currentArtF->have_posts()) : while($currentArtF->have_posts()) : $currentArt
 
 
 <?php endif; ?>
-<div class="homepageFooter">
+<!-- <div class="homepageFooter"> -->
 <div class="exhibitions container">
 
 		<?php
@@ -206,22 +206,24 @@ if($currentArtF->have_posts()) : while($currentArtF->have_posts()) : $currentArt
 				$the_query->the_post();
 				?>
 
-				<?php if(get_field('page_banner')): ?>
-					<figure class="page-banner"><img src="<?php echo get_field('page_banner')['sizes']['large']; ?>"></figure>
-				<?php endif; ?>
 
-				<div class="noShowContainer">
-					<?php require 'partials/closed.php'; ?>
-					<figure><img src="<?php bloginfo('template_directory'); ?>/images/closed-black-.gif" alt="Cooper Cole Gallery is currently closed for installation"class="exhibitionImgsLL"></figure>
-					
-					<?php if(get_field('page_subtitle')): ?>
-						<h2><?php the_field('page_subtitle'); ?></h2>
-					<?php
-						if (get_the_content()):
-							the_content();
-						endif;
-					?>
+				<div class="noShowContainerNew">
+					<?php require 'partials/closed-new.php'; ?>
+					<?php 
+					$subLink = get_field('subtitle_links_to');
+					$sub = get_field('page_subtitle');
+
+					if($sub && $subLink): ?>
+						<a href="<?php the_field('subtitle_links_to'); ?>" alt="<?php the_field('page_subtitle'); ?>">
+							<div class="caption"><span><?php the_field('page_subtitle'); ?></span></div>
+
+						</a>
+						<?php else: ?>
+							<div class="caption"><span><?php the_field('page_subtitle'); ?></span></div>
+						
+
 					<?php endif; ?>
+					
 				</div>
 				<?php
 				endwhile;
@@ -236,4 +238,4 @@ if($currentArtF->have_posts()) : while($currentArtF->have_posts()) : $currentArt
 
 	</div>
 <?php get_footer(); ?>
-</div>
+<!-- </div> -->

@@ -173,22 +173,22 @@ $(document).ready(function(){
     });
 
  //no exhibition class
-    if ($(".noShowContainer")[0]){
+    if ($(".noShowContainerNew")[0]){
 
-        $("body").css('background-image', 'linear-gradient(to right, #DC03FC, #0322FC, #03FCEF, #23FC03, #FCE303, #FC7A03, #FC0303)');
+        // $("body").css('background-image', 'linear-gradient(to right, #DC03FC, #0322FC, #03FCEF, #23FC03, #FCE303, #FC7A03, #FC0303)');
         $('footer').css('background','white');
-        $('footer').css('position','absolute');
-        $('.logoall').css('fill','white');
-        $('#gtranslate_selector').css('color','white');
-        $('form.searchForm input').css('border-bottom','1px solid #ffffff');
-        $('.artFairHome').css('background','white');
-        $('.searchForm label svg g path').css('fill','white');
+        // $('footer').css('position','fixed');
+        // $('.logoall').css('fill','white');
+        // $('#gtranslate_selector').css('color','white');
+        // $('form.searchForm input').css('border-bottom','1px solid #ffffff');
+        // $('.artFairHome').css('background','white');
+        // $('.searchForm label svg g path').css('fill','white');
 
     }
  
 
     if(($('.noShowContainer')[0]) && (($(window).width()) < 730)) {
-      $('section.logo').html('<img src="https://coopercolegallery.com/wp-content/uploads/2021/03/Cooper-Coole-Logos-Full-W-Small.png" alt="Cooper Cole Gallery Logo"class="exhibitionImgsLL">');
+      // $('section.logo').html('<img src="https://coopercolegallery.com/wp-content/uploads/2021/03/Cooper-Coole-Logos-Full-W-Small.png" alt="Cooper Cole Gallery Logo"class="exhibitionImgsLL">');
       // $('footer').css('position','absolute');
     }
 
@@ -206,8 +206,9 @@ $(document).ready(function(){
       var $this = $(this);
       var x = $(window).width();
       if ($this.find('li').length > 5) { //if looking for direct descendants then do .children('div').length
-          $this.find('li:nth-child(n+5)').addClass('artistNameHidden');
-          $this.find('.moreArtistNamesOpen').html('<p>+ More Artists</p>');
+          $this.addClass('scroll');
+          // $this.find('li:nth-child(n+5)').addClass('artistNameHidden');
+          // $this.find('.moreArtistNamesOpen').html('<p>+ More Artists</p>');
       };
 
 

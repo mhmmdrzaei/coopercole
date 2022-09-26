@@ -69,6 +69,8 @@
 
           <h4><?php echo $start_date->format('F j'); if($end_date) { echo ' - '.$end_date->format('F j, Y'); } ?></h4>
           <h4><em><?php the_field('location'); ?></em></h4>
+          <br>
+          <h4><?php the_field('opening__closing_reception'); ?></h4>
         </aside>
       </div>
       
@@ -189,7 +191,7 @@
         <div class="artworkItemEach" >
           <section class="toggleText">
             <figure>
-              <?php echo get_the_post_thumbnail( get_the_id(), 'medium' ); ?>
+              <?php echo get_the_post_thumbnail( get_the_id(), 'large' ); ?>
             </figure>
            
               <?php
