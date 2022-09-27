@@ -177,7 +177,7 @@ $(document).ready(function(){
 
         // $("body").css('background-image', 'linear-gradient(to right, #DC03FC, #0322FC, #03FCEF, #23FC03, #FCE303, #FC7A03, #FC0303)');
         $('footer').css('background','white');
-        // $('footer').css('position','fixed');
+        $('footer').css('position','absolute');
         // $('.logoall').css('fill','white');
         // $('#gtranslate_selector').css('color','white');
         // $('form.searchForm input').css('border-bottom','1px solid #ffffff');
@@ -453,13 +453,14 @@ $(window).scroll(function() {
    var emailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
 
     $('.inquireSubmit').click(function(event) {
-      console.log('fuck');
         event.preventDefault();
         
         var $this = $(this).parent()
         var email = $($this).find('[name="email"]');
         var name = $($this).find('[name="name"]');
         var phone = $($this).find('[name="phone"]');
+        // var location = $($this).find('[name="location"]');
+        // var note = $($this).find('[name="note"]');
         var data = $($this).serialize();
 
         var valid_name = true;

@@ -279,50 +279,53 @@
 
                         ?>
                </section>
-               <section class="inquiry">
-                 <?php
 
-                 $inquiry_email  = '';
-                 $inquiry_email .= '<p>Thanks for inquiring. We will be in touch shortly with more information.</p>';
-                 $inquiry_email .= '<p>For a quicker response feel free to call us at +1.416.531.8000.</p>';
-                 $inquiry_email .= get_the_post_thumbnail( $curr_id, 'medium' );
-                 $inquiry_email .= '<p>';
-                 $inquiry_email .= $artist_name.'<br/>';
-                 $inquiry_email .= get_field('title', $curr_id).', '.get_field('year', $curr_id).'<br/>';
-                 if(get_field('media', $curr_id)) {
-                   $inquiry_email .= get_field('media', $curr_id).'<br/>';
-                 }
-                 if(
-                   get_field('edition', $curr_id)) {$inquiry_email .= get_field('edition', $curr_id).'<br/>';
-                 }
-                 if( $height && $width) {
-                   if($depth) {
-                     $inquiry_email .= $height . '" X ' . $width .'" X ' . $depth.'"<br/>';
-                     $inquiry_email .= 'cm X ' . $width_metric .'cm X ' . $depth_metric .'cm<br/>';
-                   }
-                   else {
-                     $inquiry_email .= $height . '" X ' . $width . '"<br/>';
-                     $inquiry_email .= $height_metric . 'cm X ' . $width_metric . 'cm<br/>';
-                   }
-                 }
-                 $inquiry_email .= 'Website Link: <a href="'.get_permalink( $curr_id ).'">'.get_the_title($curr_id).'</a>';
-                 $inquiry_email .= '</p>';
-
-                 ?>
-
-                 
-
-                 <form id="submit-inquiry" class="inquireFormFull">
-                   <input type="text" name="name" placeholder="name">
-                   <input type="email" name="email" placeholder="email">
-                   <input type="text" name="phone" placeholder="phone">
-                   <input type="hidden" name="subject" value="Website Inquiry: <?php echo get_the_title($curr_id); ?>">
-                   <input type="text" name="message" value="" style="display:none;">
-                   <input type="hidden" name="inquiry_message" value="<?php echo htmlspecialchars($inquiry_email); ?>" style="display:none;">
-                   <input class="inquireSubmit" type="submit" value="inquire">
-                 </form>
-               </section>
              </div>
+             <section class="inquiry">
+               <?php
+
+               $inquiry_email  = '';
+               $inquiry_email .= '<p>Thanks for inquiring. We will be in touch shortly with more information.</p>';
+               $inquiry_email .= '<p>For a quicker response feel free to call us at +1.416.531.8000.</p>';
+               $inquiry_email .= get_the_post_thumbnail( $curr_id, 'medium' );
+               $inquiry_email .= '<p>';
+               $inquiry_email .= $artist_name.'<br/>';
+               $inquiry_email .= get_field('title', $curr_id).', '.get_field('year', $curr_id).'<br/>';
+               if(get_field('media', $curr_id)) {
+                 $inquiry_email .= get_field('media', $curr_id).'<br/>';
+               }
+               if(
+                 get_field('edition', $curr_id)) {$inquiry_email .= get_field('edition', $curr_id).'<br/>';
+               }
+               if( $height && $width) {
+                 if($depth) {
+                   $inquiry_email .= $height . '" X ' . $width .'" X ' . $depth.'"<br/>';
+                   $inquiry_email .= 'cm X ' . $width_metric .'cm X ' . $depth_metric .'cm<br/>';
+                 }
+                 else {
+                   $inquiry_email .= $height . '" X ' . $width . '"<br/>';
+                   $inquiry_email .= $height_metric . 'cm X ' . $width_metric . 'cm<br/>';
+                 }
+               }
+               $inquiry_email .= 'Website Link: <a href="'.get_permalink( $curr_id ).'">'.get_the_title($curr_id).'</a>';
+               $inquiry_email .= '</p>';
+
+               ?>
+
+               
+
+               <form id="submit-inquiry" class="inquireFormFull">
+                 <input type="text" name="name" placeholder="name">
+                 <input type="email" name="email" placeholder="email">
+                 <input type="text" name="phone" placeholder="phone">
+                 <input type="text" name="location" placeholder="location">
+                 <textarea name="note" placeholder="Additional Notes"></textarea>
+                 <input type="hidden" name="subject" value="Website Inquiry: <?php echo get_the_title($curr_id); ?>">
+                 <input type="text" name="message" value="" style="display:none;">
+                 <input type="hidden" name="inquiry_message" value="<?php echo htmlspecialchars($inquiry_email); ?>" style="display:none;">
+                 <input class="inquireSubmit" type="submit" value="inquire">
+               </form>
+             </section>
             </section>
                   
 

@@ -38,6 +38,7 @@ img {
 	max-width: 100%;
 	width: 100%;
 	height: auto;
+	vertical-align: bottom;
 }
 html {
 	height: auto !important;
@@ -53,7 +54,7 @@ body {
 }
 main, .container {
 	width: 95%;
-	max-width: 1300px;
+	max-width: 1200px;
 	margin: 0 auto 30px;
 }
 a {
@@ -75,7 +76,7 @@ a {
 
 
 .headerMain {
-	max-width: 930px;
+	max-width: 1200px;
 	margin: 0px auto;
 	padding-top: 45px;
 }
@@ -183,6 +184,7 @@ video {
 }
 
 .exhibitionMain {
+	min-height: 71vh;
   @extend .flex;
   justify-content: space-between;
   .exhibitionCenter{
@@ -387,8 +389,8 @@ article.exhibition {
 				@include fontSize(12);
 				width: 45%;
 				margin: 0;
-				-webkit-text-stroke: .7px black;
-				color: white;
+				// -webkit-text-stroke: .7px black;
+				// color: white;
 			}
 			.exhibitionDateLocation{
 				@include fontSize(8);
@@ -412,7 +414,7 @@ article.exhibition {
 		figure {
 			width: 100%;
 			border: 1px solid black;
-				max-height: 600px;
+				max-height: 650px;
 				overflow: hidden;
 
 
@@ -999,11 +1001,14 @@ h3#artworks {
 	
 }
 .artworkItemInfoInnner {
-	display: flex;
-	justify-content:space-around;
-	flex-direction:row-reverse;
+	// display: flex;
+	margin: 0 auto;
+	max-width: 950px;
 	.artworkItemInfoText {
-			width: 37%;
+			width: 100%;
+			@extend .flex;
+			margin-bottom: 15px;
+			justify-content: space-between;
 			p {
 				margin: 0;
 			}
@@ -1015,27 +1020,42 @@ h3#artworks {
 			}
 	}
 	.galleryContainer {
-			width: 60%;
+			width: 100%;
 	}
 }
 section.inquiry {
+	width: 49%;
 	form {
 		margin-top: 15px;
-		input {
+		text-align: right;
+		input, textarea {
 			border-radius: 0;
 			border: 1px solid black;
 			color: black;
 			outline: none;
-			width: 260px;
+			width: 360px;
 			padding: 4px;
 			@include fontSize(8);
+
 		}
 		input:nth-child(2){
 			border-top: none;
 			border-bottom: none;
 		}
+		input:nth-child(3){
+			// border-top: none;
+			border-bottom: none;
+		}
+		textarea {
+			margin-top: 5px;
+			height: 100px;
+		}
+		textarea::placeholder {
+			text-transform: uppercase;
+		}
 
-		input::placeholder {
+
+		input::placeholder{
 			text-transform: uppercase;
 			
 		}
@@ -1047,13 +1067,16 @@ input.inquireSubmit {
 	font-weight: 700;
 	background: black;
 	display: block;
-	position: relative;
+	// position: relative;
 	width: 100px !important;
 	text-align: center;
-	left: 160px;
+	// left: 160px;
+	margin-left: calc(100% - 100px);
+	// text-align: right;
 }
 .artworkInfoTextFixed {
-	position: fixed;
+	// position: fixed;
+	width: 50%;
 
 }
 .open {
@@ -1062,7 +1085,8 @@ input.inquireSubmit {
 	z-index: 100;
 	background: white;
 	min-width: 300px;
-	max-width:1000px;
+	width: 100%;
+	max-width:100%;
 	height: 100vh;
 	padding: 55px 0 0 10px;
 	border-left: 1px solid black;
@@ -1095,14 +1119,14 @@ section.inquiry form input:nth-child(2).invalid {
 }
 
 @keyframes splash {
- from {right: -800px;}
+ from {right: -100%;}
   to {right: 0px;}
 }
 
 .openArtwork {
 	display: block;
 	min-width: 330px;
-	max-width: 700px;
+	max-width: 100%;
 	z-index: 30;
 
 }
@@ -1112,6 +1136,7 @@ section.inquiry form input:nth-child(2).invalid {
 	cursor: pointer;
 	position: fixed;
 	top: 15px;
+	left: 1%;
 	padding-left: 10px;
 	@include fontSize(12);
 }
@@ -1133,8 +1158,10 @@ section.inquiry form input:nth-child(2).invalid {
 		margin: 0 auto;
 		// max-width: 400px;
 		img {
-			height: 500px;
+			// min-height: 500px;
+			max-height: 500px;
 			width: auto;
+			min-height: 450px;
 			display: block;
 			margin-left: auto;
 			margin-right: auto;
@@ -1352,14 +1379,17 @@ section.inquiry form input:nth-child(2).invalid {
 	@extend .flex;
 	justify-content:space-between;
 	.singleArtImages {
-		width: 55%;
+		order: 3;
+		width: 100%;
 		img {
 			border: 1px solid black;
 		}
 
 	}
 	.singleArtInfo {
+		order: 1;
 		width: 40%;
+		margin-bottom: 20px;
 		.connectedArtists h2 {
 			margin: 0 0 15px;
 			@include fontSize(12);
@@ -1374,6 +1404,9 @@ section.inquiry form input:nth-child(2).invalid {
 			@include fontSize(12);
 			}
 		}
+	}
+	.inquiry {
+		order: 2;
 	}
 } 
 body.home {
@@ -1712,6 +1745,21 @@ body.home {
     max-width: 80%;
 
   }
+  .closedSVGNew {
+  	svg {
+  		position: absolute;
+  		top: 50%;
+  		transform: translate(0, -50%);
+  	}
+  	min-height: auto;
+  }
+  .caption {
+  	// top: 74vh;
+  	position: absolute;
+  	width: 100%;
+  	left: 0;
+  	top: 70%;
+  }
 
 .noShowContainer {
 	 margin: 50px auto;
@@ -1734,10 +1782,16 @@ body.home {
   //footer 
   footer {
   	border: none;
+  	// 
   	.footerInner {
   		a, button, .buttonOuter {
   			display: none;
   		}
+  	}
+  }
+  .home {
+  	footer {
+  		// position: absolute;
   	}
   }
   nav.Footermenu , .addressFooter {
@@ -1781,6 +1835,7 @@ body.home {
 
 //exhibitions Main page 
 
+
 .exhibitionsMainPage {
 	display: block;
 	.exhibitionYearsSide {
@@ -1814,20 +1869,27 @@ body.home {
     padding: 25px 0;
     a {
     	.artistNameExhibition {
-    		order: 3;
+    		// order: 3;
     		width: 100%;
-    		text-align: center;
+    		// text-align: center;
+    		.mohammadUl {
+    			flex-flow:wrap
+    		}
+    		.scroll {
+    			flex-flow:nowrap;
+    		}
 
     	}
     	.image {
-    		order: 1;
+    		// order: 1;
     		width: 100%;
     	}
     	.exhibitionDetails {
-    		order: 2;
+    		// order: 2;
     		width: 100%;
     		h4 {
-    			text-align: center;
+    			// text-align: center;
+    			width: 100%;
     			margin: 10px 0;
     		}
     		.exhibitionDateLocation {
@@ -1840,7 +1902,7 @@ body.home {
     			@include fontSize(8);
     			width: 100%;
     			margin-top: 10px;
-    			text-align: center;
+    			// text-align: center;
 
 
     			.date {
@@ -1894,8 +1956,11 @@ body.home {
 		display: block;
 		.artworkItemInfoText {
 			width: 95%;
-			.artworkInfoTextFixed {
-				position: inherit;
+			.artworkInfoTextFixed, .inquiry {
+				width: 100%;
+			}
+			textarea {
+				width: 100%;
 			}
 		}
 		.galleryContainer{
@@ -1913,10 +1978,16 @@ body.home {
 		}
 	}
 	.closeInfo{
-		right: 5%;
+		// right: 10px;
+		left: 80%;
+		// right: 10px;
 	}
 	.artworkItemEach {
-		width: 32%;
+		width: 100%;
+		.toggleText figure img {
+			max-height: 100%;
+			min-height: auto;
+		} 
 
 	}
 
@@ -2025,9 +2096,25 @@ main.contactMain .galleryAdditionalInfo .paragraphHalf {
 //single artworks page
 
 .singleArtFull {
-	display: block;
+	
 	.singleArtImages {
 		width: 100%;
+		margin-top: 20px;
+	}
+	.inquiry {
+		width: 100%;
+		textarea {
+			width: 100%;
+			.inquireFormFull {
+
+			}
+			
+		}
+	}
+	.singleArtInfo {
+		width: 100%;
+		
+		
 	}
 }
 .mailing-list .subscribe-to-mailing-list {
@@ -2064,12 +2151,7 @@ main.contactMain .galleryAdditionalInfo .paragraphHalf {
 // 	}
 // }
 
-.homepageFooter,.searchpageFooter {
-	// min-height: 75vh;
-	footer {
-		// position: inherit;
-	}
-}
+
 @media (min-height: 800px){
 .artistsMain {
 			min-height: 71vh;
@@ -2193,9 +2275,9 @@ body.home, body.search-no-results {
 	.singleArtFull .singleArtInfo {
 		width: 100%;
 	}
-	.artworkItemEach {
-		width: 49%;
-	}
+	// .artworkItemEach {
+	// 	width: 49%;
+	// }
 	h3.toggle-mailing-list {
 		white-space: normal;
 		&:after, &:before{
@@ -2211,7 +2293,7 @@ body.home, body.search-no-results {
 		width: 100%;
 	}
 	.searchpageFooter {
-		min-height: 100vh;
+		// min-height: 100vh;
 	}
 
 }
