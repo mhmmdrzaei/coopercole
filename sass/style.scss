@@ -352,7 +352,7 @@ article.exhibition {
 				@include fontSize(11);
 				li {
 					h3{
-						margin: 0 20px 10px 0;
+						margin: 0 20px 10px 3px;
 
 					}
 				}
@@ -387,14 +387,14 @@ article.exhibition {
 
 			h4 {
 				@include fontSize(12);
-				width: 45%;
+				width: 39%;
 				margin: 0;
 				// -webkit-text-stroke: .7px black;
 				// color: white;
 			}
 			.exhibitionDateLocation{
 				@include fontSize(8);
-				width: 49%;
+				width: 57%;
 				@extend .flex;
 				justify-content: space-between;
 				// position: absolute;
@@ -1953,9 +1953,14 @@ body.home {
 	}
 
 	.artworkItemInfoInnner{
-		display: block;
+		// display: block;
+		 display: flex;
+		 flex-flow: wrap;
+
 		.artworkItemInfoText {
 			width: 95%;
+			order: 2;
+			margin: 20px 0 90px;
 			.artworkInfoTextFixed, .inquiry {
 				width: 100%;
 			}
