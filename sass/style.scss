@@ -1162,7 +1162,8 @@ section.inquiry form input:nth-child(2).invalid {
 			// min-height: 500px;
 			max-height: 500px;
 			width: auto;
-			min-height: 450px;
+			max-width: 100%;
+			// min-height: 450px; 
 			display: block;
 			margin-left: auto;
 			margin-right: auto;

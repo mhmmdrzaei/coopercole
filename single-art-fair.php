@@ -163,7 +163,7 @@
 	        <div class="artworkItemEach" >
 	          <section class="toggleText">
 	            <figure>
-	              <?php echo get_the_post_thumbnail( get_the_id(), 'medium' ); ?>
+	              <?php echo get_the_post_thumbnail( get_the_id(), 'large' ); ?>
 	            </figure>
 	           
 	              <?php
