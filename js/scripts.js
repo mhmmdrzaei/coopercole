@@ -1,137 +1,204 @@
 
 (function($) {
 
-  $(".artworkItemEach").click(function() {
+$(".artworkItemEach").click(function() {
     if ($('.artworkIteminfo').hasClass('open')) {
       $('.artworkIteminfo').removeClass('open');
     } 
       $(this).find('.artworkIteminfo').addClass("open");
       $('body').addClass('bodyOveflowArt');
-      // $(this).find('.inquiry').html("<div><p>[forminator_form id=\"15029\"]</p></div>");
-       // $(this).find('.artworkIteminfo').toggleClass("closed");
-      // $(this).find('.artworkIteminfo').css("display","block");
+
+      const prev = $(this).prev();
+      prev.addClass('loadingPrev');
+      const next = $(this).next();
+      next.addClass('loadingNext');
+
+      
 
   });
 
- $(".closeInfo").click(function() {
+$('.previous').click(function(){
+  if ($('.artworkIteminfo').hasClass('open')) {
+    $('.artworkIteminfo').removeClass('open');
+  };
+  if ($('.artworkItemEach').hasClass('loadingNext')) {
+     $('.artworkItemEach').removeClass('loadingNext');
+   } 
+
+
+  $('.loadingPrev').find('.artworkIteminfo').addClass("open");
+  $(this).parents(':eq(2)').addClass('loadingNext');
+  
+  if ($('.artworkItemEach').hasClass('loadingPrev')) {
+    $('.artworkItemEach').removeClass('loadingPrev');
+  };
+  $(this).parents(':eq(2)').prev().prev().addClass('loadingPrev');
+  return false;
+
+});
+$('.next').click(function(){
+  // $('.artworkIteminfo').removeClass('open');
+  if ($('.artworkIteminfo').hasClass('open')) {
+    $('.artworkIteminfo').removeClass('open');
+  };
+  if ($('.artworkItemEach').hasClass('loadingPrev')) {
+    $('.artworkItemEach').removeClass('loadingPrev');
+  };
+  
+  $('.loadingNext').find('.artworkIteminfo').addClass("open");
+  $(this).parents(':eq(2)').addClass('loadingPrev');
+  if ($('.artworkItemEach').hasClass('loadingNext')) {
+     $('.artworkItemEach').removeClass('loadingNext');
+   };
+    $(this).parents(':eq(2)').next().next().addClass('loadingNext');
+  return false;
+
+});
+
+
+
+
+$(".closeInfo").click(function() {
     $('body').removeClass('bodyOveflowArt');
 
     if ($('.artworkIteminfo').hasClass('open')) {
       $('.artworkIteminfo').removeClass('open');
     } 
+    $('.loadingPrev').removeClass('loadingPrev');
+    $('.loadingNext').removeClass('loadingNext');
     return false;
-      // $('.artworkIteminfo').toggleClass("closed");
-      // console.log('fuck');
+
 
   });
 
-  $.fn.readMore = function(options) {
-    if(options === 'destroy') {
-      $(this).each(function (_j, element) {
-        $($(element).data().controller).off('click');
-        $(element).html($(element).children().last().html());
+
+   // resize the slide-read-more Div
+   var box = $(".text-area");
+   var minimumHeight = 388; // max height in pixels
+   var initialHeight = box.innerHeight();
+   // reduce the text if it's longer than 200px
+   if (initialHeight > minimumHeight) {
+      box.css('height', minimumHeight);
+      $("#readMore1").show();
+   }
+  
+   SliderReadMore();
+
+   function SliderReadMore() {
+      $("#readMore1").on('click', function () {
+         // get current height
+         var currentHeight = box.innerHeight();
+
+         // get height with auto applied
+         var autoHeight = box.css('height', 'auto').innerHeight();
+
+         // reset height and revert to original if current and auto are equal
+         var newHeight = (currentHeight | 0) === (autoHeight | 0) ? minimumHeight : autoHeight;
+
+         box.css('height', currentHeight).animate({
+            height: (newHeight)
+         })
+         $('html, body').animate({
+            scrollTop: box.offset().top
+         });
+         // $(this).toggle('- Read Less')
       });
-      return;
-    }
+   }
 
-    var maxLines = parseInt(options.lines),
-      readMoreLabel = options.readMoreLabel || "+ Read more",
-      readLessLabel = options.readLessLabel || "- Less",
-      ellipsis = options.ellipsis || "",
-      splitOn = options.splitOn || ' ';
+//   $.fn.readMore = function(options) {
+//     if(options === 'destroy') {
+//       $(this).each(function (_j, element) {
+//         $($(element).data().controller).off('click');
+//         $(element).html($(element).children().last().html());
+//       });
+//       return;
+//     }
 
-    if(!maxLines || isNaN(maxLines)) {
-      console.error("lines must be an integer");
-      return;
-    }
+//     var maxLines = parseInt(options.lines),
+//       readMoreLabel = options.readMoreLabel || "+ Read more",
+//       readLessLabel = options.readLessLabel || "- Less",
+//       ellipsis = options.ellipsis || "",
+//       splitOn = options.splitOn || ' ';
+
+//     if(!maxLines || isNaN(maxLines)) {
+//       console.error("lines must be an integer");
+//       return;
+//     }
   
-    $(this).each(function (_j, element) {
-      var originalText = $(element).html(),
-        textArr = originalText.split(splitOn),
-        $newDiv = $("<div/>"),
-        $fullDiv = $("<div/>"),
-        $readMore = $($(element).data().controller),
-        hPrev = 0, 
-        lines = 0, 
-        overflow = false, 
-        l = textArr.length, 
-        i;
+//     $(this).each(function (_j, element) {
+//       var originalText = $(element).html(),
+//         textArr = originalText.split(splitOn),
+//         $newDiv = $("<div/>"),
+//         $fullDiv = $("<div/>"),
+//         $readMore = $($(element).data().controller),
+//         hPrev = 0, 
+//         lines = 0, 
+//         overflow = false, 
+//         l = textArr.length, 
+//         i;
   
-      $fullDiv.html(originalText);
-      $(element).html($newDiv).append($fullDiv);
+//       $fullDiv.html(originalText);
+//       $(element).html($newDiv).append($fullDiv);
       
-      for(i=0; i < l; i++) {
-        $newDiv.append(textArr[i] + ' ');
-        var h = $newDiv.height();
-        if(h > hPrev) {
-          hPrev = h;
-          lines++;
-          if(lines > maxLines) {
-            overflow = true;
-            $newDiv.html(textArr.slice(0, i).join(' '))
-            break;
-          }
-        }
-      }
+//       for(i=0; i < l; i++) {
+//         $newDiv.append(textArr[i] + ' ');
+//         var h = $newDiv.height();
+//         if(h > hPrev) {
+//           hPrev = h;
+//           lines++;
+//           if(lines > maxLines) {
+//             overflow = true;
+//             $newDiv.html(textArr.slice(1, i).join(' '))
+//             break;
+//           }
+//         }
+//       }
   
-      if(overflow) {
-        $readMore.text(readMoreLabel).css('display', 'block');
-        $newDiv.append(ellipsis);
-        var minH = $newDiv.height();
-        var realH =  $fullDiv.height();
-        var display = $newDiv.css('display');
+//       if(overflow) {
+//         $readMore.text(readMoreLabel).css('display', 'block');
+//         $newDiv.append(ellipsis);
+//         var minH = $newDiv.height();
+//         var realH =  $fullDiv.height();
+//         var display = $newDiv.css('display');
   
-        function callback() {
-          if($(element).data().expanded) {
-            $fullDiv.animate(6000, function() {
-              $newDiv.css('display', display);
-              $fullDiv.css('display', 'none');
-            });
-            $readMore.animate({opacity: 0}, 500, function() {
-              $readMore.text(readMoreLabel);
-            }).animate({opacity: 1}, 500);
-            $(element).data('expanded', false);
-          } else {
-            $newDiv.css('display', 'none');
-            $fullDiv.css('display', display);
-            // $fullDiv.css('height', minH + 'px')
-            // $fullDiv.animate({height: realH + 'px'}, 1000);
-            $readMore.animate({opacity: 0}, 500, function() {
-              $readMore.text(readLessLabel);
-            }).animate({opacity: 1}, 500);
-            $(element).data('expanded', true);
-          }
-        }
+//         function callback() {
+//           if($(element).data().expanded) {
+//             $fullDiv.animate(6000, function() {
+//               $newDiv.css('display', display);
+//               $fullDiv.css('display', 'none');
+//             });
+//             $readMore.animate({opacity: 0}, 500, function() {
+//               $readMore.text(readMoreLabel);
+//             }).animate({opacity: 1}, 500);
+//             $(element).data('expanded', false);
+//           } else {
+//             $newDiv.css('display', 'none');
+//             $fullDiv.css('display', display);
+//             // $fullDiv.css('height', minH + 'px')
+//             // $fullDiv.animate({height: realH + 'px'}, 1000);
+//             $readMore.animate({opacity: 0}, 500, function() {
+//               $readMore.text(readLessLabel);
+//             }).animate({opacity: 1}, 500);
+//             $(element).data('expanded', true);
+//           }
+//         }
 
-        $readMore.on('click', callback);
-      } else {
-        $readMore.css('display', 'none');
-      }
-      $fullDiv.css('display', 'none');
-    });
-  }
+//         $readMore.on('click', callback);
+//       } else {
+//         $readMore.css('display', 'none');
+//       }
+//       $fullDiv.css('display', 'none');
+//     });
+//   }
 })(jQuery);
 
-$(".text-area").readMore({lines: 15})
+// $(".text-area").readMore({lines: 15})
 /* When the user clicks on the button, 
 toggle between hiding and showing the dropdown content */
 function myFunction() {
   document.getElementById("menu-languages-menu").classList.toggle("show");
 }
 
-// // Close the dropdown if the user clicks outside of it
-// window.onclick = function(event) {
-//   if (!event.target.matches('.dropbtn')) {
-//     var dropdowns = document.getElementById("menu-languages-menu");
-//     var i;
-//     for (i = 0; i < dropdowns.length; i++) {
-//       var openDropdown = dropdowns[i];
-//       if (openDropdown.classList.contains('show')) {
-//         openDropdown.classList.remove('show');
-//       }
-//     }
-//   }
-// } 
 //video Link
 $(document).ready(function(){
   $(".featuredVideo").each(function(){
@@ -139,11 +206,7 @@ $(document).ready(function(){
     $(this).find("#featuredVideoLink").toggle(1000);
    });   
   });
-  //   $(".featuredVideo").each(function(){
-  //   $( ".featuredVideoTitle" ).click(function() {
-  //   $(this).find("#featuredVideoLink").toggle(1000);
-  //  });   
-  // });
+
 
   $(".newsOpen").click(function(){
     $("#newsContentID").toggle(500);
@@ -291,8 +354,7 @@ $('.headerMainMenu').click(function(){
        // Store hash
        var hash = this.hash;
 
-       // Using jQuery's animate() method to add smooth page scroll
-       // The optional number (800) specifies the number of milliseconds it takes to scroll to the specified area
+       
        $('html, body').animate({
          scrollTop: $(hash).offset().top
        }, 800, function(){
@@ -408,47 +470,7 @@ $(window).scroll(function() {
   }
 });
 
-// // messages back inquire / confimration box mailing list
 
-// var App = App || {};
-
-// App.constants = {
-//     win : $(window),
-//     document : $(document),
-//     html : $('html'),
-//     body : $('body'),
-//     body_html : $('html, body')
-// };
-
-
-// App.mailingList = function() {
-
-//     var emailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
-
-//     var trigger = $('.toggle-mailing-list');
-//     var body = App.constants.body;
-//     var form = $('.mailing-list');
-//     var close = $('.close-mailing-list');
-
-//     trigger.on('click', function(event) {
-//         event.preventDefault();
-//         body.toggleClass('mailing-list--visible');
-//         form.find('.email-address').focus();
-//     });
-
-//     close.on('click', function(event) {
-//         event.preventDefault();
-//         body.removeClass('mailing-list--visible');
-//     });
-
-//     // form.on('submit', function(event) {
-//     //     event.preventDefault();
-//     //     console.log('submit');
-//     //     if (!emailRegex.test($(this).find('[type="email"]').val())) {
-//     //       return false;
-//     //     }
-//     //     $('.subscribe-to-mailing-list').addClass('loading');
-//     // });
 
    var emailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
 

@@ -38,6 +38,7 @@
     "gulp-less": "^4.0.1",
     "gulp-rename": "^2.0.0",
     "loader": "^2.1.1",
-    "loaderjs": "^1.0.0"
+    "loaderjs": "^1.0.0",
+    "readmore-js": "^2.2.1"
   }
 }

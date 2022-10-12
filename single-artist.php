@@ -134,19 +134,7 @@
 		                <p class="toggleTextWork"><?php echo $second_word; ?></p>
 		              </section>
 		              <section class="infoAnimated">
-		<!--                 <div>I</div>
-		                  <div>n</div>
-		                  <div>f</div>
-		                  <div>o</div>
-		                  <div>r</div>
-		                  <div>m</div>
-		                  <div>a</div>
-		                  <div>t</div>
-		                  <div>i</div>
-		                  <div>o</div>
-		                  <div>n</div>
-		                                    
-		                  <div>&</div> -->
+
 		                   
 		                  <div>I</div>
 		                  <div>n</div>
@@ -163,6 +151,9 @@
 		          <section class="artworkIteminfo" id="artworksOpenItem">
 		            <section class="closeInfo">
 		              Close
+		            </section>
+		            <section class="prevnext">
+		              <a href="#" class="previous">Previous</a> <span>/</span> <a href="#" class="next">Next</a>
 		            </section>
 		            <section class="artworkItemInfoInnner">
 		            					<div class="galleryContainer">
