@@ -4,7 +4,7 @@ $arrow-color : black;
 
 @mixin fontSize($sizeValue){
     font-size: $sizeValue * 1px;
-    font-size: ($sizeValue/10) * 1rem;
+    font-size: calc($sizeValue/10) * 1rem;
 }
 
 button {
@@ -44,7 +44,7 @@ button {
     border-top:.7px solid $arrow-color;
     border-right:.7px solid $arrow-color;
     top:1.3em;
-    right:$arrow-height / 5;
+    right:calc($arrow-height / 5);
     transform: rotate(45deg);
      // @include transition(border-color .5s ease);
      // z-index:9999;
@@ -63,7 +63,7 @@ button {
     border-top:.7px solid $arrow-color;
     border-right:.7px solid $arrow-color;
     top:1.3em;
-    left:$arrow-height / 5;
+    left:calc($arrow-height / 5);
     transform: rotate(-135deg);
      // @include transition(border-color .5s ease);
      // z-index:9999;

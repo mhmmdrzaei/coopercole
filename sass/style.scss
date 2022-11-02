@@ -24,7 +24,7 @@ Default Styling
 
 @mixin fontSize($sizeValue){
     font-size: $sizeValue * 1px;
-    font-size: ($sizeValue/10) * 1rem;
+    font-size: calc($sizeValue/10) * 1rem;
 }
 .flex {
 	display: flex;
@@ -562,15 +562,16 @@ article.exhibition:nth-child(1) {
 		text-transform: uppercase;
 		font-weight: 700;
 		width: 100%;
-		transform: translateX(100%);
+		// padding-left:100px;
+		transform: translateX(150%);
 		animation: 6s fadeIn;
 		 animation-fill-mode: forwards;
-		animation: move 10s linear infinite;
+		animation: move 27s linear infinite;
 		white-space: nowrap; 
 	}
 }
 @keyframes move {
-to { transform: translateX(-100%); }
+to { transform: translateX(-250%); }
 }
 
 
@@ -2333,6 +2334,9 @@ body.home, body.search-no-results {
 	
 }
 @media (max-width: 500px){
+	@keyframes move {
+to { transform: translateX(-500%); }
+}
 	.singleArtFull .singleArtInfo {
 		width: 100%;
 	}
