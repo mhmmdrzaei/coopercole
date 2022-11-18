@@ -156,7 +156,7 @@
 
             ?>
 
-            <img class="exhibitionImgsLL" src="<?php echo $slide['sizes']['large']; ?>" alt="" id="<?php echo $slide['id'];?>"/>
+            <img class="exhibitionImgsLL" src="<?php echo $slide['url']; ?>" alt="" id="<?php echo $slide['id'];?>"/>
 
             <?php endforeach; ?>
             

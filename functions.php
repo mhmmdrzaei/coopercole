@@ -966,8 +966,8 @@ function inquire() {
 	$message .= '<p>Contact Information<br/>';
 	$message .= 'Name: '.$name.'<br/>';
 	$message .= 'Email: '.$email.'<br/>';
-	$message .= 'Phone: '.$phone.'</br>';
-	$message .= 'Location: '.$location.'</br>';
+	$message .= 'Phone: '.$phone.'<br/>';
+	$message .= 'Location: '.$location.'<br/>';
 	$message .= 'Additional Notes: '.$note.'</p>';
 
 	$response = wp_mail( $to, $subject, $message, $headers );
