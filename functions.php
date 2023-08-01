@@ -108,7 +108,7 @@ function cooper_scripts() {
 
   wp_enqueue_script(
     'scripts', //handle
-    get_template_directory_uri() . '/dist/main.min.js', //source
+    get_template_directory_uri() . '/js/main.min.js', //source
     array( 'jquery', 'plugins' ), //dependencies
     null, // version number
     true //load in footer
@@ -520,13 +520,13 @@ function register_my_meta_box() {
 }
 
 
-	p2p_create_connection( 'art_to_exhibition', array(
-		'from' => $from_id,
-		'to' => $to_id,
-		'meta' => array(
-			'date' => current_time('mysql')
-		)
-	) );
+	// p2p_create_connection( 'art_to_exhibition', array(
+	// 	'from' => $from_id,
+	// 	'to' => $to_id,
+	// 	'meta' => array(
+	// 		'date' => current_time('mysql')
+	// 	)
+	// ) );
 
 	// p2p_type( 'art_to_exhibition' )->connect( $from, $to, array(
 	// 	'date' => current_time('mysql')
@@ -883,6 +883,17 @@ function cyb_document_title_separator( $sep ) {
 
     return $sep;
 
+}
+
+
+add_action('init', 'excludePostTypeFromSearch', 99);
+
+function excludePostTypeFromSearch(){
+    global $wp_post_types;
+
+    if(post_type_exists('art') && isset($wp_post_types['art'])){
+        $wp_post_types['art']->exclude_from_search = true;
+    }
 }
 
 

@@ -201,54 +201,16 @@
 	              <a href="#" class="previous">Previous</a> <span>/</span> <a href="#" class="next">Next</a>
 	            </section>
 	            <section class="artworkItemInfoInnner">
-	            					<div class="galleryContainer">
-	            	         	<?php if(have_rows('not_embedded_video')){
-	            	         	    while(have_rows('not_embedded_video')) {
-	            	         	    the_row(); ?>
-	            	         	    <div class="wrap-video">
-	            	         	    <video controls>
-	            	         	      <source src="<?php the_sub_field('video_file')?>" type="video/mp4" controls controlsList="nodownload">
-	            	         	      Your browser does not support the video tag. </video></div>
-	            	         	<?php } }; ?>
-
-	            	              <?php if(have_rows('videos')){
-	            	                 while(have_rows('videos')) { the_row();
-	            	                     echo '<div class="wrap-video">';
-	            	                         the_sub_field('video');
-	            	                     echo '</div>';
-
-	            	                     }
-	            	                 } 
-	            	                  else if(get_field('gallery')){
-
-	            	                   $gallery = get_field('gallery');
-	            	                     // echo '<div class="galleryContainer">';
-	            	               
-	            	                     foreach($gallery as $image) {
-
-	            	                       echo '<img class="" src="'.$image['sizes']['large'].'" />';
-
-	            	                       }
-	            	                       // echo' </div>';
-	            	                   }
-
-	            	                   else {  
-	            	                       the_post_thumbnail('large');
-	            	                     }
-
-	            	                   ?>
-	            	                 </div>
-	            <section class="artworkItemInfoText">
+				<section class="artworkItemInfoText">
 	              <div class="artworkInfoTextFixed">
 	              <p class="artworkInfoTitle"><?php echo get_field('title', $curr_id); ?><?php if(get_field('year', $curr_id)) { echo ', '.get_field('year', $curr_id).''; } ?></p>
 	              <?php if(get_field('media', $curr_id)) { echo'<p>' .get_field('media', $curr_id).' </p>'; } ?>
-              <?php 
-                if(get_field('edition', $curr_id)) { echo '<p>'.get_field('edition', $curr_id).' </p>'; }
-               ?>
-                 <?php if(get_field('notes', $curr_id)) { echo '<p>'.get_field('notes', $curr_id).' </p>'; }
-                  ?>
-                 <?php if(get_field('inventory', $curr_id)) { echo '<p>'.get_field('inventory', $curr_id).' </p>'; }
-                  ?>
+              		<?php 
+					if(get_field('edition', $curr_id)) { echo '<p>'.get_field('edition', $curr_id).' </p>'; }
+					?>
+						<?php if(get_field('notes', $curr_id)) { echo '<p>'.get_field('notes', $curr_id).' </p>'; }
+						?>
+
 
 	               <section class="dimentions">
 	                       <?php 
@@ -276,6 +238,8 @@
 
 	                        ?>
 	               </section>
+				   <?php if(get_field('inventory', $curr_id)) { echo '<p>'.get_field('inventory', $curr_id).' </p>'; }
+                  ?>
 
 	             </div>
 	             <section class="inquiry">
@@ -322,6 +286,44 @@
 	               </form>
 	             </section>
 	            </section>
+	            					<div class="galleryContainer">
+	            	         	<?php if(have_rows('not_embedded_video')){
+	            	         	    while(have_rows('not_embedded_video')) {
+	            	         	    the_row(); ?>
+	            	         	    <div class="wrap-video">
+	            	         	    <video controls>
+	            	         	      <source src="<?php the_sub_field('video_file')?>" type="video/mp4" controls controlsList="nodownload">
+	            	         	      Your browser does not support the video tag. </video></div>
+	            	         	<?php } }; ?>
+
+	            	              <?php if(have_rows('videos')){
+	            	                 while(have_rows('videos')) { the_row();
+	            	                     echo '<div class="wrap-video">';
+	            	                         the_sub_field('video');
+	            	                     echo '</div>';
+
+	            	                     }
+	            	                 } 
+	            	                  else if(get_field('gallery')){
+
+	            	                   $gallery = get_field('gallery');
+	            	                     // echo '<div class="galleryContainer">';
+	            	               
+	            	                     foreach($gallery as $image) {
+
+	            	                       echo '<img class="" src="'.$image['sizes']['large'].'" />';
+
+	            	                       }
+	            	                       // echo' </div>';
+	            	                   }
+
+	            	                   else {  
+	            	                       the_post_thumbnail('large');
+	            	                     }
+
+	            	                   ?>
+	            	                 </div>
+
 	    
 	                </section>
 	              </section>

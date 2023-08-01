@@ -273,6 +273,11 @@ video {
 .text-area {
 		overflow: hidden;
 		margin-bottom: 10px;
+		p {
+			img {
+				max-width: 280px;
+			}
+		}
 	}
 #readMore1 {
 	display: none;
@@ -537,7 +542,7 @@ article.exhibition:nth-child(1) {
   }
 }
 .closedSVGNew {
-	max-width: 1300px;
+	max-width: 90%;
 	margin: 0 auto 30px;
 	animation: 6s fadeIn;
 	 animation-fill-mode: forwards;
@@ -1487,14 +1492,17 @@ body.home {
 .bodyOveflowArt {
 	overflow: hidden;
 }
-.homepageFooter,.searchpageFooter {
-	// min-height: 75vh;
-	footer {
-		position: absolute;
-	}
-}
+// .homepageFooter {
+// 	// min-height: 75vh;
+// 	footer {
+// 		position: absolute;
+// 	}
+// }
 .searchpageFooter {
 	// min-height: 75vh;
+}
+.searchResultsPage {
+	min-height: 50vh;
 }
 
 //QUARIES

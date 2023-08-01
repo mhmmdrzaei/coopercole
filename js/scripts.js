@@ -314,28 +314,31 @@ $('.single').each(function(){
 
 //hamburger menu
 
-$('.headerMainMenu').click(function(){
-  $('.hamburger-menu').toggleClass('animate');
-  $('.menu__hero').toggleClass('menuvisibleMobile');
-  $('body').toggleClass('bodyOveflow');
-  // $(body).toggleClass('hidden');
-  window.setTimeout(function() {
-    $('.language').toggleClass('languageIn');
-    $('.searchField').toggleClass('searchIn');
-    $('.menu-item-15020 a').toggleClass('mobileSocialVisIG');
-    $('.menu-instagram a').toggleClass('mobileSocialVisIG');
-    $('.mailing-list-open').toggleClass('mobileSocialVis');
-  }, 0);
-     if(($(window).width()) < 730) {
-      $('#gtranslate_selector').css('color','black');
-    $('form.searchForm input').css('border-bottom','1px solid black');
-    $('.artFairHome').css('background','black');
-    $('.searchForm label svg g path').css('fill','black');
-      // $('footer').css('position','absolute');
-    }
-
-
+// Handle the menu open event
+$('.headerMainMenu').click(function(e){
+  e.stopPropagation(); // stop propagation, so it doesn't trigger the body click event below
+  // ... your existing code to open the menu
 });
+
+// Handle click on body
+$('body').click(function(){
+  // ... your code to close the menu
+  $('.hamburger-menu').removeClass('animate');
+  $('.menu__hero').removeClass('menuvisibleMobile');
+  $('body').removeClass('bodyOveflow');
+  $('.language').removeClass('languageIn');
+  $('.searchField').removeClass('searchIn');
+  $('.menu-item-15020 a').removeClass('mobileSocialVisIG');
+  $('.menu-instagram a').removeClass('mobileSocialVisIG');
+  $('.mailing-list-open').removeClass('mobileSocialVis');
+  if($(window).width() < 730) {
+    $('#gtranslate_selector').css('color','');
+    $('form.searchForm input').css('border-bottom','');
+    $('.artFairHome').css('background','');
+    $('.searchForm label svg g path').css('fill','');
+  }
+});
+
 
 
 

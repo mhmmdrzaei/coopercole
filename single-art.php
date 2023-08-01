@@ -5,45 +5,6 @@
 
     <?php $curr_id = get_the_id(); ?>
     <section class="singleArtFull">
-      <section class="singleArtImages">
-           <?php if(have_rows('not_embedded_video')){
-            while(have_rows('not_embedded_video')) {
-            the_row(); ?>
-            <video controls>
-              <source src="<?php the_sub_field('video_file')?>" type="video/mp4" controls controlsList="nodownload">
-              Your browser does not support the video tag. </video></div>
-        <?php } }; ?>
-        <?php
-
-
-               if(have_rows('videos')){
-
-                 while(have_rows('videos')) { the_row();
-
-                   echo '<div class="wrap-video">';
-                     the_sub_field('video');
-                   echo '</div>';
-
-                 }
-
-               } else if(get_field('gallery')){
-
-                 $gallery = get_field('gallery');
-
-                 foreach($gallery as $image) {
-
-                   echo '<img src="'.$image['sizes']['large'].'" />';
-
-                 }
-
-               } else {
-
-                 the_post_thumbnail('large');
-
-               }
-
-               ?>
-      </section>
       <section class="singleArtInfo">
         <section class="connectedArtists">
           <?php
@@ -207,6 +168,45 @@
           <input type="hidden" name="inquiry_message" value="<?php echo htmlspecialchars($inquiry_email); ?>" style="display:none;">
           <input class="inquireSubmit" type="submit" value="inquire">
         </form>
+      </section>
+      <section class="singleArtImages">
+           <?php if(have_rows('not_embedded_video')){
+            while(have_rows('not_embedded_video')) {
+            the_row(); ?>
+            <video controls>
+              <source src="<?php the_sub_field('video_file')?>" type="video/mp4" controls controlsList="nodownload">
+              Your browser does not support the video tag. </video></div>
+        <?php } }; ?>
+        <?php
+
+
+               if(have_rows('videos')){
+
+                 while(have_rows('videos')) { the_row();
+
+                   echo '<div class="wrap-video">';
+                     the_sub_field('video');
+                   echo '</div>';
+
+                 }
+
+               } else if(get_field('gallery')){
+
+                 $gallery = get_field('gallery');
+
+                 foreach($gallery as $image) {
+
+                   echo '<img src="'.$image['sizes']['large'].'" />';
+
+                 }
+
+               } else {
+
+                 the_post_thumbnail('large');
+
+               }
+
+               ?>
       </section>
     </section>
   </main>
