@@ -1,0 +1,140 @@
+
+.container-home {
+    margin-bottom: -6vh;
+}
+.exhibitionHome {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    top: -6vh;
+    margin-bottom: 20px;
+    
+}
+.exhibitionHome figure {
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+
+
+}
+.artistNameExhibitionHome {
+    @extend .whiteText;
+
+    position: absolute;
+    // height: 20vh;
+    right: 10%;
+    top: 10%;
+    padding: 20px;
+    background: white;
+    border: 1px solid black;
+    /* background: white; */
+
+    .mohammadUl {
+
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    
+
+
+    }
+
+
+}
+.exhibitionDetailsHome {
+    position: absolute;
+    left: 10%;
+    top: 10%;
+    background: white;
+    border: 1px solid black;
+    padding: 20px;
+    max-width: 400px;
+    h3 {
+        margin: 0;
+        @extend .whiteText;
+    }
+
+}
+.exhibitionDateLocationHome {
+    text-transform: uppercase;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    /* left: 25%; */
+    background: white;
+    align-items: center;
+    border: 1px solid black;
+    top: 85%;
+    text-align: center;
+    display: flex;
+    flex-flow: row;
+    min-width: 70%;
+
+    font-weight: 700;
+    .date {
+
+    width: 50%;
+    border-right: 1px solid;
+    padding: 10px;
+
+    }
+    .location {
+        width: 50%;
+    }
+}
+@media (max-width: 800px) { 
+    .exhibitionHome {
+        height: inherit;
+        top: 0;
+    }
+    .exhibitionHome a {
+
+    display: flex;
+    flex-flow: wrap;
+
+    }
+    .exhibitionHome figure { 
+        position: inherit;
+        height: inherit;
+        width: 100%;
+        order: 2;
+    }
+    .exhibitionDetailsHome {
+position: inherit;
+    width: 100%;
+    // text-align: center;
+    max-width: 100%;
+    border: none;
+    order: 1;
+
+    }
+    .artistNameExhibitionHome {
+
+    position: inherit;
+    border: none;
+    order: 3;
+    // text-align: center;
+    .mohammadUl,.nonRepArtists {
+        display: flex;
+        flex-flow: wrap;
+        li {
+            margin: 0 10px 10px 0;
+        }
+    }
+
+    }
+    .exhibitionDateLocationHome {
+        position: inherit;
+        order:4;
+    transform: inherit;
+    border: none;
+    display: block;
+    .date, .location {
+        width: 100%;
+        border: none;
+        padding: 0 20px;
+        text-align: left;
+    }
+    }
+}

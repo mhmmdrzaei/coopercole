@@ -79,7 +79,7 @@ if($currentArtF->have_posts()) : while($currentArtF->have_posts()) : $currentArt
 
 <?php endif; ?>
 <!-- <div class="homepageFooter"> -->
-<div class="exhibitions container">
+<div class="exhibitions container-home">
 
 		<?php
 
@@ -186,7 +186,7 @@ if($currentArtF->have_posts()) : while($currentArtF->have_posts()) : $currentArt
 
 			?>
 
-		<?php	get_template_part('partials/repeater-exhibition'); ?>
+		<?php	get_template_part('partials/repeater-exhibition-home'); ?>
 
 
 		<?php endwhile; wp_reset_postdata(); ?>
