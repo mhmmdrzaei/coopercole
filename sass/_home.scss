@@ -84,9 +84,14 @@
     }
 }
 @media (max-width: 800px) { 
+    .container-home {
+        margin-bottom: 20px;
+    }
     .exhibitionHome {
         height: inherit;
         top: 0;
+        padding-bottom: 20px;
+        border-bottom: 1px solid black;
     }
     .exhibitionHome a {
 
