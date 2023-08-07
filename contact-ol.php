@@ -2,38 +2,24 @@
 <?php get_header(); ?>
 <main class="contactMain">
 	<?php if(have_posts()) : while(have_posts()) : the_post(); ?>
-	<section class="aboutContactContainer">
-		<figure class="rainbowimg">
-		<img  src="<?php bloginfo('template_directory'); ?>/images/rainbow.svg">
-
-		</figure>
-		
+	<section class="contactContainer">
 		<aside class="galleryAddress">
-		<img src="<?php bloginfo('template_directory'); ?>/images/address.svg" alt="address label">
+			<h1>Address</h1>
 			<p><?php the_field('gallery_address_footer','options') ?></p>
+			<a class="addressMap"href="#map" class="contactMapLink">Map</a>
 			
 		</aside>
 		<aside class="galleryContact">
-			<img src="<?php bloginfo('template_directory'); ?>/images/contact.svg" alt="contact label">
-			<section class="contactinfo">
-			<a href="tel:<?php the_field('phone_number'); ?>"><?php the_field('phone_number'); ?></a>
-			<a href="mailto:<?php the_field('email_address'); ?>"><?php the_field('email_address'); ?></a>
-
-			</section>
-
+			<h1>Contact</h1>
+			<a href="tel:<?php the_field('phone_number'); ?>"><?php the_field('phone_number'); ?></a><br/>
+			<a href="mailto:<?php the_field('email_address'); ?>"><?php the_field('email_address'); ?></a><br/>
 		</aside>
 		<aside class="galleryHours">
-		<img src="<?php bloginfo('template_directory'); ?>/images/hours.svg" alt="hours label">
+			<h1>Hours</h1>
 			<?php the_field('hours'); ?>
 		</aside>
-		<aside class="jumpToMap">
-		<a class="addressMap"href="#map" class="contactMapLink">		<img src="<?php bloginfo('template_directory'); ?>/images/map.svg" alt="map label"></a>
-		</aside>
-		<aside class="">
-		<a class="addressMap"href="https://calendly.com/coopercole" target="_blank" class="contactMapLink">		<img src="<?php bloginfo('template_directory'); ?>/images/appointment.svg" alt="map label"></a>
-		</aside>
 	</section>
-	<section class="aboutAdditional">
+	<hr>
 	<section class="galleryAdditionalInfo">
 			<?php if( have_rows('flexible_additional_info') ): ?>
 			    <?php while( have_rows('flexible_additional_info') ): the_row(); ?>
@@ -84,9 +70,21 @@
 
 		</section>
 		<section class="Mailinglist">
-			<img class="toggle-mailing-list" src="<?php bloginfo('template_directory'); ?>/images/mailing_list.svg" alt="">
+		<h3 class="toggle-mailing-list">Sign up for our mailing list</h3>
 		</section>
+		<style type="text/css">
+		.acf-map {
+		    width: 100%;
+		    height: 400px;
+		    border: #ccc solid 1px;
+		    margin: 20px 0;
+		}
 
+		// Fixes potential theme css conflict.
+		.acf-map img {
+		   max-width: inherit !important;
+		}
+		</style>
 		<?php 
 		$location = get_field('location');
 		if( $location ): ?>
@@ -284,9 +282,6 @@
 		<div class="afc-map">
 			<div id="map" data-lat="<?php echo get_field('location')['lat']; ?>" data-lng="<?php echo get_field('location')['lng']; ?>"></div>
 		</div>
-
-
-	</section>
 
 </main>
 

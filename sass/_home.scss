@@ -102,8 +102,12 @@
     .exhibitionHome figure { 
         position: inherit;
         height: inherit;
-        width: 100%;
+        width: calc(100% - 40px);
+        margin: 0 auto;
         order: 2;
+        img {
+            border: 1px solid black;
+        }
     }
     .exhibitionDetailsHome {
 position: inherit;
@@ -111,14 +115,17 @@ position: inherit;
     // text-align: center;
     max-width: 100%;
     border: none;
-    order: 1;
+    order: 3;
+    h3 {
+        color: black;
+    }
 
     }
     .artistNameExhibitionHome {
 
     position: inherit;
     border: none;
-    order: 3;
+    order: 1;
     // text-align: center;
     .mohammadUl,.nonRepArtists {
         display: flex;
