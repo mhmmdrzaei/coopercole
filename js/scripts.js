@@ -1,7 +1,21 @@
 
 (function($) {
 
+  $(document).on('click', function(e) {
+    // If the clicked element or its parent is not '.artworkItemEach'
+    if (!$(e.target).closest('.artworkItemEach').length) {
+      $('.artworkIteminfo').removeClass('open');
+      $('body.bodyOveflowArt').removeClass('bodyOveflowArt');
+      $('.artworkItemEach.loadingPrev').removeClass('loadingPrev');
+      $('.artworkItemEach.loadingNext').removeClass('loadingNext');
+    }
+  });
+
+
+
 $(".artworkItemEach").click(function() {
+  // e.stopPropagation();
+
     if ($('.artworkIteminfo').hasClass('open')) {
       $('.artworkIteminfo').removeClass('open');
     } 
@@ -18,6 +32,7 @@ $(".artworkItemEach").click(function() {
   });
 
 $('.previous').click(function(){
+
   if ($('.artworkIteminfo').hasClass('open')) {
     $('.artworkIteminfo').removeClass('open');
   };
@@ -37,6 +52,7 @@ $('.previous').click(function(){
 
 });
 $('.next').click(function(){
+
   // $('.artworkIteminfo').removeClass('open');
   if ($('.artworkIteminfo').hasClass('open')) {
     $('.artworkIteminfo').removeClass('open');
@@ -57,7 +73,6 @@ $('.next').click(function(){
 
 
 
-
 $(".closeInfo").click(function() {
     $('body').removeClass('bodyOveflowArt');
 
@@ -69,6 +84,18 @@ $(".closeInfo").click(function() {
     return false;
 
 
+  });
+
+
+
+  window.addEventListener('click', function(e){   
+    if (document.getElementsByClassName('artworkIteminfo').contains(e.target)){
+      // Clicked in box
+      console.log('inside');
+    } else{
+      console.log('outside');
+      // Clicked outside the box
+    }
   });
 
 

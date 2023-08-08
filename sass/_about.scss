@@ -4,10 +4,10 @@
 }
 .rainbowimg {
     max-width: 500px;
-    margin: -100px auto 0;
+    margin: -70px auto 0;
 }
 .aboutContactContainer {
-    max-width: 800px;
+    max-width: 860px;
     margin: 0 auto;
     @include fontSize(14);
     .galleryAddress, .galleryContact, .galleryHours {
@@ -26,16 +26,25 @@
         }
     }
     .jumpToMap {
-        max-width: 350px;
+        max-width: 290px;
         margin: 0 auto;
     }
 }
 .aboutAdditional {
-    background: url('images/cc_rainbow.svg');
-    background-position: 50% 85%;
+    background: url('https://coopercolegallery.com/wp-content/themes/coopercole2020-Deploy/images/cc_Rainbow.svg');
+    background-position: 50% 50%;
     background-repeat: no-repeat;
 }
-
+.Mailinglist {
+    text-align: center;
+    cursor: pointer;
+    img {
+        max-width: 500px;
+    }
+}
+.galleryAdditionalInfo {
+    @include fontSize(14);
+}
 
 // map
 .acf-map {
@@ -48,4 +57,13 @@
 // Fixes potential theme css conflict.
 .acf-map img {
    max-width: inherit !important;
+}
+@media (max-width: 800px) { 
+    .aboutContactContainer {
+        .galleryAddress, .galleryContact, .galleryHours {
+            display: block;
+            text-align: center;
+        }
+
+    } 
 }

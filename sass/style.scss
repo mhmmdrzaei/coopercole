@@ -1008,7 +1008,9 @@ h3#artworks {
 
 .artworkIteminfo {
 	display: none;
-	top: 0px;
+	top: 50%;
+    right: 50%;
+	transform: translate(50%, -50%);
 	position: fixed;
 	overflow: scroll;
 	
@@ -1095,15 +1097,18 @@ input.inquireSubmit {
 }
 .open {
 	display: block;
-	animation: splash 1s normal forwards ease-in-out;
+	// animation: splash 1s normal forwards ease-in-out;
+	// position: absolute;
 	z-index: 100;
 	background: white;
 	min-width: 300px;
 	width: 100%;
-	max-width:100%;
+	max-width:1000px;
 	height: 100vh;
 	padding: 55px 10px;
-	border-left: 1px solid black;
+	border: 1px solid black;
+	border-bottom: 0;
+	border-top: 0;
 	
 }
 .invalid-email, .invalid-name, .invalid-email, .invalid-phone {
@@ -1133,8 +1138,8 @@ section.inquiry form input:nth-child(2).invalid {
 }
 
 @keyframes splash {
- from {right: -100%;}
-  to {right: 0px;}
+ from {display: none;}
+  to {display: inline;}
 }
 @keyframes appear {
 	from {opacity: 0;}
@@ -1151,17 +1156,17 @@ section.inquiry form input:nth-child(2).invalid {
 
 .closeInfo {
 	@extend .whiteText;
-	animation: appear 1s normal forwards ease-in-out;
+	animation: appear .5s normal forwards ease-in-out;
 	text-transform: uppercase;
 	cursor: pointer;
 	position: fixed;
-	top: 15px;
-	right: 1%;
+	top: 20px;
+	right: 2%;
 	// padding-left: 10px;
 	@include fontSize(12);
 }
 .prevnext {
-	animation: appear 4s normal forwards ease-in-out;
+	animation: appear .5s normal forwards ease-in-out;
 	a {
 		@extend .whiteText;
 	}
@@ -1172,8 +1177,8 @@ section.inquiry form input:nth-child(2).invalid {
 	@include fontSize(12);
 	cursor: pointer;
 	position: fixed;
-	top: 15px;
-	left: 1%;
+	top: 20px;
+	left: 2%;
 	@extend .flex;
 	// justify-content: space-between;
 	// width: 97%;
@@ -1534,6 +1539,9 @@ body.home {
 	}
 	.exhibitionsMainPage .exhibitionYearsSide {
     width: 4%;
+	}
+	.open {
+		height: 100vh;
 	}
 
 
