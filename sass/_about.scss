@@ -45,6 +45,10 @@
 .galleryAdditionalInfo {
     @include fontSize(14);
 }
+.appointment {
+    max-width: 800px;
+    margin: 0 auto;
+}
 
 // map
 .acf-map {
@@ -66,4 +70,8 @@
         }
 
     } 
+    .aboutAdditional {
+        background-position: 50% 80%;
+        background-repeat: no-repeat;
+    }
 }

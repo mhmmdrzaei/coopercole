@@ -25,6 +25,7 @@
         'container' => false,
         'theme_location' => 'primary_menu'
       )); ?>
+
         <div class="dropdownMobile">
         <?php wp_nav_menu( array(
           'container' => false,
@@ -49,6 +50,12 @@
       </section>
      <h3 class="menuMain">Menu</h3>
     </label>
+    <div class="btn-dark-mode" onclick="darkMode()">
+
+<div class="slider">
+  <div class="mode">&#9790;</div>
+</div>
+</div>
 
     <section class="logo" id="logoMain">
        <a href="<?php echo home_url( '/' ); ?>" title="<?php bloginfo( 'name', 'display' ); ?>" rel="home">

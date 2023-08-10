@@ -1,0 +1,29 @@
+@mixin fontSize($sizeValue){
+    font-size: $sizeValue * 1px;
+    font-size: calc($sizeValue/10) * 1rem;
+}
+.btn-dark-mode{
+	width: 75px;
+	height: 35px;
+	background-color: #000;
+	border-radius: 25px;
+	padding: 1px;
+	display:flex;
+	justify-content: flex-start;
+	align-items: center;
+	cursor: pointer;
+	transition: 1s;
+  }
+  
+  .slider {
+	width: 30px;
+	height: 30px;
+	background-color: #FFF;
+	border-radius: 50%;
+	margin:2px;
+	transition: 1s;
+  }
+  .mode {
+	@include fontSize(2);
+	text-align: center;
+  }

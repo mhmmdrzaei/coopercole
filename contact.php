@@ -29,9 +29,9 @@
 		<aside class="jumpToMap">
 		<a class="addressMap"href="#map" class="contactMapLink">		<img src="<?php bloginfo('template_directory'); ?>/images/map.svg" alt="map label"></a>
 		</aside>
-		<aside class="">
-		<a class="addressMap"href="https://calendly.com/coopercole" target="_blank" class="contactMapLink">		<img src="<?php bloginfo('template_directory'); ?>/images/appointment.svg" alt="map label"></a>
-		</aside>
+		<section class="Mailinglist">
+			<img class="toggle-mailing-list" src="<?php bloginfo('template_directory'); ?>/images/mailing_list.svg" alt="">
+		</section>
 	</section>
 	<section class="aboutAdditional">
 	<section class="galleryAdditionalInfo">
@@ -83,9 +83,9 @@
 			<?php endif; ?>
 
 		</section>
-		<section class="Mailinglist">
-			<img class="toggle-mailing-list" src="<?php bloginfo('template_directory'); ?>/images/mailing_list.svg" alt="">
-		</section>
+		<aside class="appointment">
+		<a href="https://calendly.com/coopercole" target="_blank" class="contactMapLink">		<img src="<?php bloginfo('template_directory'); ?>/images/appointment.svg" alt="book an appointment with us label"></a>
+		</aside>
 
 		<?php 
 		$location = get_field('location');

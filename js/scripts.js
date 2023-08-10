@@ -1,6 +1,6 @@
 
 (function($) {
-
+  
   $(document).on('click', function(e) {
     // If the clicked element or its parent is not '.artworkItemEach'
     if (!$(e.target).closest('.artworkItemEach').length) {
@@ -88,15 +88,6 @@ $(".closeInfo").click(function() {
 
 
 
-  window.addEventListener('click', function(e){   
-    if (document.getElementsByClassName('artworkIteminfo').contains(e.target)){
-      // Clicked in box
-      console.log('inside');
-    } else{
-      console.log('outside');
-      // Clicked outside the box
-    }
-  });
 
 
    // resize the slide-read-more Div
@@ -478,7 +469,27 @@ $('.closeBox').click(function () {
   }
   return false;
 });
+// darkmode
+let darkModeOn = false;
+let btnDarkMode = document.querySelector('.btn-dark-mode');
+let mode = document.querySelector('.mode');
+let slider = document.querySelector('.slider');
 
+function darkMode(){
+  if(darkModeOn === false){
+  document.body.style.cssText = "background-color:#000000; color: #FFFFFF; transition: 1s;";
+  btnDarkMode.style.cssText = "background-color: #fff; justify-content: flex-end; transition: 1s;";
+  slider.style.cssText ="background-color: #000;"
+  mode.innerHTML = "&#9788;"
+  darkModeOn = true;
+  } else {
+    document.body.style.cssText = "background-color:#FFFFFF; color: #000000;  transition: 1s;";
+   btnDarkMode.style.cssText = "background-color: #000; justify-content: flex-start; transition: 1s;";
+   slider.style.cssText ="background-color: #FFFFFF;"
+  mode.innerHTML = "&#9790;"
+  darkModeOn = false;
+  }
+}
 
 // sticky menu
 
