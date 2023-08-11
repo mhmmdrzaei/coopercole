@@ -346,9 +346,9 @@ $('.headerMainMenu').click(function(){
   }, 0);
      if(($(window).width()) < 730) {
       $('#gtranslate_selector').css('color','black');
-    $('form.searchForm input').css('border-bottom','1px solid black');
+    // $('form.searchForm input').css('border-bottom','1px solid black');
     $('.artFairHome').css('background','black');
-    $('.searchForm label svg g path').css('fill','black');
+    // $('.searchForm label svg g path').css('fill','black');
       // $('footer').css('position','absolute');
     }
 
@@ -481,12 +481,12 @@ function darkMode(){
   btnDarkMode.style.cssText = "background-color: #fff; justify-content: flex-end; transition: 1s;";
   slider.style.cssText ="background-color: #000;"
   mode.innerHTML = "&#9788;"
-  $('img svg path').css ('fill', 'white');
+  $('img svg path, svg g path').css ('fill', 'white');
   $('svg path').css ('fill', 'white');
   $('.menu__nav, .artistNameExhibitionHome, .exhibitionDetailsHome,.exhibitionDateLocationHome, .artworkIteminfo').css('background', 'black');
-  $('form.searchForm input, .menu__nav, .artistNameExhibitionHome, .exhibitionDetailsHome,.exhibitionDateLocationHome, footer, .buttonOuter,.toggleText,.artworkIteminfo, video, img,.artFairEach, a:before,.inquireSubmit').css('border-color','white');
+  $('form.searchForm input, .menu__nav, .artistNameExhibitionHome, .exhibitionDetailsHome,.exhibitionDateLocationHome, footer, .buttonOuter,.toggleText,.artworkIteminfo, video, img,.artFairEach, a:before,.inquireSubmit,.arrow:before,.newsRelatedExhibitions,.tagsInner a').css('border-color','white');
   $('button,.infoAnimated').css('color','black');
-  $('button,.infoAnimated,.headerMainMenu').css('background','white');
+  $('button,.infoAnimated').css('background','white');
 
   $('.exhibitionDateLocationHome, a, .open').css('color','white');
   $('.bookAnAppointment a').css('color','black');
@@ -500,6 +500,14 @@ function darkMode(){
    btnDarkMode.style.cssText = "background-color: #000; justify-content: flex-start; transition: 1s;";
    slider.style.cssText ="background-color: #FFFFFF;"
   mode.innerHTML = "&#9790;"
+  $('svg path, svg g path').css ('fill', 'black');
+  $('.menu__nav, .artistNameExhibitionHome, .exhibitionDetailsHome,.exhibitionDateLocationHome, .artworkIteminfo').css('background', 'white');
+  $('form.searchForm input, .menu__nav, .artistNameExhibitionHome, .exhibitionDetailsHome,.exhibitionDateLocationHome, footer, .buttonOuter,.toggleText,.artworkIteminfo, video, img,.artFairEach, a:before,.inquireSubmit,.arrow:before,.newsRelatedExhibitions,.tagsInner a').css('border-color','black');
+  $('button,.infoAnimated').css('color','white');
+  $('button,.infoAnimated').css('background','black');
+
+  $('.exhibitionDateLocationHome, a, .open').css('color','black');
+  $('.bookAnAppointment a').css('color','white');
   darkModeOn = false;
   }
 }

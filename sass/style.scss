@@ -115,7 +115,7 @@ video {
 .featuredVideoTitle {
 	background: transparent;
 	border: none;
-	padding: 0;
+	padding: 0 10px 10px;
 	font-weight: 700;
 	text-decoration: underline;
 	margin: 0 0 10px;
@@ -1625,7 +1625,7 @@ body.home {
     }
   }
   #topMenu {
-
+	background: white;
   	height: 43px;
   	width: 51px;
   	margin-right: 0;
@@ -2059,7 +2059,7 @@ body.home {
 		// right: 10px;
 	}
 	.prevnext {
-		left:60px;
+		left:70px;
 		// top: 18px;
 	}
 	.artworkItemEach {

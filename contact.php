@@ -9,12 +9,16 @@
 		</figure>
 		
 		<aside class="galleryAddress">
-		<img src="<?php bloginfo('template_directory'); ?>/images/address.svg" alt="address label">
+			<figure class="aboutimg" alt="address label">
+			<?php require('images/address.svg');?>
+			</figure>
 			<p><?php the_field('gallery_address_footer','options') ?></p>
 			
 		</aside>
 		<aside class="galleryContact">
-			<img src="<?php bloginfo('template_directory'); ?>/images/contact.svg" alt="contact label">
+		<figure class="aboutimg"alt="contact label">
+			<?php require('images/contact.svg');?>
+			</figure>
 			<section class="contactinfo">
 			<a href="tel:<?php the_field('phone_number'); ?>"><?php the_field('phone_number'); ?></a>
 			<a href="mailto:<?php the_field('email_address'); ?>"><?php the_field('email_address'); ?></a>
@@ -23,14 +27,19 @@
 
 		</aside>
 		<aside class="galleryHours">
-		<img src="<?php bloginfo('template_directory'); ?>/images/hours.svg" alt="hours label">
+		<figure class="aboutimg"alt="hours label">
+			<?php require('images/hours.svg');?>
+			</figure>
 			<?php the_field('hours'); ?>
 		</aside>
 		<aside class="jumpToMap">
-		<a class="addressMap"href="#map" class="contactMapLink">		<img src="<?php bloginfo('template_directory'); ?>/images/map.svg" alt="map label"></a>
+		<a class="addressMap"href="#map" class="contactMapLink"><?php require('images/map.svg');?></a>
 		</aside>
 		<section class="Mailinglist">
-			<img class="toggle-mailing-list" src="<?php bloginfo('template_directory'); ?>/images/mailing_list.svg" alt="">
+		<figure class="mailing-list-img"alt="sign up for our mailing list button">
+			<?php require('images/mailing_list.svg');?>
+			</figure>
+	
 		</section>
 	</section>
 	<section class="aboutAdditional">
@@ -84,7 +93,7 @@
 
 		</section>
 		<aside class="appointment">
-		<a href="https://calendly.com/coopercole" target="_blank" class="contactMapLink">		<img src="<?php bloginfo('template_directory'); ?>/images/appointment.svg" alt="book an appointment with us label"></a>
+		<a href="https://calendly.com/coopercole" target="_blank" class="contactMapLink" alt="book an appointment with us label"><?php require('images/appointment.svg')?></a>
 		</aside>
 
 		<?php 
