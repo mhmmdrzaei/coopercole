@@ -24,6 +24,11 @@
 	transition: 1s;
   }
   .mode {
-	@include fontSize(2);
+	font-size: 23px;
 	text-align: center;
   }
+//   override styles
+.blackBack {
+	background: #000;
+	border: 1px solid #fff;
+}

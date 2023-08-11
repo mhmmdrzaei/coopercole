@@ -59,7 +59,7 @@ main, .container {
 	margin: 0 auto 30px;
 }
 a {
-	color: black;
+	color: #000;
 	text-decoration: none;
 	&:hover {
 		// text-decoration: underline;
@@ -87,7 +87,7 @@ a {
 //html video 
 video {
 	width: 100%;
-	border: 1px solid black;
+	border: 1px solid #000;
 	margin-bottom: 5px;
 }
 
@@ -197,7 +197,7 @@ video {
   	.nonRepArtists {
   		@include fontSize(20);
   		font-size: clamp(1rem, 10vw, 1.5rem);
-  		-webkit-text-stroke: .7px black;
+  		-webkit-text-stroke: .7px #000;
   		color: white;
 
   	}
@@ -214,7 +214,7 @@ video {
     li {
     	margin: 10px 0 0 0px;
     	a {
-    		color: black;
+    		color: #000;
     		text-decoration: underline;
     	}
     	
@@ -253,7 +253,7 @@ video {
 }
 .exhibitionImages {
 	img {
-		border: .01px solid black;
+		border: .01px solid #000;
 		margin-bottom: 10px;
 
 	}
@@ -293,7 +293,7 @@ video {
 	 // top: -21px;
 	 // width: 30px;
 	a {
-		color: black;
+		color: #000;
 		font-weight: 700;
 		text-decoration: none;
 		text-transform: uppercase;
@@ -322,7 +322,7 @@ video {
 		display: block;
 		margin-bottom: 4px;
 		@include fontSize(8);
-		color: black;
+		color: #000;
 		text-transform: uppercase;
 		font-weight: 700;
 		text-decoration: none;
@@ -338,13 +338,13 @@ video {
 //exhibition main and main page
 article.exhibition {
 	padding: 50px 0;
-	border-top: 1px solid black;
+	border-top: 1px solid #000;
 	position: relative;
 	top: -65px;
 	a {
 		@extend .flex;
 		justify-content: space-between;
-		color: black;
+		color: #000;
 		text-decoration: none;
 
 
@@ -360,7 +360,7 @@ article.exhibition {
 				margin: 0;
 				padding: 0;
 				list-style: none;
-				-webkit-text-stroke: .7px black;
+				-webkit-text-stroke: .7px #000;
 				color: white;
 				@include fontSize(11);
 				li {
@@ -383,7 +383,7 @@ article.exhibition {
 			.nonRepArtists {
 				@extend .flex;
 				@include fontSize(11);
-				-webkit-text-stroke: .7px black;
+				-webkit-text-stroke: .7px #000;
 				color: white;
 				li h3 {
 					margin: 0 20px 10px 0;
@@ -402,7 +402,7 @@ article.exhibition {
 				@include fontSize(12);
 				width: 39%;
 				margin: 0;
-				// -webkit-text-stroke: .7px black;
+				// -webkit-text-stroke: .7px #000;
 				// color: white;
 			}
 			.exhibitionDateLocation{
@@ -426,7 +426,7 @@ article.exhibition {
 		}
 		figure {
 			width: 100%;
-			border: 1px solid black;
+			border: 1px solid #000;
 				max-height: 650px;
 				overflow: hidden;
 
@@ -456,7 +456,7 @@ article.exhibition:nth-child(1) {
     	// padding: 20px 0;
     	@extend .flex;
     	justify-content: space-around;
-    	color: black;
+    	color: #000;
     	text-decoration: none;
     	.title{
     		@include fontSize(14);
@@ -593,7 +593,7 @@ to { transform: translateX(-250%); }
   .nonRepArtists {
     @include fontSize(10);
     text-transform: uppercase;
-    color: black;
+    color: #000;
     li {
     	margin-top: 7px;
     }
@@ -606,7 +606,7 @@ to { transform: translateX(-250%); }
 	@extend .flex;
 	justify-content:space-between;
 	padding-bottom: 50px;
-	border-top: 1px solid black;
+	border-top: 1px solid #000;
 	.description {
 		width: 60%;
 	}
@@ -644,7 +644,7 @@ to { transform: translateX(-250%); }
 		img {
 			width: 100%;
 			height: auto;
-			// border: 1px solid black;
+			// border: 1px solid #000;
 		}
 	}
 
@@ -702,7 +702,7 @@ to { transform: translateX(-250%); }
 	.newsContentMain {
 		
 		img {
-				border: 1px solid black;
+				border: 1px solid #000;
 			}
 		.featuredVideoTitle img {
 			border: none;
@@ -732,7 +732,7 @@ article.post:nth-child(1) {
 		img {
 			width: 100%;
 			height: auto;
-			border: 1px solid black;
+			border: 1px solid #000;
 		}
 	}
 	.withFI {
@@ -770,7 +770,7 @@ article.post:nth-child(1) {
 		margin-bottom: 6px;
 		text-decoration: none;
 		&:hover{
-			background: black;
+			background: #000;
 			color: white;
 		}
 	}
@@ -829,7 +829,7 @@ article.post:nth-child(1) {
 
 			&:hover {
 				  color: white;
-				  -webkit-text-stroke: 4px solid black;				 
+				  -webkit-text-stroke: 4px solid #000;				 
 				} 
 
 
@@ -1004,7 +1004,7 @@ h3#artworks {
 	text-align: center;
 	width: 80px;
 	margin: 20px auto;
-	border-bottom: 1px solid black;
+	border-bottom: 1px solid #000;
 }
 
 .artworkIteminfo {
@@ -1047,8 +1047,8 @@ section.inquiry {
 		text-align: right;
 		input, textarea {
 			border-radius: 0;
-			border: 1px solid black;
-			color: black;
+			border: 1px solid #000;
+			color: #000;
 			outline: none;
 			width: 360px;
 			padding: 4px;
@@ -1082,7 +1082,7 @@ input.inquireSubmit {
 	text-transform: uppercase;
 	color: white !important;
 	font-weight: 700;
-	background: black;
+	background: #000;
 	display: block;
 	// position: relative;
 	width: 100px !important;
@@ -1107,7 +1107,7 @@ input.inquireSubmit {
 	max-width:1000px;
 	height: 100vh;
 	padding: 55px 10px;
-	border: 1px solid black;
+	border: 1px solid #000;
 	border-bottom: 0;
 	border-top: 0;
 	
@@ -1120,18 +1120,18 @@ input.inquireSubmit {
 	color: #4e4e4e;
 }
 section.inquiry form input:nth-child(2).invalid {
-	border-bottom: 1px solid black;
+	border-bottom: 1px solid #000;
 }
 .response {
 
 	// background-image: linear-gradient(to right, #DC03FC, #0322FC, #03FCEF, #23FC03, #FCE303, #FC7A03, #FC0303);
 	width: 95%;
 	// color: white; 
-	// text-shadow: 0px 1px 2px black;
+	// text-shadow: 0px 1px 2px #000;
 	padding: 16px;
 	margin-top: 20px;
 	font-weight: 700;
-	// border: 1px solid black;
+	// border: 1px solid #000;
 	p {
 		margin-bottom: 5px;
 	}
@@ -1211,7 +1211,7 @@ section.inquiry form input:nth-child(2).invalid {
 	
 	cursor: pointer;
 	position: relative;
-	border: 1px solid black;
+	border: 1px solid #000;
 	// max-width: 200px;
 	figure {
 		margin: 0 auto;
@@ -1263,14 +1263,14 @@ section.inquiry form input:nth-child(2).invalid {
 				width: 115px;
 				position: absolute;
 				right: -1px;
-				// border: 1px solid black;
+				// border: 1px solid #000;
 				// position: relative;
 				// left: 118.9px;
 			    // margin: 0;
 			    font-weight: 700;
 			    @include fontSize(8);
 			    @extend .flex;
-			    background: black;
+			    background: #000;
 			    color: white;
 			    text-transform: uppercase;;
 
@@ -1442,7 +1442,7 @@ section.inquiry form input:nth-child(2).invalid {
 		// order: 3;
 		width: 100%;
 		img {
-			border: 1px solid black;
+			border: 1px solid #000;
 		}
 
 	}
@@ -1626,9 +1626,10 @@ body.home {
   }
   #topMenu {
 
-  	height: 38px;
-  	width: 35px;
+  	height: 43px;
+  	width: 51px;
   	margin-right: 0;
+	  padding: 10px;
   	position: fixed;
   	 top: 20px;
   	 left: 3%;
@@ -1650,6 +1651,7 @@ body.home {
   	position: fixed;
   	width: 100%;
   	height: 100vh;
+	border: none;
   	padding: 7em 0 0;
 
     top: 0;
@@ -1700,7 +1702,7 @@ body.home {
 		bottom: 0;
 		right: 10px;
 		display: none;
-		color: black;
+		color: #000;
 		-webkit-text-stroke: 0px #000;
 	}
 }
@@ -1711,7 +1713,7 @@ body.home {
   bottom: 0;
   right: 10px;
   display: none;
-  color: black;
+  color: #000;
   -webkit-text-stroke: 0px #000;
 }
 .mailing-list-open {
@@ -1720,7 +1722,7 @@ body.home {
   line-height: 40px;
   background: transparent;
   @include fontSize(9);
-  color: black;
+  color: #000;
   width: auto !important;
   top: auto;
   right: auto;

@@ -481,6 +481,19 @@ function darkMode(){
   btnDarkMode.style.cssText = "background-color: #fff; justify-content: flex-end; transition: 1s;";
   slider.style.cssText ="background-color: #000;"
   mode.innerHTML = "&#9788;"
+  $('img svg path').css ('fill', 'white');
+  $('svg path').css ('fill', 'white');
+  $('.menu__nav, .artistNameExhibitionHome, .exhibitionDetailsHome,.exhibitionDateLocationHome, .artworkIteminfo').css('background', 'black');
+  $('form.searchForm input, .menu__nav, .artistNameExhibitionHome, .exhibitionDetailsHome,.exhibitionDateLocationHome, footer, .buttonOuter,.toggleText,.artworkIteminfo, video, img,.artFairEach, a:before,.inquireSubmit').css('border-color','white');
+  $('button,.infoAnimated').css('color','black');
+  $('button,.infoAnimated,.headerMainMenu').css('background','white');
+
+  $('.exhibitionDateLocationHome, a, .open').css('color','white');
+  $('.bookAnAppointment a').css('color','black');
+
+
+
+
   darkModeOn = true;
   } else {
     document.body.style.cssText = "background-color:#FFFFFF; color: #000000;  transition: 1s;";

@@ -62,7 +62,7 @@
     left: 50%;
     transform: translate(-50%, -50%);
     /* left: 25%; */
-    background: white;
+    background-color: white;
     align-items: center;
     border: 1px solid black;
     top: 85%;
@@ -149,4 +149,8 @@ position: inherit;
         text-align: left;
     }
     }
+}
+.blackBack {
+	background: #000;
+	border: 1px solid #fff;
 }
