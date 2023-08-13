@@ -360,6 +360,7 @@ $('.headerMainMenu').click(function(){
 
 
 
+
   //smooth scroll
   // Add smooth scrolling to all links
    $("a").on('click', function(event) {
@@ -470,13 +471,71 @@ $('.closeBox').click(function () {
   return false;
 });
 // darkmode
-let darkModeOn = false;
+
+// let darkModeOn = localStorage.getItem('darkMode') === 'enabled';
+// let btnDarkMode = document.querySelector('.btn-dark-mode');
+// let mode = document.querySelector('.mode');
+// let slider = document.querySelector('.slider');
+
+// function darkMode(){
+//   if (!darkModeOn) {
+//   document.body.style.cssText = "background-color:#000000; color: #FFFFFF; transition: 1s;";
+//   btnDarkMode.style.cssText = "background-color: #fff; justify-content: flex-end; transition: 1s;";
+//   slider.style.cssText ="background-color: #000;"
+//   mode.innerHTML = "&#9788;"
+//   $('img svg path, svg g path').css ('fill', 'white');
+//   $('svg path').css ('fill', 'white');
+//   $('.menu__nav, .artistNameExhibitionHome, .exhibitionDetailsHome,.exhibitionDateLocationHome, .artworkIteminfo').css('background', 'black');
+//   $('form.searchForm input, .menu__nav, .artistNameExhibitionHome, .exhibitionDetailsHome,.exhibitionDateLocationHome, footer, .buttonOuter,.toggleText,.artworkIteminfo, video, img,.artFairEach, a:before,.inquireSubmit,.arrow:before,.newsRelatedExhibitions,.tagsInner a').css('border-color','white');
+//   $('button,.infoAnimated').css('color','black');
+//   $('button,.infoAnimated').css('background','white');
+
+//   $('.exhibitionDateLocationHome, a, .open').css('color','white');
+//   $('.bookAnAppointment a').css('color','black');
+//   localStorage.setItem('darkMode', 'enabled');
+
+
+
+//   darkModeOn = true;
+  
+//   } else {
+    
+    
+//     document.body.style.cssText = "background-color:#FFFFFF; color: #000000;  transition: 1s;";
+//    btnDarkMode.style.cssText = "background-color: #000; justify-content: flex-start; transition: 1s;";
+//    slider.style.cssText ="background-color: #FFFFFF;"
+//   mode.innerHTML = "&#9790;"
+//   $('svg path, svg g path').css ('fill', 'black');
+//   $('.menu__nav, .artistNameExhibitionHome, .exhibitionDetailsHome,.exhibitionDateLocationHome, .artworkIteminfo').css('background', 'white');
+//   $('form.searchForm input, .menu__nav, .artistNameExhibitionHome, .exhibitionDetailsHome,.exhibitionDateLocationHome, footer, .buttonOuter,.toggleText,.artworkIteminfo, video, img,.artFairEach, a:before,.inquireSubmit,.arrow:before,.newsRelatedExhibitions,.tagsInner a').css('border-color','black');
+//   $('button,.infoAnimated').css('color','white');
+//   $('button,.infoAnimated').css('background','black');
+
+//   $('.exhibitionDateLocationHome, a, .open').css('color','black');
+//   $('.bookAnAppointment a').css('color','white');
+//   localStorage.setItem('darkMode', 'disabled');
+//   darkModeOn = false;
+//   }
+// }
+
+// document.addEventListener('DOMContentLoaded', function() {
+//   let darkModeOn = localStorage.getItem('darkMode') === 'enabled';
+
+//   if (darkModeOn) {
+//       darkMode();  // this will set dark mode styles based on the saved state
+//   }
+
+//   let btnDarkMode = document.querySelector('.btn-dark-mode');
+//   btnDarkMode.addEventListener('click', darkMode);
+// });
+//  dark mode take 2
+let darkModeOn = localStorage.getItem('darkMode') === 'enabled';
 let btnDarkMode = document.querySelector('.btn-dark-mode');
 let mode = document.querySelector('.mode');
 let slider = document.querySelector('.slider');
 
-function darkMode(){
-  if(darkModeOn === false){
+
+function applyDarkMode() {
   document.body.style.cssText = "background-color:#000000; color: #FFFFFF; transition: 1s;";
   btnDarkMode.style.cssText = "background-color: #fff; justify-content: flex-end; transition: 1s;";
   slider.style.cssText ="background-color: #000;"
@@ -485,33 +544,43 @@ function darkMode(){
   $('svg path').css ('fill', 'white');
   $('.menu__nav, .artistNameExhibitionHome, .exhibitionDetailsHome,.exhibitionDateLocationHome, .artworkIteminfo').css('background', 'black');
   $('form.searchForm input, .menu__nav, .artistNameExhibitionHome, .exhibitionDetailsHome,.exhibitionDateLocationHome, footer, .buttonOuter,.toggleText,.artworkIteminfo, video, img,.artFairEach, a:before,.inquireSubmit,.arrow:before,.newsRelatedExhibitions,.tagsInner a').css('border-color','white');
-  $('button,.infoAnimated').css('color','black');
-  $('button,.infoAnimated').css('background','white');
+  $('.mailing-list-open,.infoAnimated').css('color','black');
+  $('.mailing-list-open,.infoAnimated,.bookAnAppointment a').css('background','white');
 
-  $('.exhibitionDateLocationHome, a, .open').css('color','white');
+  $('.exhibitionDateLocationHome, a, .open,.nonRepArtists li,.exhibitionsOpen,.newsOpen,#downClick, #upClick,.btn-info,.location,.date').css('color','white');
   $('.bookAnAppointment a').css('color','black');
-
-
-
-
+  localStorage.setItem('darkMode', 'enabled');
   darkModeOn = true;
-  } else {
-    document.body.style.cssText = "background-color:#FFFFFF; color: #000000;  transition: 1s;";
-   btnDarkMode.style.cssText = "background-color: #000; justify-content: flex-start; transition: 1s;";
-   slider.style.cssText ="background-color: #FFFFFF;"
-  mode.innerHTML = "&#9790;"
-  $('svg path, svg g path').css ('fill', 'black');
-  $('.menu__nav, .artistNameExhibitionHome, .exhibitionDetailsHome,.exhibitionDateLocationHome, .artworkIteminfo').css('background', 'white');
-  $('form.searchForm input, .menu__nav, .artistNameExhibitionHome, .exhibitionDetailsHome,.exhibitionDateLocationHome, footer, .buttonOuter,.toggleText,.artworkIteminfo, video, img,.artFairEach, a:before,.inquireSubmit,.arrow:before,.newsRelatedExhibitions,.tagsInner a').css('border-color','black');
-  $('button,.infoAnimated').css('color','white');
-  $('button,.infoAnimated').css('background','black');
-
-  $('.exhibitionDateLocationHome, a, .open').css('color','black');
-  $('.bookAnAppointment a').css('color','white');
-  darkModeOn = false;
-  }
 }
 
+function applyLightMode() {
+  document.body.style.cssText = "background-color:#FFFFFF; color: #000000;  transition: 1s;";
+  btnDarkMode.style.cssText = "background-color: #000; justify-content: flex-start; transition: 1s;";
+  slider.style.cssText ="background-color: #FFFFFF;"
+ mode.innerHTML = "&#9790;"
+ $('svg path, svg g path').css ('fill', 'black');
+ $('.menu__nav, .artistNameExhibitionHome, .exhibitionDetailsHome,.exhibitionDateLocationHome, .artworkIteminfo').css('background', 'white');
+ $('form.searchForm input, .menu__nav, .artistNameExhibitionHome, .exhibitionDetailsHome,.exhibitionDateLocationHome, footer, .buttonOuter,.toggleText,.artworkIteminfo, video, img,.artFairEach, a:before,.inquireSubmit,.arrow:before,.newsRelatedExhibitions,.tagsInner a,.exhibitionHome').css('border-color','black');
+ $('.mailing-list-open,.infoAnimated,.newsOpen,.btn-info,.featuredVideoTitle').css('color','white');
+ $('.mailing-list-open,.infoAnimated,.bookAnAppointment a').css('background','black');
+
+ $('.exhibitionDateLocationHome, a, .open,.exhibitionsOpen,.newsOpen,#downClick, #upClick,.btn-info,.location,.date').css('color','black');
+ $('.bookAnAppointment a,.menu__nav li a,.artistsNames li a,.cli-plugin-main-butto,.nonRepArtists li').css('color','white');
+ localStorage.setItem('darkMode', 'disabled');
+  localStorage.setItem('darkMode', 'disabled');
+  darkModeOn = false;
+}
+function toggleDarkMode() {
+  darkModeOn ? applyLightMode() : applyDarkMode();
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+  // Initialize dark mode state from localStorage
+  darkModeOn ? applyDarkMode() : applyLightMode();
+
+  let btnDarkMode = document.querySelector('.btn-dark-mode');
+  btnDarkMode.addEventListener('click', toggleDarkMode);
+});
 // sticky menu
 
 $(window).scroll(function() {

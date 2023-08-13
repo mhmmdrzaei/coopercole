@@ -18,6 +18,7 @@
     <input type="checkbox" id="menu__check">
     <div class="menu__hero">
       <nav class="menu__nav">
+
         <label class="menu__icon" for="menu__check">
          <h3 class="Menu">Close</h3>
         </label>
@@ -32,8 +33,15 @@
           'theme_location' => 'mobile_menu'
         )); ?>
         <button class="mailing-list-open" alt="Opens Mailing List Subscription form">Mailing List</button>
+        
 
       </div>
+      <div class="btn-dark-mode">
+        <div class="slider">
+          <div class="mode">&#9790;</div>
+        </div>
+      </div>
+
       </nav>
       
     </div>
@@ -50,12 +58,7 @@
       </section>
      <h3 class="menuMain">Menu</h3>
     </label>
-    <div class="btn-dark-mode" onclick="darkMode()">
 
-<div class="slider">
-  <div class="mode">&#9790;</div>
-</div>
-</div>
 
     <section class="logo" id="logoMain">
        <a href="<?php echo home_url( '/' ); ?>" title="<?php bloginfo( 'name', 'display' ); ?>" rel="home">
