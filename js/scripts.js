@@ -1,5 +1,23 @@
 
 (function($) {
+
+  //top button
+  let mybutton = document.getElementById("myBtn");
+window.onscroll = function() {scrollFunction()};
+
+function scrollFunction() {
+  if (document.body.scrollTop > 2000 || document.documentElement.scrollTop > 2000) {
+    mybutton.style.display = "block";
+  } else {
+    mybutton.style.display = "none";
+  }
+}
+$('#myBtn').on('click', function(){
+  document.body.scrollTop = 0;
+  document.documentElement.scrollTop = 30;
+})
+
+
   
   $(document).on('click', function(e) {
     // If the clicked element or its parent is not '.artworkItemEach'
@@ -123,96 +141,10 @@ $(".closeInfo").click(function() {
       });
    }
 
-//   $.fn.readMore = function(options) {
-//     if(options === 'destroy') {
-//       $(this).each(function (_j, element) {
-//         $($(element).data().controller).off('click');
-//         $(element).html($(element).children().last().html());
-//       });
-//       return;
-//     }
 
-//     var maxLines = parseInt(options.lines),
-//       readMoreLabel = options.readMoreLabel || "+ Read more",
-//       readLessLabel = options.readLessLabel || "- Less",
-//       ellipsis = options.ellipsis || "",
-//       splitOn = options.splitOn || ' ';
-
-//     if(!maxLines || isNaN(maxLines)) {
-//       console.error("lines must be an integer");
-//       return;
-//     }
-  
-//     $(this).each(function (_j, element) {
-//       var originalText = $(element).html(),
-//         textArr = originalText.split(splitOn),
-//         $newDiv = $("<div/>"),
-//         $fullDiv = $("<div/>"),
-//         $readMore = $($(element).data().controller),
-//         hPrev = 0, 
-//         lines = 0, 
-//         overflow = false, 
-//         l = textArr.length, 
-//         i;
-  
-//       $fullDiv.html(originalText);
-//       $(element).html($newDiv).append($fullDiv);
-      
-//       for(i=0; i < l; i++) {
-//         $newDiv.append(textArr[i] + ' ');
-//         var h = $newDiv.height();
-//         if(h > hPrev) {
-//           hPrev = h;
-//           lines++;
-//           if(lines > maxLines) {
-//             overflow = true;
-//             $newDiv.html(textArr.slice(1, i).join(' '))
-//             break;
-//           }
-//         }
-//       }
-  
-//       if(overflow) {
-//         $readMore.text(readMoreLabel).css('display', 'block');
-//         $newDiv.append(ellipsis);
-//         var minH = $newDiv.height();
-//         var realH =  $fullDiv.height();
-//         var display = $newDiv.css('display');
-  
-//         function callback() {
-//           if($(element).data().expanded) {
-//             $fullDiv.animate(6000, function() {
-//               $newDiv.css('display', display);
-//               $fullDiv.css('display', 'none');
-//             });
-//             $readMore.animate({opacity: 0}, 500, function() {
-//               $readMore.text(readMoreLabel);
-//             }).animate({opacity: 1}, 500);
-//             $(element).data('expanded', false);
-//           } else {
-//             $newDiv.css('display', 'none');
-//             $fullDiv.css('display', display);
-//             // $fullDiv.css('height', minH + 'px')
-//             // $fullDiv.animate({height: realH + 'px'}, 1000);
-//             $readMore.animate({opacity: 0}, 500, function() {
-//               $readMore.text(readLessLabel);
-//             }).animate({opacity: 1}, 500);
-//             $(element).data('expanded', true);
-//           }
-//         }
-
-//         $readMore.on('click', callback);
-//       } else {
-//         $readMore.css('display', 'none');
-//       }
-//       $fullDiv.css('display', 'none');
-//     });
-//   }
 })(jQuery);
 
-// $(".text-area").readMore({lines: 15})
-/* When the user clicks on the button, 
-toggle between hiding and showing the dropdown content */
+
 function myFunction() {
   document.getElementById("menu-languages-menu").classList.toggle("show");
 }
@@ -355,6 +287,12 @@ $('.headerMainMenu').click(function(){
 
 });
 
+// detect outside click
+
+
+
+
+
 
 
 
@@ -470,64 +408,7 @@ $('.closeBox').click(function () {
   }
   return false;
 });
-// darkmode
 
-// let darkModeOn = localStorage.getItem('darkMode') === 'enabled';
-// let btnDarkMode = document.querySelector('.btn-dark-mode');
-// let mode = document.querySelector('.mode');
-// let slider = document.querySelector('.slider');
-
-// function darkMode(){
-//   if (!darkModeOn) {
-//   document.body.style.cssText = "background-color:#000000; color: #FFFFFF; transition: 1s;";
-//   btnDarkMode.style.cssText = "background-color: #fff; justify-content: flex-end; transition: 1s;";
-//   slider.style.cssText ="background-color: #000;"
-//   mode.innerHTML = "&#9788;"
-//   $('img svg path, svg g path').css ('fill', 'white');
-//   $('svg path').css ('fill', 'white');
-//   $('.menu__nav, .artistNameExhibitionHome, .exhibitionDetailsHome,.exhibitionDateLocationHome, .artworkIteminfo').css('background', 'black');
-//   $('form.searchForm input, .menu__nav, .artistNameExhibitionHome, .exhibitionDetailsHome,.exhibitionDateLocationHome, footer, .buttonOuter,.toggleText,.artworkIteminfo, video, img,.artFairEach, a:before,.inquireSubmit,.arrow:before,.newsRelatedExhibitions,.tagsInner a').css('border-color','white');
-//   $('button,.infoAnimated').css('color','black');
-//   $('button,.infoAnimated').css('background','white');
-
-//   $('.exhibitionDateLocationHome, a, .open').css('color','white');
-//   $('.bookAnAppointment a').css('color','black');
-//   localStorage.setItem('darkMode', 'enabled');
-
-
-
-//   darkModeOn = true;
-  
-//   } else {
-    
-    
-//     document.body.style.cssText = "background-color:#FFFFFF; color: #000000;  transition: 1s;";
-//    btnDarkMode.style.cssText = "background-color: #000; justify-content: flex-start; transition: 1s;";
-//    slider.style.cssText ="background-color: #FFFFFF;"
-//   mode.innerHTML = "&#9790;"
-//   $('svg path, svg g path').css ('fill', 'black');
-//   $('.menu__nav, .artistNameExhibitionHome, .exhibitionDetailsHome,.exhibitionDateLocationHome, .artworkIteminfo').css('background', 'white');
-//   $('form.searchForm input, .menu__nav, .artistNameExhibitionHome, .exhibitionDetailsHome,.exhibitionDateLocationHome, footer, .buttonOuter,.toggleText,.artworkIteminfo, video, img,.artFairEach, a:before,.inquireSubmit,.arrow:before,.newsRelatedExhibitions,.tagsInner a').css('border-color','black');
-//   $('button,.infoAnimated').css('color','white');
-//   $('button,.infoAnimated').css('background','black');
-
-//   $('.exhibitionDateLocationHome, a, .open').css('color','black');
-//   $('.bookAnAppointment a').css('color','white');
-//   localStorage.setItem('darkMode', 'disabled');
-//   darkModeOn = false;
-//   }
-// }
-
-// document.addEventListener('DOMContentLoaded', function() {
-//   let darkModeOn = localStorage.getItem('darkMode') === 'enabled';
-
-//   if (darkModeOn) {
-//       darkMode();  // this will set dark mode styles based on the saved state
-//   }
-
-//   let btnDarkMode = document.querySelector('.btn-dark-mode');
-//   btnDarkMode.addEventListener('click', darkMode);
-// });
 //  dark mode take 2
 let darkModeOn = localStorage.getItem('darkMode') === 'enabled';
 let btnDarkMode = document.querySelector('.btn-dark-mode');
@@ -540,10 +421,9 @@ function applyDarkMode() {
   btnDarkMode.style.cssText = "background-color: #fff; justify-content: flex-end; transition: 1s;";
   slider.style.cssText ="background-color: #000;"
   mode.innerHTML = "&#9788;"
-  $('img svg path, svg g path').css ('fill', 'white');
-  $('svg path').css ('fill', 'white');
+  $('svg path, svg g path').css ('fill', 'white');
   $('.menu__nav, .artistNameExhibitionHome, .exhibitionDetailsHome,.exhibitionDateLocationHome, .artworkIteminfo').css('background', 'black');
-  $('form.searchForm input, .menu__nav, .artistNameExhibitionHome, .exhibitionDetailsHome,.exhibitionDateLocationHome, footer, .buttonOuter,.toggleText,.artworkIteminfo, video, img,.artFairEach, a:before,.inquireSubmit,.arrow:before,.newsRelatedExhibitions,.tagsInner a').css('border-color','white');
+  $('form.searchForm input, .menu__nav, .artistNameExhibitionHome, .exhibitionDetailsHome,.exhibitionDateLocationHome, footer, .buttonOuter,.toggleText,.artworkIteminfo, video, img,.artFairEach, a:before,.inquireSubmit,.arrow:before,.newsRelatedExhibitions,.tagsInner a,.exhibitionHome').css('border-color','white');
   $('.mailing-list-open,.infoAnimated').css('color','black');
   $('.mailing-list-open,.infoAnimated,.bookAnAppointment a').css('background','white');
 
@@ -563,13 +443,17 @@ function applyLightMode() {
  $('form.searchForm input, .menu__nav, .artistNameExhibitionHome, .exhibitionDetailsHome,.exhibitionDateLocationHome, footer, .buttonOuter,.toggleText,.artworkIteminfo, video, img,.artFairEach, a:before,.inquireSubmit,.arrow:before,.newsRelatedExhibitions,.tagsInner a,.exhibitionHome').css('border-color','black');
  $('.mailing-list-open,.infoAnimated,.newsOpen,.btn-info,.featuredVideoTitle').css('color','white');
  $('.mailing-list-open,.infoAnimated,.bookAnAppointment a').css('background','black');
+$(".tags a,.tagsInner a").hover(function(e) { 
+  $(this).css("color",e.type === "mouseenter"?"white":"black") 
+})
 
  $('.exhibitionDateLocationHome, a, .open,.exhibitionsOpen,.newsOpen,#downClick, #upClick,.btn-info,.location,.date').css('color','black');
- $('.bookAnAppointment a,.menu__nav li a,.artistsNames li a,.cli-plugin-main-butto,.nonRepArtists li').css('color','white');
+ $('.bookAnAppointment a,.menu__nav li a,.artistsNames li a,.cli-plugin-main-butto,.description h2 a,.newsTitle a,.newsReadMore,.nonRepArtists li').css('color','white');
  localStorage.setItem('darkMode', 'disabled');
-  localStorage.setItem('darkMode', 'disabled');
   darkModeOn = false;
+
 }
+
 function toggleDarkMode() {
   darkModeOn ? applyLightMode() : applyDarkMode();
 }
@@ -580,6 +464,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
   let btnDarkMode = document.querySelector('.btn-dark-mode');
   btnDarkMode.addEventListener('click', toggleDarkMode);
+  
 });
 // sticky menu
 

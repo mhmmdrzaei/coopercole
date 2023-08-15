@@ -1,4 +1,5 @@
 <?php //template name: Exhibitions ?>
+<button id="myBtn" title="Go to top">&#x2963;</button>
 
 <?php get_header(); ?>
 <main class="exhibitionsMainPage">

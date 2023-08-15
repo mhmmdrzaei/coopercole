@@ -1,5 +1,7 @@
 <?php //template name: Contact ?>
 <?php get_header(); ?>
+<button id="myBtn" title="Go to top">&#x2963;</button>
+
 <main class="contactMain">
 	<?php if(have_posts()) : while(have_posts()) : the_post(); ?>
 	<section class="aboutContactContainer">
