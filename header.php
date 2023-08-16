@@ -15,7 +15,7 @@
 
 <header id="header">
   <main class="headerMain">
-    <input type="checkbox" id="menu__check">
+    <!-- <input type="checkbox" id="menu__check"> -->
     <div class="menu__hero">
       <nav class="menu__nav">
 

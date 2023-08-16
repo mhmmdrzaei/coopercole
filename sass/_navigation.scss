@@ -20,9 +20,9 @@
   left: 15em;
 }
 
-#menu__check {
-  display: none; // hide checkbox
-}
+// #menu__check {
+//   display: none; // hide checkbox
+// }
 
 .menu__hero {
   display: flex; 
@@ -33,10 +33,11 @@
   z-index: 101;
   max-width: 24%;
   transition: left ease-in-out .7s;
-  #menu__check:checked ~ & {
-    left: 0;
-    transition: left ease-in-out .7s;
-  }
+  // #menu__check:checked ~ & {
+  //   left: 0;
+  //   transition: left ease-in-out .7s;
+  // }
+
   .wrap {
     margin-right: 10px; // margin for menu button
     background-color: #bbb;
@@ -46,6 +47,7 @@
       text-align: right;
     }
   }
+
   // styles menu button
   .menu__icon {
     display: flex;
@@ -170,6 +172,11 @@ h3.menuMain{
     display: flex;
     z-index: 100;
 
+}
+
+.openMenu {
+  left: 0;
+  transition: left ease-in-out .7s;
 }
 
 //languages menu

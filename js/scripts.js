@@ -264,30 +264,110 @@ $('.single').each(function(){
 
 //hamburger menu
 
-$('.headerMainMenu').click(function(){
-  $('.hamburger-menu').toggleClass('animate');
-  $('.menu__hero').toggleClass('menuvisibleMobile');
-  $('body').toggleClass('bodyOveflow');
-  // $(body).toggleClass('hidden');
-  window.setTimeout(function() {
-    $('.language').toggleClass('languageIn');
-    $('.searchField').toggleClass('searchIn');
-    $('.menu-item-15020 a').toggleClass('mobileSocialVisIG');
-    $('.menu-instagram a').toggleClass('mobileSocialVisIG');
-    $('.mailing-list-open').toggleClass('mobileSocialVis');
-  }, 0);
-     if(($(window).width()) < 730) {
-      $('#gtranslate_selector').css('color','black');
-    // $('form.searchForm input').css('border-bottom','1px solid black');
-    $('.artFairHome').css('background','black');
-    // $('.searchForm label svg g path').css('fill','black');
-      // $('footer').css('position','absolute');
-    }
+// $('.headerMainMenu').click(function(){
+//   $('.hamburger-menu').toggleClass('animate');
+  
+//   $('body').toggleClass('bodyOveflow');
+//   // $(body).toggleClass('hidden');
+//   window.setTimeout(function() {
+//     $('.language').toggleClass('languageIn');
+//     $('.searchField').toggleClass('searchIn');
+//     $('.menu-item-15020 a').toggleClass('mobileSocialVisIG');
+//     $('.menu-instagram a').toggleClass('mobileSocialVisIG');
+//     $('.mailing-list-open').toggleClass('mobileSocialVis');
+//   }, 0);
+//      if(($(window).width()) < 730) {
+//       $('#gtranslate_selector').css('color','black');
+//       $('.menu__hero').toggleClass('menuvisibleMobile');
+//     // $('form.searchForm input').css('border-bottom','1px solid black');
+//     $('.artFairHome').css('background','black');
+//     // $('.searchForm label svg g path').css('fill','black');
+//       // $('footer').css('position','absolute');
+//     }
 
 
+// });
+
+// // detect outside click
+
+// function toggleMenu() {
+//   const menu = $(".menu__hero");
+//   $('.menu__hero').toggleClass('menuvisibleMobile');
+//   if (menu.hasClass("menuvisibleMobile")) {
+//     menu.css('left', '0px');
+//   } else {
+//     menu.css('left', '-800px');
+//   }
+// }
+
+// $(".menu__icon").click(function(e) {
+//   e.stopPropagation();
+//   toggleMenu();
+  
+// });
+
+// $(document).click(function(event) {
+//   const menu = $(".menu__hero");
+//   if (!$(event.target).closest('.menu__hero').length && !$(event.target).closest('.menu__icon').length && menu.hasClass("menuvisibleMobile")) {
+//     menu.removeClass("menuvisibleMobile").css('left', '-800px');
+//   }
+// });
+
+// // Prevent the click event from bubbling up to the document from the menu or its toggle
+// $('.menu__icon, .menu__hero').click(function(event) {
+//   event.stopPropagation();
+// });
+// function toggleHamburgerMenu() {
+//   $('.hamburger-menu').toggleClass('animate');
+//   $('body').toggleClass('bodyOveflow');
+//   $('.menu__hero').toggleClass('menuvisibleMobile');
+
+
+//   setTimeout(function() {
+//       $('.language').toggleClass('languageIn');
+//       $('.searchField').toggleClass('searchIn');
+//       $('.menu-item-15020 a').toggleClass('mobileSocialVisIG');
+//       $('.menu-instagram a').toggleClass('mobileSocialVisIG');
+//       $('.mailing-list-open').toggleClass('mobileSocialVis');
+//   }, 0);
+
+//   if($(window).width() < 730) {
+//       $('#gtranslate_selector').css('color', 'black');
+//       $('.artFairHome').css('background', 'black');
+//   }
+// }
+
+// $('.headerMainMenu').click(function(e) {
+//   // e.stopPropagation();  // prevent this click from being propagated to document
+//   toggleHamburgerMenu();
+// });
+
+$('.menu__icon').click(function(){
+  $('.menu__hero').toggleClass('openMenu');
+
+})
+
+$(document).click(function() {
+  if ($('.menu__hero').hasClass('menuvisibleMobile')) {
+      // Reset everything back to initial state
+      $('.hamburger-menu').removeClass('animate');
+      $('body').removeClass('bodyOveflow');
+      $('.language').removeClass('languageIn');
+      $('.searchField').removeClass('searchIn');
+      $('.menu-item-15020 a').removeClass('mobileSocialVisIG');
+      $('.menu-instagram a').removeClass('mobileSocialVisIG');
+      $('.mailing-list-open').removeClass('mobileSocialVis');
+      $('.menu__hero').removeClass('menuvisibleMobile');
+      $('#gtranslate_selector').css('color', '');  // remove inline styles
+      $('.artFairHome').css('background', '');     // remove inline styles
+  }
 });
 
-// detect outside click
+// Prevent the click event from being propagated to document from the menu itself
+$('.menu__hero').click(function(e) {
+  // e.stopPropagation();
+});
+
 
 
 
@@ -440,8 +520,8 @@ function applyLightMode() {
  mode.innerHTML = "&#9790;"
  $('svg path, svg g path').css ('fill', 'black');
  $('.menu__nav, .artistNameExhibitionHome, .exhibitionDetailsHome,.exhibitionDateLocationHome, .artworkIteminfo').css('background', 'white');
- $('form.searchForm input, .menu__nav, .artistNameExhibitionHome, .exhibitionDetailsHome,.exhibitionDateLocationHome, footer, .buttonOuter,.toggleText,.artworkIteminfo, video, img,.artFairEach, a:before,.inquireSubmit,.arrow:before,.newsRelatedExhibitions,.tagsInner a,.exhibitionHome').css('border-color','black');
- $('.mailing-list-open,.infoAnimated,.newsOpen,.btn-info,.featuredVideoTitle').css('color','white');
+ $('form.searchForm input, .menu__nav, .artistNameExhibitionHome, .exhibitionDetailsHome,.exhibitionDateLocationHome, footer, .buttonOuter,.toggleText,.artworkIteminfo, video, img,.artFairEach, a:before,.inquireSubmit,.newsRelatedExhibitions,.tagsInner a,.exhibitionHome').css('border-color','black');
+ $('.mailing-list-open,.infoAnimated,.newsOpen,.btn-info,.featuredVideoTitle,..arrow').css('color','white');
  $('.mailing-list-open,.infoAnimated,.bookAnAppointment a').css('background','black');
 $(".tags a,.tagsInner a").hover(function(e) { 
   $(this).css("color",e.type === "mouseenter"?"white":"black") 
