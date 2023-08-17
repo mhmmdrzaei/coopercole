@@ -1583,7 +1583,7 @@ body.home {
   .mobileMenu {
     display: block;
   }
-  .Menu {
+  .menuClose {
   	display: none;
   }
   .menuMain {
@@ -1714,7 +1714,8 @@ body.home {
   position: fixed;
   display: block;
   bottom: 0;
-  right: 10px;
+  right: 0;
+  padding: 2px 10px;
   display: none;
   color: #000;
   -webkit-text-stroke: 0px #000;

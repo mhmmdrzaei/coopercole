@@ -262,122 +262,48 @@ $('.single').each(function(){
   }
 });
 
-//hamburger menu
 
-// $('.headerMainMenu').click(function(){
-//   $('.hamburger-menu').toggleClass('animate');
-  
-//   $('body').toggleClass('bodyOveflow');
-//   // $(body).toggleClass('hidden');
-//   window.setTimeout(function() {
-//     $('.language').toggleClass('languageIn');
-//     $('.searchField').toggleClass('searchIn');
-//     $('.menu-item-15020 a').toggleClass('mobileSocialVisIG');
-//     $('.menu-instagram a').toggleClass('mobileSocialVisIG');
-//     $('.mailing-list-open').toggleClass('mobileSocialVis');
-//   }, 0);
-//      if(($(window).width()) < 730) {
-//       $('#gtranslate_selector').css('color','black');
-//       $('.menu__hero').toggleClass('menuvisibleMobile');
-//     // $('form.searchForm input').css('border-bottom','1px solid black');
-//     $('.artFairHome').css('background','black');
-//     // $('.searchForm label svg g path').css('fill','black');
-//       // $('footer').css('position','absolute');
-//     }
+// menu 
 
+    // Your existing menu toggle function
+    $('.menu__icon').click(function(e) {
+      e.stopPropagation(); // prevent this click from being propagated to document
+      $('.menu__hero').toggleClass('openMenu');
+      window.setTimeout(function() {
+          $('.language').toggleClass('languageIn');
+          $('.searchField').toggleClass('searchIn');
+          $('.menu-item-15020 a').toggleClass('mobileSocialVisIG');
+          $('.menu-instagram a').toggleClass('mobileSocialVisIG');
+          $('.mailing-list-open').toggleClass('mobileSocialVis');
+      }, 0);
+      if ($(window).width() < 730) {
+          $('#gtranslate_selector').css('color', 'black');
+          $('.menu__hero').toggleClass('menuvisibleMobile');
+          $('.artFairHome').css('background', 'black');
+      }
+      $('.hamburger-menu').toggleClass('animate');
+      $('body').toggleClass('bodyOveflow');
+  });
+    // Hide the menu when clicking outside
+    $(document).click(function() {
+      if ($('.menu__hero').hasClass('openMenu')) {
+          // Reset everything to the initial state
+          $('.menu__hero').removeClass('openMenu');
+          $('.language, .searchField, .menu-item-15020 a, .menu-instagram a, .mailing-list-open').removeClass('languageIn searchIn mobileSocialVisIG');
+          $('.hamburger-menu').removeClass('animate');
+          $('body').removeClass('bodyOveflow');
+          if ($(window).width() < 730) {
+              $('#gtranslate_selector').css('color', '');
+              $('.menu__hero').removeClass('menuvisibleMobile');
+              $('.artFairHome').css('background', '');
+          }
+      }
+  });
 
-// });
-
-// // detect outside click
-
-// function toggleMenu() {
-//   const menu = $(".menu__hero");
-//   $('.menu__hero').toggleClass('menuvisibleMobile');
-//   if (menu.hasClass("menuvisibleMobile")) {
-//     menu.css('left', '0px');
-//   } else {
-//     menu.css('left', '-800px');
-//   }
-// }
-
-// $(".menu__icon").click(function(e) {
-//   e.stopPropagation();
-//   toggleMenu();
-  
-// });
-
-// $(document).click(function(event) {
-//   const menu = $(".menu__hero");
-//   if (!$(event.target).closest('.menu__hero').length && !$(event.target).closest('.menu__icon').length && menu.hasClass("menuvisibleMobile")) {
-//     menu.removeClass("menuvisibleMobile").css('left', '-800px');
-//   }
-// });
-
-// // Prevent the click event from bubbling up to the document from the menu or its toggle
-// $('.menu__icon, .menu__hero').click(function(event) {
-//   event.stopPropagation();
-// });
-// function toggleHamburgerMenu() {
-//   $('.hamburger-menu').toggleClass('animate');
-//   $('body').toggleClass('bodyOveflow');
-//   $('.menu__hero').toggleClass('menuvisibleMobile');
-
-
-//   setTimeout(function() {
-//       $('.language').toggleClass('languageIn');
-//       $('.searchField').toggleClass('searchIn');
-//       $('.menu-item-15020 a').toggleClass('mobileSocialVisIG');
-//       $('.menu-instagram a').toggleClass('mobileSocialVisIG');
-//       $('.mailing-list-open').toggleClass('mobileSocialVis');
-//   }, 0);
-
-//   if($(window).width() < 730) {
-//       $('#gtranslate_selector').css('color', 'black');
-//       $('.artFairHome').css('background', 'black');
-//   }
-// }
-
-// $('.headerMainMenu').click(function(e) {
-//   // e.stopPropagation();  // prevent this click from being propagated to document
-//   toggleHamburgerMenu();
-// });
-
-$('.menu__icon').click(function(){
-  $('.menu__hero').toggleClass('openMenu');
-
-})
-
-$(document).click(function() {
-  if ($('.menu__hero').hasClass('menuvisibleMobile')) {
-      // Reset everything back to initial state
-      $('.hamburger-menu').removeClass('animate');
-      $('body').removeClass('bodyOveflow');
-      $('.language').removeClass('languageIn');
-      $('.searchField').removeClass('searchIn');
-      $('.menu-item-15020 a').removeClass('mobileSocialVisIG');
-      $('.menu-instagram a').removeClass('mobileSocialVisIG');
-      $('.mailing-list-open').removeClass('mobileSocialVis');
-      $('.menu__hero').removeClass('menuvisibleMobile');
-      $('#gtranslate_selector').css('color', '');  // remove inline styles
-      $('.artFairHome').css('background', '');     // remove inline styles
-  }
-});
-
-// Prevent the click event from being propagated to document from the menu itself
-$('.menu__hero').click(function(e) {
-  // e.stopPropagation();
-});
-
-
-
-
-
-
-
-
-
-
-
+  // Prevent the click event from being propagated to document from the menu itself
+  $('.menu__hero').click(function(e) {
+      e.stopPropagation();
+  });
 
   //smooth scroll
   // Add smooth scrolling to all links
@@ -505,10 +431,10 @@ function applyDarkMode() {
   $('.menu__nav, .artistNameExhibitionHome, .exhibitionDetailsHome,.exhibitionDateLocationHome, .artworkIteminfo').css('background', 'black');
   $('form.searchForm input, .menu__nav, .artistNameExhibitionHome, .exhibitionDetailsHome,.exhibitionDateLocationHome, footer, .buttonOuter,.toggleText,.artworkIteminfo, video, img,.artFairEach, a:before,.inquireSubmit,.arrow:before,.newsRelatedExhibitions,.tagsInner a,.exhibitionHome').css('border-color','white');
   $('.mailing-list-open,.infoAnimated').css('color','black');
-  $('.mailing-list-open,.infoAnimated,.bookAnAppointment a').css('background','white');
+  $('.mailing-list-open,.infoAnimated,.bookAnAppointment a,#menu-item-15020 a').css('background','white');
 
   $('.exhibitionDateLocationHome, a, .open,.nonRepArtists li,.exhibitionsOpen,.newsOpen,#downClick, #upClick,.btn-info,.location,.date').css('color','white');
-  $('.bookAnAppointment a').css('color','black');
+  $('.bookAnAppointment a,#menu-item-15020 a').css('color','black');
   localStorage.setItem('darkMode', 'enabled');
   darkModeOn = true;
 }
@@ -521,11 +447,11 @@ function applyLightMode() {
  $('svg path, svg g path').css ('fill', 'black');
  $('.menu__nav, .artistNameExhibitionHome, .exhibitionDetailsHome,.exhibitionDateLocationHome, .artworkIteminfo').css('background', 'white');
  $('form.searchForm input, .menu__nav, .artistNameExhibitionHome, .exhibitionDetailsHome,.exhibitionDateLocationHome, footer, .buttonOuter,.toggleText,.artworkIteminfo, video, img,.artFairEach, a:before,.inquireSubmit,.newsRelatedExhibitions,.tagsInner a,.exhibitionHome').css('border-color','black');
- $('.mailing-list-open,.infoAnimated,.newsOpen,.btn-info,.featuredVideoTitle,..arrow').css('color','white');
- $('.mailing-list-open,.infoAnimated,.bookAnAppointment a').css('background','black');
+ $('.mailing-list-open,.infoAnimated,.newsOpen,.btn-info,.featuredVideoTitle,.arrow').css('color','white');
+ $('.mailing-list-open,.infoAnimated,.bookAnAppointment a,#menu-item-15020 a').css('background','black');
 $(".tags a,.tagsInner a").hover(function(e) { 
   $(this).css("color",e.type === "mouseenter"?"white":"black") 
-})
+});
 
  $('.exhibitionDateLocationHome, a, .open,.exhibitionsOpen,.newsOpen,#downClick, #upClick,.btn-info,.location,.date').css('color','black');
  $('.bookAnAppointment a,.menu__nav li a,.artistsNames li a,.cli-plugin-main-butto,.description h2 a,.newsTitle a,.newsReadMore,.nonRepArtists li').css('color','white');
@@ -546,6 +472,8 @@ document.addEventListener('DOMContentLoaded', function() {
   btnDarkMode.addEventListener('click', toggleDarkMode);
   
 });
+
+
 // sticky menu
 
 $(window).scroll(function() {

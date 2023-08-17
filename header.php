@@ -20,7 +20,7 @@
       <nav class="menu__nav">
 
         <label class="menu__icon" for="menu__check">
-         <h3 class="Menu">Close</h3>
+         <h3 class="menuClose">Close</h3>
         </label>
             <?php wp_nav_menu( array(
         'container' => false,
