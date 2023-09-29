@@ -189,7 +189,7 @@ $(document).ready(function(){
     if ($(".noShowContainerNew")[0]){
 
         // $("body").css('background-image', 'linear-gradient(to right, #DC03FC, #0322FC, #03FCEF, #23FC03, #FCE303, #FC7A03, #FC0303)');
-        $('footer').css('background','white');
+        // $('footer').css('background','white');
         $('footer').css('position','fixed');
         // $('.logoall').css('fill','white');
         // $('#gtranslate_selector').css('color','white');
