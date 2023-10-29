@@ -167,7 +167,7 @@ h3.menuMain{
 .stickyMenu{
     position: fixed;
     top: 30px;
-    left:3%;
+    // left:3%;
     align-items: center;
     display: flex;
     z-index: 100;
@@ -232,7 +232,7 @@ h3.menuMain{
   display: none;
   position: fixed;
   bottom: 35px;
-  right: 30px;
+  left: 5%;
   z-index: 99;
   font-size: 18px;
   border: none;

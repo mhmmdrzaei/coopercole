@@ -39,6 +39,7 @@
 
 
     }
+    
 
 
 }
@@ -124,14 +125,30 @@ position: inherit;
     position: inherit;
     border: none;
     order: 1;
+	margin: 0;
+    width: 100%;
     // text-align: center;
     .mohammadUl,.nonRepArtists {
         display: flex;
         flex-flow: wrap;
+        
+        width: 100%;
         li {
             margin: 0 10px 10px 0;
         }
+
     }
+    .scroll {
+
+        animation-fill-mode: forwards;
+        animation: move 40s linear infinite;
+           white-space: nowrap; 
+           width: 100%;
+           margin: 0 20px;
+           flex-flow: nowrap;
+
+       
+   }
 
     }
     .exhibitionDateLocationHome {

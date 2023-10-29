@@ -23,10 +23,17 @@
         .aboutimg {
             width: 42%;
         }
-        p,.contactinfo {
+        // p,.contactinfo {
+        //     width: 100%;
+        // }
+     
+    }
+    .galleryAddress {
+        p {
             width: 58%;
         }
-    }
+
+    } 
 
     .galleryContact {
         .contactinfo a {
@@ -56,6 +63,9 @@
 }
 .galleryAdditionalInfo {
     @include fontSize(14);
+    h3, h4 {
+        text-align: center;
+    }
 }
 .appointment {
     max-width: 800px;

@@ -131,6 +131,30 @@ video {
     // margin: 0 auto;
 }
 //EXHIBITION
+/* width */
+.artworkIteminfo::-webkit-scrollbar {
+	width: 15px;
+  }
+  
+  /* Track */
+  .artworkIteminfo::-webkit-scrollbar-track {
+	// box-shadow: inset 1px 1px 1px black; 
+	// order: 1px solid white;
+   
+	background: white
+  }
+   
+  /* Handle */
+  .artworkIteminfo::-webkit-scrollbar-thumb {
+	background: black; 
+	border: 1px solid white;
+  }
+  
+  /* Handle on hover */
+  .artworkIteminfo::-webkit-scrollbar-thumb:hover {
+	background: yellow; 
+  }
+
 .exhibitionsMainPage {
 	@extend .flex;
 	flex-direction: row-reverse;
@@ -354,18 +378,22 @@ article.exhibition {
 			align-items: flex-end;
 			position: relative;
 			overflow: hidden;
+			-webkit-box-align: end;
+			
 			.mohammadUl{
 				
 				display: flex;
 				margin: 0;
+				flex-flow: nowrap;
 				padding: 0;
 				list-style: none;
 				-webkit-text-stroke: .7px #000;
 				color: white;
 				@include fontSize(11);
+				
 				li {
 					h3{
-						margin: 0 20px 10px 3px;
+						margin: 0 20px 10px 0px;
 
 					}
 				}
@@ -1014,7 +1042,7 @@ h3#artworks {
     right: 50%;
 	transform: translate(50%, -50%);
 	position: fixed;
-	overflow: scroll;
+	overflow-y: scroll;
 	
 }
 .artworkItemInfoInnner {
@@ -2046,7 +2074,7 @@ body.home {
 
 		.artworkItemInfoText {
 			width: 100%;
-			order: 2;
+			order: 1;
 			margin: 20px 0 90px;
 			.artworkInfoTextFixed, .inquiry {
 				width: 100%;

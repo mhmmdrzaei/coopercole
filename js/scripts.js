@@ -215,7 +215,7 @@ $(document).ready(function(){
 // }
 
  //more than 4 artists listed in Exhibition 
-    $('.mohammadUl').each(function() {
+    $('.mohammadUl, .nonRepArtists').each(function() {
       var $this = $(this);
       var x = $(window).width();
       if ($this.find('li').length > 4) { //if looking for direct descendants then do .children('div').length

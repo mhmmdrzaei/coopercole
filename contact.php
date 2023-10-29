@@ -17,6 +17,9 @@
 			<p><?php the_field('gallery_address_footer','options') ?></p>
 			
 		</aside>
+		<aside class="jumpToMap">
+		<a class="addressMap"href="#map" class="contactMapLink"><?php require('images/map.svg');?></a>
+		</aside>
 		<aside class="galleryContact">
 		<figure class="aboutimg"alt="contact label">
 			<?php require('images/contact.svg');?>
@@ -34,9 +37,7 @@
 			</figure>
 			<?php the_field('hours'); ?>
 		</aside>
-		<aside class="jumpToMap">
-		<a class="addressMap"href="#map" class="contactMapLink"><?php require('images/map.svg');?></a>
-		</aside>
+
 		<section class="Mailinglist">
 		<figure class="mailing-list-img"alt="sign up for our mailing list button">
 			<?php require('images/mailing_list.svg');?>
