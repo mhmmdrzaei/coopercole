@@ -1,20 +1,57 @@
-
-.container-home {
-    margin-bottom: -6vh;
+@mixin fontSize($sizeValue){
+    font-size: $sizeValue * 1px;
+    font-size: calc($sizeValue/10) * 1rem;
 }
+.container-home {
+    width: 100%;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  z-index: -1;
+   
+}
+.home {
+    footer {
+        position: fixed;
+    }
+    h3 {
+        @include fontSize(12);
+    }
+}
+.timer {
+    height: 1%;
+    width: 0%;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    background: #09f;
+    z-index: 10;
+  }
+.allexhibtions-home {
+    position: relative;
+  height: 100%;
+
+}
+// .slide {
+//     width: 100%;
+//     height: 100%;
+//     }
+  
+// .slide { display: none;}
 .exhibitionHome {
     position: relative;
-    width: 100%;
+    max-width: 100%;
     height: 100vh;
-    top: -6vh;
-    margin-bottom: 20px;
-    
 }
 .exhibitionHome figure {
     position: absolute;
     width: 100%;
     height: 100vh;
     overflow: hidden;
+    img {
+        height: 100vh;
+        object-fit: cover;
+    }
 
 
 }
@@ -24,7 +61,7 @@
     position: absolute;
     // height: 20vh;
     right: 10%;
-    top: 10%;
+    top: 20%;
     padding: 20px;
     background: white;
     border: 1px solid black;
@@ -46,7 +83,7 @@
 .exhibitionDetailsHome {
     position: absolute;
     left: 10%;
-    top: 10%;
+    top: 20%;
     background: white;
     border: 1px solid black;
     padding: 20px;
@@ -84,15 +121,28 @@
         width: 50%;
     }
 }
+
 @media (max-width: 800px) { 
     .container-home {
         margin-bottom: 20px;
+        position: initial;
+        height: initial;
+
+    }
+    .allexhibtions-home{
+        height: initial;
+    }
+    .slide {
+        border-bottom: 1px solid black;
+
+    }
+    .slide:nth-last-child(1) {
+        border-bottom: none;
     }
     .exhibitionHome {
         height: inherit;
         top: 0;
         padding-bottom: 20px;
-        border-bottom: 1px solid black;
     }
     .exhibitionHome a {
 
@@ -108,6 +158,8 @@
         order: 2;
         img {
             border: 1px solid black;
+            height: auto;
+            object-fit: initial;
         }
     }
     .exhibitionDetailsHome {

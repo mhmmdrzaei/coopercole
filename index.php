@@ -180,16 +180,22 @@ if($currentArtF->have_posts()) : while($currentArtF->have_posts()) : $currentArt
 
 		}
 ?>
+<section class="allexhibtions-home">
 		<?php $exhibitions = new Wp_Query( $args );
 
 		if($exhibitions->have_posts()) : while($exhibitions->have_posts()) : $exhibitions->the_post();
 
 			?>
-
+		
 		<?php	get_template_part('partials/repeater-exhibition-home'); ?>
+
+		
+
+		
 
 
 		<?php endwhile; wp_reset_postdata(); ?>
+		</section>
 
 	<?php else: ?>
 	<?php

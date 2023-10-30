@@ -1,5 +1,103 @@
 
 (function($) {
+  if ($('.allexhibtions-home').find('.exhibitionHome').length > 1) {
+    $('.exhibitionHome').addClass('slide');
+    $('.container-home').append('<div class="timer"></div>');
+}
+//   // slider type
+//   $t = "slide"; // opitions are fade and slide
+  
+//   //variables
+//   $f = 1000,  // fade in/out speed
+//   $s = 1000,  // slide transition speed (for sliding carousel)
+//   $d = 10000;  // duration per slide
+  
+//   $n = $('.slide').length; //number of slides
+//   $w = $('.slide').width(); // slide width
+//   $c = $('.container').width(); // container width
+//    $ss = $n * $w; // slideshow width
+
+  
+//     function timer() {
+//       $('.timer').animate({"width":$w}, $d);
+//       $('.timer').animate({"width":0}, 0);
+//   }
+
+
+// // fading function
+//   function fadeInOut() {
+//     timer();
+//       $i = 0;    
+//       var setCSS = {
+//           'position' : 'absolute',
+//           'top' : '0',
+//           'left' : '0'
+//       }        
+      
+//       $('.slide').css(setCSS);
+      
+//       //show first item
+//       $('.slide').eq($i).show();
+      
+
+//       setInterval(function() {
+//         timer();
+//           $('.slide').eq($i).fadeOut($f);
+//           if ($i == $n - 1) {
+//               $i = 0;
+//           } else {
+//               $i++;
+//           }
+//           $('.slide').eq($i).fadeIn($f, function() {
+//               $('.timer').css({'width' : '0'});
+//           });
+
+//       }, $d);
+      
+//   }
+  
+//   function slide() {
+//     timer();
+   
+//     var setSlideCSS = {
+//         'float': 'left',
+//         'display': 'inline-block',
+//         'width': $c
+//     };
+//     var setSlideShowCSS = {
+//         'width': $ss // set width of slideshow container
+//     };
+    
+//     $('.slide').css(setSlideCSS);
+//     $('.allexhibtions-home').css(setSlideShowCSS);
+
+//     // Duplicate the first slide and append to the end
+//     $('.slide:nth-child(1)').clone().appendTo('.allexhibtions-home');
+    
+
+//     setInterval(function() {
+//         timer();
+//         $('.allexhibtions-home').animate({"left": -$w}, $s, function() {
+//             // Reset position and move the original first slide to the end
+//             $('.allexhibtions-home').css('left', 0);
+//             $('.slide:first').appendTo('.allexhibtions-home');
+//             // Remove the duplicated slide (now it's the second slide)
+//             $('.slide').eq(1).remove();
+//         });
+//     }, $d);
+// }
+
+  
+//   if ($t == "fade") {
+//       fadeInOut();
+      
+//   } if ($t == "slide") {
+//       slide();
+      
+//   } else {
+    
+//   }
+
 
   //top button
   let mybutton = document.getElementById("myBtn");
@@ -430,11 +528,11 @@ function applyDarkMode() {
   $('svg path, svg g path').css ('fill', 'white');
   $('.menu__nav, .artistNameExhibitionHome, .exhibitionDetailsHome,.exhibitionDateLocationHome, .artworkIteminfo').css('background', 'black');
   $('form.searchForm input, .menu__nav, .artistNameExhibitionHome, .exhibitionDetailsHome,.exhibitionDateLocationHome, footer, .buttonOuter,.toggleText,.artworkIteminfo, video, img,.artFairEach, a:before,.inquireSubmit,.arrow:before,.newsRelatedExhibitions,.tagsInner a,.exhibitionHome').css('border-color','white');
-  $('.mailing-list-open,.infoAnimated').css('color','black');
-  $('.mailing-list-open,.infoAnimated,.bookAnAppointment a,#menu-item-15020 a').css('background','white');
 
   $('.exhibitionDateLocationHome, a, .open,.nonRepArtists li,.exhibitionsOpen,.newsOpen,#downClick, #upClick,.btn-info,.location,.date').css('color','white');
-  $('.bookAnAppointment a,#menu-item-15020 a').css('color','black');
+  $('.mailing-list-open,.infoAnimated, .mobileSocialVisIG').css('color','black');
+  $('.mailing-list-open,.infoAnimated,.bookAnAppointment , .mobileSocialVisIG').css('background','white');
+  $('.bookAnAppointment a').css('color','black');
   localStorage.setItem('darkMode', 'enabled');
   darkModeOn = true;
 }
@@ -447,14 +545,14 @@ function applyLightMode() {
  $('svg path, svg g path').css ('fill', 'black');
  $('.menu__nav, .artistNameExhibitionHome, .exhibitionDetailsHome,.exhibitionDateLocationHome, .artworkIteminfo').css('background', 'white');
  $('form.searchForm input, .menu__nav, .artistNameExhibitionHome, .exhibitionDetailsHome,.exhibitionDateLocationHome, footer, .buttonOuter,.toggleText,.artworkIteminfo, video, img,.artFairEach, a:before,.inquireSubmit,.newsRelatedExhibitions,.tagsInner a,.exhibitionHome').css('border-color','black');
- $('.mailing-list-open,.infoAnimated,.newsOpen,.btn-info,.featuredVideoTitle,.arrow').css('color','white');
- $('.mailing-list-open,.infoAnimated,.bookAnAppointment a,#menu-item-15020 a').css('background','black');
 $(".tags a,.tagsInner a").hover(function(e) { 
   $(this).css("color",e.type === "mouseenter"?"white":"black") 
 });
 
  $('.exhibitionDateLocationHome, a, .open,.exhibitionsOpen,.newsOpen,#downClick, #upClick,.btn-info,.location,.date').css('color','black');
- $('.bookAnAppointment a,.menu__nav li a,.artistsNames li a,.cli-plugin-main-butto,.description h2 a,.newsTitle a,.newsReadMore,.nonRepArtists li').css('color','white');
+ $('.bookAnAppointment a,.menu__nav li a,.artistsNames li a,.cli-plugin-main-butto,.description h2 a,.newsTitle a,.newsReadMore,.nonRepArtists li,.next,.previous').css('color','white');
+ $('.mailing-list-open,.infoAnimated,.newsOpen,.btn-info,.featuredVideoTitle,.arrow,.mobileSocialVisIG').css('color','white');
+ $('.mailing-list-open,.infoAnimated,.bookAnAppointment,.mobileSocialVisIG').css('background','black');
  localStorage.setItem('darkMode', 'disabled');
   darkModeOn = false;
 
@@ -577,7 +675,11 @@ $(window).scroll(function() {
         .always(function() {
             console.log("complete");
         });
+
+  
     });
+
+
 
 
 
