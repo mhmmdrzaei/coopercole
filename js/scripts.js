@@ -2,101 +2,31 @@
 (function($) {
   if ($('.allexhibtions-home').find('.exhibitionHome').length > 1) {
     $('.exhibitionHome').addClass('slide');
-    $('.container-home').append('<div class="timer"></div>');
+    $('.container-home').append('<div class="moreExhibits"><h3>↓<h3></div>');
 }
-//   // slider type
-//   $t = "slide"; // opitions are fade and slide
-  
-//   //variables
-//   $f = 1000,  // fade in/out speed
-//   $s = 1000,  // slide transition speed (for sliding carousel)
-//   $d = 10000;  // duration per slide
-  
-//   $n = $('.slide').length; //number of slides
-//   $w = $('.slide').width(); // slide width
-//   $c = $('.container').width(); // container width
-//    $ss = $n * $w; // slideshow width
+$(window).scroll(function() {
+  if ($(window).width() > 800) {
+    var st = $(this).scrollTop();
 
-  
-//     function timer() {
-//       $('.timer').animate({"width":$w}, $d);
-//       $('.timer').animate({"width":0}, 0);
-//   }
+    var $scrollButton = $(".moreExhibits");
 
+    var lastScrollTop = 0;
 
-// // fading function
-//   function fadeInOut() {
-//     timer();
-//       $i = 0;    
-//       var setCSS = {
-//           'position' : 'absolute',
-//           'top' : '0',
-//           'left' : '0'
-//       }        
-      
-//       $('.slide').css(setCSS);
-      
-//       //show first item
-//       $('.slide').eq($i).show();
-      
+    if (st > lastScrollTop) {
+      $scrollButton.fadeOut();
+    } else {
+      $scrollButton.fadeIn();
+    }
 
-//       setInterval(function() {
-//         timer();
-//           $('.slide').eq($i).fadeOut($f);
-//           if ($i == $n - 1) {
-//               $i = 0;
-//           } else {
-//               $i++;
-//           }
-//           $('.slide').eq($i).fadeIn($f, function() {
-//               $('.timer').css({'width' : '0'});
-//           });
+    lastScrollTop = st;
+  }
+});
 
-//       }, $d);
-      
-//   }
-  
-//   function slide() {
-//     timer();
-   
-//     var setSlideCSS = {
-//         'float': 'left',
-//         'display': 'inline-block',
-//         'width': $c
-//     };
-//     var setSlideShowCSS = {
-//         'width': $ss // set width of slideshow container
-//     };
-    
-//     $('.slide').css(setSlideCSS);
-//     $('.allexhibtions-home').css(setSlideShowCSS);
+$(".moreExhibits").click(function() {
+  var targetScroll = $(window).scrollTop() + $(window).height();
+  $('html, body').animate({ scrollTop: targetScroll }, 1000);
+});
 
-//     // Duplicate the first slide and append to the end
-//     $('.slide:nth-child(1)').clone().appendTo('.allexhibtions-home');
-    
-
-//     setInterval(function() {
-//         timer();
-//         $('.allexhibtions-home').animate({"left": -$w}, $s, function() {
-//             // Reset position and move the original first slide to the end
-//             $('.allexhibtions-home').css('left', 0);
-//             $('.slide:first').appendTo('.allexhibtions-home');
-//             // Remove the duplicated slide (now it's the second slide)
-//             $('.slide').eq(1).remove();
-//         });
-//     }, $d);
-// }
-
-  
-//   if ($t == "fade") {
-//       fadeInOut();
-      
-//   } if ($t == "slide") {
-//       slide();
-      
-//   } else {
-    
-//   }
 
 
   //top button
@@ -118,7 +48,6 @@ $('#myBtn').on('click', function(){
 
   
   $(document).on('click', function(e) {
-    // If the clicked element or its parent is not '.artworkItemEach'
     if (!$(e.target).closest('.artworkItemEach').length) {
       $('.artworkIteminfo').removeClass('open');
       $('body.bodyOveflowArt').removeClass('bodyOveflowArt');
@@ -130,7 +59,6 @@ $('#myBtn').on('click', function(){
 
 
 $(".artworkItemEach").click(function() {
-  // e.stopPropagation();
 
     if ($('.artworkIteminfo').hasClass('open')) {
       $('.artworkIteminfo').removeClass('open');
@@ -169,7 +97,6 @@ $('.previous').click(function(){
 });
 $('.next').click(function(){
 
-  // $('.artworkIteminfo').removeClass('open');
   if ($('.artworkIteminfo').hasClass('open')) {
     $('.artworkIteminfo').removeClass('open');
   };
@@ -202,11 +129,6 @@ $(".closeInfo").click(function() {
 
   });
 
-
-
-
-
-   // resize the slide-read-more Div
    var box = $(".text-area");
    var minimumHeight = 388; // max height in pixels
    var initialHeight = box.innerHeight();
@@ -286,31 +208,14 @@ $(document).ready(function(){
  //no exhibition class
     if ($(".noShowContainerNew")[0]){
 
-        // $("body").css('background-image', 'linear-gradient(to right, #DC03FC, #0322FC, #03FCEF, #23FC03, #FCE303, #FC7A03, #FC0303)');
-        // $('footer').css('background','white');
         $('footer').css('position','fixed');
-        // $('.logoall').css('fill','white');
-        // $('#gtranslate_selector').css('color','white');
-        // $('form.searchForm input').css('border-bottom','1px solid #ffffff');
-        // $('.artFairHome').css('background','white');
-        // $('.searchForm label svg g path').css('fill','white');
+
 
     }
  
 
-    if(($('.noShowContainer')[0]) && (($(window).width()) < 730)) {
-      // $('section.logo').html('<img src="https://coopercolegallery.com/wp-content/uploads/2021/03/Cooper-Coole-Logos-Full-W-Small.png" alt="Cooper Cole Gallery Logo"class="exhibitionImgsLL">');
-      // $('footer').css('position','absolute');
-    }
 
 
-//mobile exhibition date time move 
-// var windoSize = $(window).width();
-// var artistNames = $('.artistNameExhibition').height();;
-// if (windoSize < 700) {
-
-//   $('.exhibitionDateLocation').css('bottom', artistNames + 'px' );
-// }
 
  //more than 4 artists listed in Exhibition 
     $('.mohammadUl, .nonRepArtists').each(function() {
@@ -526,13 +431,12 @@ function applyDarkMode() {
   slider.style.cssText ="background-color: #000;"
   mode.innerHTML = "&#9788;"
   $('svg path, svg g path').css ('fill', 'white');
-  $('.menu__nav, .artistNameExhibitionHome, .exhibitionDetailsHome,.exhibitionDateLocationHome, .artworkIteminfo').css('background', 'black');
-  $('form.searchForm input, .menu__nav, .artistNameExhibitionHome, .exhibitionDetailsHome,.exhibitionDateLocationHome, footer, .buttonOuter,.toggleText,.artworkIteminfo, video, img,.artFairEach, a:before,.inquireSubmit,.arrow:before,.newsRelatedExhibitions,.tagsInner a,.exhibitionHome').css('border-color','white');
+  $('.menu__nav, .artistNameExhibitionHome, .exhibitionDetailsHome,.exhibitionDateLocationHome, .artworkIteminfo, .home footer,.moreExhibits').css('background', 'black');
+  $('form.searchForm input, .menu__nav, .artistNameExhibitionHome, .exhibitionDetailsHome,.exhibitionDateLocationHome, footer, .buttonOuter,.toggleText,.artworkIteminfo, video, img,.artFairEach, a:before,.inquireSubmit,.arrow:before,.newsRelatedExhibitions,.tagsInner a,.exhibitionHome,.moreExhibits').css('border-color','white');
 
-  $('.exhibitionDateLocationHome, a, .open,.nonRepArtists li,.exhibitionsOpen,.newsOpen,#downClick, #upClick,.btn-info,.location,.date').css('color','white');
-  $('.mailing-list-open,.infoAnimated, .mobileSocialVisIG').css('color','black');
-  $('.mailing-list-open,.infoAnimated,.bookAnAppointment , .mobileSocialVisIG').css('background','white');
-  $('.bookAnAppointment a').css('color','black');
+  $('.exhibitionDateLocationHome, a, .open,.nonRepArtists li,.exhibitionsOpen,.newsOpen,#downClick, #upClick,.btn-info,.location,.date,.menu__nav li a,.artistsNames li a,.cli-plugin-main-butto,.description h2 a,.newsTitle a,.newsReadMore,.nonRepArtists li,.next,.previous').css('color','white');
+  $('.infoAnimated,.mailing-list-open,.bookAnAppointment a').css('color','black');
+  $('.infoAnimated,.mailing-list-open,.bookAnAppointment a').css('background','white');
   localStorage.setItem('darkMode', 'enabled');
   darkModeOn = true;
 }
@@ -543,16 +447,15 @@ function applyLightMode() {
   slider.style.cssText ="background-color: #FFFFFF;"
  mode.innerHTML = "&#9790;"
  $('svg path, svg g path').css ('fill', 'black');
- $('.menu__nav, .artistNameExhibitionHome, .exhibitionDetailsHome,.exhibitionDateLocationHome, .artworkIteminfo').css('background', 'white');
- $('form.searchForm input, .menu__nav, .artistNameExhibitionHome, .exhibitionDetailsHome,.exhibitionDateLocationHome, footer, .buttonOuter,.toggleText,.artworkIteminfo, video, img,.artFairEach, a:before,.inquireSubmit,.newsRelatedExhibitions,.tagsInner a,.exhibitionHome').css('border-color','black');
+ $('.menu__nav, .artistNameExhibitionHome, .exhibitionDetailsHome,.exhibitionDateLocationHome, .artworkIteminfo, .home footer,.moreExhibits').css('background', 'white');
+ $('form.searchForm input, .menu__nav, .artistNameExhibitionHome, .exhibitionDetailsHome,.exhibitionDateLocationHome, footer, .buttonOuter,.toggleText,.artworkIteminfo, video, img,.artFairEach, a:before,.inquireSubmit,.newsRelatedExhibitions,.tagsInner a,.exhibitionHome,.moreExhibits').css('border-color','black');
 $(".tags a,.tagsInner a").hover(function(e) { 
   $(this).css("color",e.type === "mouseenter"?"white":"black") 
 });
 
- $('.exhibitionDateLocationHome, a, .open,.exhibitionsOpen,.newsOpen,#downClick, #upClick,.btn-info,.location,.date').css('color','black');
- $('.bookAnAppointment a,.menu__nav li a,.artistsNames li a,.cli-plugin-main-butto,.description h2 a,.newsTitle a,.newsReadMore,.nonRepArtists li,.next,.previous').css('color','white');
- $('.mailing-list-open,.infoAnimated,.newsOpen,.btn-info,.featuredVideoTitle,.arrow,.mobileSocialVisIG').css('color','white');
- $('.mailing-list-open,.infoAnimated,.bookAnAppointment,.mobileSocialVisIG').css('background','black');
+ $('.exhibitionDateLocationHome, a, .open,.exhibitionsOpen,.newsOpen,#downClick, #upClick,.btn-info,.location,.date, .mobileSocialVisIG ').css('color','black');
+ $('.infoAnimated,.newsOpen,.btn-info,.featuredVideoTitle,.arrow,.bookAnAppointment a,.mailing-list-open,.wt-cli-accept-btn,.menu__nav li a,.artistsNames li a,.cli-plugin-main-butto,.description h2 a,.newsTitle a,.newsReadMore,.nonRepArtists li,.next,.previous').css('color','white');
+ $('.infoAnimated,.mailing-list-open, .bookAnAppointment a').css('background','black');
  localStorage.setItem('darkMode', 'disabled');
   darkModeOn = false;
 
@@ -575,17 +478,18 @@ document.addEventListener('DOMContentLoaded', function() {
 // sticky menu
 
 $(window).scroll(function() {
-  var y = $(this).scrollTop();
-  var x = $(window).width();
-  if ((y > 500) && (x > 700)) {
-    $("#topMenu").addClass('stickyMenu');
-    $('#topMenu h3').css('display','none');
-    $('.ccLogo').fadeIn();
-  } else if ((y < 500) && (x > 700)) {
-    $("#topMenu").removeClass('stickyMenu');
-    $('.ccLogo').fadeOut(100);
-    $('#topMenu h3').css('display','block');
-
+  if (!$('body').hasClass('home')) {
+    var y = $(this).scrollTop();
+    var x = $(window).width();
+    if ((y > 500) && (x > 700)) {
+      $("#topMenu").addClass('stickyMenu');
+      $('#topMenu h3').css('display','none');
+      $('.ccLogo').fadeIn();
+    } else if ((y < 500) && (x > 700)) {
+      $("#topMenu").removeClass('stickyMenu');
+      $('.ccLogo').fadeOut(100);
+      $('#topMenu h3').css('display','block');
+    }
   }
 });
 

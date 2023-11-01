@@ -80,6 +80,18 @@
 
 
 }
+.moreExhibits {
+    position: fixed;
+    bottom: 50%;
+    left: 20px;
+    background: white;
+    @extend .whiteText;
+    border: 1px solid black;
+    padding: 0 20px;
+    // color: white;
+    @include fontSize(16);
+    cursor: pointer;
+}
 .exhibitionDetailsHome {
     position: absolute;
     left: 10%;
@@ -87,7 +99,7 @@
     background: white;
     border: 1px solid black;
     padding: 20px;
-    max-width: 400px;
+    max-width: 260px;
     h3 {
         margin: 0;
         @extend .whiteText;
@@ -121,8 +133,39 @@
         width: 50%;
     }
 }
+.home {
+    #header {
+
+    position: fixed;
+    width: 100%;
+
+    }
+    footer {
+        background: white;
+    }
+}
 
 @media (max-width: 800px) { 
+    .home {
+
+        #header {
+    
+        position: initial;
+        width: initial;
+    
+        }
+        footer {
+            background: transparent;
+            position: relative;
+        }
+        h3 {
+            @include fontSize(16)
+        }
+    }
+    .moreExhibits {
+        display: none;
+    }
+    
     .container-home {
         margin-bottom: 20px;
         position: initial;
