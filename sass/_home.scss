@@ -144,8 +144,12 @@
         background: white;
     }
 }
+.scroll {
+    animation: none;
+}
 
 @media (max-width: 800px) { 
+    
     .home {
 
         #header {
@@ -174,7 +178,7 @@
     }
     .allexhibtions-home{
         height: initial;
-        
+
     }
     .slide {
         border-bottom: 1px solid black;
@@ -235,18 +239,34 @@ position: inherit;
 
     }
     .scroll {
-
-        animation-fill-mode: forwards;
-        animation: move 40s linear infinite;
-           white-space: nowrap; 
-           width: 100%;
-           margin: 0 20px;
-           flex-flow: nowrap;
+        display: flex;
+        white-space: nowrap;
+        flex-flow: nowrap;
+        overflow: hidden;
+        width: fit-content;
+        
+        // animation: scroll 15s linear infinite;
+        li {
+            display: inline-block;
+            margin-right: 10px; /* Adjust as needed */
+ 
+  
+        }
 
        
    }
+   @keyframes scroll {
+    0% {
+      transform: translateX(100%);
+    }
+    100% {
+      transform: translateX(-100%);
+    }
+  }
+
 
     }
+
     .exhibitionDateLocationHome {
         position: inherit;
         order:4;
@@ -260,6 +280,7 @@ position: inherit;
         text-align: left;
     }
     }
+
 }
 .blackBack {
 	background: #000;

@@ -2,31 +2,39 @@
 (function($) {
   if ($('.allexhibtions-home').find('.exhibitionHome').length > 1) {
     $('.exhibitionHome').addClass('slide');
-    $('.container-home').append('<div class="moreExhibits"><h3>↓<h3></div>');
-}
-$(window).scroll(function() {
-  if ($(window).width() > 800) {
-    var st = $(this).scrollTop();
-
-    var $scrollButton = $(".moreExhibits");
-
-    var lastScrollTop = 0;
-
-    if (st > lastScrollTop) {
-      $scrollButton.fadeOut();
-    } else {
-      $scrollButton.fadeIn();
-    }
-
-    lastScrollTop = st;
+    
   }
-});
-
-$(".moreExhibits").click(function() {
-  var targetScroll = $(window).scrollTop() + $(window).height();
-  $('html, body').animate({ scrollTop: targetScroll }, 1000);
-});
-
+  
+  var $exhibits = $('.slide');
+  var totalExhibits = $exhibits.length;
+  var currentExhibit = 0;
+  
+  // Function to scroll to the next exhibit
+  function scrollToNextExhibit() {
+    if (currentExhibit < totalExhibits) {
+      var targetScroll = currentExhibit * $(window).height();
+      $('html, body').animate({ scrollTop: targetScroll }, 1000);
+  
+      currentExhibit++;
+  
+      if (currentExhibit < totalExhibits) {
+        setTimeout(scrollToNextExhibit, 5000); // Scroll every 5 seconds
+      } else {
+        setTimeout(scrollToTop, 5000); // After the last exhibit, scroll to the top
+      }
+    }
+  }
+  
+  function scrollToTop() {
+    $('html, body').animate({ scrollTop: 0 }, 1000, function() {
+      currentExhibit = 0;
+      setTimeout(scrollToNextExhibit, 5000); // Start scrolling again after reaching the top
+    });
+  }
+  
+  // Start the scrolling process
+  setTimeout(scrollToNextExhibit, 5000);
+  
 
 
   //top button
@@ -212,30 +220,58 @@ $(document).ready(function(){
 
 
     }
+
+   
+  
+
+  
  
 
 
 
 
- //more than 4 artists listed in Exhibition 
     $('.mohammadUl, .nonRepArtists').each(function() {
       var $this = $(this);
-      var x = $(window).width();
-      if ($this.find('li').length > 4) { //if looking for direct descendants then do .children('div').length
+      var pageWidth = $(window).width();
+      var isMobile = pageWidth < 800;
+      if (isMobile && $this.find('li').length > 4) { // Change 4 to 3 if you want to include 3 artists
           $this.addClass('scroll');
-          // $this.find('li:nth-child(n+5)').addClass('artistNameHidden');
-          // $this.find('.moreArtistNamesOpen').html('<p>+ More Artists</p>');
-      };
+          var $ul = $this;
+          var $lis = $ul.find('li');
+          var baseDuration = 5 * 1000; // 5 seconds in milliseconds
+          var totalNames = $lis.length;
+          var animationDuration = baseDuration * totalNames;
+          
+          function scrollNames() {
+              var marginLeft = (totalContentWidth / 2) - pageWidth;
+              $ul.css('margin-left', 0);
+              $ul.animate({ 'margin-left': -marginLeft }, animationDuration, 'linear', function () {
+                  $ul.css('margin-left', marginLeft);
+                  scrollNames();
+              });
+          }
+          
+          // Calculate the total width of the content
+          var totalContentWidth = $ul.width() + ($lis.eq(0).outerWidth(true) * totalNames);
+          
+          // Set the ul width to the total content width
+          $ul.width(totalContentWidth);
+          
+          // Start scrolling
+          scrollNames();
+      }
+  });
+  
+    
 
-
-    });
+    
 
     $('.moreArtistNamesOpen').each(function (i, value) {
         $(this).hover(function (e) {
             $(this).fadeOut();
             $(this).parent().find('.artistNameHidden').fadeIn();
             $(this).parent().next('.exhibitionDateLocation').css('top','49%');
-            // $(this).prev('.artistNameHidden').fadeIn();
+            $(this).prev('.artistNameHidden').fadeIn();
         });
     });
 

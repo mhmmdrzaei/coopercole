@@ -399,15 +399,30 @@ article.exhibition {
 				}
 			}
 			.scroll {
-
-				 animation-fill-mode: forwards;
-				 animation: move 40s linear infinite;
-					white-space: nowrap; 
-					width: 100%;
-					margin: 0 20px;
-
+				display: flex;
+				white-space: nowrap;
+				flex-flow: nowrap;
+				overflow: hidden;
+				width: fit-content;
 				
+				animation: scroll 15s linear infinite;
+				li {
+					display: inline-block;
+					margin-right: 10px; /* Adjust as needed */
+		 
+		  
+				}
+		
+			   
+		   }
+		   @keyframes scroll {
+			0% {
+			  transform: translateX(100%);
 			}
+			100% {
+			  transform: translateX(-100%);
+			}
+		  }
 			.nonRepArtists {
 				@extend .flex;
 				@include fontSize(11);
@@ -611,9 +626,13 @@ article.exhibition:nth-child(1) {
 	}
 }
 @keyframes move {
-to { transform: translateX(-250%); }
-}
-
+	0% {
+	  transform: translateX(0);
+	}
+	100% {
+	  transform: translateX(-100%);
+	}
+  }
 
 //artfair 
 .artFairLogo {
