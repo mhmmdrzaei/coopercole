@@ -398,30 +398,17 @@ article.exhibition {
 					}
 				}
 			}
-			.scroll {
-				display: flex;
+			.scrolll {
+				animation-fill-mode: forwards;
+    			-webkit-animation: move 40s linear infinite;
+				animation: move 20s linear infinite;
 				white-space: nowrap;
-				flex-flow: nowrap;
-				overflow: hidden;
 				width: fit-content;
-				
-				animation: scroll 15s linear infinite;
-				li {
-					display: inline-block;
-					margin-right: 10px; /* Adjust as needed */
-		 
-		  
-				}
-		
-			   
-		   }
-		   @keyframes scroll {
-			0% {
-			  transform: translateX(100%);
-			}
-			100% {
-			  transform: translateX(-100%);
-			}
+				margin: 0 20px;
+				-ms-flex-flow: nowrap;
+				flex-flow: nowrap;
+	
+		   
 		  }
 			.nonRepArtists {
 				@extend .flex;
@@ -2012,7 +1999,7 @@ body.home {
     		.mohammadUl {
     			flex-flow:wrap
     		}
-    		.scroll {
+    		.scrolll {
     			flex-flow:nowrap;
     		}
 

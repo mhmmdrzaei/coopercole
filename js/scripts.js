@@ -196,7 +196,7 @@ $(document).ready(function(){
     $( this ).toggleClass( "highlight" );
     
   });
-      $(".mailing-list-open").click(function(){
+      $(".mailing-list-open, .mailing-list-img").click(function(){
       // $(".mailing-list").toggle(500);
       $('.mailing-list').toggleClass( "highlightML" );
       
@@ -230,37 +230,49 @@ $(document).ready(function(){
 
 
 
-    $('.mohammadUl, .nonRepArtists').each(function() {
-      var $this = $(this);
-      var pageWidth = $(window).width();
-      var isMobile = pageWidth < 800;
-      if (isMobile && $this.find('li').length > 4) { // Change 4 to 3 if you want to include 3 artists
-          $this.addClass('scroll');
-          var $ul = $this;
-          var $lis = $ul.find('li');
-          var baseDuration = 5 * 1000; // 5 seconds in milliseconds
-          var totalNames = $lis.length;
-          var animationDuration = baseDuration * totalNames;
-          
-          function scrollNames() {
-              var marginLeft = (totalContentWidth / 2) - pageWidth;
-              $ul.css('margin-left', 0);
-              $ul.animate({ 'margin-left': -marginLeft }, animationDuration, 'linear', function () {
-                  $ul.css('margin-left', marginLeft);
-                  scrollNames();
-              });
-          }
-          
-          // Calculate the total width of the content
-          var totalContentWidth = $ul.width() + ($lis.eq(0).outerWidth(true) * totalNames);
-          
-          // Set the ul width to the total content width
-          $ul.width(totalContentWidth);
-          
-          // Start scrolling
-          scrollNames();
-      }
-  });
+    if ($('body.home').length > 0) {
+      $('.mohammadUl, .nonRepArtists').each(function() {
+        var $this = $(this);
+        var pageWidth = $(window).width();
+        var isMobile = pageWidth < 800;
+        if (isMobile && $this.find('li').length > 4) { 
+            $this.addClass('scroll');
+            var $ul = $this;
+            var $lis = $ul.find('li');
+            var baseDuration = 5 * 1000; 
+            var totalNames = $lis.length;
+            var animationDuration = baseDuration * totalNames;
+            
+            function scrollNames() {
+                var marginLeft = (totalContentWidth / 2) - pageWidth;
+                $ul.css('margin-left', 0);
+                $ul.animate({ 'margin-left': -marginLeft }, animationDuration, 'linear', function () {
+                    $ul.css('margin-left', marginLeft);
+                    scrollNames();
+                });
+            }
+            
+        
+            var totalContentWidth = $ul.width() + ($lis.eq(0).outerWidth(true) * totalNames);
+              
+            
+            $ul.width(totalContentWidth);
+            
+            // Start scrolling
+            scrollNames();
+        }
+      });
+    }
+
+    if ($('body.home').length === 0) {
+      $('.mohammadUl, .nonRepArtists').each(function() {
+        var $this = $(this);
+        var x = $(window).width();
+        if ($this.find('li').length > 3) {
+            $this.addClass('scrolll');
+        };
+      });
+    }
   
     
 
@@ -470,7 +482,7 @@ function applyDarkMode() {
   $('.menu__nav, .artistNameExhibitionHome, .exhibitionDetailsHome,.exhibitionDateLocationHome, .artworkIteminfo, .home footer,.moreExhibits').css('background', 'black');
   $('form.searchForm input, .menu__nav, .artistNameExhibitionHome, .exhibitionDetailsHome,.exhibitionDateLocationHome, footer, .buttonOuter,.toggleText,.artworkIteminfo, video, img,.artFairEach, a:before,.inquireSubmit,.arrow:before,.newsRelatedExhibitions,.tagsInner a,.exhibitionHome,.moreExhibits').css('border-color','white');
 
-  $('.exhibitionDateLocationHome, a, .open,.nonRepArtists li,.exhibitionsOpen,.newsOpen,#downClick, #upClick,.btn-info,.location,.date,.menu__nav li a,.artistsNames li a,.cli-plugin-main-butto,.description h2 a,.newsTitle a,.newsReadMore,.nonRepArtists li,.next,.previous').css('color','white');
+  $('.exhibitionDateLocationHome, a, .open,.nonRepArtists li,.exhibitionsOpen,.newsOpen,#downClick, #upClick,.btn-info,.location,.date,.menu__nav li a,.artistsNames li a,.cli-plugin-main-butto,.description h2 a,.newsTitle a,.newsReadMore,.nonRepArtists li,.next,.previous,.featuredVideoTitle,.ab-item').css('color','white');
   $('.infoAnimated,.mailing-list-open,.bookAnAppointment a').css('color','black');
   $('.infoAnimated,.mailing-list-open,.bookAnAppointment a').css('background','white');
   localStorage.setItem('darkMode', 'enabled');
@@ -489,8 +501,8 @@ $(".tags a,.tagsInner a").hover(function(e) {
   $(this).css("color",e.type === "mouseenter"?"white":"black") 
 });
 
- $('.exhibitionDateLocationHome, a, .open,.exhibitionsOpen,.newsOpen,#downClick, #upClick,.btn-info,.location,.date, .mobileSocialVisIG ').css('color','black');
- $('.infoAnimated,.newsOpen,.btn-info,.featuredVideoTitle,.arrow,.bookAnAppointment a,.mailing-list-open,.wt-cli-accept-btn,.menu__nav li a,.artistsNames li a,.cli-plugin-main-butto,.description h2 a,.newsTitle a,.newsReadMore,.nonRepArtists li,.next,.previous').css('color','white');
+ $('.exhibitionDateLocationHome, a, .open,.exhibitionsOpen,.newsOpen,#downClick, #upClick,.btn-info,.location,.date, .mobileSocialVisIG,.featuredVideoTitle ').css('color','black');
+ $('.infoAnimated,.newsOpen,.btn-info,.arrow,.bookAnAppointment a,.mailing-list-open,.wt-cli-accept-btn,.menu__nav li a,.artistsNames li a,.cli-plugin-main-butto,.description h2 a,.newsTitle a,.newsReadMore,.nonRepArtists li,.next,.previous,.ab-item').css('color','white');
  $('.infoAnimated,.mailing-list-open, .bookAnAppointment a').css('background','black');
  localStorage.setItem('darkMode', 'disabled');
   darkModeOn = false;

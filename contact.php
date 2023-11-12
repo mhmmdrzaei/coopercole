@@ -38,7 +38,7 @@
 			<?php the_field('hours'); ?>
 		</aside>
 
-		<section class="Mailinglist">
+		<section class="Mailinglist ">
 		<figure class="mailing-list-img"alt="sign up for our mailing list button">
 			<?php require('images/mailing_list.svg');?>
 			</figure>
