@@ -420,12 +420,14 @@ article.exhibition {
 				}
 			}
 			.scroll {
+				
 				display: flex;
 				position: relative;
 				white-space: nowrap;
 				flex-flow: nowrap;
 				overflow: hidden;
 				width: fit-content;
+				min-width: 1500px;
 				
 				// animation: scroll 15s linear infinite;
 				li {

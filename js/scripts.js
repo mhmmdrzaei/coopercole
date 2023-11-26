@@ -238,15 +238,15 @@ $(document).ready(function(){
         $this.addClass('scroll');
         var $ul = $this;
         var $lis = $ul.find('li');
-        var baseDuration = 5 * 1000; 
+        var baseDuration = 1 * 1000; 
         var totalNames = $lis.length;
         var animationDuration = baseDuration * totalNames;
         
         function scrollNames() {
           var marginLeft = (totalContentWidth) - pageWidth;
-          $ul.css('margin-left', 30);
-          $ul.animate({ 'margin-left': -marginLeft }, animationDuration, 'linear', function () {
-            $ul.css('margin-left', marginLeft);
+          $ul.css('left', 30);
+          $ul.animate({ 'left': -marginLeft }, animationDuration, 'linear', function () {
+            $ul.css('left', marginLeft);
             scrollNames();
           });
         }

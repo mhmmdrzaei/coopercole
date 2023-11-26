@@ -251,6 +251,7 @@ position: inherit;
     }
     .scroll {
         display: flex;
+        position: relative;
         white-space: nowrap;
         flex-flow: nowrap;
         overflow: hidden;
