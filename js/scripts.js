@@ -1,39 +1,42 @@
 
 (function($) {
+// Check if the screen width is greater than 800px
+if ($(window).width() > 800) {
+  // Check if there is more than one exhibit
   if ($('.allexhibtions-home').find('.exhibitionHome').length > 1) {
     $('.exhibitionHome').addClass('slide');
-    
-  }
-  
-  var $exhibits = $('.slide');
-  var totalExhibits = $exhibits.length;
-  var currentExhibit = 0;
-  
-  // Function to scroll to the next exhibit
-  function scrollToNextExhibit() {
-    if (currentExhibit < totalExhibits) {
-      var targetScroll = currentExhibit * $(window).height();
-      $('html, body').animate({ scrollTop: targetScroll }, 1000);
-  
-      currentExhibit++;
-  
+
+    var $exhibits = $('.slide');
+    var totalExhibits = $exhibits.length;
+    var currentExhibit = 0;
+
+    // Function to scroll to the next exhibit
+    function scrollToNextExhibit() {
       if (currentExhibit < totalExhibits) {
-        setTimeout(scrollToNextExhibit, 5000); // Scroll every 5 seconds
-      } else {
-        setTimeout(scrollToTop, 5000); // After the last exhibit, scroll to the top
+        var targetScroll = currentExhibit * $(window).height();
+        $('html, body').animate({ scrollTop: targetScroll }, 1000);
+
+        currentExhibit++;
+
+        if (currentExhibit < totalExhibits) {
+          setTimeout(scrollToNextExhibit, 5000); // Scroll every 5 seconds
+        } else {
+          setTimeout(scrollToTop, 6000); // After the last exhibit, scroll to the top
+        }
       }
     }
+
+    function scrollToTop() {
+      $('html, body').animate({ scrollTop: 0 }, 1000, function () {
+        currentExhibit = 0;
+        setTimeout(scrollToNextExhibit, 6000); // Start scrolling again after reaching the top
+      });
+    }
+
+    // Start the scrolling process
+    scrollToNextExhibit();
   }
-  
-  function scrollToTop() {
-    $('html, body').animate({ scrollTop: 0 }, 1000, function() {
-      currentExhibit = 0;
-      setTimeout(scrollToNextExhibit, 5000); // Start scrolling again after reaching the top
-    });
-  }
-  
-  // Start the scrolling process
-  setTimeout(scrollToNextExhibit, 5000);
+}
   
 
 
@@ -83,7 +86,7 @@ $(".artworkItemEach").click(function() {
 
   });
 
-$('.previous').click(function(){
+$('.previousItem').click(function(){
 
   if ($('.artworkIteminfo').hasClass('open')) {
     $('.artworkIteminfo').removeClass('open');
@@ -103,7 +106,7 @@ $('.previous').click(function(){
   return false;
 
 });
-$('.next').click(function(){
+$('.nextItem').click(function(){
 
   if ($('.artworkIteminfo').hasClass('open')) {
     $('.artworkIteminfo').removeClass('open');
@@ -137,37 +140,30 @@ $(".closeInfo").click(function() {
 
   });
 
-   var box = $(".text-area");
-   var minimumHeight = 388; // max height in pixels
-   var initialHeight = box.innerHeight();
-   // reduce the text if it's longer than 200px
-   if (initialHeight > minimumHeight) {
-      box.css('height', minimumHeight);
-      $("#readMore1").show();
-   }
-  
-   SliderReadMore();
+  var sectionText = $('.text-area');
+  var readMoreBtn = $('.read-more-btn');
+  var maxHeight = 410; // Adjust this value based on your design
 
-   function SliderReadMore() {
-      $("#readMore1").on('click', function () {
-         // get current height
-         var currentHeight = box.innerHeight();
 
-         // get height with auto applied
-         var autoHeight = box.css('height', 'auto').innerHeight();
+   // Check if the height of the text exceeds the threshold
+   if (sectionText.height() > maxHeight) {
+    sectionText.css('max-height', maxHeight);
+    readMoreBtn.show();
+  } else {
+    readMoreBtn.hide();
+  }
 
-         // reset height and revert to original if current and auto are equal
-         var newHeight = (currentHeight | 0) === (autoHeight | 0) ? minimumHeight : autoHeight;
+  // Handle click event on Read More button
+  readMoreBtn.on('click', function () {
+    if (sectionText.css('max-height') === 'none' || sectionText.css('max-height') === '0px') {
+      sectionText.css('max-height', maxHeight);
+      readMoreBtn.text('+ Read More');
+    } else {
+      sectionText.css('max-height', '');
+      readMoreBtn.text('- Read Less');
+    }
+  });
 
-         box.css('height', currentHeight).animate({
-            height: (newHeight)
-         })
-         $('html, body').animate({
-            scrollTop: box.offset().top
-         });
-         // $(this).toggle('- Read Less')
-      });
-   }
 
 
 })(jQuery);
@@ -230,62 +226,41 @@ $(document).ready(function(){
 
 
 
-    if ($('body.home').length > 0) {
-      $('.mohammadUl, .nonRepArtists').each(function() {
-        var $this = $(this);
-        var pageWidth = $(window).width();
-        var isMobile = pageWidth < 800;
-        if (isMobile && $this.find('li').length > 4) { 
-            $this.addClass('scroll');
-            var $ul = $this;
-            var $lis = $ul.find('li');
-            var baseDuration = 5 * 1000; 
-            var totalNames = $lis.length;
-            var animationDuration = baseDuration * totalNames;
-            
-            function scrollNames() {
-                var marginLeft = (totalContentWidth / 2) - pageWidth;
-                $ul.css('margin-left', 0);
-                $ul.animate({ 'margin-left': -marginLeft }, animationDuration, 'linear', function () {
-                    $ul.css('margin-left', marginLeft);
-                    scrollNames();
-                });
-            }
-            
+    $('.mohammadUl, .nonRepArtists').each(function() {
+      var $this = $(this);
+      var pageWidth = $(window).width();
+      
+      // Check if it's the home page or not
+      var isHomePage = $('body.home').length > 0;
+    
+      // Combine conditions
+      if (((isHomePage && pageWidth < 800)&& $this.find('li').length > 4 ) || (!isHomePage && $this.find('li').length > 4)) { 
+        $this.addClass('scroll');
+        var $ul = $this;
+        var $lis = $ul.find('li');
+        var baseDuration = 5 * 1000; 
+        var totalNames = $lis.length;
+        var animationDuration = baseDuration * totalNames;
         
-            var totalContentWidth = $ul.width() + ($lis.eq(0).outerWidth(true) * totalNames);
-              
-            
-            $ul.width(totalContentWidth);
-            
-            // Start scrolling
+        function scrollNames() {
+          var marginLeft = (totalContentWidth) - pageWidth;
+          $ul.css('margin-left', 30);
+          $ul.animate({ 'margin-left': -marginLeft }, animationDuration, 'linear', function () {
+            $ul.css('margin-left', marginLeft);
             scrollNames();
+          });
         }
-      });
-    }
-
-    if ($('body.home').length === 0) {
-      $('.mohammadUl, .nonRepArtists').each(function() {
-        var $this = $(this);
-        var x = $(window).width();
-        if ($this.find('li').length > 3) {
-            $this.addClass('scrolll');
-        };
-      });
-    }
-  
     
-
-    
-
-    $('.moreArtistNamesOpen').each(function (i, value) {
-        $(this).hover(function (e) {
-            $(this).fadeOut();
-            $(this).parent().find('.artistNameHidden').fadeIn();
-            $(this).parent().next('.exhibitionDateLocation').css('top','49%');
-            $(this).prev('.artistNameHidden').fadeIn();
-        });
+        var totalContentWidth = $ul.width() + 70;
+          
+        $ul.width(totalContentWidth);
+        
+        // Start scrolling
+        scrollNames();
+      }
     });
+    
+    
 
 
 //news items more than 10
@@ -482,7 +457,7 @@ function applyDarkMode() {
   $('.menu__nav, .artistNameExhibitionHome, .exhibitionDetailsHome,.exhibitionDateLocationHome, .artworkIteminfo, .home footer,.moreExhibits').css('background', 'black');
   $('form.searchForm input, .menu__nav, .artistNameExhibitionHome, .exhibitionDetailsHome,.exhibitionDateLocationHome, footer, .buttonOuter,.toggleText,.artworkIteminfo, video, img,.artFairEach, a:before,.inquireSubmit,.arrow:before,.newsRelatedExhibitions,.tagsInner a,.exhibitionHome,.moreExhibits').css('border-color','white');
 
-  $('.exhibitionDateLocationHome, a, .open,.nonRepArtists li,.exhibitionsOpen,.newsOpen,#downClick, #upClick,.btn-info,.location,.date,.menu__nav li a,.artistsNames li a,.cli-plugin-main-butto,.description h2 a,.newsTitle a,.newsReadMore,.nonRepArtists li,.next,.previous,.featuredVideoTitle,.ab-item').css('color','white');
+  $('.exhibitionDateLocationHome, a, .open,.nonRepArtists li,.exhibitionsOpen,.newsOpen,#downClick, #upClick,.btn-info,.location,.date,.menu__nav li a,.artistsNames li a,.cli-plugin-main-butto,.description h2 a,.newsTitle a,.newsReadMore,.nonRepArtists li,.nextItem,.previousItem,.featuredVideoTitle,.ab-item,.read-more-btn,.pageNav a, .pageNav span ').css('color','white');
   $('.infoAnimated,.mailing-list-open,.bookAnAppointment a').css('color','black');
   $('.infoAnimated,.mailing-list-open,.bookAnAppointment a').css('background','white');
   localStorage.setItem('darkMode', 'enabled');
@@ -501,8 +476,8 @@ $(".tags a,.tagsInner a").hover(function(e) {
   $(this).css("color",e.type === "mouseenter"?"white":"black") 
 });
 
- $('.exhibitionDateLocationHome, a, .open,.exhibitionsOpen,.newsOpen,#downClick, #upClick,.btn-info,.location,.date, .mobileSocialVisIG,.featuredVideoTitle ').css('color','black');
- $('.infoAnimated,.newsOpen,.btn-info,.arrow,.bookAnAppointment a,.mailing-list-open,.wt-cli-accept-btn,.menu__nav li a,.artistsNames li a,.cli-plugin-main-butto,.description h2 a,.newsTitle a,.newsReadMore,.nonRepArtists li,.next,.previous,.ab-item').css('color','white');
+ $('.exhibitionDateLocationHome, a, .open,.exhibitionsOpen,.newsOpen,#downClick, #upClick,.btn-info,.location,.date, .mobileSocialVisIG,.featuredVideoTitle,.read-more-btn ').css('color','black');
+ $('.infoAnimated,.newsOpen,.btn-info,.arrow,.bookAnAppointment a,.mailing-list-open,.wt-cli-accept-btn,.menu__nav li a,.artistsNames li a,.cli-plugin-main-butto,.description h2 a,.newsTitle a,.newsReadMore,.nonRepArtists li,.nextItem,.previousItem,.ab-item,.pageNav a, .pageNav span').css('color','white');
  $('.infoAnimated,.mailing-list-open, .bookAnAppointment a').css('background','black');
  localStorage.setItem('darkMode', 'disabled');
   darkModeOn = false;
@@ -631,9 +606,7 @@ $(window).scroll(function() {
   
     });
 
-
-
-
+    
 
 
 

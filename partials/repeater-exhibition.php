@@ -78,7 +78,6 @@ if( get_field('end_date') ) {
 					echo '</h3></li>';
 
 				endwhile;
-				echo "<section class='moreArtistNamesOpen'></section>";
 				echo '</ul>';
 
 		 endif;

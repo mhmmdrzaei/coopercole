@@ -227,14 +227,25 @@ position: inherit;
     order: 1;
 	margin: 0;
     width: 100%;
+    overflow: hidden;
     // text-align: center;
     .mohammadUl,.nonRepArtists {
         display: flex;
+        margin: 0;
         flex-flow: wrap;
-        
-        width: 100%;
+        padding: 0;
+        list-style: none;
+        -webkit-text-stroke: .7px #000;
+        color: white;
+        @include fontSize(11);
         li {
-            margin: 0 10px 10px 0;
+            display: inline-block;
+            h3{
+                margin: 0 20px 10px 0px;
+                display: block;
+                
+
+            }
         }
 
     }
@@ -255,14 +266,6 @@ position: inherit;
 
        
    }
-   @keyframes scroll {
-    0% {
-      transform: translateX(100%);
-    }
-    100% {
-      transform: translateX(-100%);
-    }
-  }
 
 
     }
