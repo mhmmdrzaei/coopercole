@@ -17,6 +17,7 @@
 @import 'about';
 @import 'lightdark';
 
+// @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;0,900;1,400;1,700&display=swap');
 /*
 ====================================
 Default Styling
@@ -46,7 +47,6 @@ html {
 }
 
 body {
-	// background: red;
 	font-family: 'Open Sans', sans-serif;
 	width: 100%;
 	margin: 0 auto;
@@ -61,9 +61,11 @@ main, .container {
 a {
 	color: #000;
 	text-decoration: none;
-	&:hover {
-		// text-decoration: underline;
-	}
+
+}
+h1, h2, h3, h4 {
+	font-weight: 900;
+	// letter-spacing: 1.1px;
 }
 
 @keyframes twoShake {
@@ -139,10 +141,7 @@ video {
 	}
 }
 
-.featuredVideo{
-    // max-width: 700px;
-    // margin: 0 auto;
-}
+
 //EXHIBITION
 /* width */
 .artworkIteminfo::-webkit-scrollbar {
@@ -234,8 +233,7 @@ video {
   	.nonRepArtists {
   		@include fontSize(20);
   		font-size: clamp(1rem, 10vw, 1.5rem);
-  		-webkit-text-stroke: .7px #000;
-  		color: white;
+		@extend .whiteText;
 
   	}
   }
@@ -517,7 +515,6 @@ article.exhibition:nth-last-child(2) {
 	text-align: center;
 	a, span {
 		@include fontSize(15);
-		font-weight: 700;
 		@extend .whiteText;
 
 	}
@@ -685,7 +682,7 @@ article.exhibition:nth-last-child(2) {
   .nonRepArtists {
     @include fontSize(10);
     text-transform: uppercase;
-    color: #000;
+
     li {
     	margin-top: 7px;
     }
@@ -719,6 +716,7 @@ article.exhibition:nth-last-child(2) {
 			@include fontSize(13);
 			li {
 				margin-bottom: 15px;
+				font-weight: 700;
 				a {
 					@extend .arrow;
 					text-decoration: none;
@@ -745,11 +743,7 @@ article.exhibition:nth-last-child(2) {
 	list-style: none;
 	margin: 10px 0 0;
 	padding: 0;
-	// text-transform: uppercase;
-	font-weight: 700;
-	li {
-		// margin-top: 7px;
-	}
+
 }
 
 .artFairEach:nth-child(1) {
@@ -911,13 +905,9 @@ article.post:nth-child(1) {
 		li {
 			margin-right:20px;
 			margin-bottom: 20px;
-			&:hover {
-				// background-image: linear-gradient(to left, violet, indigo, blue, green, yellow, orange, red);
-				// color: transparent;
-			}
+
 			a {
 			@extend .whiteText;
-			// text-shadow: 0.1px 0.1px 0.1em violet, 3.1px 0.1px 0.2em indigo, 9.1px 0.1px 0.3em blue, 3.1px 0.1px 0.3em green, 4.1px 0.1px 0.3em blue, 5.1px 0.1px 14.3em yellow, 6.1px 0.1px 0.3em orange, 7.1px 0.1px 0.3em red;
 
 			&:hover {
 				  color: white;
@@ -973,12 +963,14 @@ main.contactMain{
 		@include fontSize(18);
 		width: 100%;
 		margin: 10px 0;
+
 	}
 	h3 {
 		@extend .whiteText;
 		@include fontSize(15);
 		width: 100%;
 		margin: 5px 0;
+
 	}
 	h4 {
 		font-weight: 700;
@@ -1210,7 +1202,7 @@ input.inquireSubmit {
 	width: 100%;
 	max-width:1000px;
 	height: 100vh;
-	padding: 55px 10px;
+	padding: 55px 1.5% 55px 2.5%;
 	border: 1px solid #000;
 	border-bottom: 0;
 	border-top: 0;
@@ -1367,10 +1359,6 @@ section.inquiry form input:nth-child(2).invalid {
 				width: 115px;
 				position: absolute;
 				right: -1px;
-				// border: 1px solid #000;
-				// position: relative;
-				// left: 118.9px;
-			    // margin: 0;
 			    font-weight: 700;
 			    @include fontSize(8);
 			    @extend .flex;
@@ -1380,10 +1368,6 @@ section.inquiry form input:nth-child(2).invalid {
 
 			div {
 				position: relative;
-				// width: .5px;
-				
-				
-				
 			}
 
 			div:nth-child(2) {
@@ -1527,7 +1511,7 @@ section.inquiry form input:nth-child(2).invalid {
 // .grid {
 //   width: 95%;
 //   margin: 0 auto;
-//   // max-width: 800px;
+//   // max-width: 700px;
 // }
 
 // .grid-item {
@@ -1662,6 +1646,7 @@ body.home {
 	}
 	.hamburger-menu {
 		display: block;
+		left: 1.5%;
 	}
 	.dropdownMobile {
 		display: block;
@@ -1723,7 +1708,7 @@ body.home {
   	position: fixed;
   	 bottom:0;
   	 left: 0;
-     z-index: 900;
+     z-index: 115;
 
   }
   .menu__hero {
@@ -1743,7 +1728,7 @@ body.home {
   .menu__hero .menu__nav {
   	position: fixed;
   	width: 100%;
-  	height: 100dvh;
+  	height: calc(100dvh - 45px);
 	border: none;
   	padding: 7em 0 0;
 
@@ -1863,8 +1848,7 @@ body.home {
 
   	footer {
   		.copyright {
-  			// position: fixed;
-  			bottom: 0;
+			display: none;
   		}
   	}
   }
@@ -1943,6 +1927,7 @@ body.home {
   border-top: 0px;
   @include fontSize(6);
   padding: 10px 6px;
+  margin-bottom: 15px;
   bottom: 0;
   width: 90%;
   // position: absolute;
@@ -2130,10 +2115,6 @@ body.home {
 		padding-right: 4px;
 		// right: 10px;
 	}
-	.prevnext {
-		left:70px;
-		// top: 18px;
-	}
 	.artworkItemEach {
 		width: 100%;
 		.toggleText figure img {
@@ -2155,9 +2136,7 @@ body.home {
 		width: 100%;
 	}
 }
-.exhibitionsOpen {
-    margin: 20px 0;
-}
+
 .newsOpen {
 	margin: 0;
 }

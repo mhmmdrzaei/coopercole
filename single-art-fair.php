@@ -93,10 +93,10 @@
 
 	</section>
 	<section class="exhibitionCenter">
-		<section class="exhibitionContent text-area" data-controller="#readMore1">
+		<section class="exhibitionContent text-area" >
 			<?php the_content(); ?>
 		</section>
-		<button id="readMore1" class="btn btn-info">+ Read more</button> 
+		<button class="read-more-btn">+ Read More</button>
 		<p class="artworksLink outerArtworks"><a href="#artworks">Artworks</a></p>
 		<?php if( have_rows('additional_video_and_links') ): ?>
 		    <?php while( have_rows('additional_video_and_links') ): the_row(); ?>

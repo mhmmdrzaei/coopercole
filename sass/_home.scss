@@ -15,7 +15,7 @@
         position: fixed;
     }
     h3 {
-        @include fontSize(12);
+        @include fontSize(14);
     }
 }
 .timer {
@@ -171,7 +171,7 @@
     }
     
     .container-home {
-        margin-bottom: 20px;
+        margin-bottom: 50px;
         position: initial;
         height: initial;
 
