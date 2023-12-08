@@ -153,7 +153,7 @@
 		              Close
 		            </section>
 		            <section class="prevnext">
-		              <a href="#" class="previous">Previous</a> <span>/</span> <a href="#" class="next">Next</a>
+					<a href="#" class="previousItem">Previous</a> <span>/</span> <a href="#" class="nextItem">Next</a>
 		            </section>
 		            <section class="artworkItemInfoInnner">
 					<section class="artworkItemInfoText">
