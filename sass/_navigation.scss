@@ -20,9 +20,6 @@
   left: 15em;
 }
 
-// #menu__check {
-//   display: none; // hide checkbox
-// }
 
 .menu__hero {
   display: flex; 
@@ -33,10 +30,7 @@
   z-index: 101;
   max-width: 24%;
   transition: left ease-in-out .7s;
-  // #menu__check:checked ~ & {
-  //   left: 0;
-  //   transition: left ease-in-out .7s;
-  // }
+
 
   .wrap {
     margin-right: 10px; // margin for menu button
@@ -177,6 +171,15 @@ h3.menuMain{
 .openMenu {
   left: 0;
   transition: left ease-in-out .7s;
+}
+.pagetitleMobile {
+  @extend .whiteText;
+  display: none;
+  position: relative;
+  left: 45px;
+  text-transform: uppercase;
+  @include fontSize(11);
+  letter-spacing: .5px;
 }
 
 //languages menu

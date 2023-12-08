@@ -26,6 +26,7 @@ if( get_field('end_date') ) {
 
  ?>
 
+
 <article id="<?php echo $start_date->format('Y'); ?>" class="exhibitionHome">
 <a href="<?php the_permalink(); ?>">
 <figure class="image">

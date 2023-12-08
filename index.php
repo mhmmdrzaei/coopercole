@@ -1,5 +1,19 @@
 <?php //template name: Home ?>
 <?php get_header(); ?>
+<?php 
+    $subLink = get_field('subtitle_links_to', 'options');
+    $sub = get_field('page_subtitle', 'options');
+
+    if ($sub && $subLink):
+?>
+    <a href="<?php echo esc_url($subLink); ?>" alt="<?php echo esc_attr($sub); ?>">
+        <div class="caption"><span><?php echo esc_html($sub); ?></span></div>
+    </a>
+<?php elseif ($sub): ?>
+    <div class="caption"><span><?php echo esc_html($sub); ?></span></div>
+<?php endif; ?>
+
+
 
 <?php
 
@@ -55,8 +69,7 @@ if($currentArtF->have_posts()) : while($currentArtF->have_posts()) : $currentArt
 		<a href="<?php the_permalink(); ?>">
 			
 			<section class="title">Currently At: <?php the_title(); ?></section>
-			<div class="dateLocationAF"><?php echo $start_date->format('F j, Y'); if($end_date) { echo ' - '.$end_date->format('F j, Y'); } ?><br>
-				<?php the_field('location'); ?>
+			<div class="dateLocationAF"><?php echo $start_date->format('F j, Y'); if($end_date) { echo ' - '.$end_date->format('F j, Y'); } ?>
 			</div>
 			
 			<section class="moreInfo">
@@ -215,20 +228,7 @@ if($currentArtF->have_posts()) : while($currentArtF->have_posts()) : $currentArt
 
 				<div class="noShowContainerNew">
 					<?php require 'partials/closed-new.php'; ?>
-					<?php 
-					$subLink = get_field('subtitle_links_to');
-					$sub = get_field('page_subtitle');
-
-					if($sub && $subLink): ?>
-						<a href="<?php the_field('subtitle_links_to'); ?>" alt="<?php the_field('page_subtitle'); ?>">
-							<div class="caption"><span><?php the_field('page_subtitle'); ?></span></div>
-
-						</a>
-						<?php else: ?>
-							<div class="caption"><span><?php the_field('page_subtitle'); ?></span></div>
-						
-
-					<?php endif; ?>
+					
 					
 				</div>
 				<?php

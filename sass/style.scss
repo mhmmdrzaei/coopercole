@@ -551,8 +551,8 @@ article.exhibition:nth-last-child(2) {
 
     	}
     	.dateLocationAF{
-    		@include fontSize(8);
-    		font-weight: 700;
+    		@include fontSize(14);
+    		@extend .whiteText;
     		line-height: initial;
     		margin: auto 0;
     	}
@@ -574,26 +574,26 @@ article.exhibition:nth-last-child(2) {
 .scroll-left {
 	height: 50px; 
 	overflow: hidden;
-	position: relative;
+	position: fixed;
+	bottom: 0;
+	width: 100%;
 }
 .scroll-left a {
 	position: absolute;
 	width: 100%;
 	height: 100%;
+	min-width: 1050px;
 	white-space: nowrap;
 	margin: 0;
 	line-height: 50px;
-	// text-align: center;
-	/* Starting position */
+
 	-moz-transform:translateX(100%);
 	-webkit-transform:translateX(100%); 
 	transform:translateX(100%);
-	/* Apply animation to this element */ 
 	-moz-animation: scroll-left 20s linear infinite;
 	-webkit-animation: scroll-left 20s linear infinite;
 	animation: scroll-left 20s linear infinite;
 	}
-	/* Move it (define the animation) */
 	@-moz-keyframes scroll-left {
 	0% { -moz-transform: translateX(100%); }
 	100% { -moz-transform: translateX(-100%); }
@@ -643,38 +643,35 @@ article.exhibition:nth-last-child(2) {
 }
 .caption {
 	position: fixed;
-	// height: 30px;
+	
 	background-image: linear-gradient(to right, #DC03FC, #0322FC, #03FCEF, #23FC03, #FCE303, #FC7A03, #FC0303);
 
 	top: 55vh;
-	left: 15.5%;
 	transform: rotate(5deg);
 	margin: 0;
-	width: 70%;
-	padding: 5px 0;
+	height: 50px;
+	left: -5px;
+	width: calc(100% + 10px);
+	z-index: 2;
 	overflow: hidden;
 	span {
+
 		display: block; 
-		@include fontSize(20);
+		@include fontSize(14);
+		@extend .whiteText;
+		line-height: initial;
 		text-transform: uppercase;
 		font-weight: 700;
+		line-height: 50px;
 		width: 100%;
 		// padding-left:100px;
 		transform: translateX(150%);
 		animation: 6s fadeIn;
 		 animation-fill-mode: forwards;
-		animation: move 27s linear infinite;
+		 animation: scroll-left 20s linear infinite;
 		white-space: nowrap; 
 	}
 }
-@keyframes move {
-	0% {
-	  transform: translateX(0);
-	}
-	100% {
-	  transform: translateX(-100%);
-	}
-  }
 
 //artfair 
 .artFairLogo {
@@ -1635,34 +1632,10 @@ body.home {
 
 
 }
-@media (max-width:800px) {
-	.closedSVGNew {
-		top: -15vh;
 
-	  }
-}
+
+
 @media (max-width: 850px) {
-	.fl-panelBar-wideScreen {
-		left: 5rem;
-	}
-	.copyright {
-		width: 40%;
-	}
-	.headerMainMenu {
-    margin-right: 17%;
-	}
-	.exhibitionsMainPage .exhibitionYearsSide {
-    width: 4%;
-	}
-	.open {
-		height: 100vh;
-	}
-
-
-}
-
-
-@media (max-width: 730px) {
 	
 	.noResults {
 		left: 0;
@@ -1702,6 +1675,9 @@ body.home {
   .menuMain {
     display: none;
   }
+  .pagetitleMobile {
+	display: block;
+  }
   .language {
   	display: none;
   }
@@ -1739,13 +1715,14 @@ body.home {
   }
   #topMenu {
 	background: white;
-  	height: 43px;
-  	width: 51px;
+	border-top: 1px solid #000;
+  	height: 45px;
+  	width: 100%;
   	margin-right: 0;
 	  padding: 10px;
   	position: fixed;
-  	 top: 20px;
-  	 left: 3%;
+  	 bottom:0;
+  	 left: 0;
      z-index: 900;
 
   }
@@ -1766,7 +1743,7 @@ body.home {
   .menu__hero .menu__nav {
   	position: fixed;
   	width: 100%;
-  	height: 100vh;
+  	height: 100dvh;
 	border: none;
   	padding: 7em 0 0;
 
@@ -1811,11 +1788,11 @@ body.home {
 
 		}
 	}
-	.menu-instagram a {
+	.menu-instagram a,#menu-item-15020 a  {
 		@include fontSize(9);
 		position: fixed;
 		display: none;
-		bottom: 0;
+		bottom: 45px;
 		right: 0px;
 		padding: 0 10px;
 		display: none;
@@ -1823,20 +1800,10 @@ body.home {
 		-webkit-text-stroke: 0px #000;
 	}
 }
-#menu-item-15020 a {
-  @include fontSize(9);
-  position: fixed;
-  display: block;
-  bottom: 0;
-  right: 0;
-  padding: 2px 10px;
-  display: none;
-  color: #000;
-  -webkit-text-stroke: 0px #000;
-}
+
 .mailing-list-open {
   position: fixed;
-  bottom: 0;
+  bottom: 45px;
   line-height: 40px;
   background: transparent;
   @include fontSize(9);
@@ -1922,22 +1889,18 @@ body.home {
   header {
   	margin-bottom: 70px;
   }
-  //closed svg 
-  .closedSVG {
-  	display: none;
-    transform: scale(1.2);
-    position: relative;
-    left: -8px;
-    max-width: 80%;
 
+  .closedSVGNew {
+	top: -10vh;
   }
-
-  .caption {
-  	// top: 74vh;
-  	position: absolute;
-  	width: 100%;
-  	left: 0;
-  	top: 70%;
+.caption {
+	top: 40vh
+}
+  .scroll-left {
+	position: relative;
+	a {
+		animation: scroll-left 15s linear infinite;
+	}
   }
 
 .noShowContainer {
@@ -2335,14 +2298,10 @@ main.contactMain .galleryAdditionalInfo .paragraphHalf {
 		}
 
 }
-// body.search-no-results {
-// 	footer {
-// 		position: inherit;
-// 	}
-// }
+
 @media (max-width:650px) {
 	.closedSVGNew {
-		top: -5vh;
+		top: 0vh;
 
 	  }
 }
@@ -2468,6 +2427,10 @@ body.home, body.search-no-results {
 }
 
 @media (max-width: 500px){
+	.closedSVGNew {
+		top: 5vh;
+
+	  }
 	@keyframes move {
 to { transform: translateX(-500%); }
 }
