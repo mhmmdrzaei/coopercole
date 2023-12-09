@@ -52,12 +52,12 @@ function cooper_styles(){
 
 add_action( 'wp_enqueue_scripts', 'cooper_styles');
 
-function wpb_add_google_fonts() {
+// function wpb_add_google_fonts() {
  
-wp_enqueue_style( 'wpb-google-fonts', 'https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap', false ); 
-}
+// wp_enqueue_style( 'wpb-google-fonts', 'https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap', false ); 
+// }
  
-add_action( 'wp_enqueue_scripts', 'wpb_add_google_fonts' );
+// add_action( 'wp_enqueue_scripts', 'wpb_add_google_fonts' );
 /* Add all our JavaScript files here.
 We'll let WordPress add them to our templates automatically instead
 of writing our own script tags in the header and footer. */
@@ -66,21 +66,13 @@ function cooper_scripts() {
 
 	//Don't use WordPress' local copy of jquery, load our own version from a CDN instead
 	// wp_deregister_script('ymlp');
- //  wp_enqueue_script(
- //  	'ymlp',
- //  	"https" . ($_SERVER['SERVER_PORT'] == 443 ? "s" : "") . "://signup.ymlp.com/signup.js?id=guqjmsegmgs",
- //  	false, //dependencies
- //  	null, //version number
- //  	true //load in footer
- //  );
-  	// wp_deregister_script('masonryjs');
-   //  wp_enqueue_script(
-   //  	'masonaryjs',
-   //  	"https" . ($_SERVER['SERVER_PORT'] == 443 ? "s" : "") . "://masonry.desandro.com/masonry.pkgd.js",
-   //  	false, //dependencies
-   //  	null, //version number
-   //  	true //load in footer
-   //  );
+//   wp_enqueue_script(
+//   	'ymlp',
+//   	"https" . ($_SERVER['SERVER_PORT'] == 443 ? "s" : "") . "://signup.ymlp.com/signup.js?id=guqjmsegmgs",
+//   	false, //dependencies
+//   	null, //version number
+//   	true //load in footer
+//   );
 	wp_deregister_script('swiperjs');
   wp_enqueue_script(
   	'swiperjs',
@@ -115,15 +107,11 @@ function cooper_scripts() {
   );
   wp_localize_script( 'scripts', 'AjaxHandler', array( 'ajaxurl' => admin_url( 'admin-ajax.php' ) ) );
 
-
-
   wp_enqueue_script( 'modernizr', get_template_directory_uri() . '/js/modernizr/modernizr-2.8.3.min.js', null, null, false );
 }
 
 
 add_action( 'wp_enqueue_scripts', 'cooper_scripts');
-
-
 
 /* Custom Title Tags */
 

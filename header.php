@@ -7,6 +7,25 @@
   <title><?php  wp_title('|', true, 'right'); ?></title>
   <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
   <!-- stylesheets should be enqueued in functions.php -->
+
+  <!-- Primary Meta Tags -->
+<meta name="title" content="<?php  wp_title('|', true, 'right'); ?>" />
+<meta name="description" content="COOPER COLE is a Contemporary Art Gallery located in Toronto, Canada." />
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://coopercolegallery.com/" />
+<meta property="og:title" content="COOPER COLE" />
+<meta property="og:description" content="COOPER COLE is a Contemporary Art Gallery located in Toronto, Canada." />
+<meta property="og:image" content="<?php bloginfo('template_directory'); ?>/images/CC-SEO.jpg" />
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image" />
+<meta property="twitter:url" content="https://coopercolegallery.com/" />
+<meta property="twitter:title" content="COOPER COLE" />
+<meta property="twitter:description" content="COOPER COLE is a Contemporary Art Gallery located in Toronto, Canada." />
+<meta property="twitter:image" content="<?php bloginfo('template_directory'); ?>/images/CC-SEO.jpg" />
+
   <?php wp_head(); ?>
 </head>
 

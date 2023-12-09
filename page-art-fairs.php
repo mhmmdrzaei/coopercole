@@ -1,4 +1,3 @@
-<?php //template name: Art Fairs ?>
 <button id="myBtn" title="Go to top">&#x2963;</button>
 
 <?php get_header(); ?>
@@ -6,122 +5,55 @@
 
 $event_status = "past";
 
-if(get_query_var('event_status')) {
-	$event_status = get_query_var( 'event_status' );
+if (get_query_var('event_status')) {
+    $event_status = get_query_var('event_status');
 }
 
-$start_date = get_field('start_date', false, false);
-$start_date = new DateTime($start_date);
+$paged = (get_query_var('paged')) ? get_query_var('paged') : 1; // Get the current page number
 
-if( get_field('end_date') ) {
-	$end_date = get_field('end_date', false, false);
-	$end_date = new DateTime($end_date);
-}
+$args = array(
+    'post_type' => 'art-fair',
+    'meta_key' => 'start_date',
+    'order' => 'DESC',
+    'orderby' => array(
+        'start_date' => 'DSC',
+        'post_date' => 'desc'
+    ),
+    'posts_per_page' => 20,
+    'paged' => $paged // Use the current page number
+);
 
+$query = new WP_Query($args);
+
+if ($query->have_posts()) :
 ?>
+
 <main>
-	<?php if(have_posts()) : while(have_posts()) : the_post(); ?>
-	<?php endwhile; endif; ?>
-	  <?php $args = array( 'post_type' => 'art-fair', 
-	  						'meta_key'			=> 'start_date',
-					// 'orderby'			=> 'meta_value',
-							'order'				=> 'DESC',
-					// 'orderby' => array(
-					// 		'meta_value_num' => 'desc',
-					// 		'post_date' => 'desc'
-							'orderby'    => array(
-								'start_date' => 'DSC',
-								'post_date' => 'desc'
-							),
-	   						'posts_per_page' => -1 );
-	    query_posts( $args ); // hijack the main loop
-	    while ( have_posts() ) : the_post();
-	      ?>
-	      <?php
+    <?php while ($query->have_posts()) : $query->the_post(); ?>
+        <?php get_template_part('partials/repeater-artfairs'); ?>
+    <?php endwhile; ?>
+    <?php
+    // Pagination
+    echo '<section class="pageNav">';
+    $big = 999999999; // need an unlikely integer
+    echo paginate_links(array(
+        'base' => str_replace($big, '%#%', esc_url(get_pagenum_link($big))),
+        'format' => '?paged=%#%',
+        'current' => max(1, $paged),
+        'total' => $query->max_num_pages,
+        'prev_text' => __('←', 'textdomain'),
+        'next_text' => __('→', 'textdomain'),
+        'mid_size' => 2,
+        'end_size' => 1,
+        'prev_next' => true,
+        'prev_next_before' => '<span class="prev-next">',
+        'prev_next_after' => '</span>',
+    ));
+    echo '</section>';
+    ?>
 
-	      $event_status = "past";
-
-	      if(get_query_var('event_status')) {
-	      	$event_status = get_query_var( 'event_status' );
-	      }
-
-	      $start_date = get_field('start_date', false, false);
-	      $start_date = new DateTime($start_date);
-
-	      if( get_field('end_date') ) {
-	      	$end_date = get_field('end_date', false, false);
-	      	$end_date = new DateTime($end_date);
-	      }
-
-	      ?>
-	      
-
-	      <article class="artFairEach">
-	      	
-				<div class="description">
-	      			<h2><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
-	      			<div class="date"><?php echo $start_date->format('F j, Y'); if($end_date) { echo ' - '.$end_date->format('F j, Y'); } ?></div>
-	      			<div class="location"><?php the_field('location'); ?></div>
-
-	      			<?php
-	      			add_filter( 'posts_orderby' , 'posts_orderby_lastname' );
-	      				$connected = new WP_Query( array(
-	      				  'connected_type' => 'art_fair_to_artist',
-	      				  'connected_items' => get_the_id(),
-	      				  'nopaging' => true,
-
-	      				) );
-	      			
-
-	      				if ( $connected->have_posts() ) :
-	      					echo '<ul>';
-
-	      					while ( $connected->have_posts() ) : $connected->the_post();
-	      						echo '<li>';
-
-	      						if(get_the_content() !== '') {
-	      							echo '<a href="'.get_permalink( get_the_id() ).'">';
-	      						}
-
-	      						echo get_the_title(get_the_id());
-
-	      						if(get_the_content() !== '') {
-	      							echo '</a>';
-	      						}
-
-	      						echo '</li>';
-
-	      					endwhile;
-
-	      					echo '</ul>';
-
-	      					wp_reset_postdata();
-
-	      				endif;
-	      				remove_filter( 'posts_orderby' , 'posts_orderby_lastname' );
-
-	      			?>
-	      			<?php if( have_rows('artist_with_no_artist_page') ): ?>
-	      			    <ul class="nonRepArtists">
-	      			    <?php while( have_rows('artist_with_no_artist_page') ): the_row(); 
-	      			        ?>
-	      			        <li>
-	      			            <?php the_sub_field('artist_name_noArtistPage'); ?>
-	      			        </li>
-	      			    <?php endwhile; ?>
-	      			    </ul>
-	      			<?php endif; ?>
-		      	</div>
-		      	<figure>
-		      		<a href="<?php the_permalink(); ?>"><?php the_post_thumbnail('large'); ?></a>
-		      	</figure>
-	      </article>
-
-
-		 
-
-<?php endwhile;?>
-<?php wp_reset_query();?> 
+    <?php wp_reset_postdata(); ?>
 </main>
-	<?php get_footer(); ?>
-	  
+
+<?php endif; ?>
+<?php get_footer(); ?>
