@@ -142,7 +142,7 @@ $(".closeInfo").click(function() {
 
   var sectionText = $('.text-area');
   var readMoreBtn = $('.read-more-btn');
-  var maxHeight = 399; // Adjust this value based on your design
+  var maxHeight = 320; // Adjust this value based on your design
 
 
    // Check if the height of the text exceeds the threshold

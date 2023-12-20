@@ -70,7 +70,7 @@
           <h4><?php echo $start_date->format('F j'); if($end_date) { echo ' - '.$end_date->format('F j, Y'); } ?></h4>
           <h4><em><?php the_field('location'); ?></em></h4>
           <br>
-          <h4 style="max-width: 185px;"><?php the_field('opening__closing_reception'); ?></h4>
+          <h4 style="max-width: 240px;"><?php the_field('opening__closing_reception'); ?></h4>
         </aside>
       </div>
       
