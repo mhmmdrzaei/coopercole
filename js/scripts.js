@@ -457,11 +457,11 @@ function applyDarkMode() {
   mode.innerHTML = "&#9788;"
   $('svg path, svg g path').css ('fill', 'white');
   $('.menu__nav, .artistNameExhibitionHome, .exhibitionDetailsHome,.exhibitionDateLocationHome, .artworkIteminfo, .home footer,.moreExhibits').css('background', 'black');
-  $('form.searchForm input, .menu__nav, .artistNameExhibitionHome, .exhibitionDetailsHome,.exhibitionDateLocationHome, footer, .buttonOuter,.toggleText,.artworkIteminfo, video, img,.artFairEach, a:before,.inquireSubmit,.arrow:before,.newsRelatedExhibitions,.tagsInner a,.exhibitionHome,.moreExhibits').css('border-color','white');
+  $('form.searchForm input, .menu__nav, .artistNameExhibitionHome, .exhibitionDetailsHome,.exhibitionDateLocationHome, footer, .buttonOuter,.toggleText,.artworkIteminfo, video, img,.artFairEach, a:before,.inquireSubmit,.arrow:before,.newsRelatedExhibitions,.tagsInner a,.exhibitionHome,.moreExhibits,.copyrightcontainer,.copyright').css('border-color','white');
 
   $('.exhibitionDateLocationHome, a, .open,.exhibitionsOpen,.newsOpen,#downClick, #upClick,.btn-info,.location,.date,.menu__nav li a,.artistsNames li a,.cli-plugin-main-butto,.description h2 a,.newsTitle a,.newsReadMore,.nextItem,.previousItem,.featuredVideoTitle,.ab-item,.read-more-btn,.pageNav a, .pageNav span,.artistNameExhibition .nonRepArtists li,.artFairExhibitors .nonRepArtists li,.gt_selector ').css('color','white');
   $('.infoAnimated,.mailing-list-open,.bookAnAppointment a,.menu-instagram a').css('color','black');
-  $('.infoAnimated,.mailing-list-open,.bookAnAppointment a, .menu-instagram a').css('background','white');
+  $('.infoAnimated,.mailing-list-open,.bookAnAppointment, .menu-instagram a').css('background','white');
   localStorage.setItem('darkMode', 'enabled');
   darkModeOn = true;
 }
@@ -473,14 +473,14 @@ function applyLightMode() {
  mode.innerHTML = "&#9790;"
  $('svg path, svg g path').css ('fill', 'black');
  $('.menu__nav, .artistNameExhibitionHome, .exhibitionDetailsHome,.exhibitionDateLocationHome, .artworkIteminfo, .home footer,.moreExhibits').css('background', 'white');
- $('form.searchForm input, .menu__nav, .artistNameExhibitionHome, .exhibitionDetailsHome,.exhibitionDateLocationHome, footer, .buttonOuter,.toggleText,.artworkIteminfo, video, img,.artFairEach, a:before,.inquireSubmit,.newsRelatedExhibitions,.tagsInner a,.exhibitionHome,.moreExhibits').css('border-color','black');
+ $('form.searchForm input, .menu__nav, .artistNameExhibitionHome, .exhibitionDetailsHome,.exhibitionDateLocationHome, footer, .buttonOuter,.toggleText,.artworkIteminfo, video, img,.artFairEach, a:before,.inquireSubmit,.newsRelatedExhibitions,.tagsInner a,.exhibitionHome,.moreExhibits, .copyrightcontainer,.copyright').css('border-color','black');
 $(".tags a,.tagsInner a").hover(function(e) { 
   $(this).css("color",e.type === "mouseenter"?"white":"black") 
 });
 
  $('.exhibitionDateLocationHome, a, .open,.exhibitionsOpen,.newsOpen,#downClick, #upClick,.btn-info,.location,.date, .mobileSocialVisIG,.featuredVideoTitle,.read-more-btn,.artFairArtists .nonRepArtists li, .gt_selector').css('color','black');
  $('.infoAnimated,.arrow,.bookAnAppointment a,.mailing-list-open,.wt-cli-accept-btn,.menu__nav li a,.artistsNames li a,.cli-plugin-main-butto,.description h2 a,.newsTitle a,.newsReadMore,.artistNameExhibition .nonRepArtists li,.nextItem,.previousItem,.ab-item,.pageNav a, .pageNav span,.menu-instagram a').css('color','white');
- $('.infoAnimated,.mailing-list-open, .bookAnAppointment a, .menu-instagram a').css('background','black');
+ $('.infoAnimated,.mailing-list-open, .bookAnAppointment, .menu-instagram a').css('background','black');
  localStorage.setItem('darkMode', 'disabled');
   darkModeOn = false;
 

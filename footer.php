@@ -1,14 +1,19 @@
 <footer>
 	<section class="footerInner">
-		<a href="/index.php?page_id=70">Contact Us</a>
+		
 		<section class="buttonOuter">
 			<button class="bookAnAppointment"><a href="https://www.instagram.com/coopercole/" target="_blank">Instagram</a></button>
 		</section>
+		<a href="/index.php?page_id=70">Contact Us</a>
 
-		<p class="copyright"><?php the_field('copyright_text', 'options'); ?></p>
 		<section class="buttonOuter">
 			<button class="mailing-list-open" alt="Opens Mailing List Subscription form">Mailing List</button>
 		</section>
+		<section class="copyrightcontainer">
+		<p class="copyright"><?php the_field('copyright_text', 'options'); ?></p>
+
+		</section>
+
 	</section>
 
 
