@@ -67,26 +67,34 @@
     <label id="topMenu" class="menu__icon headerMainMenu" for="menu__check">
        <div class="hamburger-menu"></div> 
        <section class="pagetitleMobile">
-       <?php if (!is_front_page()) :
-         $title = get_the_title();
-         $maxWords = 4; // Adjust this value as needed
+       <?php 
+    $title = get_the_title();
+    $post_type = get_post_type();
 
-        $titleWords = explode(' ', $title);
-
-        if (count($titleWords) > $maxWords) {
-            $truncatedTitle = implode(' ', array_slice($titleWords, 0, $maxWords)) . '...';
-            echo esc_html($truncatedTitle);
+    if ($post_type && $post_type === 'exhibition') {
+        echo esc_html('Exhibitions');
+    } elseif ($post_type && $post_type === 'artist') {
+        echo esc_html('Artists');
+    } elseif ($post_type && $post_type === 'post') {
+        if (is_front_page()) {
+            echo esc_html('Menu');
         } else {
-            echo esc_html($title);
+            echo esc_html('News');
         }
-        
-        
-        
-        ?>
-      
-       <?php endif; ?>
+    } elseif ($post_type && $post_type === 'art-fair') {
+        echo esc_html('Art Fairs');
+    } elseif ($post_type && $post_type === 'art') {
+        echo esc_html('Artwork');
+    } else {
+        echo esc_html($title);
+    }
+?>
 
-       </section>
+
+</section>
+
+
+
 
       <section class="ccLogo">
       <section class="logoTwo">

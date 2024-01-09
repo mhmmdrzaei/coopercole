@@ -2131,9 +2131,10 @@ body.home {
 // artist single page
 
 .artistMain {
-	display: block;
+	
 	.artistsMainSide {
 		width: 100%;
+		order: 2;
 	}
 	.artistMainCenter {
 		width: 100%;

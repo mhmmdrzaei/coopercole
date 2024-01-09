@@ -2,15 +2,13 @@
 	<section class="footerInner">
 		<a href="/index.php?page_id=70">Contact Us</a>
 		<section class="buttonOuter">
-			<button class="bookAnAppointment"><a href="https://calendly.com/coopercole" target="_blank">
-			Book An Appointment</a></button>
+			<button class="bookAnAppointment"><a href="https://www.instagram.com/coopercole/" target="_blank">Instagram</a></button>
 		</section>
 
 		<p class="copyright"><?php the_field('copyright_text', 'options'); ?></p>
 		<section class="buttonOuter">
 			<button class="mailing-list-open" alt="Opens Mailing List Subscription form">Mailing List</button>
 		</section>
-		<a href="https://www.instagram.com/coopercole/" target="_blank">Instagram</a>
 	</section>
 
 
