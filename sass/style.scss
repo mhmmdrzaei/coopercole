@@ -239,8 +239,9 @@ video {
   	}
   }
 }
-#newsContentID, #exhibitionContentID {
+#newsContentID, #exhibitionContentID,.artistbioContent {
 	display: none;
+	margin-bottom: 20px;
 } 
 .newsContent{
 	list-style: none;
@@ -256,12 +257,12 @@ video {
     	
     }
 }
-.newsOpen,.exhibitionsOpen {
+.newsOpen,.exhibitionsOpen, .bioOpen {
   margin: 30px 0 0;
   background: transparent;
   border: none;
   text-transform: uppercase;
-  @include fontSize(9);
+//   @include fontSize(9);
   font-weight: 700;
   padding: 0;
   &:before {
@@ -276,6 +277,9 @@ video {
     content: "- ";
     @include fontSize(9);
   }
+}
+.exhibtionNews {
+	text-align: right;
 }
 .exhibtionArtists {
 	max-width: 250px;
@@ -925,6 +929,9 @@ article.post:nth-child(1) {
 .artistMain {
 	@extend .flex;
 	justify-content:space-between;
+	padding-bottom: 10px;
+	margin-bottom: 30px;
+	border-bottom: 1px solid;
 	.artistsMainSide {
 		width: 30%;
 		position: relative;
@@ -936,6 +943,8 @@ article.post:nth-child(1) {
 }
 .downloadCV {
 	@include fontSize(9);
+	padding: 10px 6px;
+	margin-bottom: 20px;
 	font-weight: 700;
 	text-transform: uppercase; 
 	position: relative;
@@ -2142,9 +2151,6 @@ body.home {
 	}
 }
 
-.newsOpen {
-	margin: 0;
-}
 .featuredVideoTitle {
 	text-align: left;
 	@include fontSize(8);
@@ -2225,9 +2231,7 @@ main.contactMain .galleryAdditionalInfo .paragraphHalf {
 		}
 	}
 }
-.exhibtionNews {
-	margin: 20px 0 10px;
-}
+
 
 //single artworks page
 
@@ -2410,6 +2414,12 @@ body.home, body.search-no-results {
 }
 
 @media (max-width: 500px){
+	.artistMain {
+		display: block;
+	}
+	.exhibtionNews {
+		text-align: left;
+	}
 	.closedSVGNew {
 		top: 5vh;
 

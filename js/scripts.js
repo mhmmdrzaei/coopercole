@@ -181,6 +181,11 @@ $(document).ready(function(){
    });   
   });
 
+  $(".bioOpen").click(function(){
+    $(".artistbioContent").toggle(500);
+    $( this ).toggleClass( "highlight" );
+    
+  });
 
   $(".newsOpen").click(function(){
     $("#newsContentID").toggle(500);
@@ -459,9 +464,9 @@ function applyDarkMode() {
   $('.menu__nav, .artistNameExhibitionHome, .exhibitionDetailsHome,.exhibitionDateLocationHome, .artworkIteminfo, .home footer,.moreExhibits').css('background', 'black');
   $('form.searchForm input, .menu__nav, .artistNameExhibitionHome, .exhibitionDetailsHome,.exhibitionDateLocationHome, footer, .buttonOuter,.toggleText,.artworkIteminfo, video, img,.artFairEach, a:before,.inquireSubmit,.arrow:before,.newsRelatedExhibitions,.tagsInner a,.exhibitionHome,.moreExhibits,.copyrightcontainer,.copyright').css('border-color','white');
 
-  $('.exhibitionDateLocationHome, a, .open,.exhibitionsOpen,.newsOpen,#downClick, #upClick,.btn-info,.location,.date,.menu__nav li a,.artistsNames li a,.cli-plugin-main-butto,.description h2 a,.newsTitle a,.newsReadMore,.nextItem,.previousItem,.featuredVideoTitle,.ab-item,.read-more-btn,.pageNav a, .pageNav span,.artistNameExhibition .nonRepArtists li,.artFairExhibitors .nonRepArtists li,.gt_selector ').css('color','white');
-  $('.infoAnimated,.mailing-list-open,.bookAnAppointment a,.menu-instagram a').css('color','black');
-  $('.infoAnimated,.mailing-list-open,.bookAnAppointment, .menu-instagram a').css('background','white');
+  $('.exhibitionDateLocationHome, a, .open,.exhibitionsOpen,.newsOpen,.bioOpen,#downClick, #upClick,.btn-info,.location,.date,.menu__nav li a,.artistsNames li a,.cli-plugin-main-butto,.description h2 a,.newsTitle a,.newsReadMore,.nextItem,.previousItem,.featuredVideoTitle,.ab-item,.read-more-btn,.pageNav a, .pageNav span,.artistNameExhibition .nonRepArtists li,.artFairExhibitors .nonRepArtists li,.gt_selector ').css('color','white');
+  $('.infoAnimated,.mailing-list-open,.bookAnAppointment a,.menu-instagram a,.downloadCV').css('color','black');
+  $('.infoAnimated,.mailing-list-open,.bookAnAppointment, .menu-instagram a,.downloadCV').css('background','white');
   localStorage.setItem('darkMode', 'enabled');
   darkModeOn = true;
 }
@@ -472,13 +477,13 @@ function applyLightMode() {
   slider.style.cssText ="background-color: #FFFFFF;"
  mode.innerHTML = "&#9790;"
  $('svg path, svg g path').css ('fill', 'black');
- $('.menu__nav, .artistNameExhibitionHome, .exhibitionDetailsHome,.exhibitionDateLocationHome, .artworkIteminfo, .home footer,.moreExhibits').css('background', 'white');
+ $('.menu__nav, .artistNameExhibitionHome, .exhibitionDetailsHome,.exhibitionDateLocationHome, .artworkIteminfo, .home footer,.moreExhibits,.downloadCV').css('background', 'white');
  $('form.searchForm input, .menu__nav, .artistNameExhibitionHome, .exhibitionDetailsHome,.exhibitionDateLocationHome, footer, .buttonOuter,.toggleText,.artworkIteminfo, video, img,.artFairEach, a:before,.inquireSubmit,.newsRelatedExhibitions,.tagsInner a,.exhibitionHome,.moreExhibits, .copyrightcontainer,.copyright').css('border-color','black');
 $(".tags a,.tagsInner a").hover(function(e) { 
   $(this).css("color",e.type === "mouseenter"?"white":"black") 
 });
 
- $('.exhibitionDateLocationHome, a, .open,.exhibitionsOpen,.newsOpen,#downClick, #upClick,.btn-info,.location,.date, .mobileSocialVisIG,.featuredVideoTitle,.read-more-btn,.artFairArtists .nonRepArtists li, .gt_selector').css('color','black');
+ $('.exhibitionDateLocationHome, a, .open,.exhibitionsOpen,.newsOpen,.bioOpen,#downClick, #upClick,.btn-info,.location,.date, .mobileSocialVisIG,.featuredVideoTitle,.read-more-btn,.artFairArtists .nonRepArtists li, .gt_selector').css('color','black');
  $('.infoAnimated,.arrow,.bookAnAppointment a,.mailing-list-open,.wt-cli-accept-btn,.menu__nav li a,.artistsNames li a,.cli-plugin-main-butto,.description h2 a,.newsTitle a,.newsReadMore,.artistNameExhibition .nonRepArtists li,.nextItem,.previousItem,.ab-item,.pageNav a, .pageNav span,.menu-instagram a').css('color','white');
  $('.infoAnimated,.mailing-list-open, .bookAnAppointment, .menu-instagram a').css('background','black');
  localStorage.setItem('darkMode', 'disabled');

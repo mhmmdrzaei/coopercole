@@ -5,14 +5,6 @@
 	<main>
 		<h1 class="artistName"><?php the_title(); ?></h1>
 		<section class="artistMain">
-			<section class="artistsMainSide">
-				<?php 
-					 $artistCV = get_field('cv_pdf');
-				      if( $artistCV ) {; ?>
-
-				   <a class="downloadCV" href="<?php the_field('cv_pdf'); ?>" target="_blank" ><img src="<?php bloginfo('template_directory'); ?>/images/cv_icon.svg"> Download CV</a>
-				<?php }; ?>	
-				<nav class="exhibtionNews artistsExhibtion">
 					<?php
 					
 					$connected = new WP_Query( array(
@@ -28,16 +20,62 @@
 
 					?>
 
-				  <button class="exhibitionsOpen">Gallery Exhibitions</button>
-				  <div id="exhibitionContentID">
-				  <ul class="newsContent">
-				    <?php while($connected->have_posts()) : $connected->the_post(); ?>
-				      <li><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></li>
-				    <?php endwhile; ?>
-				  </ul>
-				  </div>
-				   <?php wp_reset_postdata(); endif; ?>
-				</nav>
+				<section class="artistBio">
+					<button class="bioOpen">Artist Bio</button>
+					<section class="artistbioContent">
+						<?php the_content(); ?>
+							<?php 
+								$artistCV = get_field('cv_pdf');
+								if( $artistCV ) {; ?>
+
+							<a class="downloadCV" href="<?php the_field('cv_pdf'); ?>" target="_blank" ><img src="<?php bloginfo('template_directory'); ?>/images/cv_icon.svg"> Download CV</a>
+						<?php }; ?>	
+						<?php if( have_rows('additional_video_and_links') ): ?>
+							<?php while( have_rows('additional_video_and_links') ): the_row(); ?>
+								<?php if( get_row_layout() == 'add_video_additional' ): ?>
+								<?php if( have_rows('video_additionalMediaContent') ): ?>
+								<?php while( have_rows('video_additionalMediaContent') ): the_row(); 
+									$videoLink = get_sub_field('video_link_additionalMedia');
+									if( $videoLink ) {; ?>
+									<section class="featuredVideo">
+										<button class="featuredVideoTitle"><img src="<?php bloginfo('template_directory'); ?>/images/movie_icon.svg"> <?php the_sub_field('video_label_additionalMedia') ?></button> 
+										<div id="featuredVideoLink" class="video-responsive">
+										<?php the_sub_field('video_link_additionalMedia'); ?>
+										</div>
+									</section>
+									<?php } ?> 
+								<?php endwhile; ?>
+								<?php endif; ?>   
+								<?php elseif( get_row_layout() == 'add_link_additional' ): ?>
+									<?php if( have_rows('outwardLink_additionalMediaContent') ): ?>
+									<?php while( have_rows('outwardLink_additionalMediaContent') ): the_row(); 
+									$onlineLink = get_sub_field('link_label_additionalMedia');
+									if( $onlineLink ) {; ?>
+									<section class="onlineExhibition">
+										<a href="<?php the_sub_field('actual_link_additionalMedia'); ?>"><?php the_sub_field('link_label_additionalMedia'); ?> <i class="fas fa-external-link-alt"></i></a>
+									</section>
+									<?php } ?> 
+									<?php endwhile; ?>
+									<?php endif; ?>  
+
+								<?php endif; ?>
+							<?php endwhile; ?>
+						<?php endif; ?>
+					</section>
+				</section>
+				<section class="exhbitionscont">
+					<button class="exhibitionsOpen">Gallery Exhibitions</button>
+						<div id="exhibitionContentID">
+						<ul class="newsContent">
+						<?php while($connected->have_posts()) : $connected->the_post(); ?>
+							<li><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></li>
+						<?php endwhile; ?>
+						</ul>
+					</div>
+					<?php wp_reset_postdata(); endif; ?>
+
+				</section>
+
 				<nav class="exhibtionNews">
 				        <?php
 				  $connected = new WP_Query( array(
@@ -63,43 +101,6 @@
 				  </div>
 				   <?php wp_reset_postdata(); endif; ?>
 				</nav>
-			</section>
-			<section class="artistMainCenter">
-				
-				 <?php the_content(); ?>
-	
-				 <?php if( have_rows('additional_video_and_links') ): ?>
-				     <?php while( have_rows('additional_video_and_links') ): the_row(); ?>
-				         <?php if( get_row_layout() == 'add_video_additional' ): ?>
-				           <?php if( have_rows('video_additionalMediaContent') ): ?>
-				           <?php while( have_rows('video_additionalMediaContent') ): the_row(); 
-				             $videoLink = get_sub_field('video_link_additionalMedia');
-				             if( $videoLink ) {; ?>
-				             <section class="featuredVideo">
-				             <button class="featuredVideoTitle"><img src="<?php bloginfo('template_directory'); ?>/images/movie_icon.svg"> <?php the_sub_field('video_label_additionalMedia') ?></button> 
-				             <div id="featuredVideoLink" class="video-responsive">
-				               <?php the_sub_field('video_link_additionalMedia'); ?>
-				             </div>
-				             </section>
-				             <?php } ?> 
-				           <?php endwhile; ?>
-				            <?php endif; ?>   
-				         <?php elseif( get_row_layout() == 'add_link_additional' ): ?>
-				             <?php if( have_rows('outwardLink_additionalMediaContent') ): ?>
-				             <?php while( have_rows('outwardLink_additionalMediaContent') ): the_row(); 
-				               $onlineLink = get_sub_field('link_label_additionalMedia');
-				               if( $onlineLink ) {; ?>
-				               <section class="onlineExhibition">
-				                 <a href="<?php the_sub_field('actual_link_additionalMedia'); ?>"><?php the_sub_field('link_label_additionalMedia'); ?> <i class="fas fa-external-link-alt"></i></a>
-				               </section>
-				               <?php } ?> 
-				             <?php endwhile; ?>
-				              <?php endif; ?>  
-
-				         <?php endif; ?>
-				     <?php endwhile; ?>
-				 <?php endif; ?>
-			</section>
 		</section>
 		  <section class="artworksMainAritsts">
 		    <?php
