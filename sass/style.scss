@@ -262,7 +262,7 @@ video {
   background: transparent;
   border: none;
   text-transform: uppercase;
-//   @include fontSize(9);
+  @include fontSize(9);
   font-weight: 700;
   padding: 0;
   &:before {
@@ -278,7 +278,7 @@ video {
     @include fontSize(9);
   }
 }
-.exhibtionNews {
+.artistMain .exhibtionNews {
 	text-align: right;
 }
 .exhibtionArtists {
@@ -1498,10 +1498,11 @@ section.inquiry form input:nth-child(2).invalid {
 
 .artworkItemEach {
 	width: 49%;
-	margin: 0 1% 65px 0;
+	margin: 0 0 65px 0;
 }
 .artworksNew, .artworksOld {
 	@extend .flex;
+	justify-content: space-between;
 }
 
 
@@ -2417,7 +2418,7 @@ body.home, body.search-no-results {
 	.artistMain {
 		display: block;
 	}
-	.exhibtionNews {
+	.artistMain .exhibtionNews {
 		text-align: left;
 	}
 	.closedSVGNew {
