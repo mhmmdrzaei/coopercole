@@ -88,13 +88,13 @@ function cooper_scripts() {
   	null, //version number
   	true //load in footer
   );
-  wp_enqueue_script(
-	'googlemaps',
-	"http" . ($_SERVER['SERVER_PORT'] == 443 ? "s" : "") . "://maps.googleapis.com/maps/api/js?key=AIzaSyAHlThHhPngBGvMbmHhOUl_PDHXt1M9E-8&&loading=async&callback=initMap",
-	false, //dependencies
-	null, //version number
-	true //load in footer
-);
+//   wp_enqueue_script(
+// 	'googlemaps',
+// 	"https://maps.googleapis.com/maps/api/js?key=AIzaSyAHlThHhPngBGvMbmHhOUl_PDHXt1M9E-8&&loading=async&callback=initMap",
+// 	false, //dependencies
+// 	null, //version number
+// 	true //load in footer
+// );
   wp_enqueue_script(
     'plugins', //handle
     get_template_directory_uri() . '/js/plugins.js', //source
