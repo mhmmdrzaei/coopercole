@@ -73,14 +73,13 @@ function cooper_scripts() {
 //   	null, //version number
 //   	true //load in footer
 //   );
-	wp_deregister_script('swiperjs');
-  wp_enqueue_script(
-  	'swiperjs',
-  	"https" . ($_SERVER['SERVER_PORT'] == 443 ? "s" : "") . "://unpkg.com/swiper/swiper-bundle.min.js",
-  	false, //dependencies
-  	null, //version number
-  	true //load in footer
-  );
+//   wp_enqueue_script(
+//   	'swiperjs',
+//   	"https" . ($_SERVER['SERVER_PORT'] == 443 ? "s" : "") . "://unpkg.com/swiper/swiper-bundle.min.js",
+//   	false, //dependencies
+//   	null, //version number
+//   	true //load in footer
+//   );
   	wp_deregister_script('jquery');
   wp_enqueue_script(
   	'jquery',
@@ -89,7 +88,13 @@ function cooper_scripts() {
   	null, //version number
   	true //load in footer
   );
-
+  wp_enqueue_script(
+	'googlemaps',
+	"http" . ($_SERVER['SERVER_PORT'] == 443 ? "s" : "") . "://maps.googleapis.com/maps/api/js?key=AIzaSyAHlThHhPngBGvMbmHhOUl_PDHXt1M9E-8&&loading=async&callback=initMap",
+	false, //dependencies
+	null, //version number
+	true //load in footer
+);
   wp_enqueue_script(
     'plugins', //handle
     get_template_directory_uri() . '/js/plugins.js', //source
@@ -807,12 +812,6 @@ if(is_user_logged_in()) {
 }
 //theme setup
 
-function my_acf_init() {
-	
-	acf_update_setting('google_api_key', 'AIzaSyDovfUJxvALAYE_sYRVM_VLGCeb63Wrgow');
-}
-
-add_action('acf/init', 'my_acf_init');
 
 function posts_orderby_lastname ($orderby_statement) 
 {

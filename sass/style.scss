@@ -635,13 +635,22 @@ article.exhibition:nth-last-child(2) {
 .closedSVGNew {
 	max-width: 950px;
 	width: 100%;
-	margin: 30px auto;
+	height: 100vh;
+	margin: 0 auto;
+	// max-height: 500px;
+	position: relative;
+	
 	animation: 6s fadeIn;
 	 animation-fill-mode: forwards;
-	 position: absolute;
-	 top: 50%;
-	 left: 50%;
-	 transform: translate(-50%, 50%);
+	
+	 svg {
+		max-width: 750px;
+		width: 100%;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -40%);
+	 }
 }
 .caption {
 	position: fixed;
@@ -1080,6 +1089,33 @@ main.contactMain{
 	
 
 }
+.acf-map-container {
+	position: relative;
+	#custom-place-card {
+		font-family: Arial, Helvetica, sans-serif;
+		position: absolute; left: 10px; top: 10px; background-color: white; padding: 10px; box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 4px -1px; border-radius: 2px;
+		@include fontSize(8);
+		.place-name {
+			font-weight: 700;
+			margin-bottom: 5px;
+		}
+		.address {
+			color: #5b5b5b;
+			@include fontSize(7);
+		}
+		.navigate {
+			margin: 10px 0 10px;
+
+		}
+		.navigate a,.google-maps-link a {
+			color: #1a73e8 !important;
+			
+		}
+
+
+	}
+}
+
 
 .acf-map img {
    max-width: inherit !important;
@@ -1888,7 +1924,7 @@ body.home {
   }
 
   .closedSVGNew {
-	top: -10vh;
+	top: -23vh;
   }
 .caption {
 	top: 40vh
@@ -2287,12 +2323,6 @@ main.contactMain .galleryAdditionalInfo .paragraphHalf {
 
 }
 
-@media (max-width:650px) {
-	.closedSVGNew {
-		top: 0vh;
-
-	  }
-}
 
 @media (min-height: 800px){
 .artistsMain {
@@ -2421,10 +2451,7 @@ body.home, body.search-no-results {
 	.artistMain .exhibtionNews {
 		text-align: left;
 	}
-	.closedSVGNew {
-		top: 5vh;
 
-	  }
 	@keyframes move {
 to { transform: translateX(-500%); }
 }
