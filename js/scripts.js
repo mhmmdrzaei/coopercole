@@ -248,20 +248,20 @@ $(document).ready(function(){
         $this.addClass('scroll');
         var $ul = $this;
         var $lis = $ul.find('li');
-        var baseDuration = 1 * 1000; 
+        var baseDuration = 1 * 2000; 
         var totalNames = $lis.length;
         var animationDuration = baseDuration * totalNames;
         
         function scrollNames() {
           var marginLeft = (totalContentWidth) - pageWidth;
-          $ul.css('left', 30);
+          $ul.css('left', '100%');
           $ul.animate({ 'left': -marginLeft }, animationDuration, 'linear', function () {
             $ul.css('left', marginLeft);
             scrollNames();
           });
         }
     
-        var totalContentWidth = $ul.width() + 70;
+        var totalContentWidth = $ul.width() + 1100;
           
         $ul.width(totalContentWidth);
         
