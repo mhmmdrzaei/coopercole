@@ -70,7 +70,18 @@
           <h4><?php echo $start_date->format('F j'); if($end_date) { echo ' - '.$end_date->format('F j, Y'); } ?></h4>
           <h4><em><?php the_field('location'); ?></em></h4>
           <br>
-          <h4 style="max-width: 240px;"><?php the_field('opening__closing_reception'); ?></h4>
+
+          <?php
+          $opening_closing_heading = get_field('opening__closing_heading');
+          $opening_closing_reception = get_field('opening__closing_reception');
+
+          // Check if the first field is filled out
+          if (!empty($opening_closing_heading)) {
+              // Display both fields wrapped in <h4> tags
+              echo '<h4>' . $opening_closing_heading . '<br>'; 
+          }; 
+          echo $opening_closing_reception . '</h4>';
+          ?>
         </aside>
       </div>
       
