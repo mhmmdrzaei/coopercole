@@ -83,7 +83,7 @@ function cooper_scripts() {
   	wp_deregister_script('jquery');
   wp_enqueue_script(
   	'jquery',
-  	"https" . ($_SERVER['SERVER_PORT'] == 443 ? "s" : "") . "://code.jquery.com/jquery-latest.min.js",
+  	"https://code.jquery.com/jquery-latest.min.js",
   	false, //dependencies
   	null, //version number
   	true //load in footer
@@ -553,7 +553,10 @@ add_action( 'add_meta_boxes', 'register_my_meta_box' );
 
 //convert to cm
 function convert_to_cm($inches = 0) {
-	return round($inches / 0.393701, 2);
+    if (!is_numeric($inches)) {
+        $inches = 0;
+    }
+    return round($inches / 0.393701, 2);
 }
 
 function cmp($a, $b) {
