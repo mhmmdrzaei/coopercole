@@ -1589,6 +1589,13 @@ section.inquiry form input:nth-child(2).invalid {
 		// order: 1;
 		width: 40%;
 		margin: 20px 0 80px;
+		.artworkInfoTitle {
+			@extend .whiteText;
+				text-transform: uppercase;
+				@include fontSize(12);
+				margin: 0 0 15px;
+
+		}
 		.connectedArtists h2 {
 			margin: 0 0 15px;
 			@include fontSize(12);

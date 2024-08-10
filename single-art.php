@@ -6,6 +6,8 @@
     <?php $curr_id = get_the_id(); ?>
     <section class="singleArtFull">
       <section class="singleArtInfo">
+      <p class="artworkInfoTitle">
+      <?php echo the_title(); ?></p>
         <section class="connectedArtists">
           <?php
 
@@ -82,7 +84,7 @@
         </section>
             <section class="artworkDetail">
 
-              <?php echo get_field('title', $curr_id); ?><?php if(get_field('year', $curr_id)) { echo ', '.get_field('year', $curr_id).'<br/>'; } ?>
+              <?php if(get_field('year', $curr_id)) { echo get_field('year', $curr_id).'<br/>'; } ?>
 
 
               <?php
