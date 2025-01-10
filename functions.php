@@ -629,6 +629,139 @@ function coopercole_tags() {
 	<?php
 	wp_reset_postdata();
 }
+function render_artworks_section($connected_type) {
+    // Query the connected posts dynamically based on the provided $connected_type
+    $connected = new WP_Query(array(
+        'connected_type' => $connected_type,
+        'connected_items' => get_the_id(),
+        'nopaging' => true,
+    ));
+
+    if ($connected->have_posts()) : ?>
+        <section class="artworksMain">
+            <h3 id="artworks">Artworks</h3>
+            <section class="artworksOld" id="artworksPages">
+                <?php while ($connected->have_posts()) : $connected->the_post(); ?>
+                    <div class="artworkItemEach">
+                        <section class="toggleText">
+                            <figure>
+                                <?php echo get_the_post_thumbnail(get_the_id(), 'large'); ?>
+                            </figure>
+
+                            <?php
+                            $title = get_the_title();
+                            $title_array = explode('&#8211;', $title);
+                            $first_word = $title_array[0];
+                            $second_word = isset($title_array[1]) ? $title_array[1] : '';
+                            ?>
+                            <section class="titleToggle">
+                                <p class="toggleTextTitle"><?php echo $first_word; ?></p>
+                                <div class="line"></div>
+                                <p class="toggleTextWork"><?php echo $second_word; ?></p>
+                            </section>
+                            <section class="infoAnimated">
+                                <div>I</div>
+                                <div>n</div>
+                                <div>q</div>
+                                <div>u</div>
+                                <div>i</div>
+                                <div>r</div>
+                                <div>i</div>
+                                <div>e</div>
+                                <div>s</div>
+                                <div>→</div>
+                            </section>
+                        </section>
+                        <section class="artworkIteminfo" id="artworksOpenItem">
+                            <section class="closeInfo">Close</section>
+                            <section class="prevnext">
+                                <a href="#" class="previousItem">Previous</a>
+                                <span>/</span>
+                                <a href="#" class="nextItem">Next</a>
+                            </section>
+                            <section class="artworkItemInfoInnner">
+                                <section class="artworkItemInfoText">
+                                    <div class="artworkInfoTextFixed">
+                                        <h3 class="artworkInfoTitle"><?php echo $first_word; ?></h3>
+                                        <h4 class="artworkYearTitle">
+                                            <?php echo get_field('title'); ?><br/>
+                                            <?php echo get_field('year'); ?>
+                                        </h4>
+
+                                        <?php if (get_field('media')) : ?>
+                                            <p><?php echo get_field('media'); ?></p>
+                                        <?php endif; ?>
+                                        
+                                        <?php if (get_field('edition')) : ?>
+                                            <p><?php echo get_field('edition'); ?></p>
+                                        <?php endif; ?>
+
+                                        <?php if (get_field('notes')) : ?>
+                                            <p><?php echo get_field('notes'); ?></p>
+                                        <?php endif; ?>
+
+                                        <section class="dimentions">
+                                            <?php
+                                            $height = get_field('height');
+                                            $width = get_field('width');
+                                            $depth = get_field('depth');
+                                            $height_metric = convert_to_cm($height);
+                                            $width_metric = convert_to_cm($width);
+                                            $depth_metric = convert_to_cm($depth);
+
+                                            if ($depth) {
+                                                echo "$height\" X $width\" X $depth\"<br/>";
+                                                echo "$height_metric cm X $width_metric cm X $depth_metric cm<br/>";
+                                            } elseif ($height && $width) {
+                                                echo "$height\" X $width\"<br/>";
+                                                echo "$height_metric cm X $width_metric cm<br/>";
+                                            }
+                                            ?>
+                                        </section>
+
+                                        <?php if (get_field('inventory')) : ?>
+                                            <p><?php echo get_field('inventory'); ?></p>
+                                        <?php endif; ?>
+                                    </div>
+                                    <section class="inquiry">
+                                        <!-- Inquiry Form Logic Here -->
+                                    </section>
+                                </section>
+                                <div class="galleryContainer">
+                                    <?php if (have_rows('not_embedded_video')) :
+                                        while (have_rows('not_embedded_video')) : the_row(); ?>
+                                            <video controls>
+                                                <source src="<?php the_sub_field('video_file'); ?>" type="video/mp4" controls controlsList="nodownload">
+                                                Your browser does not support the video tag.
+                                            </video>
+                                        <?php endwhile; endif; ?>
+
+                                    <?php if (have_rows('videos')) :
+                                        while (have_rows('videos')) : the_row(); ?>
+                                            <div class="wrap-video">
+                                                <?php echo get_sub_field('video'); ?>
+                                            </div>
+                                        <?php endwhile; elseif (get_field('gallery')) :
+                                            $gallery = get_field('gallery');
+                                            foreach ($gallery as $image) : ?>
+                                                <img class="" src="<?php echo $image['sizes']['large']; ?>" />
+                                            <?php endforeach;
+                                        else :
+                                            the_post_thumbnail('large');
+                                        endif; ?>
+                                </div>
+                            </section>
+                        </section>
+                    </div>
+                <?php endwhile; ?>
+            </section>
+        </section>
+        <?php wp_reset_postdata();
+    endif;
+}
+// add_shortcode('artworks_component', 'render_artworks_section');
+
+
 function coopercole_inner_tags() {
 	?>
 	<div class="tagsInner">

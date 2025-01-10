@@ -1164,10 +1164,15 @@ h3#artworks {
 				margin: 0;
 			}
 			.artworkInfoTitle {
+				margin: 0 0 5px;
 				@extend .whiteText;
 				text-transform: uppercase;
 				@include fontSize(12);
-				margin-bottom: 15px;
+				
+			}
+			.artworkYearTitle {
+				margin: 0 0 15px;
+				
 			}
 	}
 	.galleryContainer {
@@ -1593,7 +1598,7 @@ section.inquiry form input:nth-child(2).invalid {
 			@extend .whiteText;
 				text-transform: uppercase;
 				@include fontSize(12);
-				margin: 0 0 15px;
+				
 
 		}
 		.connectedArtists h2 {

@@ -187,7 +187,7 @@
                  while(have_rows('videos')) { the_row();
 
                    echo '<div class="wrap-video">';
-                     the_sub_field('video');
+                     echo get_sub_field('video');
                    echo '</div>';
 
                  }
