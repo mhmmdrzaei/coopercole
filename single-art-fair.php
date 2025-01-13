@@ -118,7 +118,7 @@
 		            $videoLink = get_sub_field('video_link_additionalMedia');
 		            if( $videoLink ) {; ?>
 		            <section class="featuredVideo">
-		            <button class="featuredVideoTitle"><img src="<?php bloginfo('template_directory'); ?>/images/movie_icon.svg"> <?php the_sub_field('video_label_additionalMedia') ?></button> 
+		            <button class="featuredVideoTitle"><img src="<?php bloginfo('template_directory'); ?>/images/movie_icon.svg"> <?php echo get_sub_field('video_label_additionalMedia') ?></button> 
 		            <div id="featuredVideoLink" class="video-responsive">
 		              <?php the_sub_field('video_link_additionalMedia'); ?>
 		            </div>

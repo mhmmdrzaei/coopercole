@@ -178,7 +178,7 @@
           while(have_rows('not_embedded_video')) {
           the_row(); ?>
           <video controls>
-            <source src="<?php the_sub_field('video_file')?>" type="video/mp4" controls controlsList="nodownload">
+            <source src="<?php echo get_sub_field('video_file')?>" type="video/mp4" controls controlsList="nodownload">
             Your browser does not support the video tag. </video>
       <?php } }; ?>
     </section>
