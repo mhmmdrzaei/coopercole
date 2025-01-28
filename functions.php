@@ -654,22 +654,11 @@ function render_artworks_section($connected_type) {
                             $first_word = $title_array[0];
                             $second_word = isset($title_array[1]) ? $title_array[1] : '';
                             ?>
+							<div class="backgroundColour"></div>
                             <section class="titleToggle">
                                 <p class="toggleTextTitle"><?php echo $first_word; ?></p>
                                 <div class="line"></div>
                                 <p class="toggleTextWork"><?php echo $second_word; ?></p>
-                            </section>
-                            <section class="infoAnimated">
-                                <div>I</div>
-                                <div>n</div>
-                                <div>q</div>
-                                <div>u</div>
-                                <div>i</div>
-                                <div>r</div>
-                                <div>i</div>
-                                <div>e</div>
-                                <div>s</div>
-                                <div>→</div>
                             </section>
                         </section>
                         <section class="artworkIteminfo" id="artworksOpenItem">

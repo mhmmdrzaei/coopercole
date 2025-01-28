@@ -1363,16 +1363,13 @@ section.inquiry form input:nth-child(2).invalid {
 	cursor: pointer;
 	position: relative;
 	border: 1px solid #000;
-	// max-width: 200px;
 	figure {
 		margin: 0 auto;
-		// max-width: 400px;
 		img {
-			// min-height: 500px;
-			max-height: 390px;
+			height: 390px;
+			object-fit: cover;
 			width: auto;
 			max-width: 100%;
-			// min-height: 450px; 
 			display: block;
 			margin-left: auto;
 			margin-right: auto;
@@ -1380,165 +1377,67 @@ section.inquiry form input:nth-child(2).invalid {
 		}
 
 	}
-	.toggleTextTitle {
-		// border: 1px solid #9e9e9e;
-		padding: 10px;
-		margin: 0;
-		@extend .whiteText;
-		@include fontSize(11);
+	.line {
+		width: 100%;
+		height: 1px;
+		border-top: 1px solid black;
+		margin-top: 5px;
+		display: none;
+	
+	}
+	.backgroundColour {
+		position: absolute;
+		background: black;
+		opacity: 0;
+		width: 100%;
+		height: 100%;
+		top: 0;
+	}
 
-	}
-	.toggleTextWork {
-		margin: 0;
-		padding: 10px;
-	}
 
 	.titleToggle {
-		.line {
-
-			margin: 0 auto;
-			width: 90%;
-			border-bottom: 0.5px solid #9e9e9e;
+		position: absolute;
+		width: 100%;
+		bottom: 0;
+		opacity: 0;
+		color: white;
+		.toggleTextTitle {
+			// border: 1px solid #9e9e9e;
+			padding: 10px 10px 0;
+			margin: 0;
+			
+			// @extend .whiteText;
+			font-weight: 700;
+			@include fontSize(11);
+	
+		}
+		.toggleTextWork {
+			margin: 0;
+			padding: 5px 10px 10px;
 
 		}
-	}
+		// .line {
 
-	.infoAnimated:hover > div {
-		animation: bounce .3s ease infinite alternate;
-	}
-	.toggleText:hover > .infoAnimated {
-		animation: bounce .3s ease infinite alternate;
-	}
-	.infoAnimated{
-				padding: 10px 12px;
-				width: 115px;
-				position: absolute;
-				right: -1px;
-			    font-weight: 700;
-			    @include fontSize(8);
-			    @extend .flex;
-			    background: #000;
-			    color: white;
-			    text-transform: uppercase;;
+		// 	margin: 0 auto;
+		// 	// width: 90%;
+		// 	border-bottom: 0.5px solid #9e9e9e;
 
-			div {
-				position: relative;
-			}
-
-			div:nth-child(2) {
-			 	animation-delay: 0.1s;
-			 	 // left: -1.5%;
-			  
-			}
-			div:nth-child(3) {
-			 	animation-delay: 0.2s;
-			 	 // left: -3%;
-			  
-			}
-			div:nth-child(4) {
-			 	animation-delay: 0.4s;
-			 	 // left: -4.5%;
-			  
-			}
-			div:nth-child(5) {
-			 	animation-delay: 0.5s;
-			 	 // left: -6%;
-			  
-			}
-			div:nth-child(6) {
-			 	animation-delay: 0.6s;
-			 	 // left: -7.5%;
-			  
-			}
-			div:nth-child(7) {
-			 	animation-delay: 0.7s;
-			 	 // left: -9%;
-			  
-			}
-			div:nth-child(8) {
-			 	animation-delay: 0.8s;
-			 	 // left: -10.5%;
-			  
-			}
-			div:nth-child(9) {
-			 	animation-delay: 0.9s;
-			 	 // left: -12%;
-			  
-			}
-			div:nth-child(10) {
-			 	animation-delay: 1.0s;
-			 	 // left: -13.5%;
-			  
-			}
-			div:nth-child(11) {
-			 	animation-delay: 1.1s;
-			 	 // left: -15%;
-			  
-			}
-			div:nth-child(12) {
-			 	animation-delay: 1.2s;
-			 	margin: 0 3px;
-			 	 // left: -15%;
-			  
-			}
-			div:nth-child(13) {
-			 	animation-delay: 1.3s;
-			 	 // left: -15%;
-			  
-			}
-			div:nth-child(14) {
-			 	animation-delay: 1.4s;
-			 	 // left: -16.5%;
-			  
-			}
-			div:nth-child(15) {
-			 	animation-delay: 1.5s;
-			 	 // left: -18%;
-			  
-			}
-			div:nth-child(16) {
-			 	animation-delay: 1.6s;
-			 	 // left: -19.5%;
-			  
-			}
-			div:nth-child(17) {
-			 	animation-delay: 1.7s;
-			 	 // left: -21%;
-			  
-			}
-			div:nth-child(18) {
-			 	animation-delay: 1.8s;
-			 	 // left: -22.5%;
-			  
-			}
-			div:nth-child(19) {
-			 	animation-delay: 1.9s;
-			 	 // left: -24%;
-			  
-			}
-			div:nth-child(20) {
-			 	animation-delay: 2.0s;
-			 	 // left: -25.5%;
-			  
-			}
-			div:nth-child(21) {
-			 	animation-delay: 2.1s;
-			 	 // left: -27%;
-			  
-			}
-			div:nth-child(22) {
-			 	animation-delay: 2.2s;
-			 	 // left: -28.5%;
-			  
-			}
-
+		// }
 	}
 }
+	// .infoAnimated:hover > div {
+	// 	animation: bounce .3s ease infinite alternate;
+	// }
+	.toggleText:hover  {
+		.backgroundColour {
+			opacity: .7;
+		}
+		.titleToggle {
+			opacity: 1;
+		}
 
-@keyframes bounce {
- from {top: 0px;}
-  to {top: -3px;}
-}
+	}
+
 
 .artworkItemEach {
 	width: 49%;
@@ -2167,16 +2066,25 @@ body.home {
 		}
 	}
 	.closeInfo{
-		// right: 10px;
-		// left: 60px;
 		padding-right: 4px;
-		// right: 10px;
+
 	}
 	.artworkItemEach {
 		width: 100%;
-		.toggleText figure img {
-			// max-height: 100%;
-			min-height: auto;
+		.toggleText {
+			.line {
+				display: block;
+			}
+			figure img {
+				height: fit-content;
+				max-height: 450px;
+			} 
+			.titleToggle {
+				position: relative;
+				color: black;
+				opacity: 1;
+				border-top: 1px solid black;
+			}
 		} 
 
 	}
