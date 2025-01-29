@@ -48,6 +48,8 @@ function cooper_styles(){
 	wp_enqueue_style('style', get_stylesheet_uri() );
 
 	wp_enqueue_style('fontawesome', '//use.fontawesome.com/releases/v5.0.7/css/all.css');
+	wp_enqueue_style('swiperjs', 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css');
+	
 }
 
 add_action( 'wp_enqueue_scripts', 'cooper_styles');
@@ -73,13 +75,13 @@ function cooper_scripts() {
 //   	null, //version number
 //   	true //load in footer
 //   );
-//   wp_enqueue_script(
-//   	'swiperjs',
-//   	"https" . ($_SERVER['SERVER_PORT'] == 443 ? "s" : "") . "://unpkg.com/swiper/swiper-bundle.min.js",
-//   	false, //dependencies
-//   	null, //version number
-//   	true //load in footer
-//   );
+  wp_enqueue_script(
+  	'swiperjs',
+  	"https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js",
+  	false, //dependencies
+  	null, //version number
+  	true //load in footer
+  );
   	wp_deregister_script('jquery');
   wp_enqueue_script(
   	'jquery',
@@ -288,219 +290,221 @@ add_action('init', 'clean_stuff_up');
 
 /* pre_r() - makes for easy debugging. <?php pre_r($post); ?> */
 function pre_r($obj) {
-	echo "<pre>";
+echo "
+<pre>";
 	print_r($obj);
 	echo "</pre>";
 }
 
 /* is_blog() - checks various conditionals to figure out if you are currently within a blog page */
 function is_blog () {
-	global  $post;
-	$posttype = get_post_type($post );
-	return ( ((is_archive()) || (is_author()) || (is_category()) || (is_home()) || (is_single()) || (is_tag())) && ( $posttype == 'post')  ) ? true : false ;
+global $post;
+$posttype = get_post_type($post );
+return ( ((is_archive()) || (is_author()) || (is_category()) || (is_home()) || (is_single()) || (is_tag())) && (
+$posttype == 'post') ) ? true : false ;
 }
 
 // /* get_post_parent() - Returns the current posts parent, if current post if top level, returns itself */
 // function get_post_parent($post) {
-// 	if ($post->post_parent) {
-// 		return $post->post_parent;
-// 	}
-// 	else {
-// 		return $post->ID;
-// 	}
+// if ($post->post_parent) {
+// return $post->post_parent;
+// }
+// else {
+// return $post->ID;
+// }
 // }
 //p2p
 
 function my_connection_types() {
-    p2p_register_connection_type(
-    	array(
-	        'name' => 'art_to_exhibition',
-	        'from' => 'art',
-	        'to' => 'exhibition',
-	        'admin_box' => array(
-				'show' => 'any',
-				'context' => 'advanced'
-			),
-	        'to_labels' => array(
-				'singular_name' => __( 'Exhibitions', 'coopercole' ),
-				'search_items' => __( 'Search Exhibitions', 'coopercole' ),
-				'not_found' => __( 'No exhibitions found.', 'coopercole' ),
-				'create' => __( 'Create Exhibition Connections', 'coopercole' ),
-			),
-			'from_labels' => array(
-				'singular_name' => __( 'Artwork', 'coopercole' ),
-				'search_items' => __( 'Search Artwork', 'coopercole' ),
-				'not_found' => __( 'No artwork found.', 'coopercole' ),
-				'create' => __( 'Create Artwork Connections', 'coopercole' ),
-			),
-			'sortable' => 'any'
-    	)
-    );
-    p2p_register_connection_type(
-    	array(
-	        'name' => 'art_to_artist',
-	        'from' => 'art',
-	        'to' => 'artist',
-	        'admin_box' => array(
-				'show' => 'any',
-				'context' => 'advanced'
-			),
-			'to_labels' => array(
-				'singular_name' => __( 'Artist', 'coopercole' ),
-				'search_items' => __( 'Search Artist', 'coopercole' ),
-				'not_found' => __( 'No artists found.', 'coopercole' ),
-				'create' => __( 'Create Artist Connections', 'coopercole' ),
-			),
-			'from_labels' => array(
-				'singular_name' => __( 'Artwork', 'coopercole' ),
-				'search_items' => __( 'Search Artwork', 'coopercole' ),
-				'not_found' => __( 'No artwork found.', 'coopercole' ),
-				'create' => __( 'Create Artwork Connections', 'coopercole' ),
-			),
-			'sortable' => 'any'
-    	)
-    );
-    p2p_register_connection_type(
-    	array(
-	        'name' => 'art_to_art_fair',
-	        'from' => 'art',
-	        'to' => 'art-fair',
-	        'admin_box' => array(
-				'show' => 'any',
-				'context' => 'advanced'
-			),
-	        'to_labels' => array(
-				'singular_name' => __( 'Art Fair', 'coopercole' ),
-				'search_items' => __( 'Search Art Fairs', 'coopercole' ),
-				'not_found' => __( 'No Art Fairs found.', 'coopercole' ),
-				'create' => __( 'Create Art Fair Connections', 'coopercole' ),
-			),
-			'from_labels' => array(
-				'singular_name' => __( 'Artwork', 'coopercole' ),
-				'search_items' => __( 'Search Artwork', 'coopercole' ),
-				'not_found' => __( 'No artwork found.', 'coopercole' ),
-				'create' => __( 'Create Artwork Connections', 'coopercole' ),
-			),
-			'sortable' => 'any'
-    	)
-    );
-	p2p_register_connection_type(
-    	array(
-	        'name' => 'exhibition_to_artist',
-	        'from' => 'exhibition',
-	        'to' => 'artist',
-	        'admin_box' => array(
-				'show' => 'any',
-				'context' => 'advanced'
-			),
-			'from_labels' => array(
-				'singular_name' => __( 'Exhibitions', 'coopercole' ),
-				'search_items' => __( 'Search Exhibitions', 'coopercole' ),
-				'not_found' => __( 'No exhibitions found.', 'coopercole' ),
-				'create' => __( 'Create Exhibition Connections', 'coopercole' ),
-			),
-			'to_labels' => array(
-				'singular_name' => __( 'Artists', 'coopercole' ),
-				'search_items' => __( 'Search Artists', 'coopercole' ),
-				'not_found' => __( 'No artists found.', 'coopercole' ),
-				'create' => __( 'Create Artists Connections', 'coopercole' ),
-			),
-			// 'sortable' => 'any'
-		)
-	);
-	p2p_register_connection_type(
-    	array(
-	        'name' => 'art_fair_to_artist',
-	        'from' => 'art-fair',
-	        'to' => 'artist',
-	        'admin_box' => array(
-				'show' => 'any',
-				'context' => 'advanced'
-			),
-			'from_labels' => array(
-				'singular_name' => __( 'Art Fair', 'coopercole' ),
-				'search_items' => __( 'Search Art Fairs', 'coopercole' ),
-				'not_found' => __( 'No Art Fairs found.', 'coopercole' ),
-				'create' => __( 'Create Art Fair Connections', 'coopercole' ),
-			),
-			'to_labels' => array(
-				'singular_name' => __( 'Artists', 'coopercole' ),
-				'search_items' => __( 'Search Artists', 'coopercole' ),
-				'not_found' => __( 'No artists found.', 'coopercole' ),
-				'create' => __( 'Create Artists Connections', 'coopercole' ),
-			),
-			// 'sortable' => 'any'
-		)
-	);
-	p2p_register_connection_type(
-    	array(
-	        'name' => 'post_to_artist',
-	        'from' => 'post',
-	        'to' => 'artist',
-	        'admin_box' => array(
-				'show' => 'any',
-				'context' => 'advanced'
-			),
-			'from_labels' => array(
-				'singular_name' => __( 'News', 'coopercole' ),
-				'search_items' => __( 'Search News', 'coopercole' ),
-				'not_found' => __( 'No news found.', 'coopercole' ),
-				'create' => __( 'Create News Connections', 'coopercole' ),
-			),
-			'to_labels' => array(
-				'singular_name' => __( 'Artists', 'coopercole' ),
-				'search_items' => __( 'Search Artists', 'coopercole' ),
-				'not_found' => __( 'No artists found.', 'coopercole' ),
-				'create' => __( 'Create Artists Connections', 'coopercole' ),
-			)
-		)
-	);
-	p2p_register_connection_type(
-    	array(
-	        'name' => 'post_to_exhibition',
-	        'from' => 'post',
-	        'to' => 'exhibition',
-	        'admin_box' => array(
-				'show' => 'any',
-				'context' => 'advanced'
-			),
-			'from_labels' => array(
-				'singular_name' => __( 'News', 'coopercole' ),
-				'search_items' => __( 'Search News', 'coopercole' ),
-				'not_found' => __( 'No news found.', 'coopercole' ),
-				'create' => __( 'Create News Connections', 'coopercole' ),
-			),
-			'to_labels' => array(
-				'singular_name' => __( 'Exhibitions', 'coopercole' ),
-				'search_items' => __( 'Search Exhibitions', 'coopercole' ),
-				'not_found' => __( 'No exhibitions found.', 'coopercole' ),
-				'create' => __( 'Create Exhibitions Connections', 'coopercole' ),
-			)
-		)
-	);
-	p2p_register_connection_type(
-    	array(
-	        'name' => 'post_to_art_fair',
-	        'from' => 'post',
-	        'to' => 'art-fair',
-	        'admin_box' => array(
-				'show' => 'any',
-				'context' => 'advanced'
-			),
-			'from_labels' => array(
-				'singular_name' => __( 'News', 'coopercole' ),
-				'search_items' => __( 'Search News', 'coopercole' ),
-				'not_found' => __( 'No news found.', 'coopercole' ),
-				'create' => __( 'Create News Connections', 'coopercole' ),
-			),
-			'to_labels' => array(
-				'singular_name' => __( 'Art Fair', 'coopercole' ),
-				'search_items' => __( 'Search Art Fairs', 'coopercole' ),
-				'not_found' => __( 'No Art Fairs found.', 'coopercole' ),
-				'create' => __( 'Create Art Fair Connections', 'coopercole' ),
-			)
-		)
-	);
+p2p_register_connection_type(
+array(
+'name' => 'art_to_exhibition',
+'from' => 'art',
+'to' => 'exhibition',
+'admin_box' => array(
+'show' => 'any',
+'context' => 'advanced'
+),
+'to_labels' => array(
+'singular_name' => __( 'Exhibitions', 'coopercole' ),
+'search_items' => __( 'Search Exhibitions', 'coopercole' ),
+'not_found' => __( 'No exhibitions found.', 'coopercole' ),
+'create' => __( 'Create Exhibition Connections', 'coopercole' ),
+),
+'from_labels' => array(
+'singular_name' => __( 'Artwork', 'coopercole' ),
+'search_items' => __( 'Search Artwork', 'coopercole' ),
+'not_found' => __( 'No artwork found.', 'coopercole' ),
+'create' => __( 'Create Artwork Connections', 'coopercole' ),
+),
+'sortable' => 'any'
+)
+);
+p2p_register_connection_type(
+array(
+'name' => 'art_to_artist',
+'from' => 'art',
+'to' => 'artist',
+'admin_box' => array(
+'show' => 'any',
+'context' => 'advanced'
+),
+'to_labels' => array(
+'singular_name' => __( 'Artist', 'coopercole' ),
+'search_items' => __( 'Search Artist', 'coopercole' ),
+'not_found' => __( 'No artists found.', 'coopercole' ),
+'create' => __( 'Create Artist Connections', 'coopercole' ),
+),
+'from_labels' => array(
+'singular_name' => __( 'Artwork', 'coopercole' ),
+'search_items' => __( 'Search Artwork', 'coopercole' ),
+'not_found' => __( 'No artwork found.', 'coopercole' ),
+'create' => __( 'Create Artwork Connections', 'coopercole' ),
+),
+'sortable' => 'any'
+)
+);
+p2p_register_connection_type(
+array(
+'name' => 'art_to_art_fair',
+'from' => 'art',
+'to' => 'art-fair',
+'admin_box' => array(
+'show' => 'any',
+'context' => 'advanced'
+),
+'to_labels' => array(
+'singular_name' => __( 'Art Fair', 'coopercole' ),
+'search_items' => __( 'Search Art Fairs', 'coopercole' ),
+'not_found' => __( 'No Art Fairs found.', 'coopercole' ),
+'create' => __( 'Create Art Fair Connections', 'coopercole' ),
+),
+'from_labels' => array(
+'singular_name' => __( 'Artwork', 'coopercole' ),
+'search_items' => __( 'Search Artwork', 'coopercole' ),
+'not_found' => __( 'No artwork found.', 'coopercole' ),
+'create' => __( 'Create Artwork Connections', 'coopercole' ),
+),
+'sortable' => 'any'
+)
+);
+p2p_register_connection_type(
+array(
+'name' => 'exhibition_to_artist',
+'from' => 'exhibition',
+'to' => 'artist',
+'admin_box' => array(
+'show' => 'any',
+'context' => 'advanced'
+),
+'from_labels' => array(
+'singular_name' => __( 'Exhibitions', 'coopercole' ),
+'search_items' => __( 'Search Exhibitions', 'coopercole' ),
+'not_found' => __( 'No exhibitions found.', 'coopercole' ),
+'create' => __( 'Create Exhibition Connections', 'coopercole' ),
+),
+'to_labels' => array(
+'singular_name' => __( 'Artists', 'coopercole' ),
+'search_items' => __( 'Search Artists', 'coopercole' ),
+'not_found' => __( 'No artists found.', 'coopercole' ),
+'create' => __( 'Create Artists Connections', 'coopercole' ),
+),
+// 'sortable' => 'any'
+)
+);
+p2p_register_connection_type(
+array(
+'name' => 'art_fair_to_artist',
+'from' => 'art-fair',
+'to' => 'artist',
+'admin_box' => array(
+'show' => 'any',
+'context' => 'advanced'
+),
+'from_labels' => array(
+'singular_name' => __( 'Art Fair', 'coopercole' ),
+'search_items' => __( 'Search Art Fairs', 'coopercole' ),
+'not_found' => __( 'No Art Fairs found.', 'coopercole' ),
+'create' => __( 'Create Art Fair Connections', 'coopercole' ),
+),
+'to_labels' => array(
+'singular_name' => __( 'Artists', 'coopercole' ),
+'search_items' => __( 'Search Artists', 'coopercole' ),
+'not_found' => __( 'No artists found.', 'coopercole' ),
+'create' => __( 'Create Artists Connections', 'coopercole' ),
+),
+// 'sortable' => 'any'
+)
+);
+p2p_register_connection_type(
+array(
+'name' => 'post_to_artist',
+'from' => 'post',
+'to' => 'artist',
+'admin_box' => array(
+'show' => 'any',
+'context' => 'advanced'
+),
+'from_labels' => array(
+'singular_name' => __( 'News', 'coopercole' ),
+'search_items' => __( 'Search News', 'coopercole' ),
+'not_found' => __( 'No news found.', 'coopercole' ),
+'create' => __( 'Create News Connections', 'coopercole' ),
+),
+'to_labels' => array(
+'singular_name' => __( 'Artists', 'coopercole' ),
+'search_items' => __( 'Search Artists', 'coopercole' ),
+'not_found' => __( 'No artists found.', 'coopercole' ),
+'create' => __( 'Create Artists Connections', 'coopercole' ),
+)
+)
+);
+p2p_register_connection_type(
+array(
+'name' => 'post_to_exhibition',
+'from' => 'post',
+'to' => 'exhibition',
+'admin_box' => array(
+'show' => 'any',
+'context' => 'advanced'
+),
+'from_labels' => array(
+'singular_name' => __( 'News', 'coopercole' ),
+'search_items' => __( 'Search News', 'coopercole' ),
+'not_found' => __( 'No news found.', 'coopercole' ),
+'create' => __( 'Create News Connections', 'coopercole' ),
+),
+'to_labels' => array(
+'singular_name' => __( 'Exhibitions', 'coopercole' ),
+'search_items' => __( 'Search Exhibitions', 'coopercole' ),
+'not_found' => __( 'No exhibitions found.', 'coopercole' ),
+'create' => __( 'Create Exhibitions Connections', 'coopercole' ),
+)
+)
+);
+p2p_register_connection_type(
+array(
+'name' => 'post_to_art_fair',
+'from' => 'post',
+'to' => 'art-fair',
+'admin_box' => array(
+'show' => 'any',
+'context' => 'advanced'
+),
+'from_labels' => array(
+'singular_name' => __( 'News', 'coopercole' ),
+'search_items' => __( 'Search News', 'coopercole' ),
+'not_found' => __( 'No news found.', 'coopercole' ),
+'create' => __( 'Create News Connections', 'coopercole' ),
+),
+'to_labels' => array(
+'singular_name' => __( 'Art Fair', 'coopercole' ),
+'search_items' => __( 'Search Art Fairs', 'coopercole' ),
+'not_found' => __( 'No Art Fairs found.', 'coopercole' ),
+'create' => __( 'Create Art Fair Connections', 'coopercole' ),
+)
+)
+);
 }
 
 
@@ -509,41 +513,41 @@ function my_connection_types() {
 
 
 function register_my_meta_box() {
-	add_meta_box( 'my-box', 'Connected Artworks Images', 'render_my_meta_box', 'exhibition', );
+add_meta_box( 'my-box', 'Connected Artworks Images', 'render_my_meta_box', 'exhibition', );
 }
 
 
-	// p2p_create_connection( 'art_to_exhibition', array(
-	// 	'from' => $from_id,
-	// 	'to' => $to_id,
-	// 	'meta' => array(
-	// 		'date' => current_time('mysql')
-	// 	)
-	// ) );
+// p2p_create_connection( 'art_to_exhibition', array(
+// 'from' => $from_id,
+// 'to' => $to_id,
+// 'meta' => array(
+// 'date' => current_time('mysql')
+// )
+// ) );
 
-	// p2p_type( 'art_to_exhibition' )->connect( $from, $to, array(
-	// 	'date' => current_time('mysql')
-	// ) );
+// p2p_type( 'art_to_exhibition' )->connect( $from, $to, array(
+// 'date' => current_time('mysql')
+// ) );
 
 function render_my_meta_box( $post ) {
-	echo 'Connected Artworks Images to Check';
-	$connected = p2p_type( 'art_to_exhibition' )->get_connected( $post );
+echo 'Connected Artworks Images to Check';
+$connected = p2p_type( 'art_to_exhibition' )->get_connected( $post );
 
-	// $connected= new WP_Query( array(
-	//       'connected_type' => 'art_to_exhibition',
-	//       'connected_items' => get_the_id(),
-	//       'nopaging' => true,
-	//     ) )
+// $connected= new WP_Query( array(
+// 'connected_type' => 'art_to_exhibition',
+// 'connected_items' => get_the_id(),
+// 'nopaging' => true,
+// ) )
 ?>
 
 
 
 <ul style="list-style: none; display: flex; flex-flow:wrap; width: 100%;">
-<?php while ( $connected->have_posts() ) : $connected->the_post(); ?>
-	<figure>
-		<?php the_post_thumbnail('thumbnail'); ?>
-	</figure>
-<?php endwhile; ?>
+    <?php while ( $connected->have_posts() ) : $connected->the_post(); ?>
+    <figure>
+        <?php the_post_thumbnail('thumbnail'); ?>
+    </figure>
+    <?php endwhile; ?>
 </ul>
 <?php
 }
@@ -565,8 +569,8 @@ function cmp($a, $b) {
 
 function coopercole_tags() {
 	?>
-	<div class="tags">
-		<?php
+<div class="tags">
+    <?php
 
 		$tags = [];
 		$cats = get_the_category();
@@ -625,8 +629,8 @@ function coopercole_tags() {
 
 
 		?>
-	</div>
-	<?php
+</div>
+<?php
 	wp_reset_postdata();
 }
 function render_artworks_section($connected_type) {
@@ -638,59 +642,59 @@ function render_artworks_section($connected_type) {
     ));
 
     if ($connected->have_posts()) : ?>
-        <section class="artworksMain">
-            <h3 id="artworks">Artworks</h3>
-            <section class="artworksOld" id="artworksPages">
-                <?php while ($connected->have_posts()) : $connected->the_post(); ?>
-                    <div class="artworkItemEach">
-                        <section class="toggleText">
-                            <figure>
-                                <?php echo get_the_post_thumbnail(get_the_id(), 'large'); ?>
-                            </figure>
+<section class="artworksMain">
+    <h3 id="artworks">Artworks</h3>
+    <section class="artworksOld" id="artworksPages">
+        <?php while ($connected->have_posts()) : $connected->the_post(); ?>
+        <div class="artworkItemEach">
+            <section class="toggleText">
+                <figure>
+                    <?php echo get_the_post_thumbnail(get_the_id(), 'large'); ?>
+                </figure>
 
-                            <?php
+                <?php
                             $title = get_the_title();
                             $title_array = explode('&#8211;', $title);
                             $first_word = $title_array[0];
                             $second_word = isset($title_array[1]) ? $title_array[1] : '';
                             ?>
-							<div class="backgroundColour"></div>
-                            <section class="titleToggle">
-                                <p class="toggleTextTitle"><?php echo $first_word; ?></p>
-                                <div class="line"></div>
-                                <p class="toggleTextWork"><?php echo $second_word; ?></p>
-                            </section>
-                        </section>
-                        <section class="artworkIteminfo" id="artworksOpenItem">
-                            <section class="closeInfo">Close</section>
-                            <section class="prevnext">
-                                <a href="#" class="previousItem">Previous</a>
-                                <span>/</span>
-                                <a href="#" class="nextItem">Next</a>
-                            </section>
-                            <section class="artworkItemInfoInnner">
-                                <section class="artworkItemInfoText">
-                                    <div class="artworkInfoTextFixed">
-                                        <h3 class="artworkInfoTitle"><?php echo $first_word; ?></h3>
-                                        <h4 class="artworkYearTitle">
-                                            <?php echo get_field('title'); ?><br/>
-                                            <?php echo get_field('year'); ?>
-                                        </h4>
+                <div class="backgroundColour"></div>
+                <section class="titleToggle">
+                    <p class="toggleTextTitle"><?php echo $first_word; ?></p>
+                    <div class="line"></div>
+                    <p class="toggleTextWork"><?php echo $second_word; ?></p>
+                </section>
+            </section>
+            <section class="artworkIteminfo" id="artworksOpenItem">
+                <section class="closeInfo">Close</section>
+                <section class="prevnext">
+                    <a href="#" class="previousItem">Previous</a>
+                    <span>/</span>
+                    <a href="#" class="nextItem">Next</a>
+                </section>
+                <section class="artworkItemInfoInnner">
+                    <section class="artworkItemInfoText">
+                        <div class="artworkInfoTextFixed">
+                            <h3 class="artworkInfoTitle"><?php echo $first_word; ?></h3>
+                            <p class="artworkYearTitle">
+                                <?php echo get_field('title'); ?><br />
+                                <?php echo get_field('year'); ?>
+                            </p>
 
-                                        <?php if (get_field('media')) : ?>
-                                            <p><?php echo get_field('media'); ?></p>
-                                        <?php endif; ?>
-                                        
-                                        <?php if (get_field('edition')) : ?>
-                                            <p><?php echo get_field('edition'); ?></p>
-                                        <?php endif; ?>
+                            <?php if (get_field('media')) : ?>
+                            <p><?php echo get_field('media'); ?></p>
+                            <?php endif; ?>
 
-                                        <?php if (get_field('notes')) : ?>
-                                            <p><?php echo get_field('notes'); ?></p>
-                                        <?php endif; ?>
+                            <?php if (get_field('edition')) : ?>
+                            <p><?php echo get_field('edition'); ?></p>
+                            <?php endif; ?>
 
-                                        <section class="dimentions">
-                                            <?php
+                            <?php if (get_field('notes')) : ?>
+                            <p><?php echo get_field('notes'); ?></p>
+                            <?php endif; ?>
+
+                            <section class="dimentions">
+                                <?php
                                             $height = get_field('height');
                                             $width = get_field('width');
                                             $depth = get_field('depth');
@@ -706,14 +710,14 @@ function render_artworks_section($connected_type) {
                                                 echo "$height_metric cm X $width_metric cm<br/>";
                                             }
                                             ?>
-                                        </section>
+                            </section>
 
-                                        <?php if (get_field('inventory')) : ?>
-                                            <p><?php echo get_field('inventory'); ?></p>
-                                        <?php endif; ?>
-                                    </div>
-									<section class="inquiry">
-									<?php
+                            <?php if (get_field('inventory')) : ?>
+                            <p><?php echo get_field('inventory'); ?></p>
+                            <?php endif; ?>
+                        </div>
+                        <section class="inquiry">
+                            <?php
 
 									$inquiry_email  = '';
 									$inquiry_email .= '<p>Thanks for inquiring. We will be in touch shortly with more information.</p>';
@@ -743,49 +747,70 @@ function render_artworks_section($connected_type) {
 
 									?>
 
-									<form id="submit-inquiry" class="inquireFormFull">
-									<input type="text" name="name" placeholder="name">
-									<input type="email" name="email" placeholder="email">
-									<input type="text" name="phone" placeholder="phone">
-									<input type="text" name="location" placeholder="location">
-									<textarea name="note" placeholder="Additional Notes"></textarea>
-									<input type="hidden" name="subject" value="Website Inquiry: <?php echo get_the_title($curr_id); ?>">
-									<input type="text" name="message" value="" style="display:none;">
-									<input type="hidden" name="inquiry_message" value="<?php echo htmlspecialchars($inquiry_email); ?>" style="display:none;">
-									<input class="inquireSubmit" type="submit" value="inquire">
-									</form>
-								</section>
-                                </section>
-                                <div class="galleryContainer">
-                                    <?php if (have_rows('not_embedded_video')) :
-                                        while (have_rows('not_embedded_video')) : the_row(); ?>
-                                            <video controls>
-                                                <source src="<?php the_sub_field('video_file'); ?>" type="video/mp4" controls controlsList="nodownload">
-                                                Your browser does not support the video tag.
-                                            </video>
-                                        <?php endwhile; endif; ?>
-
-                                    <?php if (have_rows('videos')) :
-                                        while (have_rows('videos')) : the_row(); ?>
-                                            <div class="wrap-video">
-                                                <?php echo get_sub_field('video'); ?>
-                                            </div>
-                                        <?php endwhile; elseif (get_field('gallery')) :
-                                            $gallery = get_field('gallery');
-                                            foreach ($gallery as $image) : ?>
-                                                <img class="" src="<?php echo $image['sizes']['large']; ?>" />
-                                            <?php endforeach;
-                                        else :
-                                            the_post_thumbnail('large');
-                                        endif; ?>
-                                </div>
-                            </section>
+                            <form id="submit-inquiry" class="inquireFormFull">
+                                <input type="text" name="name" placeholder="name">
+                                <input type="email" name="email" placeholder="email">
+                                <input type="text" name="phone" placeholder="phone">
+                                <input type="text" name="location" placeholder="location">
+                                <textarea name="note" placeholder="Additional Notes"></textarea>
+                                <input type="hidden" name="subject"
+                                    value="Website Inquiry: <?php echo get_the_title($curr_id); ?>">
+                                <input type="text" name="message" value="" style="display:none;">
+                                <input type="hidden" name="inquiry_message"
+                                    value="<?php echo htmlspecialchars($inquiry_email); ?>" style="display:none;">
+                                <input class="inquireSubmit" type="submit" value="Request Pricing iInformation">
+                            </form>
                         </section>
+                    </section>
+                    <div class="galleryContainer">
+                        <div class="swiper">
+                            <div class="swiper-wrapper">
+                                <?php if (have_rows('not_embedded_video')) :
+												while (have_rows('not_embedded_video')) : the_row(); ?>
+                                <div class="swiper-slide">
+									
+									<video controls>
+                                        <source src="<?php the_sub_field('video_file'); ?>" type="video/mp4" controls
+                                            controlsList="nodownload">
+                                        Your browser does not support the video tag.
+                                    </video>
+
+                                </div>
+
+                                <?php endwhile; endif; ?>
+
+                                <?php if (have_rows('videos')) :
+												while (have_rows('videos')) : the_row(); ?>
+                                <div class="wrap-video swiper-slide">
+                                    <?php echo get_sub_field('video'); ?>
+                                </div>
+                                <?php endwhile; elseif (get_field('gallery')) :
+													$gallery = get_field('gallery');
+													foreach ($gallery as $image) : ?>
+                                <div class="swiper-slide">
+								<div class="swiper-zoom-container">
+                                    <img class="" src="<?php echo $image['sizes']['large']; ?>" />
+								</div>
+                                </div>
+                                <?php endforeach;
+												else :
+													the_post_thumbnail('large');
+												endif; ?>
+                            </div>
+                            <div class="swiper-pagination"></div>
+
+                            <!-- If we need navigation buttons -->
+                            <div class="swiper-button-prev"></div>
+                            <div class="swiper-button-next"></div>
+                        </div>
                     </div>
-                <?php endwhile; ?>
+                </section>
             </section>
-        </section>
-        <?php wp_reset_postdata();
+        </div>
+        <?php endwhile; ?>
+    </section>
+</section>
+<?php wp_reset_postdata();
     endif;
 }
 // add_shortcode('artworks_component', 'render_artworks_section');
@@ -793,8 +818,8 @@ function render_artworks_section($connected_type) {
 
 function coopercole_inner_tags() {
 	?>
-	<div class="tagsInner">
-		<?php
+<div class="tagsInner">
+    <?php
 
 		$tags = [];
 		$cats = get_the_category();
@@ -830,7 +855,7 @@ function coopercole_inner_tags() {
 		if($related_art_fairs->have_posts()) : while($related_art_fairs->have_posts()) : $related_art_fairs->the_post();
 			$tags[] = '<a class="newsRelatedArtFairs" href="'.get_permalink(get_the_id() ).'">'.get_the_title(get_the_id()).'</a>';
 		endwhile; endif; ?>
-		<?php
+    <?php
 
 		if($related_artists->have_posts()) : while($related_artists->have_posts()) : $related_artists->the_post();
 			$tags[] = '<div class="newsRelatedArtist"> <a href="'.get_permalink( get_the_id() ).'">'.get_the_title(get_the_id()).'</a></div>';
@@ -853,8 +878,8 @@ function coopercole_inner_tags() {
 
 
 		?>
-	
-	<?php
+
+    <?php
 	wp_reset_postdata();
 }
 /**
@@ -944,35 +969,42 @@ if(is_user_logged_in()) {
 
 	function offset_header() { ?>
 
-		<style type="text/css">
+    <style type="text/css">
+    .website-header,
+    .toggle-nav,
+    .tickets,
+    .menu-primary {
+        top: 32px;
+    }
 
-			.website-header, .toggle-nav, .tickets, .menu-primary {
-				top:32px;
-			}
+    html {
+        margin-top: 0 !important;
+    }
 
-			html {
-				margin-top: 0 !important;
-			}
+    * html body {
+        margin-top: 0 !important;
+    }
 
-			* html body {
-				margin-top: 0 !important;
-			}
+    @media screen and (max-width: 782px) {
 
-			@media screen and ( max-width: 782px ) {
-				.website-header, .toggle-nav, .tickets, .menu-primary {
-					top:46px;
-				}
-				html {
-					margin-top: 0 !important;
-				}
-				* html body {
-					margin-top: 0 !important;
-				}
-			}
+        .website-header,
+        .toggle-nav,
+        .tickets,
+        .menu-primary {
+            top: 46px;
+        }
 
-		</style>
+        html {
+            margin-top: 0 !important;
+        }
 
-	<?php }
+        * html body {
+            margin-top: 0 !important;
+        }
+    }
+    </style>
+
+    <?php }
 
 }
 //theme setup
@@ -1250,7 +1282,3 @@ function wp_custom_archive($args = '') {
     else
         return $output;
 }
-
-
-
-

@@ -1145,27 +1145,30 @@ h3#artworks {
 	display: none;
 	top: 50%;
     right: 50%;
-	transform: translate(50%, -50%);
+	transform: translate(50%, -52%);
 	position: fixed;
 	overflow-y: scroll;
 	
 }
 .artworkItemInfoInnner {
-	// display: flex;
+	display: flex;
+	flex-flow: wrap;
 	margin: 0 auto;
 	max-width: 950px;
+	justify-content: space-between;
 	.artworkItemInfoText {
 
-			width: 100%;
+			width: 40%;
 			@extend .flex;
-			margin:20px 0 80px;
-			justify-content: space-between;
+			flex-flow: wrap;
+			// margin:20px 0 80px;
+			align-items: anchor-center;
 			p {
 				margin: 0;
 			}
 			.artworkInfoTitle {
 				margin: 0 0 5px;
-				@extend .whiteText;
+				// @extend .whiteText;
 				text-transform: uppercase;
 				@include fontSize(12);
 				
@@ -1176,7 +1179,7 @@ h3#artworks {
 			}
 	}
 	.galleryContainer {
-			width: 100%;
+			width: 59%;
 	}
 }
 .wrap-video {
@@ -1192,10 +1195,10 @@ h3#artworks {
     height: 100%;
 }
 section.inquiry {
-	width: 49%;
+	// width: 49%;
 	form {
 		margin-top: 15px;
-		text-align: right;
+		// text-align: right;
 		input, textarea {
 			border-radius: 0;
 			border: 1px solid #000;
@@ -1235,18 +1238,10 @@ input.inquireSubmit {
 	font-weight: 700;
 	background: #000;
 	display: block;
-	// position: relative;
-	width: 100px !important;
 	text-align: center;
-	// left: 160px;
-	margin-left: calc(100% - 100px);
-	// text-align: right;
+	margin-top: 5px;
 }
-.artworkInfoTextFixed {
-	// position: fixed;
-	width: 50%;
 
-}
 .open {
 	display: block;
 	// animation: splash 1s normal forwards ease-in-out;
@@ -1256,11 +1251,11 @@ input.inquireSubmit {
 	min-width: 300px;
 	width: 100%;
 	max-width:1000px;
-	height: 100vh;
+	// height: 100vh;
 	padding: 55px 1.5% 55px 2.5%;
 	border: 1px solid #000;
-	border-bottom: 0;
-	border-top: 0;
+	// border-bottom: 0;
+	// border-top: 0;
 	
 }
 .invalid-email, .invalid-name, .invalid-email, .invalid-phone {
@@ -1296,6 +1291,36 @@ section.inquiry form input:nth-child(2).invalid {
 @keyframes appear {
 	from {opacity: 0;}
 	to {opacity: 1}
+}
+.swiper {
+	max-width: 600px;
+	height: 600px;
+	.swiper-slide {
+		display: flex;
+	}
+	img,video {
+		max-height: 600px;
+		width: auto;
+		margin: 0 auto;
+		align-self: center;
+	}
+	video {
+		width: 100%;
+		border: none;
+	}
+}
+.swiper-button-next:after{
+	content: "→" !important;
+	color: white;
+	-webkit-text-stroke: 1px #000;
+}
+.swiper-button-prev:after {
+	content: "←" !important;
+	color: white;
+	-webkit-text-stroke: 1px #000;
+}
+.swiper-pagination-bullet-active {
+	background: black !important;
 }
 
 .openArtwork {
@@ -1351,10 +1376,7 @@ section.inquiry form input:nth-child(2).invalid {
 	}
 }
 .galleryContainer {
-	img {
-		border: 1px solid #9e9e9e;
-		margin-bottom: 10px;
-	}
+
 }
 
 
@@ -1363,6 +1385,7 @@ section.inquiry form input:nth-child(2).invalid {
 	cursor: pointer;
 	position: relative;
 	border: 1px solid #000;
+	background: white;
 	figure {
 		margin: 0 auto;
 		img {
@@ -2033,6 +2056,15 @@ body.home {
 	.artworkIteminfo {
 		width: 100%;
 		max-width: 100%;
+		height: 100vh;
+		border-top: 0;
+		border-bottom: 0;
+	}
+	.swiper {
+		height: fit-content;
+		.swiper-slide {
+			align-self: center;
+		}
 	}
 
 	.artworkItemInfoInnner{
@@ -2043,7 +2075,7 @@ body.home {
 		.artworkItemInfoText {
 			width: 100%;
 			order: 1;
-			margin: 20px 0 90px;
+			margin: 20px 0px;
 			.artworkInfoTextFixed, .inquiry {
 				width: 100%;
 			}
