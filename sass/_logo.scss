@@ -164,6 +164,9 @@ section.logo {
 .ccLogo {
 	display: none;
 	width: 58px;
+	position: fixed;
+    left: 2em;
+    top: 30px;
 }
 .logoTwo {
 	display: flex;

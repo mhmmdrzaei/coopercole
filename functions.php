@@ -676,9 +676,8 @@ function render_artworks_section($connected_type) {
                     <section class="artworkItemInfoText">
                         <div class="artworkInfoTextFixed">
                             <h3 class="artworkInfoTitle"><?php echo $first_word; ?></h3>
-                            <p class="artworkYearTitle">
-                                <?php echo get_field('title'); ?><br />
-                                <?php echo get_field('year'); ?>
+                            <p>
+                                <?php echo get_field('title'); ?>,  <?php echo get_field('year'); ?>
                             </p>
 
                             <?php if (get_field('media')) : ?>
@@ -758,7 +757,7 @@ function render_artworks_section($connected_type) {
                                 <input type="text" name="message" value="" style="display:none;">
                                 <input type="hidden" name="inquiry_message"
                                     value="<?php echo htmlspecialchars($inquiry_email); ?>" style="display:none;">
-                                <input class="inquireSubmit" type="submit" value="Request Pricing iInformation">
+                                <input class="inquireSubmit" type="submit" value="Request Pricing Information">
                             </form>
                         </section>
                     </section>
@@ -794,7 +793,9 @@ function render_artworks_section($connected_type) {
                                 </div>
                                 <?php endforeach;
 												else :
+												echo '<div class="swiper-slide">';
 													the_post_thumbnail('large');
+												echo '</div>';
 												endif; ?>
                             </div>
                             <div class="swiper-pagination"></div>
