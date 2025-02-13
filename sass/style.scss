@@ -297,7 +297,7 @@ video {
 }
 .exhibitionImages {
 	img {
-		border: .01px solid #000;
+		// border: .01px solid #000;
 		margin-bottom: 10px;
 
 	}
@@ -1135,6 +1135,7 @@ main.contactMain{
 //Artworks on pages
 .artworksMain {
 	border-top: 1px solid #9e9e9e;
+	margin-top: 15px;
 
 }
 .artworksMainAritsts {
@@ -1198,7 +1199,7 @@ h3#artworks {
     width: 100%;
     height: 100%;
 }
-section.inquiry {
+.inquiry {
 	// width: 49%;
 	margin-top: 30px;
 	max-width: 550px;
@@ -1225,7 +1226,7 @@ section.inquiry {
 		// 	border-bottom: none;
 		// }
 		textarea {
-			margin: 5px 0;
+			margin: 15px 0 10px;
 			height: 150px;
 			border: 1px solid #494949; 
 		}

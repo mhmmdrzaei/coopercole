@@ -172,23 +172,37 @@ $(document).ready(function () {
 
   $(".newsOpen").click(function () {
     // Close the other section
-    $(".pressRelease").hide(500);
+    $(".pressRelease").hide(200);
     $(".prToggle").removeClass("prToggleOpen");
 
     // Toggle the current section
-    $("#newsContentID").toggle(500);
+    $("#newsContentID").toggle(200);
     $(this).toggleClass("highlight");
+    $(".exhibitionInquiry").hide(200);
 });
 
 $(".prToggle").click(function () {
     // Close the other section
-    $("#newsContentID").hide(500);
+    $("#newsContentID").hide(200);
     $(".newsOpen").removeClass("highlight");
+    $(".exhibitionInquiry").hide(200);
 
     // Toggle the current section
     $(".pressRelease").toggle(500);
     $(this).toggleClass("prToggleOpen");
 });
+$(".moreInfo").click(function (){
+   $(".exhibitionInquiry").toggle(300);
+   $("#newsContentID").hide(200);
+   $(".pressRelease").hide(200);
+   $(".prToggle").removeClass("prToggleOpen");
+   $(".newsOpen").removeClass("highlight");
+
+})
+$(".closeInquiry").click(function(){
+  $(".exhibitionInquiry").toggle(200);
+})
+
 
   $(".exhibitionsOpen").click(function () {
     $("#exhibitionContentID").toggle(500);

@@ -57,7 +57,7 @@
     
         .exhibitors {
             li {
-                @include fontSize(12);
+                @include fontSize(15);
                 margin-bottom: 12px;
             }
         }
@@ -154,10 +154,15 @@
             max-height: calc(100dvh - 30px);
             width: auto;
         }
-        img:nth-child(1){
+   
+       
+    }
+    .exhibitionImgs:nth-child(1) {
+        img {
             border-top: none;
         }
     }
+
     .videoContainer {
         width: 100%;
         text-align: center;
@@ -166,6 +171,60 @@
             width: auto;
             max-width: 100%;
         }
+    }
+}
+.exhibitionInquiry {
+    display: none;
+    position: absolute;
+    background: white;
+    min-width: 70%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, 25%);
+    padding: 30px;
+    border: .7px solid black;
+    h3 {
+        margin: 0;
+    }
+    .closeInquiry {
+        @extend .whiteText;
+        float: right;
+        text-transform: uppercase;
+        width: fit-content;
+        animation: appear .5s normal forwards ease-in-out;
+	    cursor: pointer;
+	    @include fontSize(12);
+    }
+    form {
+        @extend .flex;
+        flex-flow: wrap;
+        justify-content: space-between;
+        input, textarea {
+			border-radius: 0;
+			border: none;
+			border-bottom: 1px solid #494949;
+			color: #000;
+			outline: none;
+			width: 49%;
+			padding: 10px 4px;
+			@include fontSize(8);
+
+		}
+		textarea {
+            width: 100%;
+			margin: 15px 0 10px;
+			height: 150px;
+			border: 1px solid #494949; 
+		}
+		textarea::placeholder {
+			text-transform: uppercase;
+		}
+
+
+		input::placeholder{
+			text-transform: uppercase;
+			
+		}
     }
 }
 .artfairHeader {
@@ -221,14 +280,30 @@
     }
  
 }
+@media (max-width: 850px) {
+    .exhibitionMainImg {
+        height: calc(100dvh - 75px);
+    }
+}
 
-@media (max-width: 680px) {
+@media (max-width: 755px) {
 
     .imagesMenu {
         position: initial;
         .imagesmenuInner{
+            flex-flow: wrap;
+            border-left: .7px solid black;
+            border-right: .7px solid black;
             a, button {
                 min-width: fit-content;
+                width: 100%;
+                text-align: center;
+                padding: 7px 0;
+                border-top: .7px solid black;
+            }
+            .prToggle {
+                text-align: center;
+                border-top: .7px solid black;
             }
             .exhibtionNews #newsContentID {
                 left: 0;
@@ -241,6 +316,30 @@
                 max-height:fit-content;
                 position: initial;
             }
+        }
+    }
+    .exhibitionInquiry {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        padding: 15px;
+    }
+    .exhibitionHeader {
+        height: fit-content;
+        margin: 20px 0;
+        .artists, .exhibitionInfo {
+            position: unset;
+            border: none;
+            padding: 0;
+        }
+    }
+    .exhibitionMainImg {
+        width: 100%;
+        top: initial;
+        position: initial;
+        height: fit-content;
+        img {
+            min-height: fit-content;
         }
     }
 }

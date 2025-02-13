@@ -158,6 +158,36 @@
                   <?php endwhile; ?>
                   <?php endif; ?>
               </section>
+              <section class="exhibitionInquiry">
+              <section class="closeInquiry">Close</section>
+              <h3>Interested in <?php the_title(); ?>?</h3>
+              <p>To learn more about this exhibition, please provide your contact information.</p>
+                <?php
+
+                  $inquiry_email  = '';
+                  $inquiry_email .= '<p>Thanks for inquiring about '.get_the_title($curr_id). '. We will be in touch shortly with more information.</p>';
+                  $inquiry_email .= '<p>For a quicker response feel free to call us at +1.416.531.8000.</p>';
+                  $inquiry_email .= get_the_post_thumbnail( $curr_id, 'medium' );
+                  $inquiry_email .= '<p>';
+                  $inquiry_email .= 'Exhibition: <a href="'.get_permalink( $curr_id ).'">'.get_the_title($curr_id).'</a>';
+                  $inquiry_email .= '</p>';
+
+                  ?>
+
+                <form id="submit-inquiry" class="inquireFormFull">
+                    <input type="text" name="name" placeholder="name">
+                    <input type="email" name="email" placeholder="email">
+                    <input type="text" name="phone" placeholder="phone">
+                    <input type="text" name="location" placeholder="location">
+                    <textarea name="note" placeholder="Additional Notes"></textarea>
+                    <input type="hidden" name="subject"
+                        value="Website Exhibition Inquiry: <?php echo get_the_title($curr_id); ?>">
+                    <input type="text" name="message" value="" style="display:none;">
+                    <input type="hidden" name="inquiry_message"
+                        value="<?php echo htmlspecialchars($inquiry_email); ?>" style="display:none;">
+                    <input class="inquireSubmit" type="submit" value="Request More Information">
+                </form>
+              </section>
             </section>
         </section>
         <section class="exhibitionImages" id="exhibitionImages">
