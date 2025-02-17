@@ -70,82 +70,113 @@
 
 		</section>
 		<section class="exhibitionsNew">
+        <section class="imagesMenu menuArtfair">
+            <section class="imagesmenuInner">
+              <a href="#artworks" class="artworksScroll outerArtworks">↓ Artworks</a>
+              <button class="prToggle">Press Release</button>
+            
+              
+                  <?php $connected = new WP_Query( array(
+                  'connected_type' => 'post_to_art_fair',
+                  'connected_items' => get_the_id(),
+                  'posts_per_page' => -1
+                  ) );
 
-<section class="imagesMenu menuArtfair">
-	<section class="imagesmenuInner">
-	  <a href="#artworks" class="artworksScroll outerArtworks">↓ Artworks</a>
-	  <button class="prToggle">Press Release</button>
+                if($connected->have_posts()):
+                ?>
+                <nav class="exhibtionNews">
+                <button class="newsOpen">News</button>
+                <div id="newsContentID">
+                    <ul class="newsContent">
+                        <?php while($connected->have_posts()) : $connected->the_post(); ?>
+                        <li><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></li>
+                        <?php endwhile; ?>
+                        <div class="moreNewsOpen">
+
+                        </div>
+                    </ul>
+                </div>
+                </nav>
+                <?php wp_reset_postdata(); endif; ?>
+              
+              <button class="moreInfo">Request More Information</button>
+
+            </section>
+            <section class="imagesMenuExpand">
+              <section class="pressRelease">
+                  <?php the_content(); ?>
+                  <?php if( have_rows('additional_video_and_links') ): ?>
+                  <?php while( have_rows('additional_video_and_links') ): the_row(); ?>
+                  <?php if( get_row_layout() == 'add_video_additional' ): ?>
+                  <?php if( have_rows('video_additionalMediaContent') ): ?>
+                  <?php while( have_rows('video_additionalMediaContent') ): the_row(); 
+                    $videoLink = get_sub_field('video_link_additionalMedia');
+                    if( $videoLink ) {; ?>
+
+                  <section class="featuredVideo">
+                      <button class="featuredVideoTitle">
+                          <img src="<?php bloginfo('template_directory'); ?>/images/movie_icon.svg">
+                          <?php the_sub_field('video_label_additionalMedia') ?>
+                      </button>
+                      <div id="featuredVideoLink" class="video-responsive">
+                          <?php the_sub_field('video_link_additionalMedia'); ?>
+                      </div>
+                  </section>
+
+                  <?php } ?>
+                  <?php endwhile; ?>
+                  <?php endif; ?>
+
+                  <!-- additional link -->
+                  <?php elseif( get_row_layout() == 'add_link_additional' ): ?>
+                  <?php if( have_rows('outwardLink_additionalMediaContent') ): ?>
+                  <?php while( have_rows('outwardLink_additionalMediaContent') ): the_row(); 
+                        $onlineLink = get_sub_field('link_label_additionalMedia');
+                        if( $onlineLink ) {; ?>
+                  <section class="onlineExhibition">
+                      <a href="<?php the_sub_field('actual_link_additionalMedia'); ?>"
+                          target="_blank"><?php the_sub_field('link_label_additionalMedia'); ?> <i
+                              class="fas fa-external-link-alt"></i></a>
+                  </section>
+                  <?php } ?>
+                  <?php endwhile; ?>
+                  <?php endif; ?>
+
+                  <?php endif; ?>
+                  <?php endwhile; ?>
+                  <?php endif; ?>
+              </section>
+              <section class="exhibitionInquiry">
+              <section class="closeInquiry">Close</section>
+              <p>To learn more about this artfair, please provide your contact information.</p>
+                <?php
+
+                  $inquiry_email  = '';
+                  $inquiry_email .= '<p>Thanks for inquiring about '.get_the_title($curr_id). '. We will be in touch shortly with more information.</p>';
+                  $inquiry_email .= '<p>For a quicker response feel free to call us at +1.416.531.8000.</p>';
+                  $inquiry_email .= '<p>';
+                  $inquiry_email .= 'Art Fair: <a href="'.get_permalink( $curr_id ).'">'.get_the_title($curr_id).'</a>';
+                  $inquiry_email .= '</p>';
+
+                  ?>
+
+                <form id="submit-inquiry" class="inquireFormFull">
+                    <input type="text" name="name" placeholder="name">
+                    <input type="email" name="email" placeholder="email">
+                    <input type="text" name="phone" placeholder="phone">
+                    <input type="text" name="location" placeholder="location">
+                    <textarea name="note" placeholder="Additional Notes"></textarea>
+                    <input type="hidden" name="subject"
+                        value="Website Exhibition Inquiry: <?php echo get_the_title($curr_id); ?>">
+                    <input type="text" name="message" value="" style="display:none;">
+                    <input type="hidden" name="inquiry_message"
+                        value="<?php echo htmlspecialchars($inquiry_email); ?>" style="display:none;">
+                    <input class="inquireSubmit" type="submit" value="Request More Information">
+                </form>
+              </section>
+            </section>
+        </section>
 	
-	  <nav class="exhibtionNews">
-		  <?php $connected = new WP_Query( array(
-		  'connected_type' => 'post_to_art_fair',
-		  'connected_items' => get_the_id(),
-		  'posts_per_page' => -1
-		  ) );
-
-		if($connected->have_posts()):
-		?>
-		<button class="newsOpen">News</button>
-		<div id="newsContentID">
-			<ul class="newsContent">
-				<?php while($connected->have_posts()) : $connected->the_post(); ?>
-				<li><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></li>
-				<?php endwhile; ?>
-				<div class="moreNewsOpen">
-
-				</div>
-			</ul>
-		</div>
-		<?php wp_reset_postdata(); endif; ?>
-	  </nav>
-
-	</section>
-	<section class="imagesMenuExpand">
-	  <section class="pressRelease">
-		  <?php the_content(); ?>
-		  <?php if( have_rows('additional_video_and_links') ): ?>
-		  <?php while( have_rows('additional_video_and_links') ): the_row(); ?>
-		  <?php if( get_row_layout() == 'add_video_additional' ): ?>
-		  <?php if( have_rows('video_additionalMediaContent') ): ?>
-		  <?php while( have_rows('video_additionalMediaContent') ): the_row(); 
-			$videoLink = get_sub_field('video_link_additionalMedia');
-			if( $videoLink ) {; ?>
-
-		  <section class="featuredVideo">
-			  <button class="featuredVideoTitle">
-				  <img src="<?php bloginfo('template_directory'); ?>/images/movie_icon.svg">
-				  <?php the_sub_field('video_label_additionalMedia') ?>
-			  </button>
-			  <div id="featuredVideoLink" class="video-responsive">
-				  <?php the_sub_field('video_link_additionalMedia'); ?>
-			  </div>
-		  </section>
-
-		  <?php } ?>
-		  <?php endwhile; ?>
-		  <?php endif; ?>
-
-		  <!-- additional link -->
-		  <?php elseif( get_row_layout() == 'add_link_additional' ): ?>
-		  <?php if( have_rows('outwardLink_additionalMediaContent') ): ?>
-		  <?php while( have_rows('outwardLink_additionalMediaContent') ): the_row(); 
-				$onlineLink = get_sub_field('link_label_additionalMedia');
-				if( $onlineLink ) {; ?>
-		  <section class="onlineExhibition">
-			  <a href="<?php the_sub_field('actual_link_additionalMedia'); ?>"
-				  target="_blank"><?php the_sub_field('link_label_additionalMedia'); ?> <i
-					  class="fas fa-external-link-alt"></i></a>
-		  </section>
-		  <?php } ?>
-		  <?php endwhile; ?>
-		  <?php endif; ?>
-
-		  <?php endif; ?>
-		  <?php endwhile; ?>
-		  <?php endif; ?>
-	  </section>
-	</section>
-</section>
 <section class="exhibitionImages" id="exhibitionImages">
 	<!-- carousel -->
 	<?php if(get_field('carousel')): ?>

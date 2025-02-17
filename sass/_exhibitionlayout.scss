@@ -23,6 +23,7 @@
         }
 }
 .exhibitionHeader {
+    
     height: calc(100dvh - 185px);
     position: relative;
     .exhibitionInfo {
@@ -48,6 +49,7 @@
     }
     }
 
+
     .artists {
         position: absolute;
         background: white;
@@ -62,6 +64,10 @@
             }
         }
     }
+    .two-column {
+        column-count: 2;
+        
+    }
 }
 .imagesMenu {
     position: sticky;
@@ -75,9 +81,7 @@
         width: 100%;
         align-items: center;
         justify-content: space-between;
-        a, button {
-            min-width: 223px;
-        }
+
         .artworksScroll {
             @extend .secondaryButton;
             padding-left: 10px;
@@ -86,6 +90,7 @@
         .prToggle {
             background: white;
             border: none;
+            color: black;
             @extend .secondaryButton;
             text-align: right;
             &:before {
@@ -183,8 +188,9 @@
     transform: translate(-50%, 25%);
     padding: 30px;
     border: .7px solid black;
-    h3 {
-        margin: 0;
+    p {
+        margin: 0 10px 10px 0;
+        
     }
     .closeInquiry {
         @extend .whiteText;
@@ -235,7 +241,7 @@
     align-items: center;
     margin-bottom: 30px;
     figure {
-        max-width: 450px;
+        max-width: 440px;
     }
     .description {
         h2 {
@@ -263,22 +269,19 @@
     }
 }
 .menuArtfair {
-    .imagesmenuInner {
-        padding: 7px 0;
-        .prToggle {
-            text-align: center;
-        }
-        .exhibtionNews {
-            #newsContentID {
-                margin-top: 7px;
-            }
-        }
-    } 
     .newsOpen {
         text-align: right;
         padding-right: 10px;
     }
  
+}
+@media (max-width: 920px) {
+   .exhibitionHeader .two-column {
+        .exhibitors li {
+            @include fontSize(11);
+        }
+        
+    }
 }
 @media (max-width: 850px) {
     .exhibitionMainImg {
@@ -287,6 +290,13 @@
 }
 
 @media (max-width: 755px) {
+    .exhibitionHeader .two-column {
+        column-count: 1;
+        .exhibitors li {
+            @include fontSize(15);
+        }
+        
+    }
 
     .imagesMenu {
         position: initial;
@@ -295,7 +305,7 @@
             border-left: .7px solid black;
             border-right: .7px solid black;
             a, button {
-                min-width: fit-content;
+
                 width: 100%;
                 text-align: center;
                 padding: 7px 0;
@@ -308,6 +318,21 @@
             .exhibtionNews #newsContentID {
                 left: 0;
             }
+            .exhibtionNews {
+                width: 100%;
+                a {
+                    border-top: 0;
+                }
+                #newsContentID {
+                    position: relative;
+                    border: none;
+                }
+    
+            }
+        }
+
+        .highlight {
+            left: 0;
         }
         .imagesMenuExpand {
             .pressRelease {
@@ -339,7 +364,22 @@
         position: initial;
         height: fit-content;
         img {
-            min-height: fit-content;
+            min-height: auto;
+            height: auto;
         }
+    }
+    .artfairHeader {
+        margin-bottom: 0;
+        .description {
+            order: 2;
+
+        }
+        figure {
+            order: 1;
+            margin-bottom: 20px;
+        }
+    }
+    .menuArtfair .imagesmenuInner {
+        padding: 0;
     }
 }

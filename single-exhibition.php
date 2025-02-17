@@ -89,7 +89,7 @@
               <a href="#artworks" class="artworksScroll outerArtworks">↓ Artworks</a>
               <button class="prToggle">Press Release</button>
             
-              <nav class="exhibtionNews">
+              
                   <?php $connected = new WP_Query( array(
                   'connected_type' => 'post_to_exhibition',
                   'connected_items' => get_the_id(),
@@ -98,6 +98,7 @@
 
                 if($connected->have_posts()):
                 ?>
+                <nav class="exhibtionNews">
                 <button class="newsOpen">News</button>
                 <div id="newsContentID">
                     <ul class="newsContent">
@@ -109,8 +110,9 @@
                         </div>
                     </ul>
                 </div>
+                </nav>
                 <?php wp_reset_postdata(); endif; ?>
-              </nav>
+              
               <button class="moreInfo">Request More Information</button>
 
             </section>
@@ -160,7 +162,6 @@
               </section>
               <section class="exhibitionInquiry">
               <section class="closeInquiry">Close</section>
-              <h3>Interested in <?php the_title(); ?>?</h3>
               <p>To learn more about this exhibition, please provide your contact information.</p>
                 <?php
 

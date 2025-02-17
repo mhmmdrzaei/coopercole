@@ -267,6 +267,12 @@ $(".closeInquiry").click(function(){
       scrollNames();
     }
   });
+  $('.exhibitionHeader .artists').each(function() {
+    var $this = $(this);
+    if($this.find("li").length > 9) {
+      $this.addClass("two-column");
+    }
+  })
 
   //news items more than 10
 
