@@ -453,20 +453,20 @@ function applyDarkMode() {
   mode.innerHTML = "&#9788;";
   $("svg path, svg g path").css("fill", "white");
   $(
-    ".menu__nav, .artistNameExhibitionHome, .exhibitionDetailsHome,.exhibitionDateLocationHome, .artworkIteminfo, .home footer,.moreExhibits"
+    ".menu__nav, .artistNameExhibitionHome, .exhibitionDetailsHome,.exhibitionDateLocationHome, .artworkIteminfo, .home footer,.moreExhibits, .exhibitionHeader .artists, .exhibitionInfo, .imagesMenu,.pressRelease,.exhibitionInquiry,#newsContentID"
   ).css("background", "black");
   $(
-    "form.searchForm input, .menu__nav, .artistNameExhibitionHome, .exhibitionDetailsHome,.exhibitionDateLocationHome, footer, .buttonOuter,.toggleText,.artworkIteminfo, video, img,.artFairEach, a:before,.inquireSubmit,.arrow:before,.newsRelatedExhibitions,.tagsInner a,.exhibitionHome,.moreExhibits,.copyrightcontainer,.copyright"
+    "form.searchForm input, .menu__nav, .artistNameExhibitionHome, .exhibitionDetailsHome,.exhibitionDateLocationHome, footer, .buttonOuter,.toggleText,.artworkIteminfo, video, img,.artFairEach, a:before,.inquireSubmit,.arrow:before,.newsRelatedExhibitions,.tagsInner a,.exhibitionHome,.moreExhibits,.copyrightcontainer,.copyright,.exhibitionHeader .artists, .exhibitionInfo, .imagesMenu,#newsContentID"
   ).css("border-color", "white");
 
   $(
-    ".exhibitionDateLocationHome, a, .open,.exhibitionsOpen,.newsOpen,.bioOpen,#downClick, #upClick,.btn-info,.location,.date,.menu__nav li a,.artistsNames li a,.cli-plugin-main-butto,.description h2 a,.newsTitle a,.newsReadMore,.nextItem,.previousItem,.featuredVideoTitle,.ab-item,.read-more-btn,.pageNav a, .pageNav span,.artistNameExhibition .nonRepArtists li,.artFairExhibitors .nonRepArtists li,.gt_selector "
+    ".exhibitionDateLocationHome, a, .open,.exhibitionsOpen,.newsOpen,.bioOpen,#downClick, #upClick,.btn-info,.location,.date,.menu__nav li a,.artistsNames li a,.cli-plugin-main-butto,.description h2 a,.newsTitle a,.newsReadMore,.nextItem,.previousItem,.featuredVideoTitle,.ab-item,.read-more-btn,.pageNav a, .pageNav span,.artistNameExhibition .nonRepArtists li,.artFairExhibitors .nonRepArtists li,.gt_selector,.prToggle "
   ).css("color", "white");
   $(
-    ".infoAnimated,.mailing-list-open,.bookAnAppointment a,.menu-instagram a,.downloadCV"
+    ".infoAnimated,.mailing-list-open,.bookAnAppointment a,.menu-instagram a,.downloadCV,.moreInfo "
   ).css("color", "black");
   $(
-    ".infoAnimated,.mailing-list-open,.bookAnAppointment, .menu-instagram a,.downloadCV"
+    ".infoAnimated,.mailing-list-open,.bookAnAppointment, .menu-instagram a,.downloadCV,.moreInfo"
   ).css("background", "white");
   localStorage.setItem("darkMode", "enabled");
   darkModeOn = true;
@@ -481,10 +481,10 @@ function applyLightMode() {
   mode.innerHTML = "&#9790;";
   $("svg path, svg g path").css("fill", "black");
   $(
-    ".menu__nav, .artistNameExhibitionHome, .exhibitionDetailsHome,.exhibitionDateLocationHome, .artworkIteminfo, .home footer,.moreExhibits,.downloadCV"
+    ".menu__nav, .artistNameExhibitionHome, .exhibitionDetailsHome,.exhibitionDateLocationHome, .artworkIteminfo, .home footer,.moreExhibits,.downloadCV,.exhibitionHeader .artists, .exhibitionInfo, .imagesMenu,.pressRelease,#newsContentID"
   ).css("background", "white");
   $(
-    "form.searchForm input, .menu__nav, .artistNameExhibitionHome, .exhibitionDetailsHome,.exhibitionDateLocationHome, footer, .buttonOuter,.toggleText,.artworkIteminfo, video, img,.artFairEach, a:before,.inquireSubmit,.newsRelatedExhibitions,.tagsInner a,.exhibitionHome,.moreExhibits, .copyrightcontainer,.copyright"
+    "form.searchForm input, .menu__nav, .artistNameExhibitionHome, .exhibitionDetailsHome,.exhibitionDateLocationHome, footer, .buttonOuter,.toggleText,.artworkIteminfo, video, img,.artFairEach, a:before,.inquireSubmit,.newsRelatedExhibitions,.tagsInner a,.exhibitionHome,.moreExhibits, .copyrightcontainer,.copyright,.exhibitionHeader .artists, .exhibitionInfo, .imagesMenu,.pressRelease,#newsContentID"
   ).css("border-color", "black");
   $(".tags a,.tagsInner a").hover(function (e) {
     $(this).css("color", e.type === "mouseenter" ? "white" : "black");

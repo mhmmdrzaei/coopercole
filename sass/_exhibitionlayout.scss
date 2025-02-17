@@ -27,7 +27,7 @@
     height: calc(100dvh - 185px);
     position: relative;
     .exhibitionInfo {
-        max-width: 300px;
+        max-width: 330px;
     background: white;
     border: 1px solid black;
     padding: 20px;
@@ -88,7 +88,7 @@
         }
         
         .prToggle {
-            background: white;
+            background: transparent;
             border: none;
             color: black;
             @extend .secondaryButton;
