@@ -3,8 +3,8 @@
 get_header();
 ?>
 
-<main class="exhibitionsMainPage">
-   <nav class="exhibitionYearsSide">
+
+<nav class="exhibitionYearsSide">
       <div class="exhibitionYearsSideInner">
          <button id="upClick">^</button>
         
@@ -44,7 +44,7 @@ get_header();
       </div>
    </nav>
 
-   <section class="exhibitionContainer">
+   <section class="r">
       <?php
       $args = array(
          'post_type' => 'exhibition',
@@ -111,6 +111,5 @@ get_header();
       ?>
 
    </section>
-</main>
 
 <?php get_footer(); ?>

@@ -231,7 +231,7 @@ $(".closeInquiry").click(function(){
     var pageWidth = $(window).width();
 
     // Check if it's the home page or not
-    var isHomePage = $("body.home").length > 0;
+    var isHomePage = $("body").length > 0;
 
     // Combine conditions
     if (

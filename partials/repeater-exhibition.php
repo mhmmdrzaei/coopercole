@@ -26,10 +26,20 @@ if( get_field('end_date') ) {
 
  ?>
 
-<article id="<?php echo $start_date->format('Y'); ?>" class="exhibition">
-	<a href="<?php the_permalink(); ?>">
 
-	<section class="artistNameExhibition">
+<article id="<?php echo $start_date->format('Y'); ?>" class="exhibitionHome">
+<a href="<?php the_permalink(); ?>">
+<figure class="image">
+			<img src="<?php echo $exhibitionImage ?>" alt="an image from the exhibtion <?php echo $titleExhibit ?>">
+	</figure>
+
+	<section class="exhibitionDetailsHome">
+		<h3><?php echo $titleExhibit ?>	</h3>
+
+	</section>
+
+	<section class="artistNameExhibitionHome">
+
 		<?php if( have_rows('artist_with_no_artist_page') ): ?>
 		    <ul class="nonRepArtists">
 		    <?php while( have_rows('artist_with_no_artist_page') ): the_row(); 
@@ -78,6 +88,7 @@ if( get_field('end_date') ) {
 					echo '</h3></li>';
 
 				endwhile;
+				// echo "<section class='moreArtistNamesOpen'></section>";
 				echo '</ul>';
 
 		 endif;
@@ -87,20 +98,11 @@ if( get_field('end_date') ) {
 		?>
 		<!-- <button class="moreArtistNamesOpen">More Artists</button> -->
 	</section>
-	<figure class="image">
-			<img src="<?php echo $exhibitionImage ?>" alt="an image from the exhibtion <?php echo $titleExhibit ?>">
-	</figure>
-	<section class="exhibitionDetails">
-		<h4><?php echo $titleExhibit ?>	</h4>
-		<aside class="exhibitionDateLocation">
+	<aside class="exhibitionDateLocationHome">
 			<div class="date"><?php echo $start_date->format('F j, Y'); if($end_date) { echo ' - '.$end_date->format('F j, Y'); } ?></div>
 			<div class="location"><?php echo $exhibitlocation ?></div>
-		</aside>
-	</section>
-	<aside class="exhibitionDateLocationMobile">
-		<div class="date"><?php echo $start_date->format('F j, Y'); if($end_date) { echo ' - '.$end_date->format('F j, Y'); } ?></div>
-		<div class="location"><?php echo $exhibitlocation ?></div>
 	</aside>
+
 
 
 	</a>
