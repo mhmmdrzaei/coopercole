@@ -200,7 +200,7 @@ if($currentArtF->have_posts()) : while($currentArtF->have_posts()) : $currentArt
 
 			?>
 		
-		<?php	get_template_part('partials/repeater-exhibition-home'); ?>
+		<?php	get_template_part('partials/repeater-exhibition'); ?>
 
 		
 

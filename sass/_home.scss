@@ -14,8 +14,8 @@
     footer {
         position: fixed;
     }
-    h3 {
-        @include fontSize(14);
+    h2 {
+        // @include fontSize(14);
     }
 }
 .timer {
@@ -31,6 +31,11 @@
     position: relative;
   height: 100%;
 
+}
+.r {
+    article:nth-child(n+2) {
+        border-top: .7px solid black;
+    }
 }
 // .slide {
 //     width: 100%;
@@ -60,8 +65,8 @@
 
     position: absolute;
     // height: 20vh;
-    left: 10%;
-    top: 20%;
+    left: 0;
+    // top: 20%;
     padding: 20px;
     background: white;
     border: 1px solid black;
@@ -80,6 +85,11 @@
 
 
 }
+.two-column {
+    .mohammadUl {
+        column-count: 2;
+    }
+}
 .moreExhibits {
     position: fixed;
     bottom: 50%;
@@ -94,17 +104,28 @@
 }
 .exhibitionDetailsHome {
     position: absolute;
-    right: 10%;
-    top: 20%;
+    right: 0%;
+    // top: 20%;
     background: white;
     border: 1px solid black;
     padding: 20px;
     max-width: 330px;
-    h3 {
+    h2 {
         margin: 0;
         // @extend .whiteText;
     }
 
+}
+.exhibitionDetailsHomeMobile {
+    display: none;
+}
+.exhibitionInfoDetail {
+    width: 95%;
+    max-width: 1200px;
+    
+    margin: 0 auto;
+    top: 185px;
+    position: relative;
 }
 .exhibitionDateLocationHome {
     text-transform: uppercase;
@@ -119,7 +140,8 @@
     text-align: center;
     display: flex;
     flex-flow: row;
-    min-width: 70%;
+    width: 95%;
+    max-width: 1200px;
 
     font-weight: 700;
     .date {
@@ -147,8 +169,73 @@
 .scroll {
     animation: none;
 }
+//exhibtion page general stylings:
+body.exhibitions, body.page-id-84 {
+    header{
+        position: absolute;
+        width: 100%;
+        z-index: 4;
+    }
+}
+.exhibitionYearsSide {
+    position: fixed;
+    top: 50%;
+    z-index: 5;
+    background: white;
+    border: .3px solid black;
+    border-left: none;
+    text-align: center;
+    padding: 15px;
+    h4 {
+        margin: 0;
+        margin-bottom: 10px;
+        text-transform: uppercase;
+        font-weight: 600;
+        @include fontSize(8);
+    }
+    #exhibitionYearSelect {
+        // width: 100%;
+        background: white;
+        color: black;
+        border-radius: 0;
+        // padding: 0px 10px;
+        border:none;
+        padding: 0;
+        // border-bottom: 1px solid black;
+        text-transform: uppercase;
+        font-weight: 600;
+        @include fontSize(8);
+    }
+}
 
 @media (max-width: 850px) { 
+    //exhibtion page general stylings:
+body.exhibitions, body.page-id-84 {
+    header{
+        position: initial;
+        margin-bottom: 110px;
+    }
+}
+.exhibitionYearsSide {
+    position: initial;
+    width: 100%;
+    background: white;
+    border: none;
+    display: flex;
+    flex-flow: wrap;
+    align-items: center;
+    justify-content: center;
+    #exhibitionYearSelect {
+        margin-left: 10px;
+    }
+
+    h4 {
+
+        margin-bottom: 0;
+       
+    }
+
+}
     
     .home {
 
@@ -210,22 +297,36 @@
             object-fit: initial;
         }
     }
-    .exhibitionDetailsHome {
-position: inherit;
+    .exhibitionInfoDetail {
+        width: 100%;
+        max-width: 1200px;
+        
+        margin: 0 auto;
+        top: auto;
+        position: initial;
+    }
+    .exhibitionDetailsHome{
+        display: none;
+    }
+    .exhibitionDetailsHomeMobile {
+    position: inherit;
+    display: block;
     width: 100%;
-    // text-align: center;
     max-width: 100%;
     border: none;
+    padding: 0 20px;
     order: 3;
 
 
     }
+    
     .artistNameExhibitionHome {
 
     position: inherit;
     border: none;
     order: 1;
 	margin: 0;
+    padding: 20px;
     width: 100%;
     overflow: hidden;
     // text-align: center;
@@ -262,7 +363,6 @@ position: inherit;
             display: inline-block;
             margin-right: 10px; /* Adjust as needed */
  
-  
         }
 
        

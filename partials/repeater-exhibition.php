@@ -33,8 +33,9 @@ if( get_field('end_date') ) {
 			<img src="<?php echo $exhibitionImage ?>" alt="an image from the exhibtion <?php echo $titleExhibit ?>">
 	</figure>
 
+	<section class="exhibitionInfoDetail">
 	<section class="exhibitionDetailsHome">
-		<h3><?php echo $titleExhibit ?>	</h3>
+		<h2><?php echo $titleExhibit ?>	</h2>
 
 	</section>
 
@@ -98,6 +99,13 @@ if( get_field('end_date') ) {
 		?>
 		<!-- <button class="moreArtistNamesOpen">More Artists</button> -->
 	</section>
+
+	</section>
+	<section class="exhibitionDetailsHomeMobile">
+		<h2><?php echo $titleExhibit ?>	</h2>
+
+	</section>
+	
 	<aside class="exhibitionDateLocationHome">
 			<div class="date"><?php echo $start_date->format('F j, Y'); if($end_date) { echo ' - '.$end_date->format('F j, Y'); } ?></div>
 			<div class="location"><?php echo $exhibitlocation ?></div>

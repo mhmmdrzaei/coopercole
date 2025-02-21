@@ -48,7 +48,7 @@ html {
 }
 
 body {
-	// font-family: 'Open Sans', sans-serif;
+
 	font-family: 'Lato', sans-serif;
 	width: 100%;
 	margin: 0 auto;
@@ -585,6 +585,9 @@ article.exhibition:nth-last-child(2) {
 	position: fixed;
 	bottom: 14%;
 	width: 100%;
+}
+.scroll-left:nth-child(2) {
+	bottom: 24%
 }
 .scroll-left a {
 	position: absolute;
@@ -2003,27 +2006,7 @@ body.home {
 
 .exhibitionsMainPage {
 	display: block;
-	.exhibitionYearsSide {
-		padding-top: 20px;
-		width: 100%;
-		margin: 0 auto ;
-		.exhibitionYearsSideInner {
-			position: inherit;
-			display: flex;
-			align-items: center;
-			width: 50%;
-			margin: 0 auto;
-			#upClick {
-				transform: rotate(-90deg);
-			}
-			#menu-exhibition-years{
-				width: 101px;
-				height: 20px;
-			}
 
-		}
-
-	}
 }
 	.exhibitionsMainPage .exhibitionYearsSide #downClick {
 		transform: rotate(90deg);
@@ -2088,11 +2071,7 @@ body.home {
 	.artistNameHidden {
 		display: block;
 	}
-
 	//single exhibition Page
-
-
-
 	.exhibitionMain {
 		display: block;
 		.exhibitionSide {

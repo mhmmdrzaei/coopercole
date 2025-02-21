@@ -226,17 +226,15 @@ $(".closeInquiry").click(function(){
     $("footer").css("position", "fixed");
   }
 
-  $(".mohammadUl, .nonRepArtists").each(function () {
+  $(".artistNameExhibitionHome .mohammadUl, .artistNameExhibitionHome .nonRepArtists").each(function () {
     var $this = $(this);
     var pageWidth = $(window).width();
 
-    // Check if it's the home page or not
-    var isHomePage = $("body").length > 0;
+
 
     // Combine conditions
     if (
-      (isHomePage && pageWidth < 800 && $this.find("li").length > 4) ||
-      (!isHomePage && $this.find("li").length > 4)
+      ( pageWidth < 800 && $this.find("li").length > 4) 
     ) {
       $this.addClass("scroll");
       var $ul = $this;
@@ -267,7 +265,8 @@ $(".closeInquiry").click(function(){
       scrollNames();
     }
   });
-  $('.exhibitionHeader .artists').each(function() {
+  
+  $('.exhibitionHeader .artists, .exhibitionInfoDetail .artistNameExhibitionHome').each(function() {
     var $this = $(this);
     if($this.find("li").length > 9) {
       $this.addClass("two-column");
@@ -453,7 +452,7 @@ function applyDarkMode() {
   mode.innerHTML = "&#9788;";
   $("svg path, svg g path").css("fill", "white");
   $(
-    ".menu__nav, .artistNameExhibitionHome, .exhibitionDetailsHome,.exhibitionDateLocationHome, .artworkIteminfo, .home footer,.moreExhibits, .exhibitionHeader .artists, .exhibitionInfo, .imagesMenu,.pressRelease,.exhibitionInquiry,#newsContentID"
+    ".menu__nav, .artistNameExhibitionHome, .exhibitionDetailsHome,.exhibitionDateLocationHome, .artworkIteminfo, .home footer,.moreExhibits, .exhibitionHeader .artists, .exhibitionInfo, .imagesMenu,.pressRelease,.exhibitionInquiry,#newsContentID,.exhibitionYearsSide"
   ).css("background", "black");
   $(
     "form.searchForm input, .menu__nav, .artistNameExhibitionHome, .exhibitionDetailsHome,.exhibitionDateLocationHome, footer, .buttonOuter,.toggleText,.artworkIteminfo, video, img,.artFairEach, a:before,.inquireSubmit,.arrow:before,.newsRelatedExhibitions,.tagsInner a,.exhibitionHome,.moreExhibits,.copyrightcontainer,.copyright,.exhibitionHeader .artists, .exhibitionInfo, .imagesMenu,#newsContentID"
@@ -481,7 +480,7 @@ function applyLightMode() {
   mode.innerHTML = "&#9790;";
   $("svg path, svg g path").css("fill", "black");
   $(
-    ".menu__nav, .artistNameExhibitionHome, .exhibitionDetailsHome,.exhibitionDateLocationHome, .artworkIteminfo, .home footer,.moreExhibits,.downloadCV,.exhibitionHeader .artists, .exhibitionInfo, .imagesMenu,.pressRelease,#newsContentID"
+    ".menu__nav, .artistNameExhibitionHome, .exhibitionDetailsHome,.exhibitionDateLocationHome, .artworkIteminfo, .home footer,.moreExhibits,.downloadCV,.exhibitionHeader .artists, .exhibitionInfo, .imagesMenu,.pressRelease,#newsContentID,.exhibitionYearsSide"
   ).css("background", "white");
   $(
     "form.searchForm input, .menu__nav, .artistNameExhibitionHome, .exhibitionDetailsHome,.exhibitionDateLocationHome, footer, .buttonOuter,.toggleText,.artworkIteminfo, video, img,.artFairEach, a:before,.inquireSubmit,.newsRelatedExhibitions,.tagsInner a,.exhibitionHome,.moreExhibits, .copyrightcontainer,.copyright,.exhibitionHeader .artists, .exhibitionInfo, .imagesMenu,.pressRelease,#newsContentID"
