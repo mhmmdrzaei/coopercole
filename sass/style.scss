@@ -45,6 +45,8 @@ img {
 }
 html {
 	height: auto !important;
+	scroll-behavior: smooth;
+
 }
 
 body {
@@ -225,24 +227,7 @@ video {
 	}
 }
 
-.exhibitionMain {
-	min-height: 71vh;
-  @extend .flex;
-  justify-content: space-between;
-  .exhibitionCenter{
-  	width: 68%;
-  	// max-width: 680px;
-  }
-  .exhibitionSide{
-  	width: 30%;
-  	.nonRepArtists {
-  		@include fontSize(20);
-  		font-size: clamp(1rem, 10vw, 1.5rem);
-		@extend .whiteText;
 
-  	}
-  }
-}
 #newsContentID, #exhibitionContentID,.artistbioContent {
 	display: none;
 	margin-bottom: 20px;
@@ -701,7 +686,7 @@ article.exhibition:nth-last-child(2) {
 	}
 
 }
-.exhibitionMain .exhibitionSide .artFairArtists{
+ .artFairArtists{
   .nonRepArtists {
     @include fontSize(10);
     text-transform: uppercase;
@@ -1160,6 +1145,7 @@ h3#artworks {
 	transform: translate(50%, -50%);
 	position: fixed;
 	overflow-y: scroll;
+
 	
 }
 .artworkItemInfoInnner {
@@ -1325,11 +1311,13 @@ section.inquiry form input:nth-child(2).invalid {
 .swiper-button-next:after{
 	content: "→" !important;
 	color: white;
+	z-index: 2;
 	-webkit-text-stroke: 1px #000;
 }
 .swiper-button-prev:after {
 	content: "←" !important;
 	color: white;
+	z-index: 2;
 	-webkit-text-stroke: 1px #000;
 }
 .swiper-pagination-bullet-active {
@@ -2072,47 +2060,29 @@ body.home {
 		display: block;
 	}
 	//single exhibition Page
-	.exhibitionMain {
-		display: block;
-		.exhibitionSide {
-			width: 100%;
-			.outer {
-				left: 0;
-			}
-		}
-		.exhibitionCenter {
-			width: 100%;
-			.artworksLink {
-				display: none;
-			}
-			.featuredVideo {
-				text-align: left;
-				@include fontSize(7);
-			}
-		}
-	}
+
 	.artworkIteminfo {
 		width: 100%;
 		max-width: 100%;
-		height: 100vh;
+		height: 100dvh;
 		border-top: 0;
 		border-bottom: 0;
+		
 	}
 	.swiper {
-		height: fit-content;
 		.swiper-slide {
 			align-self: center;
 		}
 	}
 
 	.prevnext, .closeInfo {
-		margin-top: 55px;
+		// margin-top: 55px;
 	}
 	.artworkItemInfoInnner{
 		// display: block;
 		 display: flex;
 		 flex-flow: wrap;
-		 margin-top: 55px;
+		//  margin-top: 55px;
 
 		.artworkItemInfoText {
 			width: 100%;
@@ -2129,6 +2099,7 @@ body.home {
 			width: 100%;
 			margin-top: 10px;
 			order: 1;
+			
 		}
 	}
 	#submit-inquiry {
@@ -2315,11 +2286,7 @@ main.contactMain .galleryAdditionalInfo .paragraphHalf {
 .artistsMain {
 			min-height: 71vh;
 		}
-// body.home, body.search-no-results {
-// 	footer {
-// 		// position: absolute;
-// 	}
-// }
+
 .noShowContainer {
 	margin: 0 auto;
 	padding-bottom: 50px;
@@ -2420,18 +2387,20 @@ main.contactMain .galleryAdditionalInfo .paragraphHalf {
 				}
 			}
 		}
-
-
-		// body.home {
-		// 	footer {
-		// 		// position: inherit;
-		// 	}
-
-		// }
 	
 }
 
 @media (max-width: 500px){
+	.fullscreen-prev { 
+		left: calc(50% - 56px);
+		top: 35px;
+		background: transparent;
+	 }
+	.fullscreen-next { 
+		right: calc(50% - 56px);
+		top: 35px;
+		background: transparent;
+	 }
 	.artistMain {
 		display: block;
 	}
@@ -2458,15 +2427,15 @@ to { transform: translateX(-500%); }
 		margin-right: 0;
 	}
 
+	
+
 
 	.contactContainer .galleryAddress, .contactContainer .galleryContact {
 		width: 100%;
 	}
-	// .searchpageFooter {
-	// 	// min-height: 100vh;
-	// }
 
 }
+
 @media(min-width: 1350px){ 
 		.fl-panelBar-wideScreen {
 		left: 21rem;

@@ -1,5 +1,5 @@
 <?php get_header(); ?>
-<main>
+<main class="exhibtionPageContainer">
 
     <?php if(have_posts()) : while(have_posts()) : the_post(); ?>
     <?php $exhibitionImage = get_the_post_thumbnail_url(null, 'full'); ?>

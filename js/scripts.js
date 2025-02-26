@@ -126,31 +126,6 @@
     return false;
   });
 
-  var sectionText = $(".text-area");
-  var readMoreBtn = $(".read-more-btn");
-  var maxHeight = 310; // Adjust this value based on your design
-
-  // Check if the height of the text exceeds the threshold
-  if (sectionText.height() > maxHeight) {
-    sectionText.css("max-height", maxHeight);
-    readMoreBtn.show();
-  } else {
-    readMoreBtn.hide();
-  }
-
-  // Handle click event on Read More button
-  readMoreBtn.on("click", function () {
-    if (
-      sectionText.css("max-height") === "none" ||
-      sectionText.css("max-height") === "0px"
-    ) {
-      sectionText.css("max-height", maxHeight);
-      readMoreBtn.text("+ Read More");
-    } else {
-      sectionText.css("max-height", "");
-      readMoreBtn.text("- Read Less");
-    }
-  });
 })(jQuery);
 
 function myFunction() {
@@ -573,24 +548,52 @@ function openFullscreen(index) {
 
     $fullscreenContainer.append(content).append($closeButton);
 
-    // Only add prev/next buttons if there’s more than one slide
+    // Only add prev/next buttons if more than one slide
     if (currentSlides.length > 1) {
       let $prevButton = $('<div class="fullscreen-prev">&#8592;</div>');
       let $nextButton = $('<div class="fullscreen-next">&#8594;</div>');
 
       $fullscreenContainer.append($prevButton).append($nextButton);
 
-      // Previous button
+      // Previous button click
       $prevButton.on("click", function () {
         currentIndex =
           (currentIndex - 1 + currentSlides.length) % currentSlides.length;
         updateFullscreenContent(currentIndex);
       });
 
-      // Next button
+      // Next button click
       $nextButton.on("click", function () {
         currentIndex = (currentIndex + 1) % currentSlides.length;
         updateFullscreenContent(currentIndex);
+      });
+
+      // **Swipe Support for Mobile**
+      let startX = 0;
+      let endX = 0;
+
+      $fullscreenContainer.on("touchstart", function (e) {
+        startX = e.originalEvent.touches[0].clientX;
+      });
+
+      $fullscreenContainer.on("touchmove", function (e) {
+        endX = e.originalEvent.touches[0].clientX;
+      });
+
+      $fullscreenContainer.on("touchend", function () {
+        let diff = startX - endX;
+
+        if (Math.abs(diff) > 50) { // Minimum swipe distance
+          if (diff > 0) {
+            // Swipe Left → Next Image
+            currentIndex = (currentIndex + 1) % currentSlides.length;
+          } else {
+            // Swipe Right → Previous Image
+            currentIndex =
+              (currentIndex - 1 + currentSlides.length) % currentSlides.length;
+          }
+          updateFullscreenContent(currentIndex);
+        }
       });
     }
 
@@ -602,6 +605,7 @@ function openFullscreen(index) {
     });
   }
 }
+
 
 function updateFullscreenContent(index) {
   let slide = $(currentSlides[index]); // Get new slide

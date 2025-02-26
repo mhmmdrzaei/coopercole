@@ -33,6 +33,12 @@
 
 }
 .r {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    overflow-y: scroll;
+    scroll-snap-type: y mandatory;
+    height: calc(100dvh - 53px); /* Full height of viewport */  
     article:nth-child(n+2) {
         border-top: .7px solid black;
     }
@@ -43,10 +49,16 @@
 //     }
   
 // .slide { display: none;}
-.exhibitionHome {
+.exhibitionHome a {
     position: relative;
     max-width: 100%;
     height: 100vh;
+    scroll-snap-align: start;
+    display: block;
+    align-items: center;
+    justify-content: center;
+    
+
 }
 .exhibitionHome figure {
     position: absolute;
@@ -209,6 +221,13 @@ body.exhibitions, body.page-id-84 {
 }
 
 @media (max-width: 850px) { 
+.r {
+    scroll-snap-type: none;
+    overflow-y: auto;
+    height: initial;
+
+
+}
     //exhibtion page general stylings:
 body.exhibitions, body.page-id-84 {
     header{
@@ -274,13 +293,13 @@ body.exhibitions, body.page-id-84 {
     .slide:nth-last-child(1) {
         border-bottom: none;
     }
-    .exhibitionHome {
-        height: inherit;
+    .exhibitionHome  {
+        height: initial;
         top: 0;
         padding-bottom: 20px;
     }
     .exhibitionHome a {
-
+        height: auto;
     display: flex;
     flex-flow: wrap;
 
@@ -377,6 +396,8 @@ body.exhibitions, body.page-id-84 {
     transform: inherit;
     border: none;
     display: block;
+    left: 0;
+    width: 100%;
     .date, .location {
         width: 100%;
         border: none;
