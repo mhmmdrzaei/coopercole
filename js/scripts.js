@@ -286,6 +286,7 @@ $(".closeInquiry").click(function(){
     if ($(window).width() < 850) {
       $("#gtranslate_selector").css("color", "black");
       $(".menu__hero").toggleClass("menuvisibleMobile");
+      4(".exhibitionDetailsHome").hide();
       // $('.artFairHome').css('background', 'black');
     }
     $(".hamburger-menu").toggleClass("animate");
@@ -341,40 +342,6 @@ $(".closeInquiry").click(function(){
   });
 });
 
-// var detailArtFairHeight = $('.exhibtionArtists').height();
-// $(window).scroll(function () {
-//   var y = $(this).scrollTop();
-//   var x = $(window).width();
-//   //scrolling fade in and out
-//   var height = $(".exhibitionMain").height();
-//   var detailHeights = $(".exhibitors").height();
-//   if (y > height - (detailHeights + 200)) {
-//     $(".outer").fadeOut();
-//     $(".exhibtionArtists").css({ position: "relative" });
-//     $(".exhibtionArtists").css({ bottom: "0" });
-//   } else if (y > height - 500) {
-//     $(".outer").fadeOut();
-//     $(".artFairTitle").css({ position: "relative" });
-//     $(".artFairArtists").css({ position: "relative" });
-//   } else if (y < 900) {
-//     $(".outer").fadeOut();
-//     $(".exhibtionArtists").css({ position: "relative" });
-//     $(".exhibtionArtists").css({ bottom: "0" });
-//     $(".artFairTitle").css({ position: "relative" });
-//     // $(".artFairDates").css({"position": "relative"});
-//     $(".artFairArtists").css({ position: "relative" });
-//   } else if (x > 700) {
-//     $(".outer").fadeIn();
-//     $(".exhibtionArtists").css({ position: "fixed" });
-//     $(".exhibtionArtists").css({ bottom: "50px" });
-
-//     $(".artFairTitle").css({ position: "fixed" });
-//     // $(".artFairDates").css({"position": "fixed"});
-//     $(".artFairArtists").css({ position: "fixed" });
-//   } else {
-//     $(".outer").fadeIn();
-//   }
-// });
 
 const buttonDown = document.getElementById("downClick");
 const buttonUp = document.getElementById("upClick");
