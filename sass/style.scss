@@ -572,7 +572,7 @@ article.exhibition:nth-last-child(2) {
 	width: 100%;
 }
 .scroll-left:nth-child(2) {
-	bottom: 24%
+	bottom: 9%
 }
 .scroll-left a {
 	position: absolute;
@@ -907,7 +907,7 @@ article.post:nth-child(1) {
 }
 
 .artists {
-	margin-top: 20px;
+	// margin-top: 20px;
 	
 	ul.artistsNames {
 		list-style: none;
@@ -1179,6 +1179,7 @@ h3#artworks {
 	}
 	.galleryContainer {
 			width: 59%;
+			align-self: center;
 	}
 }
 .wrap-video {
@@ -1296,14 +1297,16 @@ section.inquiry form input:nth-child(2).invalid {
 	to {opacity: 1}
 }
 .swiper {
-	max-width: 600px;
-	height: 600px;
+	max-width: 750px;
+	height: fit-content;
+	max-height: 600px;
 	.swiper-slide {
 		display: flex;
 		cursor: pointer;
+		align-self: center;
 	}
 	img,video {
-		max-height: 600px;
+		max-height: 600px !important;
 		width: auto;
 		margin: 0 auto;
 		align-self: center;
@@ -2095,6 +2098,7 @@ body.home {
 			margin: 20px 0px;
 			.artworkInfoTextFixed, .inquiry {
 				width: 100%;
+				max-width: 100%;
 			}
 			textarea {
 				width: 100%;

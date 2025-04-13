@@ -122,8 +122,16 @@
     border: 1px solid black;
     padding: 20px;
     max-width: 330px;
+    .otherinfo {
+        p {
+            margin-top: 0;
+            margin-bottom: 5px;
+            line-height: 1.5;
+        }
+    }
     h2 {
-        margin: 0;
+        margin-top: 0;
+        margin-bottom: 10px;
         // @extend .whiteText;
     }
 
@@ -307,11 +315,11 @@ body.exhibitions, body.page-id-84 {
     .exhibitionHome figure { 
         position: inherit;
         height: inherit;
+    
         width: calc(100% - 40px);
-        margin: 0 auto;
+        margin: 0 auto 1em;
         order: 2;
         img {
-            border: 1px solid black;
             height: auto;
             object-fit: initial;
         }
@@ -322,10 +330,14 @@ body.exhibitions, body.page-id-84 {
         
         margin: 0 auto;
         top: auto;
-        position: initial;
+        position: relative;
     }
     .exhibitionDetailsHome{
-        display: none;
+        max-width: 100%;
+        width: 100%;
+        height: 100%;
+        border: none;
+        top: 100%;
     }
     .exhibitionDetailsHomeMobile {
     position: inherit;

@@ -51,18 +51,32 @@
         <section class="exhibitionInfo">
             <h2 class="exhibitionTitle"><?php the_title(); ?></h2>
             <section class="otherinfo">
-                <?php
-                $start_date = get_field('start_date', false, false);
-                $start_date = new DateTime($start_date);
+            <?php
+              $start_date_raw = get_field('start_date', false, false);
+              $end_date_raw = get_field('end_date', false, false);
 
-                if( get_field('end_date') ) {
-                  $end_date = get_field('end_date', false, false);
-                  $end_date = new DateTime($end_date);
-                }
+              if ($start_date_raw) {
+                  $start_date = new DateTime($start_date_raw);
+                  $start_year = $start_date->format('Y');
+                  
+                  if ($end_date_raw) {
+                      $end_date = new DateTime($end_date_raw);
+                      $end_year = $end_date->format('Y');
+                      
+                      if ($start_year === $end_year) {
+                          // Same year: show start without year, end with year
+                          echo '<p>' . $start_date->format('F j') . ' – ' . $end_date->format('F j, Y') . '</p>';
+                      } else {
+                          // Different years: show both with full format
+                          echo '<p>' . $start_date->format('F j, Y') . ' – ' . $end_date->format('F j, Y') . '</p>';
+                      }
+                  } else {
+                      // Only start date
+                      echo '<p>' . $start_date->format('F j, Y') . '</p>';
+                  }
+              }
               ?>
 
-                <p><?php echo $start_date->format('F j'); if($end_date) { echo ' - '.$end_date->format('F j, Y'); } ?>
-              </p>
               <?php
                 $opening_closing_heading = get_field('opening__closing_heading');
                 $opening_closing_reception = get_field('opening__closing_reception');
