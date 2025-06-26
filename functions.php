@@ -677,7 +677,7 @@ function render_artworks_section($connected_type) {
                         <div class="artworkInfoTextFixed">
                             <h3 class="artworkInfoTitle"><?php echo $first_word; ?></h3>
                             <p>
-                                <?php echo get_field('title'); ?>,  <?php echo get_field('year'); ?>
+                                <?php echo get_field('title'); ?>, <?php echo get_field('year'); ?>
                             </p>
 
                             <?php if (get_field('media')) : ?>
@@ -716,35 +716,8 @@ function render_artworks_section($connected_type) {
                             <?php endif; ?>
                         </div>
                         <section class="inquiry">
-                            <?php
-
-									$inquiry_email  = '';
-									$inquiry_email .= '<p>Thanks for inquiring. We will be in touch shortly with more information.</p>';
-									$inquiry_email .= '<p>For a quicker response feel free to call us at +1.416.531.8000.</p>';
-									$inquiry_email .= get_the_post_thumbnail( $curr_id, 'medium' );
-									$inquiry_email .= '<p>';
-									$inquiry_email .= $artist_name.'<br/>';
-									$inquiry_email .= get_field('title', $curr_id).', '.get_field('year', $curr_id).'<br/>';
-									if(get_field('media', $curr_id)) {
-									$inquiry_email .= get_field('media', $curr_id).'<br/>';
-									}
-									if(
-									get_field('edition', $curr_id)) {$inquiry_email .= get_field('edition', $curr_id).'<br/>';
-									}
-									if( $height && $width) {
-									if($depth) {
-										$inquiry_email .= $height . '" X ' . $width .'" X ' . $depth.'"<br/>';
-										$inquiry_email .= 'cm X ' . $width_metric .'cm X ' . $depth_metric .'cm<br/>';
-									}
-									else {
-										$inquiry_email .= $height . '" X ' . $width . '"<br/>';
-										$inquiry_email .= $height_metric . 'cm X ' . $width_metric . 'cm<br/>';
-									}
-									}
-									$inquiry_email .= 'Website Link: <a href="'.get_permalink( $curr_id ).'">'.get_the_title($curr_id).'</a>';
-									$inquiry_email .= '</p>';
-
-									?>
+                            <!-- Mobile accordion toggle -->
+                            <button type="button" class="inquiry-toggle">+ Request Pricing Information</button>
 
                             <form id="submit-inquiry" class="inquireFormFull">
                                 <input type="text" name="name" placeholder="name">
@@ -757,7 +730,12 @@ function render_artworks_section($connected_type) {
                                 <input type="text" name="message" value="" style="display:none;">
                                 <input type="hidden" name="inquiry_message"
                                     value="<?php echo htmlspecialchars($inquiry_email); ?>" style="display:none;">
-                                <input class="inquireSubmit" type="submit" value="Request Pricing Information">
+
+                                <!-- Desktop submit -->
+                                <input class="inquireSubmit desktop" type="submit" value="Request Pricing Information">
+
+                                <!-- Mobile submit -->
+                                <input class="inquireSubmit mobile" type="submit" value="Submit Request">
                             </form>
                         </section>
                     </section>
@@ -767,8 +745,8 @@ function render_artworks_section($connected_type) {
                                 <?php if (have_rows('not_embedded_video')) :
 												while (have_rows('not_embedded_video')) : the_row(); ?>
                                 <div class="swiper-slide">
-									
-									<video controls>
+
+                                    <video controls>
                                         <source src="<?php the_sub_field('video_file'); ?>" type="video/mp4" controls
                                             controlsList="nodownload">
                                         Your browser does not support the video tag.
@@ -787,9 +765,9 @@ function render_artworks_section($connected_type) {
 													$gallery = get_field('gallery');
 													foreach ($gallery as $image) : ?>
                                 <div class="swiper-slide">
-								<div class="swiper-zoom-container">
-                                    <img class="" src="<?php echo $image['sizes']['large']; ?>" />
-								</div>
+                                    <div class="swiper-zoom-container">
+                                        <img class="" src="<?php echo $image['sizes']['large']; ?>" />
+                                    </div>
                                 </div>
                                 <?php endforeach;
 												else :

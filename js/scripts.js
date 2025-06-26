@@ -67,6 +67,7 @@
       $(".artworkItemEach.loadingNext").removeClass("loadingNext");
     }
   });
+  
 
   $(".artworkItemEach").click(function () {
     if ($(".artworkIteminfo").hasClass("open")) {
@@ -80,7 +81,18 @@
     const next = $(this).next();
     next.addClass("loadingNext");
   });
+ $(".inquiry-toggle").click(function(){
+    $(".inquireFormFull").toggle();    
+    // swap + / –
+    if ( $(".inquireFormFull").is(":visible") ) {
+      $(this).text("– Request Pricing Information");
+    } else {
+      $(this).text("+ Request Pricing Information");
+    }
+  });
 
+  
+  
   $(".previousItem").click(function () {
     if ($(".artworkIteminfo").hasClass("open")) {
       $(".artworkIteminfo").removeClass("open");
@@ -394,7 +406,7 @@ function applyDarkMode() {
   mode.innerHTML = "&#9788;";
   $("svg path, svg g path").css("fill", "white");
   $(
-    ".menu__nav, .artistNameExhibitionHome, .exhibitionDetailsHome,.exhibitionDateLocationHome, .artworkIteminfo, .home footer,.moreExhibits, .exhibitionHeader .artists, .exhibitionInfo, .imagesMenu,.pressRelease,.exhibitionInquiry,#newsContentID,.exhibitionYearsSide"
+    ".menu__nav, .artistNameExhibitionHome, .exhibitionDetailsHome,.exhibitionDateLocationHome, .artworkIteminfo, footer,.moreExhibits, .exhibitionHeader .artists, .exhibitionInfo, .imagesMenu,.pressRelease,.exhibitionInquiry,#newsContentID,.exhibitionYearsSide"
   ).css("background", "black");
   $(
     "form.searchForm input, .menu__nav, .artistNameExhibitionHome, .exhibitionDetailsHome,.exhibitionDateLocationHome, footer, .buttonOuter,.toggleText,.artworkIteminfo, video, img,.artFairEach, a:before,.inquireSubmit,.arrow:before,.newsRelatedExhibitions,.tagsInner a,.exhibitionHome,.moreExhibits,.copyrightcontainer,.copyright,.exhibitionHeader .artists, .exhibitionInfo, .imagesMenu,#newsContentID"
@@ -422,7 +434,7 @@ function applyLightMode() {
   mode.innerHTML = "&#9790;";
   $("svg path, svg g path").css("fill", "black");
   $(
-    ".menu__nav, .artistNameExhibitionHome, .exhibitionDetailsHome,.exhibitionDateLocationHome, .artworkIteminfo, .home footer,.moreExhibits,.downloadCV,.exhibitionHeader .artists, .exhibitionInfo, .imagesMenu,.pressRelease,#newsContentID,.exhibitionYearsSide"
+    ".menu__nav, .artistNameExhibitionHome, .exhibitionDetailsHome,.exhibitionDateLocationHome, .artworkIteminfo, footer,.moreExhibits,.downloadCV,.exhibitionHeader .artists, .exhibitionInfo, .imagesMenu,.pressRelease,#newsContentID,.exhibitionYearsSide"
   ).css("background", "white");
   $(
     "form.searchForm input, .menu__nav, .artistNameExhibitionHome, .exhibitionDetailsHome,.exhibitionDateLocationHome, footer, .buttonOuter,.toggleText,.artworkIteminfo, video, img,.artFairEach, a:before,.inquireSubmit,.newsRelatedExhibitions,.tagsInner a,.exhibitionHome,.moreExhibits, .copyrightcontainer,.copyright,.exhibitionHeader .artists, .exhibitionInfo, .imagesMenu,.pressRelease,#newsContentID"
@@ -709,4 +721,55 @@ $(".inquireSubmit").click(function (event) {
     .always(function () {
       console.log("complete");
     });
+});
+
+//artist page
+document.addEventListener('DOMContentLoaded', function(){
+  const bgEl     = document.querySelector('.artist-bg');
+  if (!bgEl) return;
+
+  const defaultBg = bgEl.style.backgroundImage;
+  const fadeTime  = 500; // in ms, match your CSS .5s
+  let swapTimer;
+
+  document.querySelectorAll('.artist-link[data-bg]').forEach(link => {
+    const imgURL = link.dataset.bg;
+
+    link.addEventListener('mouseenter', () => {
+      clearTimeout(swapTimer);
+      // 1) fade out to .3
+      bgEl.classList.remove('show');
+      // 2) after fadeTime, swap image & fade in
+      swapTimer = setTimeout(() => {
+        bgEl.style.backgroundImage = 'url(' + imgURL + ')';
+        bgEl.classList.add('show');
+      }, fadeTime);
+    });
+
+    link.addEventListener('mousemove', e => {
+      // only apply dynamic opacity if we're already showing this artist
+      if (!bgEl.classList.contains('show') ||
+          !bgEl.style.backgroundImage.includes(imgURL)) return;
+
+      const rect    = link.getBoundingClientRect();
+      const centerX = rect.left + rect.width / 2;
+      const dist    = Math.abs(e.clientX - centerX);
+      const ratio   = Math.max(0, 1 - dist / (rect.width / 2));
+      const dynamic = 0.3 + 0.7 * ratio;
+
+      // override CSS opacity
+      bgEl.style.opacity = dynamic;
+    });
+
+    link.addEventListener('mouseleave', () => {
+      clearTimeout(swapTimer);
+      // fade back to default image
+      bgEl.classList.remove('show');
+      swapTimer = setTimeout(() => {
+        bgEl.style.backgroundImage = defaultBg;
+      }, fadeTime);
+      // clear any inline opacity so CSS reverts to 0.3
+      bgEl.style.opacity = '';
+    });
+  });
 });
