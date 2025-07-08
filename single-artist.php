@@ -101,9 +101,45 @@
 				  </div>
 				   <?php wp_reset_postdata(); endif; ?>
 				</nav>
-		</section>
+				<button class="moreInfo">Request Available Artworks</button>
+
 		  <section class="artworksMainAritsts">
+		
 		  <?php render_artworks_section('art_to_artist'); ?>
+
+			 <section class="exhibitionInquiry">
+              <section class="closeInquiry">Close</section>
+              <p>
+				<?php 
+				echo 'To recieve information on artworks available by ' .get_the_title($curr_id). ', please provide your contact information.'
+				?></p>
+                <?php
+
+                  $inquiry_email  = '';
+                  $inquiry_email .= '<p>Thanks for inquiring about '.get_the_title($curr_id). '. We will be in touch shortly with more information.</p>';
+                  $inquiry_email .= '<p>For a quicker response feel free to call us at +1.416.531.8000.</p>';
+                  $inquiry_email .= get_the_post_thumbnail( $curr_id, 'medium' );
+                  $inquiry_email .= '<p>';
+                  $inquiry_email .= 'Artist: <a href="'.get_permalink( $curr_id ).'">'.get_the_title($curr_id).'</a>';
+                  $inquiry_email .= '</p>';
+
+                  ?>
+
+                <form id="submit-inquiry" class="inquireFormFull">
+                    <input type="text" name="name" placeholder="name">
+                    <input type="email" name="email" placeholder="email">
+                    <input type="text" name="phone" placeholder="phone">
+                    <input type="text" name="location" placeholder="location">
+                    <textarea name="note" placeholder="Additional Notes"></textarea>
+                    <input type="hidden" name="subject"
+                        value="Artist Inquiry: <?php echo get_the_title($curr_id); ?>">
+                    <input type="text" name="message" value="" style="display:none;">
+                    <input type="hidden" name="inquiry_message"
+                        value="<?php echo htmlspecialchars($inquiry_email); ?>" style="display:none;">
+                    <input class="inquireSubmit" type="submit" value="Request More Information">
+                </form>
+              </section>
+		</section>
 
 	</section>
 

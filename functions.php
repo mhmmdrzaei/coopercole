@@ -724,12 +724,13 @@ function render_artworks_section($connected_type) {
                                 <input type="email" name="email" placeholder="email">
                                 <input type="text" name="phone" placeholder="phone">
                                 <input type="text" name="location" placeholder="location">
+								<input type="hidden" name="id" value="<?php echo get_the_ID(); ?>">
                                 <textarea name="note" placeholder="Additional Notes"></textarea>
                                 <input type="hidden" name="subject"
                                     value="Website Inquiry: <?php echo get_the_title($curr_id); ?>">
                                 <input type="text" name="message" value="" style="display:none;">
-                                <input type="hidden" name="inquiry_message"
-                                    value="<?php echo htmlspecialchars($inquiry_email); ?>" style="display:none;">
+                                <input type="hidden" name="inquiry_message" value="Artwork Inquiry" style="display:none;">
+
 
                                 <!-- Desktop submit -->
                                 <input class="inquireSubmit desktop" type="submit" value="Request Pricing Information">
@@ -1117,6 +1118,8 @@ function inquire() {
 		echo get_field('inquiry_fail_response', 'options');
 		exit();
 	}
+	$artwork_id = isset($output['id']) ? intval($output['id']) : 0;
+
 
 	$subject = $output['subject'];
 	$name = $output['name'];
@@ -1135,7 +1138,19 @@ function inquire() {
 		$email
 	);
 
+
 	$message = $output['inquiry_message'];
+
+if ($message === 'Artwork Inquiry' && !empty($output['id'])) {
+  // This is a simple artwork form with just the placeholder value — build it
+  $artwork_id = intval($output['id']);
+  setup_postdata(get_post($artwork_id));
+
+  $message = '<p>Thanks for inquiring about <strong>' . get_the_title($artwork_id) . '</strong>.</p>';
+  $message .= get_the_post_thumbnail($artwork_id, 'medium');
+  $message .= '<p>We will be in touch shortly with more information. For a quicker response feel free to call us at +1.416.531.8000.</p>';
+  wp_reset_postdata();
+}
 
 	$message .= '<p>Contact Information<br/>';
 	$message .= 'Name: '.$name.'<br/>';
@@ -1164,6 +1179,8 @@ function inquire() {
 	// }
 
 	exit();
+	wp_reset_postdata();
+
 
 }
 add_action('wp_ajax_inquire', 'inquire');

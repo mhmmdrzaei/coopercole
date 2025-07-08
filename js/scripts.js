@@ -155,12 +155,25 @@ $(document).ready(function () {
   $(".bioOpen").click(function () {
     $(".artistbioContent").toggle(500);
     $(this).toggleClass("highlight");
+     $(".newsOpen").removeClass("highlight");
+     $(".exhibitionsOpen").removeClass("highlight");
+     $('#newsContentID').hide(200);
+     $('.exhibitionInquiry').hide(200);
+     $('#exhibitionContentID').hide(200);
   });
 
   $(".newsOpen").click(function () {
     // Close the other section
     $(".pressRelease").hide(200);
     $(".prToggle").removeClass("prToggleOpen");
+     $('.exhibitionInquiry').hide(200);
+     $('#exhibitionContentID').hide(200);
+     $('.bioOpen').removeClass('highlight');
+     $('.artistbioContent').hide(200);
+      $(".exhibitionsOpen").removeClass("highlight");
+
+     
+    
 
     // Toggle the current section
     $("#newsContentID").toggle(200);
@@ -184,6 +197,10 @@ $(".moreInfo").click(function (){
    $(".pressRelease").hide(200);
    $(".prToggle").removeClass("prToggleOpen");
    $(".newsOpen").removeClass("highlight");
+   $('.bioOpen').removeClass('highlight');
+   $('.artistbioContent').hide(200);
+    $(".exhibitionsOpen").removeClass("highlight");
+   $('#exhibitionContentID').hide(200);
 
 })
 $(".closeInquiry").click(function(){
@@ -194,6 +211,11 @@ $(".closeInquiry").click(function(){
   $(".exhibitionsOpen").click(function () {
     $("#exhibitionContentID").toggle(500);
     $(this).toggleClass("highlight");
+    $('.artistbioContent').hide(200);
+    $('#newsContentID').hide(200);
+    $('.exhibitionInquiry').hide(200);
+    $('.bioOpen').removeClass('highlight');
+     $(".newsOpen").removeClass("highlight");
   });
   $(".mailing-list-open, .mailing-list-img").click(function () {
     // $(".mailing-list").toggle(500);
