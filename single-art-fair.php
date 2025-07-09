@@ -112,7 +112,6 @@
                   <?php while( have_rows('video_additionalMediaContent') ): the_row(); 
                     $videoLink = get_sub_field('video_link_additionalMedia');
                     if( $videoLink ) {; ?>
-
                   <section class="featuredVideo">
                       <button class="featuredVideoTitle">
                           <img src="<?php bloginfo('template_directory'); ?>/images/movie_icon.svg">
@@ -122,12 +121,9 @@
                           <?php the_sub_field('video_link_additionalMedia'); ?>
                       </div>
                   </section>
-
                   <?php } ?>
                   <?php endwhile; ?>
                   <?php endif; ?>
-
-                  <!-- additional link -->
                   <?php elseif( get_row_layout() == 'add_link_additional' ): ?>
                   <?php if( have_rows('outwardLink_additionalMediaContent') ): ?>
                   <?php while( have_rows('outwardLink_additionalMediaContent') ): the_row(); 
@@ -141,7 +137,6 @@
                   <?php } ?>
                   <?php endwhile; ?>
                   <?php endif; ?>
-
                   <?php endif; ?>
                   <?php endwhile; ?>
                   <?php endif; ?>

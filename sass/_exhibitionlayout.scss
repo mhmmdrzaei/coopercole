@@ -2,6 +2,9 @@
     font-size: $sizeValue * 1px;
      font-size: calc($sizeValue/10) * 1rem;
 }
+.exhibitionMain {
+    min-height: calc(100dvh - 300px);
+}
 .secondaryButton {
     @include fontSize(8.5);
     font-weight: 700;
@@ -182,7 +185,7 @@
 }
 .exhibitionInquiry {
     display: none;
-    position: absolute;
+    position: fixed;
     background: white;
 
     max-width: 750px;

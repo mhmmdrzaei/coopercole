@@ -235,10 +235,11 @@ video {
     position: absolute;
     z-index: 3;
     background: white;
-    margin-top: 13px;
+    margin-top: 11px;
     padding: 30px 20px;
     width: fit-content;
     max-width: 1200px;
+    border: 1px solid;
 }
 .newsContent {
   list-style: none;

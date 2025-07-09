@@ -20,6 +20,10 @@ $page_bg = has_post_thumbnail($page_id)
   <?php endif; ?>
 ></div>
 
+
+
+
+
 <main class="artistsMainPage">
   <section class="artists">
     <ul class="artistsNames">

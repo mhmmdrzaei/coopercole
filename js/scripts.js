@@ -302,6 +302,7 @@ $(".closeInquiry").click(function(){
     if ($(".artworksMain").length) {
       $(".outerArtworks").css("display", "block");
     }
+    
   });
 
   // menu
@@ -428,7 +429,7 @@ function applyDarkMode() {
   mode.innerHTML = "&#9788;";
   $("svg path, svg g path").css("fill", "white");
   $(
-    ".menu__nav, .artistNameExhibitionHome, .exhibitionDetailsHome,.exhibitionDateLocationHome, .artworkIteminfo, footer,.moreExhibits, .exhibitionHeader .artists, .exhibitionInfo, .imagesMenu,.pressRelease,.exhibitionInquiry,#newsContentID,.exhibitionYearsSide"
+    ".menu__nav, .artistNameExhibitionHome, .exhibitionDetailsHome,.exhibitionDateLocationHome, .artworkIteminfo, footer,.moreExhibits, .exhibitionHeader .artists, .exhibitionInfo, .imagesMenu,.pressRelease,.exhibitionInquiry,#newsContentID,.exhibitionYearsSide, .artistbioContent, #exhibitionContentID"
   ).css("background", "black");
   $(
     "form.searchForm input, .menu__nav, .artistNameExhibitionHome, .exhibitionDetailsHome,.exhibitionDateLocationHome, footer, .buttonOuter,.toggleText,.artworkIteminfo, video, img,.artFairEach, a:before,.inquireSubmit,.arrow:before,.newsRelatedExhibitions,.tagsInner a,.exhibitionHome,.moreExhibits,.copyrightcontainer,.copyright,.exhibitionHeader .artists, .exhibitionInfo, .imagesMenu,#newsContentID"
@@ -456,7 +457,7 @@ function applyLightMode() {
   mode.innerHTML = "&#9790;";
   $("svg path, svg g path").css("fill", "black");
   $(
-    ".menu__nav, .artistNameExhibitionHome, .exhibitionDetailsHome,.exhibitionDateLocationHome, .artworkIteminfo, footer,.moreExhibits,.downloadCV,.exhibitionHeader .artists, .exhibitionInfo, .imagesMenu,.pressRelease,#newsContentID,.exhibitionYearsSide"
+    ".menu__nav, .artistNameExhibitionHome, .exhibitionDetailsHome,.exhibitionDateLocationHome, .artworkIteminfo, footer,.moreExhibits,.downloadCV,.exhibitionHeader .artists, .exhibitionInfo, .imagesMenu,.pressRelease,#newsContentID,.exhibitionYearsSide, .artistbioContent, #exhibitionContentID,.exhibitionInquiry"
   ).css("background", "white");
   $(
     "form.searchForm input, .menu__nav, .artistNameExhibitionHome, .exhibitionDetailsHome,.exhibitionDateLocationHome, footer, .buttonOuter,.toggleText,.artworkIteminfo, video, img,.artFairEach, a:before,.inquireSubmit,.newsRelatedExhibitions,.tagsInner a,.exhibitionHome,.moreExhibits, .copyrightcontainer,.copyright,.exhibitionHeader .artists, .exhibitionInfo, .imagesMenu,.pressRelease,#newsContentID"
