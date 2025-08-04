@@ -75,7 +75,7 @@ function scripts() {
     .pipe(concat('main.min.js'))
     .pipe(uglify())
     // .pipe(uglify({mangle: false}))
-      .pipe(gulp.dest('./dist'))
+      .pipe(gulp.dest('./js'))
     .pipe(reload({stream:true}));
 
      

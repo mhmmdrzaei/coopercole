@@ -1,4 +1,5 @@
 (function ($) {
+  
   // END OF MAP //
   // Check if the screen width is greater than 800px
   if ($(window).width() > 800) {
@@ -415,81 +416,93 @@ $(".closeBox").click(function () {
 });
 
 //  dark mode take 2
-let darkModeOn = localStorage.getItem("darkMode") === "enabled";
-let btnDarkMode = document.querySelector(".btn-dark-mode");
-let mode = document.querySelector(".mode");
-let slider = document.querySelector(".slider");
+document.addEventListener("DOMContentLoaded", function() {
+  // 1) Cache your elements once the DOM is loaded
+  const btnDarkMode = document.querySelector(".btn-dark-mode");
+  const mode        = document.querySelector(".mode");
+  const slider      = document.querySelector(".slider");
 
-function applyDarkMode() {
-  document.body.style.cssText =
-    "background-color:#000000; color: #FFFFFF; transition: 1s;";
-  btnDarkMode.style.cssText =
-    "background-color: #fff; justify-content: flex-end; transition: 1s;";
-  slider.style.cssText = "background-color: #000;";
-  mode.innerHTML = "&#9788;";
-  $("svg path, svg g path").css("fill", "white");
-  $(
-    ".menu__nav, .artistNameExhibitionHome, .exhibitionDetailsHome,.exhibitionDateLocationHome, .artworkIteminfo, footer,.moreExhibits, .exhibitionHeader .artists, .exhibitionInfo, .imagesMenu,.pressRelease,.exhibitionInquiry,#newsContentID,.exhibitionYearsSide, .artistbioContent, #exhibitionContentID"
-  ).css("background", "black");
-  $(
-    "form.searchForm input, .menu__nav, .artistNameExhibitionHome, .exhibitionDetailsHome,.exhibitionDateLocationHome, footer, .buttonOuter,.toggleText,.artworkIteminfo, video, img,.artFairEach, a:before,.inquireSubmit,.arrow:before,.newsRelatedExhibitions,.tagsInner a,.exhibitionHome,.moreExhibits,.copyrightcontainer,.copyright,.exhibitionHeader .artists, .exhibitionInfo, .imagesMenu,#newsContentID"
-  ).css("border-color", "white");
+  // 2) Read the saved state (default to light mode)
+  let darkModeOn = localStorage.getItem("darkMode") === "enabled";
 
-  $(
-    ".exhibitionDateLocationHome, a, .open,.exhibitionsOpen,.newsOpen,.bioOpen,#downClick, #upClick,.btn-info,.location,.date,.menu__nav li a,.artistsNames li a,.cli-plugin-main-butto,.description h2 a,.newsTitle a,.newsReadMore,.nextItem,.previousItem,.featuredVideoTitle,.ab-item,.read-more-btn,.pageNav a, .pageNav span,.artistNameExhibition .nonRepArtists li,.artFairExhibitors .nonRepArtists li,.gt_selector,.prToggle "
-  ).css("color", "white");
-  $(
-    ".infoAnimated,.mailing-list-open,.bookAnAppointment a,.menu-instagram a,.downloadCV,.moreInfo "
-  ).css("color", "black");
-  $(
-    ".infoAnimated,.mailing-list-open,.bookAnAppointment, .menu-instagram a,.downloadCV,.moreInfo"
-  ).css("background", "white");
-  localStorage.setItem("darkMode", "enabled");
-  darkModeOn = true;
-}
+  // 3) Define dark-mode styles
+  function applyDarkMode() {
+    document.body.style.cssText =
+      "background-color: #000000; color: #FFFFFF; transition: 1s;";
+    btnDarkMode.style.cssText =
+      "background-color: #fff; justify-content: flex-end; transition: 1s;";
+    slider.style.cssText = "background-color: #000;";
+    mode.innerHTML       = "&#9788;"; // ☀︎
 
-function applyLightMode() {
-  document.body.style.cssText =
-    "background-color:#FFFFFF; color: #000000;  transition: 1s;";
-  btnDarkMode.style.cssText =
-    "background-color: #000; justify-content: flex-start; transition: 1s;";
-  slider.style.cssText = "background-color: #FFFFFF;";
-  mode.innerHTML = "&#9790;";
-  $("svg path, svg g path").css("fill", "black");
-  $(
-    ".menu__nav, .artistNameExhibitionHome, .exhibitionDetailsHome,.exhibitionDateLocationHome, .artworkIteminfo, footer,.moreExhibits,.downloadCV,.exhibitionHeader .artists, .exhibitionInfo, .imagesMenu,.pressRelease,#newsContentID,.exhibitionYearsSide, .artistbioContent, #exhibitionContentID,.exhibitionInquiry"
-  ).css("background", "white");
-  $(
-    "form.searchForm input, .menu__nav, .artistNameExhibitionHome, .exhibitionDetailsHome,.exhibitionDateLocationHome, footer, .buttonOuter,.toggleText,.artworkIteminfo, video, img,.artFairEach, a:before,.inquireSubmit,.newsRelatedExhibitions,.tagsInner a,.exhibitionHome,.moreExhibits, .copyrightcontainer,.copyright,.exhibitionHeader .artists, .exhibitionInfo, .imagesMenu,.pressRelease,#newsContentID"
-  ).css("border-color", "black");
-  $(".tags a,.tagsInner a").hover(function (e) {
-    $(this).css("color", e.type === "mouseenter" ? "white" : "black");
-  });
+    // jQuery tweaks for dark mode
+    $("svg path, svg g path").css("fill", "white");
+    $(
+      ".menu__nav, .artistNameExhibitionHome, .exhibitionDetailsHome, .exhibitionDateLocationHome, .artworkIteminfo, footer, .moreExhibits, .exhibitionHeader .artists, .exhibitionInfo, .imagesMenu, .pressRelease, .exhibitionInquiry, #newsContentID, .exhibitionYearsSide, .artistbioContent, #exhibitionContentID"
+    ).css("background", "black");
+    $(
+      "form.searchForm input, .menu__nav, .artistNameExhibitionHome, .exhibitionDetailsHome, .exhibitionDateLocationHome, footer, .buttonOuter, .toggleText, .artworkIteminfo, video, img, .artFairEach, a:before, .inquireSubmit, .arrow:before, .newsRelatedExhibitions, .tagsInner a, .exhibitionHome, .moreExhibits, .copyrightcontainer, .copyright, .exhibitionHeader .artists, .exhibitionInfo, .imagesMenu, #newsContentID, .pageShop .cartTitle, .pageShop .shopTitle, .pageShop .type-product, .related .type-product, .productContainer .woocommerce, .related"
+    ).css("border-color", "white");
+    $(
+      ".exhibitionDateLocationHome, a, .open, .exhibitionsOpen, .newsOpen, .bioOpen, #downClick, #upClick, .btn-info, .location, .date, .menu__nav li a, .artistsNames li a, .cli-plugin-main-butto, .description h2 a, .newsTitle a, .newsReadMore, .nextItem, .previousItem, .featuredVideoTitle, .ab-item, .read-more-btn, .pageNav a, .pageNav span, .artistNameExhibition .nonRepArtists li, .artFairExhibitors .nonRepArtists li, .gt_selector, .prToggle"
+    ).css("color", "white");
+    $(
+      ".infoAnimated, .mailing-list-open, .bookAnAppointment a, .menu-instagram a, .downloadCV, .moreInfo"
+    ).css("color", "black");
+    $(
+      ".infoAnimated, .mailing-list-open, .bookAnAppointment, .menu-instagram a, .downloadCV, .moreInfo"
+    ).css("background", "white");
 
-  $(
-    ".exhibitionDateLocationHome, a, .open,.exhibitionsOpen,.newsOpen,.bioOpen,#downClick, #upClick,.btn-info,.location,.date, .mobileSocialVisIG,.featuredVideoTitle,.read-more-btn,.artFairArtists .nonRepArtists li, .gt_selector"
-  ).css("color", "black");
-  $(
-    ".infoAnimated,.arrow,.bookAnAppointment a,.mailing-list-open,.wt-cli-accept-btn,.menu__nav li a,.artistsNames li a,.cli-plugin-main-butto,.description h2 a,.newsTitle a,.newsReadMore,.artistNameExhibition .nonRepArtists li,.nextItem,.previousItem,.ab-item,.pageNav a, .pageNav span,.menu-instagram a"
-  ).css("color", "white");
-  $(
-    ".infoAnimated,.mailing-list-open, .bookAnAppointment, .menu-instagram a"
-  ).css("background", "black");
-  localStorage.setItem("darkMode", "disabled");
-  darkModeOn = false;
-}
+    localStorage.setItem("darkMode", "enabled");
+    darkModeOn = true;
+  }
 
-function toggleDarkMode() {
-  darkModeOn ? applyLightMode() : applyDarkMode();
-}
+  // 4) Define light-mode styles
+  function applyLightMode() {
+    document.body.style.cssText =
+      "background-color: #FFFFFF; color: #000000; transition: 1s;";
+    btnDarkMode.style.cssText =
+      "background-color: #000; justify-content: flex-start; transition: 1s;";
+    slider.style.cssText = "background-color: #FFFFFF;";
+    mode.innerHTML       = "&#9790;"; // ☾
 
-document.addEventListener("DOMContentLoaded", function () {
-  // Initialize dark mode state from localStorage
+    // jQuery tweaks for light mode
+    $("svg path, svg g path").css("fill", "black");
+    $(
+      ".menu__nav, .artistNameExhibitionHome, .exhibitionDetailsHome, .exhibitionDateLocationHome, .artworkIteminfo, footer, .moreExhibits, .downloadCV, .exhibitionHeader .artists, .exhibitionInfo, .imagesMenu, .pressRelease, #newsContentID, .exhibitionYearsSide, .artistbioContent, #exhibitionContentID, .exhibitionInquiry"
+    ).css("background", "white");
+    $(
+      "form.searchForm input, .menu__nav, .artistNameExhibitionHome, .exhibitionDetailsHome, .exhibitionDateLocationHome, footer, .buttonOuter, .toggleText, .artworkIteminfo, video, img, .artFairEach, a:before, .inquireSubmit, .newsRelatedExhibitions, .tagsInner a, .exhibitionHome, .moreExhibits, .copyrightcontainer, .copyright, .exhibitionHeader .artists, .exhibitionInfo, .imagesMenu, .pressRelease, #newsContentID, .productContainer .woocommerce, .related"
+    ).css("border-color", "black");
+    $(".tags a, .tagsInner a").hover(function(e) {
+      $(this).css("color", e.type === "mouseenter" ? "white" : "black");
+    });
+    $(
+      ".exhibitionDateLocationHome, a, .open, .exhibitionsOpen, .newsOpen, .bioOpen, #downClick, #upClick, .btn-info, .location, .date, .mobileSocialVisIG, .featuredVideoTitle, .read-more-btn, .artFairArtists .nonRepArtists li, .gt_selector"
+    ).css("color", "black");
+    $(
+      ".infoAnimated, .arrow, .bookAnAppointment a, .mailing-list-open, .wt-cli-accept-btn, .menu__nav li a, .artistsNames li a, .cli-plugin-main-butto, .description h2 a, .newsTitle a, .newsReadMore, .artistNameExhibition .nonRepArtists li, .nextItem, .previousItem, .ab-item, .pageNav a, .pageNav span, .menu-instagram a"
+    ).css("color", "white");
+    $(
+      ".infoAnimated, .mailing-list-open, .bookAnAppointment, .menu-instagram a"
+    ).css("background", "black");
+
+    localStorage.setItem("darkMode", "disabled");
+    darkModeOn = false;
+  }
+
+  // 5) Toggle helper
+  function toggleDarkMode() {
+    darkModeOn ? applyLightMode() : applyDarkMode();
+  }
+
+  // 6) Initialize on page load
   darkModeOn ? applyDarkMode() : applyLightMode();
 
-  let btnDarkMode = document.querySelector(".btn-dark-mode");
+  // 7) Wire up the button
   btnDarkMode.addEventListener("click", toggleDarkMode);
 });
+
+
 
 // sticky menu
 
