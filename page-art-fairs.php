@@ -1,3 +1,4 @@
+<?php //template name: Art Fairs ?>
 <button id="myBtn" title="Go to top">&#x2963;</button>
 
 <?php get_header(); ?>

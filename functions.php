@@ -54,6 +54,19 @@ function cooper_styles(){
 
 add_action( 'wp_enqueue_scripts', 'cooper_styles');
 
+
+add_filter( 'wp_get_attachment_url', 'use_live_site_for_images' );
+
+function use_live_site_for_images( $url ) {
+    $live_domain = 'https://www.coopercolegallery.com'; // replace with your real live domain
+    $local_domain = 'http://localhost:8888/cooperColeNew';
+
+    return str_replace( $local_domain . '/wp-content/uploads', $live_domain . '/wp-content/uploads', $url );
+}
+
+
+
+
 // function wpb_add_google_fonts() {
  
 // wp_enqueue_style( 'wpb-google-fonts', 'https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap', false ); 
@@ -217,11 +230,11 @@ add_action( 'widgets_init', 'hackeryou_widgets_init' );
 /**
  * Removes the default styles that are packaged with the Recent Comments widget.
  */
-function hackeryou_remove_recent_comments_style() {
-	global $wp_widget_factory;
-	remove_action( 'wp_head', array( $wp_widget_factory->widgets['WP_Widget_Recent_Comments'], 'recent_comments_style' ) );
-}
-add_action( 'widgets_init', 'hackeryou_remove_recent_comments_style' );
+// function hackeryou_remove_recent_comments_style() {
+// 	global $wp_widget_factory;
+// 	remove_action( 'wp_head', array( $wp_widget_factory->widgets['WP_Widget_Recent_Comments'], 'recent_comments_style' ) );
+// }
+// add_action( 'widgets_init', 'hackeryou_remove_recent_comments_style' );
 
 
 if ( ! function_exists( 'hackeryou_posted_on' ) ) :
@@ -1186,6 +1199,8 @@ if ($message === 'Artwork Inquiry' && !empty($output['id'])) {
 add_action('wp_ajax_inquire', 'inquire');
 add_action('wp_ajax_nopriv_inquire', 'inquire');
 
+
+
 //catagory by year
 
 /**
@@ -1278,3 +1293,4 @@ function wp_custom_archive($args = '') {
     else
         return $output;
 }
+

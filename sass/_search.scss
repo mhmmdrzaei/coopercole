@@ -24,30 +24,24 @@ input.searchSubmit{
 }
 input#s{
 	background: transparent;
-	border-radius: 0;
 }
 
 //no results 
 .noResults {
 	width: 95;
-	margin: 0 auto;
-	// padding-bottom: 60px;
-
-	position: relative;
-	left: -3%;
+	margin: 15% auto;
 	figure {
-
-		// width: 50%;
-		max-width: 150px;
-		margin: 40px auto;
+		width: 50%;
+		max-width: 250px;
+		margin: 0 auto;
 	}
-
+	img {
+		
+	}
 	h2 {
 		@extend .whiteText;
 		text-align: center;
 		text-transform: uppercase;
-				width: 80%;
-				margin: 20px auto 0;
 	}
 }
 
@@ -66,8 +60,4 @@ input#s{
 		border-bottom: 1px solid black;
 		border-top: 0 !important;
 	}
-	article::nth-child(last) {
-	border-bottom: none;
 }
-}
-
