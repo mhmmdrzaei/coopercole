@@ -376,6 +376,29 @@ $(".closeInquiry").click(function(){
       );
     } // End if
   });
+
+ function adjustFooter() {
+    const bodyH = $('body').prop('scrollHeight'); // total body height
+    const winH  = $(window).height();             // viewport height
+    const $foot = $('footer');                    // your footer selector
+
+    if (bodyH < winH) {
+      $foot.css({
+        position: 'fixed',
+      });
+    } else {
+      $foot.css({
+        position: '',
+        bottom:   '',
+        left:     '',
+        width:    ''
+      });
+    }
+  }
+    adjustFooter();
+  // …and every time the window resizes
+  $(window).on('resize', adjustFooter);
+
 });
 
 
@@ -440,13 +463,13 @@ document.addEventListener("DOMContentLoaded", function() {
       ".menu__nav, .artistNameExhibitionHome, .exhibitionDetailsHome, .exhibitionDateLocationHome, .artworkIteminfo, footer, .moreExhibits, .exhibitionHeader .artists, .exhibitionInfo, .imagesMenu, .pressRelease, .exhibitionInquiry, #newsContentID, .exhibitionYearsSide, .artistbioContent, #exhibitionContentID"
     ).css("background", "black");
     $(
-      "form.searchForm input, .menu__nav, .artistNameExhibitionHome, .exhibitionDetailsHome, .exhibitionDateLocationHome, footer, .buttonOuter, .toggleText, .artworkIteminfo, video, img, .artFairEach, a:before, .inquireSubmit, .arrow:before, .newsRelatedExhibitions, .tagsInner a, .exhibitionHome, .moreExhibits, .copyrightcontainer, .copyright, .exhibitionHeader .artists, .exhibitionInfo, .imagesMenu, #newsContentID, .pageShop .cartTitle, .pageShop .shopTitle, .pageShop .type-product, .related .type-product, .productContainer .woocommerce, .related"
+      "form.searchForm input, .menu__nav, .artistNameExhibitionHome, .exhibitionDetailsHome, .exhibitionDateLocationHome, footer, .buttonOuter, .toggleText, .artworkIteminfo, video, img, .artFairEach, a:before, .inquireSubmit, .arrow:before, .newsRelatedExhibitions, .tagsInner a, .exhibitionHome, .moreExhibits, .copyrightcontainer, .copyright, .exhibitionHeader .artists, .exhibitionInfo, .imagesMenu, #newsContentID, .pageShop .cartTitle, .pageShop .pageTop, .pageShop .type-product, .related .type-product, .productContainer .woocommerce, .related"
     ).css("border-color", "white");
     $(
-      ".exhibitionDateLocationHome, a, .open, .exhibitionsOpen, .newsOpen, .bioOpen, #downClick, #upClick, .btn-info, .location, .date, .menu__nav li a, .artistsNames li a, .cli-plugin-main-butto, .description h2 a, .newsTitle a, .newsReadMore, .nextItem, .previousItem, .featuredVideoTitle, .ab-item, .read-more-btn, .pageNav a, .pageNav span, .artistNameExhibition .nonRepArtists li, .artFairExhibitors .nonRepArtists li, .gt_selector, .prToggle"
+      "bdi, .woocommerce-loop-product__title, .exhibitionDateLocationHome, a, .open, .exhibitionsOpen, .newsOpen, .bioOpen, #downClick, #upClick, .btn-info, .location, .date, .menu__nav li a, .artistsNames li a, .cli-plugin-main-butto, .description h2 a, .newsTitle a, .newsReadMore, .nextItem, .previousItem, .featuredVideoTitle, .ab-item, .read-more-btn, .pageNav a, .pageNav span, .artistNameExhibition .nonRepArtists li, .artFairExhibitors .nonRepArtists li, .gt_selector, .prToggle"
     ).css("color", "white");
     $(
-      ".infoAnimated, .mailing-list-open, .bookAnAppointment a, .menu-instagram a, .downloadCV, .moreInfo"
+      ".price, .infoAnimated, .mailing-list-open, .bookAnAppointment a, .menu-instagram a, .downloadCV, .moreInfo"
     ).css("color", "black");
     $(
       ".infoAnimated, .mailing-list-open, .bookAnAppointment, .menu-instagram a, .downloadCV, .moreInfo"
@@ -471,13 +494,13 @@ document.addEventListener("DOMContentLoaded", function() {
       ".menu__nav, .artistNameExhibitionHome, .exhibitionDetailsHome, .exhibitionDateLocationHome, .artworkIteminfo, footer, .moreExhibits, .downloadCV, .exhibitionHeader .artists, .exhibitionInfo, .imagesMenu, .pressRelease, #newsContentID, .exhibitionYearsSide, .artistbioContent, #exhibitionContentID, .exhibitionInquiry"
     ).css("background", "white");
     $(
-      "form.searchForm input, .menu__nav, .artistNameExhibitionHome, .exhibitionDetailsHome, .exhibitionDateLocationHome, footer, .buttonOuter, .toggleText, .artworkIteminfo, video, img, .artFairEach, a:before, .inquireSubmit, .newsRelatedExhibitions, .tagsInner a, .exhibitionHome, .moreExhibits, .copyrightcontainer, .copyright, .exhibitionHeader .artists, .exhibitionInfo, .imagesMenu, .pressRelease, #newsContentID, .productContainer .woocommerce, .related"
+      "form.searchForm input, .menu__nav, .artistNameExhibitionHome, .exhibitionDetailsHome, .exhibitionDateLocationHome, footer, .buttonOuter, .toggleText, .artworkIteminfo, video, img, .artFairEach, a:before, .inquireSubmit, .newsRelatedExhibitions, .tagsInner a, .exhibitionHome, .moreExhibits, .copyrightcontainer, .copyright, .exhibitionHeader .artists, .exhibitionInfo, .imagesMenu, .pressRelease, #newsContentID, .type-product, .productContainer .woocommerce, .related,.pageTop"
     ).css("border-color", "black");
     $(".tags a, .tagsInner a").hover(function(e) {
       $(this).css("color", e.type === "mouseenter" ? "white" : "black");
     });
     $(
-      ".exhibitionDateLocationHome, a, .open, .exhibitionsOpen, .newsOpen, .bioOpen, #downClick, #upClick, .btn-info, .location, .date, .mobileSocialVisIG, .featuredVideoTitle, .read-more-btn, .artFairArtists .nonRepArtists li, .gt_selector"
+      "bdi, .woocommerce-loop-product__title, .exhibitionDateLocationHome, a, .open, .exhibitionsOpen, .newsOpen, .bioOpen, #downClick, #upClick, .btn-info, .location, .date, .mobileSocialVisIG, .featuredVideoTitle, .read-more-btn, .artFairArtists .nonRepArtists li, .gt_selector"
     ).css("color", "black");
     $(
       ".infoAnimated, .arrow, .bookAnAppointment a, .mailing-list-open, .wt-cli-accept-btn, .menu__nav li a, .artistsNames li a, .cli-plugin-main-butto, .description h2 a, .newsTitle a, .newsReadMore, .artistNameExhibition .nonRepArtists li, .nextItem, .previousItem, .ab-item, .pageNav a, .pageNav span, .menu-instagram a"

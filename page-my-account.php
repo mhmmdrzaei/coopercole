@@ -5,7 +5,7 @@
     <section class="pageTop">
           		<h1 class="shopTitle"><?php the_title(); ?></h1>
               <div class="controls">
-                <a href="/my-account">My Account</a>
+              <a class="cart-customlocation" href="<?php echo wc_get_cart_url(); ?>" title="<?php _e( 'View your shopping cart' ); ?>">Cart ( <?php echo WC()->cart->get_cart_contents_count() ?> Items) </a>
 
               </div>
 
