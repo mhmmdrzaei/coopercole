@@ -792,10 +792,11 @@ function render_artworks_section($connected_type) {
                             </div>
                             <div class="swiper-pagination"></div>
 
-                            <!-- If we need navigation buttons -->
+                            
+                        </div>
+						<!-- If we need navigation buttons -->
                             <div class="swiper-button-prev"></div>
                             <div class="swiper-button-next"></div>
-                        </div>
                     </div>
                 </section>
             </section>
@@ -1155,15 +1156,44 @@ function inquire() {
 	$message = $output['inquiry_message'];
 
 if ($message === 'Artwork Inquiry' && !empty($output['id'])) {
-  // This is a simple artwork form with just the placeholder value — build it
-  $artwork_id = intval($output['id']);
-  setup_postdata(get_post($artwork_id));
 
-  $message = '<p>Thanks for inquiring about <strong>' . get_the_title($artwork_id) . '</strong>.</p>';
-  $message .= get_the_post_thumbnail($artwork_id, 'medium');
-  $message .= '<p>We will be in touch shortly with more information. For a quicker response feel free to call us at +1.416.531.8000.</p>';
-  wp_reset_postdata();
+    $artwork_id = intval($output['id']);
+    setup_postdata(get_post($artwork_id));
+
+    $message  = '<p>Thanks for inquiring about <strong>' . get_the_title($artwork_id) . '</strong>.</p>';
+    $message .= '<p>Here are the details of the artwork you inquired about:</p>';
+
+    // Start details block
+    $message .= '<p>';
+
+    if ($title = get_field('title', $artwork_id)) {
+        $message .= $title;
+    }
+
+    if ($year = get_field('year', $artwork_id)) {
+        $message .= '<br/>' . $year . '<br/>';
+    }
+
+    if ($inventory = get_field('inventory', $artwork_id)) {
+        $message .= $inventory . '<br/>';
+    }
+
+    if ($notes = get_field('notes', $artwork_id)) {
+        $message .= $notes . '<br/>';
+    }
+
+    $message .= '</p>';
+
+    // Thumbnail
+    if (has_post_thumbnail($artwork_id)) {
+        $message .= get_the_post_thumbnail($artwork_id, 'medium');
+    }
+
+    $message .= '<p>We will be in touch shortly with more information. For a quicker response feel free to call us at +1.416.531.8000.</p>';
+
+    wp_reset_postdata();
 }
+
 
 	$message .= '<p>Contact Information<br/>';
 	$message .= 'Name: '.$name.'<br/>';

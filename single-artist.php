@@ -116,7 +116,7 @@
                 <?php
 
                   $inquiry_email  = '';
-                  $inquiry_email .= '<p>Thanks for inquiring about '.get_the_title($curr_id). '. We will be in touch shortly with more information.</p>';
+                  $inquiry_email .= '<p>Thanks for inquiring about the available artworks by '.get_the_title($curr_id). '. We will be in touch shortly with more information.</p>';
                   $inquiry_email .= '<p>For a quicker response feel free to call us at +1.416.531.8000.</p>';
                   $inquiry_email .= get_the_post_thumbnail( $curr_id, 'medium' );
                   $inquiry_email .= '<p>';

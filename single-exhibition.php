@@ -180,7 +180,7 @@
                 <?php
 
                   $inquiry_email  = '';
-                  $inquiry_email .= '<p>Thanks for inquiring about '.get_the_title($curr_id). '. We will be in touch shortly with more information.</p>';
+                  $inquiry_email .= '<p>Thanks for inquiring about the exhibition '.get_the_title($curr_id). '. We will be in touch shortly with more information about available artworks.</p>';
                   $inquiry_email .= '<p>For a quicker response feel free to call us at +1.416.531.8000.</p>';
                   $inquiry_email .= get_the_post_thumbnail( $curr_id, 'medium' );
                   $inquiry_email .= '<p>';
@@ -196,7 +196,7 @@
                     <input type="text" name="location" placeholder="location">
                     <textarea name="note" placeholder="Additional Notes"></textarea>
                     <input type="hidden" name="subject"
-                        value="Website Exhibition Inquiry: <?php echo get_the_title($curr_id); ?>">
+                        value="Exhibition Inquiry: <?php echo get_the_title($curr_id); ?>">
                     <input type="text" name="message" value="" style="display:none;">
                     <input type="hidden" name="inquiry_message"
                         value="<?php echo htmlspecialchars($inquiry_email); ?>" style="display:none;">

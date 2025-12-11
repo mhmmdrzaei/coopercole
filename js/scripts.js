@@ -322,7 +322,7 @@ $(".closeInquiry").click(function(){
     if ($(window).width() < 850) {
       $("#gtranslate_selector").css("color", "black");
       $(".menu__hero").toggleClass("menuvisibleMobile");
-      4(".exhibitionDetailsHome").hide();
+      $(".exhibitionDetailsHome").hide();
       // $('.artFairHome').css('background', 'black');
     }
     $(".hamburger-menu").toggleClass("animate");

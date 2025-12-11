@@ -148,6 +148,23 @@
 
                   $inquiry_email  = '';
                   $inquiry_email .= '<p>Thanks for inquiring about '.get_the_title($curr_id). '. We will be in touch shortly with more information.</p>';
+                  $inquiry_email .= get_the_post_thumbnail( $curr_id, 'medium' );
+                  $inquiry_email .= '<p> Art fair Details:</p>';
+                  $inquiry_email .= '<ul>';
+                  $inquiry_email .= '<li><strong> '.get_the_title($curr_id).'</strong></li>';
+                  $inquiry_email .= '<li><strong>Date:</strong> ';
+                  $start_date = get_field('start_date', false, false);
+                  $start_date = new DateTime($start_date);
+                  $end_date = get_field('end_date', false, false);
+                  if( $end_date ) {
+                      $end_date = new DateTime($end_date);
+                      $inquiry_email .= $start_date->format('F j, Y').' - '.$end_date->format('F j, Y');
+                  } else {
+                      $inquiry_email .= $start_date->format('F j, Y');
+                  }
+                  $inquiry_email .= '</li>';
+                  $inquiry_email .= '<li><strong>Location:</strong> '.get_field('location').'</li>';
+                  $inquiry_email .= '</ul>';  
                   $inquiry_email .= '<p>For a quicker response feel free to call us at +1.416.531.8000.</p>';
                   $inquiry_email .= '<p>';
                   $inquiry_email .= 'Art Fair: <a href="'.get_permalink( $curr_id ).'">'.get_the_title($curr_id).'</a>';
@@ -162,7 +179,7 @@
                     <input type="text" name="location" placeholder="location">
                     <textarea name="note" placeholder="Additional Notes"></textarea>
                     <input type="hidden" name="subject"
-                        value="Website Exhibition Inquiry: <?php echo get_the_title($curr_id); ?>">
+                        value="Art Fair Inquiry: <?php echo get_the_title($curr_id); ?>">
                     <input type="text" name="message" value="" style="display:none;">
                     <input type="hidden" name="inquiry_message"
                         value="<?php echo htmlspecialchars($inquiry_email); ?>" style="display:none;">
