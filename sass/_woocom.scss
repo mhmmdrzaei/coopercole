@@ -4,6 +4,9 @@
 }
 .pageShop,
 .related {
+  ul {
+    width: 100%;
+  }
   .type-product {
     // background: white;
     border: 1px solid black;
@@ -208,6 +211,15 @@
   background-color: white !important;
   border-bottom: 1px solid black;
 }
+.woocommerce div.product .woocommerce-tabs {
+float: right;
+    width: 48%;
+    clear: none !important;
+    @media (max-width: 768px) {
+      width: 100%;
+      float: none;
+    }
+}
 
 .woocommerce-MyAccount-navigation {
     ul {
@@ -223,4 +235,13 @@
   .woocommerce ul.products[class*=columns-] li.product, .woocommerce-page ul.products[class*=columns-] li.product {
     width: 100% !important;
   }
+}
+
+.flex-product-type {
+  display: flex; 
+  justify-content: center;
+  flex-flow: wrap;
+ .woocommerce-tabs {
+  width: 100% !important;
+ }
 }

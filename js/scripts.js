@@ -525,7 +525,12 @@ document.addEventListener("DOMContentLoaded", function() {
   btnDarkMode.addEventListener("click", toggleDarkMode);
 });
 
-
+// woocom 
+$('.product-type-simple').each(function () {
+    if ($(this).find('.related').length === 0) {
+      $(this).addClass('flex-product-type');
+    }
+  });
 
 // sticky menu
 
