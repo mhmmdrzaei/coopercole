@@ -1042,7 +1042,20 @@ main.contactMain {
     justify-content: space-between;
     .paragraphHalf {
       width: 43%;
-      margin-right: 15px;
+      margin-right: 20px;
+      margin-bottom: 30px;
+      
+     
+    }
+    .paragraphHalf:nth-child(1) {
+      border-right: 1px solid;
+      width: 60%;
+      padding-right: 30px;
+    }
+    .paragraphHalf:nth-child(2) {
+      width: 32%;
+      margin-left: 20px
+      // text-align: center;
     }
   }
 
@@ -2253,10 +2266,13 @@ body.home {
       }
     }
   }
-  main.contactMain .galleryAdditionalInfo .paragraphHalf {
+  main.contactMain .galleryAdditionalInfo {
+.paragraphHalf,.paragraphHalf:nth-child(1),.paragraphHalf:nth-child(2) {
     width: 100%;
     margin-right: 0;
+    border: none;
   }
+  } 
 
   //artfair
   .artFairEach {

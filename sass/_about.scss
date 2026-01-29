@@ -2,58 +2,46 @@
     font-size: $sizeValue * 1px;
     font-size: calc($sizeValue/10) * 1rem;
 }
-.rainbowimg {
-    max-width: 500px;
-    margin: -70px auto 0;
-}
+
+
 .aboutContactContainer {
-    max-width: 860px;
-    margin: 0 auto;
-    @include fontSize(14);
-    .galleryAddress, .galleryContact, .galleryHours {
-        display: flex;
-        flex-flow: wrap;
-        align-items: center;
+    margin-top: 2em;
+    display: flex;
+    flex-flow: wrap;
+    gap: 20px;
+    // align-items: center;
+
+    .contact_address, .contact_contact,.contact_hours {
+        width: calc(33.3% - 20px);
+    }
+    aside, aside p {
         width: 100%;
-        max-width: 600px;
-        margin: 0 auto;
-        img {
-            max-width: 200px;
-        }
-        .aboutimg {
-            width: 42%;
-        }
-        // p,.contactinfo {
-        //     width: 100%;
-        // }
-     
+        @include fontSize(14);
+        font-weight: 700;
+        text-align: center;
+        margin: 0;
     }
-    .galleryAddress {
-        p {
-            width: 58%;
-        }
 
-    } 
-
-    .galleryContact {
-        .contactinfo a {
-            display: block;
-        }
-    }
-    .jumpToMap {
-        max-width: 290px;
-        margin: 0 auto;
-    }
 }
-.mailing-list-img {
+.Mailinglist  {
+    width: 100%;
+    display: flex;
+    flex-flow: wrap;
+    justify-content: space-between;
+    align-items: center;
+    margin: 20px auto;
+    .cc_contactImg, .rainbowimg {
+        max-width: 250px;
+        width: 25%;
+    }
+    .mailing-list-img {
     max-width: 500px;
-    margin: 0 auto;
+    width: 50%;
+    // margin: 0 auto;
 }
-.aboutAdditional {
-    background: url('https://coopercolegallery.com/wp-content/themes/coopercole2020-Deploy/images/cc_Rainbow.svg');
-    background-position: 50% 50%;
-    background-repeat: no-repeat;
 }
+
+
 .Mailinglist {
     text-align: center;
     cursor: pointer;
@@ -67,9 +55,12 @@
         text-align: center;
     }
 }
-.appointment {
-    max-width: 800px;
-    margin: 0 auto;
+
+.line {
+    width: 100%;
+    height: 1px;
+    background: black;
+    margin: 20px auto;
 }
 
 // map
@@ -86,28 +77,22 @@
 }
 @media (max-width: 800px) { 
     .aboutContactContainer {
-        .galleryAddress, .galleryContact, .galleryHours {
-            display: block;
-            text-align: center;
-        }
+            .contact_address, .contact_contact,.contact_hours {
+        width: 100%;
+    }
+    
 
     } 
-    .aboutAdditional {
-        background-position: 50% 80%;
-        background-repeat: no-repeat;
-    }
-    .aboutContactContainer {
-       
-        .galleryAddress, .galleryContact, .galleryHours {
-
-            .aboutimg {
-                width: 60%;
-                margin: 0 auto;
-            }
-            p,.contactinfo {
-                width: 100%;
-            }
+    .Mailinglist {
+        .cc_contactImg {
+            display: none;
         }
-
+        .mailing-list-img,.rainbowimg {
+            // max-width: 100%;
+            margin: 0 auto;
+            width: 100%;
+        }
     }
+
+
 }
