@@ -1,6 +1,5 @@
 <?php //template name: News ?>
 <?php get_header(); ?>
-<button id="myBtn" title="Go to top">&#x2963;</button>
 
 <main>
 

@@ -737,12 +737,13 @@ function render_artworks_section($connected_type) {
                                 <input type="email" name="email" placeholder="email">
                                 <input type="text" name="phone" placeholder="phone">
                                 <input type="text" name="location" placeholder="location">
-								<input type="hidden" name="id" value="<?php echo get_the_ID(); ?>">
+                                <input type="hidden" name="id" value="<?php echo get_the_ID(); ?>">
                                 <textarea name="note" placeholder="Additional Notes"></textarea>
                                 <input type="hidden" name="subject"
                                     value="Website Inquiry: <?php echo get_the_title($curr_id); ?>">
                                 <input type="text" name="message" value="" style="display:none;">
-                                <input type="hidden" name="inquiry_message" value="Artwork Inquiry" style="display:none;">
+                                <input type="hidden" name="inquiry_message" value="Artwork Inquiry"
+                                    style="display:none;">
 
 
                                 <!-- Desktop submit -->
@@ -780,23 +781,23 @@ function render_artworks_section($connected_type) {
 													foreach ($gallery as $image) : ?>
                                 <div class="swiper-slide">
                                     <div class="swiper-zoom-container">
-                                        <img class="" src="<?php echo $image['sizes']['large']; ?>" />
+                                        <img class="gallery-img" loading="lazy" src="<?php echo $image['sizes']['large']; ?>" />
                                     </div>
                                 </div>
                                 <?php endforeach;
 												else :
-												echo '<div class="swiper-slide">';
+												echo '<div class="swiper-slide"><div class="swiper-zoom-container">';
 													the_post_thumbnail('large');
-												echo '</div>';
+												echo '</div></div>';
 												endif; ?>
                             </div>
                             <div class="swiper-pagination"></div>
 
-                            
+
                         </div>
-						<!-- If we need navigation buttons -->
-                            <div class="swiper-button-prev"></div>
-                            <div class="swiper-button-next"></div>
+                        <!-- If we need navigation buttons -->
+                        <div class="swiper-button-prev"></div>
+                        <div class="swiper-button-next"></div>
                     </div>
                 </section>
             </section>
@@ -808,6 +809,7 @@ function render_artworks_section($connected_type) {
     endif;
 }
 // add_shortcode('artworks_component', 'render_artworks_section');
+
 
 
 function coopercole_inner_tags() {
@@ -897,6 +899,12 @@ function cf_search_join( $join ) {
     return $join;
 }
 add_filter('posts_join', 'cf_search_join' );
+
+
+// Move short description below Add to Cart
+remove_action('woocommerce_single_product_summary', 'woocommerce_template_single_excerpt', 20);
+add_action('woocommerce_single_product_summary', 'woocommerce_template_single_excerpt', 35);
+
 
 /**
  * Modify the search query with posts_where
@@ -1323,4 +1331,3 @@ function wp_custom_archive($args = '') {
     else
         return $output;
 }
-

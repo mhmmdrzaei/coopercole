@@ -39,26 +39,6 @@
     }
   }
 
-  //top button
-  let mybutton = document.getElementById("myBtn");
-  window.onscroll = function () {
-    scrollFunction();
-  };
-
-  function scrollFunction() {
-    if (
-      document.body.scrollTop > 2000 ||
-      document.documentElement.scrollTop > 2000
-    ) {
-      mybutton.style.display = "block";
-    } else {
-      mybutton.style.display = "none";
-    }
-  }
-  $("#myBtn").on("click", function () {
-    document.body.scrollTop = 0;
-    document.documentElement.scrollTop = 30;
-  });
 
   $(document).on("click", function (e) {
     if (!$(e.target).closest(".artworkItemEach").length) {
@@ -550,151 +530,214 @@ $(window).scroll(function () {
   }
 });
 //swiper js
-const swiper = new Swiper(".swiper", {
-  // Optional parameters
-  direction: "horizontal",
-  loop: true,
-
-  // If we need pagination
-  pagination: {
-    el: ".swiper-pagination",
-    clickable: true,
-  },
-
-  // Navigation arrows
-  navigation: {
-    nextEl: ".swiper-button-next",
-    prevEl: ".swiper-button-prev",
-  },
-});
+/**
+ * Swiper gallery + fullscreen viewer + hover zoom (desktop)
+ * - Supports multiple .galleryContainer instances per page
+ * - Hover zoom only works on slides that contain .swiper-zoom-container (images)
+ * - Loop-safe (Swiper duplicates slides), uses delegated click for fullscreen
+ * - Fullscreen supports prev/next + mobile swipe
+ */
 
 let currentIndex = 0;
 let currentSlides = [];
 
-$(".swiper-slide").on("click", function () {
-  let swiperContainer = $(this).closest(".swiper"); // Find closest Swiper container
-  currentSlides = swiperContainer.find(".swiper-slide").toArray(); // Store slides as an array
-  currentIndex = currentSlides.indexOf(this); // Get index within its Swiper
+// -------- Helpers --------
+function isTouchDevice() {
+  return window.matchMedia("(pointer: coarse)").matches;
+}
 
-  openFullscreen(currentIndex);
-});
+function getSlideContent($slide) {
+  // Prefer video if present
+  const $video = $slide.find("video").first();
+  if ($video.length) {
+    return $video
+      .clone()
+      .attr("controls", true)
+      .prop("muted", false)
+      .prop("autoplay", true);
+  }
+
+  // Otherwise image
+  const $img = $slide.find("img").first();
+  if ($img.length) {
+    const $clone = $img.clone();
+
+    // ---- IMPORTANT: remove Swiper zoom state from the clone ----
+    $clone.removeClass("swiper-zoom-target"); // Swiper sets this
+    $clone.css({
+      transform: "none",
+      transition: "none",
+      width: "",
+      height: "",
+      maxWidth: "100%",
+      maxHeight: "100%",
+    });
+    $clone.removeAttr("style"); // if you prefer to nuke all inline styles
+
+    return $clone;
+  }
+
+  return null;
+}
+
+
+function updateFullscreenContent(index) {
+  const $slide = $(currentSlides[index]);
+  const $newContent = getSlideContent($slide);
+
+  if ($newContent) {
+    $(".fullscreen-container img, .fullscreen-container video").remove();
+    $(".fullscreen-container").prepend($newContent);
+  }
+}
 
 function openFullscreen(index) {
   $(".fullscreen-container").remove(); // Remove existing fullscreen
 
-  let slide = $(currentSlides[index]); // Get current slide
-  let content = getSlideContent(slide);
+  const $slide = $(currentSlides[index]);
+  const $content = getSlideContent($slide);
 
-  if (content) {
-    let $fullscreenContainer = $('<div class="fullscreen-container"></div>');
-    let $closeButton = $('<div class="fullscreen-close">&times;</div>');
+  if (!$content) return;
 
-    $fullscreenContainer.append(content).append($closeButton);
+  const $fullscreenContainer = $('<div class="fullscreen-container"></div>');
+  const $closeButton = $('<div class="fullscreen-close" role="button" aria-label="Close">&times;</div>');
 
-    // Only add prev/next buttons if more than one slide
-    if (currentSlides.length > 1) {
-      let $prevButton = $('<div class="fullscreen-prev">&#8592;</div>');
-      let $nextButton = $('<div class="fullscreen-next">&#8594;</div>');
+  $fullscreenContainer.append($content).append($closeButton);
 
-      $fullscreenContainer.append($prevButton).append($nextButton);
+  // Only add prev/next if more than one slide
+  if (currentSlides.length > 1) {
+    const $prevButton = $('<div class="fullscreen-prev" role="button" aria-label="Previous">&#8592;</div>');
+    const $nextButton = $('<div class="fullscreen-next" role="button" aria-label="Next">&#8594;</div>');
 
-      // Previous button click
-      $prevButton.on("click", function () {
-        currentIndex =
-          (currentIndex - 1 + currentSlides.length) % currentSlides.length;
-        updateFullscreenContent(currentIndex);
-      });
+    $fullscreenContainer.append($prevButton).append($nextButton);
 
-      // Next button click
-      $nextButton.on("click", function () {
-        currentIndex = (currentIndex + 1) % currentSlides.length;
-        updateFullscreenContent(currentIndex);
-      });
+    $prevButton.on("click", function () {
+      currentIndex = (currentIndex - 1 + currentSlides.length) % currentSlides.length;
+      updateFullscreenContent(currentIndex);
+    });
 
-      // **Swipe Support for Mobile**
-      let startX = 0;
-      let endX = 0;
+    $nextButton.on("click", function () {
+      currentIndex = (currentIndex + 1) % currentSlides.length;
+      updateFullscreenContent(currentIndex);
+    });
 
-      $fullscreenContainer.on("touchstart", function (e) {
-        startX = e.originalEvent.touches[0].clientX;
-      });
+    // Swipe support for mobile
+    let startX = 0;
+    let endX = 0;
 
-      $fullscreenContainer.on("touchmove", function (e) {
-        endX = e.originalEvent.touches[0].clientX;
-      });
+    $fullscreenContainer.on("touchstart", function (e) {
+      startX = e.originalEvent.touches[0].clientX;
+      endX = startX;
+    });
 
-      $fullscreenContainer.on("touchend", function () {
-        let diff = startX - endX;
+    $fullscreenContainer.on("touchmove", function (e) {
+      endX = e.originalEvent.touches[0].clientX;
+    });
 
-        if (Math.abs(diff) > 50) { // Minimum swipe distance
-          if (diff > 0) {
-            // Swipe Left → Next Image
-            currentIndex = (currentIndex + 1) % currentSlides.length;
-          } else {
-            // Swipe Right → Previous Image
-            currentIndex =
-              (currentIndex - 1 + currentSlides.length) % currentSlides.length;
-          }
-          updateFullscreenContent(currentIndex);
+    $fullscreenContainer.on("touchend", function () {
+      const diff = startX - endX;
+
+      if (Math.abs(diff) > 50) {
+        if (diff > 0) {
+          // Swipe Left → Next
+          currentIndex = (currentIndex + 1) % currentSlides.length;
+        } else {
+          // Swipe Right → Prev
+          currentIndex = (currentIndex - 1 + currentSlides.length) % currentSlides.length;
         }
-      });
-    }
-
-    $("body").append($fullscreenContainer);
-
-    // Close fullscreen
-    $closeButton.on("click", function () {
-      $fullscreenContainer.remove();
+        updateFullscreenContent(currentIndex);
+      }
     });
   }
+
+  $("body").append($fullscreenContainer);
+
+  $closeButton.on("click", function () {
+    $fullscreenContainer.remove();
+  });
+
+  // ESC to close
+  $(document).on("keydown.fullscreen", function (e) {
+    if (e.key === "Escape") {
+      $(".fullscreen-container").remove();
+      $(document).off("keydown.fullscreen");
+    }
+  });
 }
 
+// -------- Swiper init (per gallery) --------
+document.querySelectorAll(".galleryContainer .swiper").forEach((swiperEl) => {
+  const galleryContainer = swiperEl.closest(".galleryContainer");
 
-function updateFullscreenContent(index) {
-  let slide = $(currentSlides[index]); // Get new slide
-  let newContent = getSlideContent(slide);
+  const instance = new Swiper(swiperEl, {
+    direction: "horizontal",
+    loop: true,
 
-  if (newContent) {
-    $(".fullscreen-container img, .fullscreen-container video").remove();
-    $(".fullscreen-container").prepend(newContent);
-  }
+    zoom: {
+      maxRatio: 3,
+      minRatio: 1,
+      toggle: false, // controlled by hover
+    },
+
+    pagination: {
+      el: swiperEl.querySelector(".swiper-pagination"),
+      clickable: true,
+    },
+
+    navigation: {
+      nextEl: galleryContainer.querySelector(".swiper-button-next"),
+      prevEl: galleryContainer.querySelector(".swiper-button-prev"),
+    },
+  });
+
+  // Hover-to-zoom (desktop only)
+if (!isTouchDevice()) {
+  document.querySelectorAll(".galleryContainer .swiper-zoom-container").forEach((wrap) => {
+    // Set your zoom strength here
+    wrap.style.setProperty("--zoom", "2.5");
+
+    wrap.addEventListener("mouseenter", () => {
+      wrap.classList.add("is-zooming");
+    });
+
+    wrap.addEventListener("mouseleave", () => {
+      wrap.classList.remove("is-zooming");
+      // Reset origin so next hover starts centered
+      const img = wrap.querySelector("img");
+      if (img) img.style.transformOrigin = "50% 50%";
+    });
+
+    wrap.addEventListener("mousemove", (e) => {
+      if (!wrap.classList.contains("is-zooming")) return;
+
+      const rect = wrap.getBoundingClientRect();
+      const x = ((e.clientX - rect.left) / rect.width) * 100;
+      const y = ((e.clientY - rect.top) / rect.height) * 100;
+
+      const img = wrap.querySelector("img");
+      if (!img) return;
+
+      // Clamp to 0–100 so you can hit corners cleanly
+      const cx = Math.max(0, Math.min(100, x));
+      const cy = Math.max(0, Math.min(100, y));
+
+      img.style.transformOrigin = `${cx}% ${cy}%`;
+    });
+  });
 }
+});
 
-function getSlideContent(slide) {
-  let video = slide
-    .find("video")
-    .clone()
-    .attr("controls", true)
-    .attr("autoplay", true);
-  let image = slide.find("img").clone();
+// -------- Fullscreen click (delegated; loop-safe) --------
+$(document).on("click", ".galleryContainer .swiper-slide", function () {
+  const $swiperEl = $(this).closest(".swiper");
+  const $wrapper = $swiperEl.find(".swiper-wrapper");
 
-  if (video.length) return video;
-  if (image.length) return image;
-  return null;
-}
+  currentSlides = $wrapper.find(".swiper-slide").toArray();
+  currentIndex = currentSlides.indexOf(this);
 
-function updateFullscreenContent(index) {
-  let slide = $(currentSlides[index]); // Get the new slide
-  let newContent = getSlideContent(slide);
+  openFullscreen(currentIndex);
+});
 
-  if (newContent) {
-    $(".fullscreen-container img, .fullscreen-container video").remove();
-    $(".fullscreen-container").prepend(newContent);
-  }
-}
-
-function getSlideContent(slide) {
-  let video = slide
-    .find("video")
-    .clone()
-    .attr("controls", true)
-    .attr("autoplay", true);
-  let image = slide.find("img").clone();
-
-  if (video.length) return video;
-  if (image.length) return image;
-  return null;
-}
 
 var emailRegex =
   /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;

@@ -23,7 +23,7 @@
       text-align: center;
       text-transform: uppercase;
       font-size: 0.8rem !important;
-      border: 1px solid !important;
+      border-top: 1px solid !important;
     }
     .attachment-woocommerce_thumbnail {
       margin-bottom: 0 !important;
@@ -32,6 +32,7 @@
     .woocommerce-loop-product__title {
       padding-left: 5px !important;
       border-bottom: 1px solid black;
+      min-height: 55px;
     }
     .price {
       color: black !important;
@@ -118,6 +119,7 @@
   }
   .wc-block-components-product-name {
     background: white;
+    color: black !important;
   }
 }
 .productContainer {
@@ -139,9 +141,10 @@
         color: white;
         border-radius: 0;
         text-transform: uppercase;
-        @include fontSize(8);
+        font-size: 20px;
         font-weight: 700;
-        // border: 1px solid !important;
+        border-radius: 5px;
+        border: 1px solid !important;
       }
       .input-text {
         border-radius: 0;
