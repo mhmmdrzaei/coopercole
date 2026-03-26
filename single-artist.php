@@ -1,11 +1,8 @@
 <?php get_header(); ?>
-	
-	<?php if(have_posts()) : while(have_posts()) : the_post(); ?>
 
-	<main>
-		<h1 class="artistName"><?php the_title(); ?></h1>
-		<section class="artistMain">
-					<?php
+	
+		<?php if(have_posts()) : while(have_posts()) : the_post(); ?>
+		<?php
 					
 					$connected = new WP_Query( array(
 						'connected_type' => 'exhibition_to_artist',
@@ -14,11 +11,14 @@
 						'meta_key'	=> 'start_date',
 						'orderby'	=> 'meta_value_num',
 						'order'		=> 'DESC'
-					) );
+						) );
+		?>
 
-					if ( $connected->have_posts() ) :
+		<main>
+		<h1 class="artistName"><?php the_title(); ?></h1>
 
-					?>
+		<section class="artistMain">
+
 
 				<section class="artistBio">
 					<button class="bioOpen">Artist Bio</button>
@@ -63,18 +63,19 @@
 						<?php endif; ?>
 					</section>
 				</section>
-				<section class="exhbitionscont">
-					<button class="exhibitionsOpen">Gallery Exhibitions</button>
-						<div id="exhibitionContentID">
-						<ul class="newsContent">
-						<?php while($connected->have_posts()) : $connected->the_post(); ?>
-							<li><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></li>
-						<?php endwhile; ?>
-						</ul>
-					</div>
-					<?php wp_reset_postdata(); endif; ?>
-
-				</section>
+				<?php if ( $connected->have_posts() ) : ?>
+					<section class="exhbitionscont">
+						<button class="exhibitionsOpen">Gallery Exhibitions</button>
+							<div id="exhibitionContentID">
+							<ul class="newsContent">
+							<?php while($connected->have_posts()) : $connected->the_post(); ?>
+								<li><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></li>
+							<?php endwhile; ?>
+							</ul>
+						</div>
+					</section>
+					<?php wp_reset_postdata(); ?>
+				<?php endif; ?>
 
 				<nav class="exhibtionNews">
 				        <?php

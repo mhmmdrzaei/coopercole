@@ -31,7 +31,7 @@
                         </figure>
                         <section class="newsDetails withFI">
                             <section class="newsTitle withFITitle">
-                                <a href="<?php the_permalink(); ?>"><h1 class="title"><?php the_title(); ?></h1></a>
+                                <a href="<?php the_permalink(); ?>"><h2 class="title"><?php the_title(); ?></h2></a>
                                 <aside class="date"><?php the_time('F j, Y'); ?></aside>
                             </section>
                             <section class="newsExcerpt">
@@ -54,7 +54,7 @@
                         </figure>
                         <section class="newsDetails withFI">
                             <section class="newsTitle withFITitle">
-                                <a href="<?php the_permalink(); ?>"><h1 class="title"><?php the_title(); ?></h1></a>
+                                <a href="<?php the_permalink(); ?>"><h2 class="title"><?php the_title(); ?></h2></a>
                                 <aside class="date"><?php the_time('F j, Y'); ?></aside>
                             </section>
                             <section class="newsExcerpt">
@@ -65,7 +65,7 @@
                     </section>
                 <?php else : ?>
                     <section class="newsTitle">
-                        <a href="<?php the_permalink(); ?>"><h1 class="title"><?php the_title(); ?></h1></a>
+                        <a href="<?php the_permalink(); ?>"><h2 class="title"><?php the_title(); ?></h2></a>
                         <aside class="date"><?php the_time('F j, Y'); ?></aside>
                     </section>
                     <section class="newsDetails">

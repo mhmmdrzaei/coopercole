@@ -3,11 +3,13 @@
 <div class="main">
   <section class="noResults">
   	<figure>
-  		<img src="<?php bloginfo('template_directory'); ?>/images/noresults.png">
+  		<img src="<?php bloginfo('template_directory'); ?>/images/noresults.png" alt="Page not found illustration">
   	</figure>
 
-  	<h2>Not Found</h2>
-    <h2>Apologies, but the page you requested could not be found. Perhaps searching will help.</h2>
+  	<h1>Page Not Found</h1>
+    <p>The page you requested could not be found. Try a search, or head to one of the main sections below.</p>
+    <?php get_search_form(); ?>
+    <p><a href="/artists">Artists</a> / <a href="/exhibitions">Exhibitions</a> / <a href="/news">News</a> / <a href="<?php echo esc_url( home_url( '/' ) ); ?>">Home</a></p>
 
   </section>
 </div> <!-- /.main -->

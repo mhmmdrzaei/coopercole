@@ -669,6 +669,13 @@ function openFullscreen(index) {
 document.querySelectorAll(".galleryContainer .swiper").forEach((swiperEl) => {
   const galleryContainer = swiperEl.closest(".galleryContainer");
 
+  const syncDuplicateSlideAccessibility = () => {
+    swiperEl.querySelectorAll(".swiper-slide-duplicate img").forEach((img) => {
+      img.setAttribute("alt", "");
+      img.setAttribute("aria-hidden", "true");
+    });
+  };
+
   const instance = new Swiper(swiperEl, {
     direction: "horizontal",
     loop: true,
@@ -689,6 +696,11 @@ document.querySelectorAll(".galleryContainer .swiper").forEach((swiperEl) => {
       prevEl: galleryContainer.querySelector(".swiper-button-prev"),
     },
   });
+
+  syncDuplicateSlideAccessibility();
+  instance.on("init", syncDuplicateSlideAccessibility);
+  instance.on("slideChange", syncDuplicateSlideAccessibility);
+  instance.on("loopFix", syncDuplicateSlideAccessibility);
 
   // Hover-to-zoom (desktop only)
 if (!isTouchDevice()) {

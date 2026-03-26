@@ -4,7 +4,7 @@
 		<?php if(have_posts()) : while(have_posts()) : the_post(); ?>
 		<section class="artfairHeader">
 			<section class="description">
-				<h2><?php the_title(); ?></h2>
+				<h1><?php the_title(); ?></h1>
 				<div class="date">
 				<?php
 					$start_date = get_field('start_date', false, false);
@@ -64,9 +64,11 @@
 				</div>
 				</div>
 			</section>
-			<figure>
-                    <?php the_post_thumbnail('large'); ?>
-            </figure>
+				<?php $artFairImage = get_the_post_thumbnail_url( null, 'large' ); ?>
+				<?php $artFairThumbnailId = get_post_thumbnail_id( get_the_ID() ); ?>
+				<figure>
+	                    <img src="<?php echo esc_url( $artFairImage ); ?>" alt="<?php echo esc_attr( coopercole_get_attachment_alt_text( $artFairThumbnailId, get_the_ID(), 'art-fair' ) ); ?>">
+	            </figure>
 
 		</section>
 		<section class="exhibitionsNew">
@@ -199,10 +201,9 @@
 	  foreach($slides as $slide):
 
 	  ?>
-	<figure class="exhibitionImgs">
-	<img class="exhibitionImgsLL" src="<?php echo $slide['url']; ?>" alt="" id="<?php echo $slide['id'];?>" />
-
-	</figure>
+		<figure class="exhibitionImgs">
+		<img class="exhibitionImgsLL" src="<?php echo esc_url( $slide['url'] ); ?>" alt="<?php echo esc_attr( coopercole_get_attachment_alt_text( $slide['id'], get_the_ID(), 'art-fair' ) ); ?>" id="<?php echo esc_attr( $slide['id'] ); ?>" />
+		</figure>
 
 	<?php endforeach; ?>
 

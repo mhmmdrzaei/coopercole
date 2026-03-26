@@ -133,33 +133,6 @@ function cooper_scripts() {
 
 add_action( 'wp_enqueue_scripts', 'cooper_scripts');
 
-/* Custom Title Tags */
-
-function hackeryou_wp_title( $title, $sep ) {
-	global $paged, $page;
-
-	if ( is_feed() ) {
-		return $title;
-	}
-
-	// Add the site name.
-	$title .= get_bloginfo( 'name', 'display' );
-
-	// Add the site description for the home/front page.
-	$site_description = get_bloginfo( 'description', 'display' );
-	if ( $site_description && ( is_home() || is_front_page() ) ) {
-		$title = "$title $sep $site_description";
-	}
-
-	// Add a page number if necessary.
-	if ( ( $paged >= 2 || $page >= 2 ) && ! is_404() ) {
-		$title = "$title $sep " . sprintf( __( 'Page %s', 'hackeryou' ), max( $paged, $page ) );
-	}
-
-	return $title;
-}
-add_filter( 'wp_title', 'hackeryou_wp_title', 10, 2 );
-
 /*
   Get our wp_nav_menu() fallback, wp_page_menu(), to show a home link.
  */
@@ -776,20 +749,29 @@ function render_artworks_section($connected_type) {
                                 <div class="wrap-video swiper-slide">
                                     <?php echo get_sub_field('video'); ?>
                                 </div>
-                                <?php endwhile; elseif (get_field('gallery')) :
+	                                <?php endwhile; elseif (get_field('gallery')) :
 													$gallery = get_field('gallery');
 													foreach ($gallery as $image) : ?>
+	                                <?php
+	                                $alt = '';
+	                                if ( ! empty( $image['alt'] ) ) {
+	                                    $alt = trim( $image['alt'] );
+	                                }
+	                                if ( ! $alt ) {
+	                                    $alt = coopercole_get_artwork_gallery_alt( get_the_ID() );
+	                                }
+	                                ?>
                                 <div class="swiper-slide">
                                     <div class="swiper-zoom-container">
-                                        <img class="gallery-img" loading="lazy" src="<?php echo $image['sizes']['large']; ?>" />
+	                                        <img class="gallery-img" loading="lazy" src="<?php echo esc_url( $image['sizes']['large'] ); ?>" alt="<?php echo esc_attr( $alt ); ?>" />
                                     </div>
                                 </div>
                                 <?php endforeach;
-												else :
-												echo '<div class="swiper-slide"><div class="swiper-zoom-container">';
-													the_post_thumbnail('large');
-												echo '</div></div>';
-												endif; ?>
+													else :
+													echo '<div class="swiper-slide"><div class="swiper-zoom-container">';
+														the_post_thumbnail('large');
+													echo '</div></div>';
+													endif; ?>
                             </div>
                             <div class="swiper-pagination"></div>
 
@@ -1043,6 +1025,13 @@ function theme_setup() {
 			'redirect' 		=> false
 		));
 
+		acf_add_options_sub_page(array(
+			'page_title'  => 'SEO Settings',
+			'menu_title'  => 'SEO Settings',
+			'parent_slug' => $parent['menu_slug'],
+			'menu_slug'   => 'coopercole-seo-settings',
+		));
+
 	}
 
 	add_theme_support('soil-clean-up');
@@ -1067,9 +1056,715 @@ function cyb_document_title_separator( $sep ) {
 
     $sep = 	"|";
 
-    return $sep;
+	return $sep;
 
 }
+
+function coopercole_get_seo_object_id() {
+	if ( is_singular() ) {
+		return get_queried_object_id();
+	}
+
+	if ( is_home() && get_option( 'page_for_posts' ) ) {
+		return (int) get_option( 'page_for_posts' );
+	}
+
+	if ( is_front_page() && get_option( 'page_on_front' ) ) {
+		return (int) get_option( 'page_on_front' );
+	}
+
+	return 0;
+}
+
+function coopercole_get_seo_field( $field_name, $post_id = 0 ) {
+	if ( ! function_exists( 'get_field' ) ) {
+		return null;
+	}
+
+	if ( $post_id ) {
+		return get_field( $field_name, $post_id );
+	}
+
+	return get_field( $field_name, 'options' );
+}
+
+function coopercole_get_seo_fallback_description( $post_id = 0 ) {
+	$default_description = coopercole_get_seo_field( 'default_meta_description' );
+
+	if ( $post_id ) {
+		$post = get_post( $post_id );
+
+		if ( $post instanceof WP_Post ) {
+			$post_type = get_post_type( $post_id );
+			$site_name = get_bloginfo( 'name' );
+			$location  = trim( (string) get_field( 'location', $post_id ) );
+			$start_raw = get_field( 'start_date', $post_id, false );
+			$end_raw   = get_field( 'end_date', $post_id, false );
+			$date_label = coopercole_get_date_range_label( $start_raw, $end_raw );
+
+			if ( 'artist' === $post_type ) {
+				return sprintf(
+					'Explore works by %1$s available through %2$s. Contact the gallery for availability, pricing, and private sales.',
+					get_the_title( $post_id ),
+					$site_name
+				);
+			}
+
+			if ( 'art-fair' === $post_type ) {
+				$description = sprintf( '%s is pleased to present work at %s', $site_name, get_the_title( $post_id ) );
+
+				if ( $date_label ) {
+					$description .= ', ' . $date_label;
+				}
+
+				if ( $location ) {
+					$description .= ' in ' . $location;
+				}
+
+				return $description . '.';
+			}
+
+			$excerpt = trim( wp_strip_all_tags( $post->post_excerpt ) );
+			if ( $excerpt ) {
+				return $excerpt;
+			}
+
+			$content = trim( wp_strip_all_tags( strip_shortcodes( $post->post_content ) ) );
+			if ( $content ) {
+				return wp_trim_words( $content, 30, '...' );
+			}
+		}
+	}
+
+	if ( is_search() ) {
+		return sprintf( 'Search results for "%s" at %s.', get_search_query(), get_bloginfo( 'name' ) );
+	}
+
+	if ( is_post_type_archive() ) {
+		return sprintf( '%s archive at %s.', post_type_archive_title( '', false ), get_bloginfo( 'name' ) );
+	}
+
+	if ( is_archive() ) {
+		return sprintf( '%s archive at %s.', get_the_archive_title(), get_bloginfo( 'name' ) );
+	}
+
+	return $default_description ? $default_description : get_bloginfo( 'description' );
+}
+
+function coopercole_get_seo_image_url( $post_id = 0 ) {
+	$image = coopercole_get_seo_field( 'seo_social_image', $post_id );
+
+	if ( is_array( $image ) && ! empty( $image['url'] ) ) {
+		return $image['url'];
+	}
+
+	if ( is_numeric( $image ) ) {
+		$image_url = wp_get_attachment_image_url( (int) $image, 'full' );
+		if ( $image_url ) {
+			return $image_url;
+		}
+	}
+
+	if ( $post_id && has_post_thumbnail( $post_id ) ) {
+		$image_url = get_the_post_thumbnail_url( $post_id, 'full' );
+		if ( $image_url ) {
+			return $image_url;
+		}
+	}
+
+	$default_image = coopercole_get_seo_field( 'default_social_image' );
+
+	if ( is_array( $default_image ) && ! empty( $default_image['url'] ) ) {
+		return $default_image['url'];
+	}
+
+	if ( is_numeric( $default_image ) ) {
+		$image_url = wp_get_attachment_image_url( (int) $default_image, 'full' );
+		if ( $image_url ) {
+			return $image_url;
+		}
+	}
+
+	return get_template_directory_uri() . '/images/CC-SEO.jpg';
+}
+
+function coopercole_get_seo_meta() {
+	$post_id = coopercole_get_seo_object_id();
+	$title = wp_get_document_title();
+	$description = coopercole_get_seo_fallback_description( $post_id );
+	$social_title = $title;
+	$social_description = $description;
+
+	if ( $post_id ) {
+		$seo_description = coopercole_get_seo_field( 'seo_meta_description', $post_id );
+		$seo_social_title = coopercole_get_seo_field( 'seo_social_title', $post_id );
+		$seo_social_description = coopercole_get_seo_field( 'seo_social_description', $post_id );
+
+		if ( $seo_description ) {
+			$description = $seo_description;
+			$social_description = $seo_description;
+		}
+
+		if ( $seo_social_title ) {
+			$social_title = $seo_social_title;
+		}
+
+		if ( $seo_social_description ) {
+			$social_description = $seo_social_description;
+		}
+	} else {
+		$default_social_title = coopercole_get_seo_field( 'default_social_title' );
+		$default_social_description = coopercole_get_seo_field( 'default_social_description' );
+
+		if ( $default_social_title ) {
+			$social_title = $default_social_title;
+		}
+
+		if ( $default_social_description ) {
+			$social_description = $default_social_description;
+		}
+	}
+
+	if ( is_front_page() ) {
+		$url = home_url( '/' );
+	} elseif ( is_singular() && $post_id ) {
+		$url = get_permalink( $post_id );
+	} elseif ( is_home() ) {
+		$url = get_permalink( (int) get_option( 'page_for_posts' ) );
+	} else {
+		$url = home_url( add_query_arg( array(), $GLOBALS['wp']->request ?? '' ) );
+	}
+
+	$type = is_singular( 'post' ) ? 'article' : 'website';
+
+	return array(
+		'description'        => $description,
+		'social_title'       => $social_title,
+		'social_description' => $social_description,
+		'image'              => coopercole_get_seo_image_url( $post_id ),
+		'url'                => $url,
+		'type'               => $type,
+	);
+}
+
+function coopercole_filter_document_title_parts( $title_parts ) {
+	$post_id = coopercole_get_seo_object_id();
+	if ( ! $post_id ) {
+		return $title_parts;
+	}
+
+	$seo_title = coopercole_get_seo_field( 'seo_title', $post_id );
+	if ( $seo_title ) {
+		$title_parts['title'] = $seo_title;
+		return $title_parts;
+	}
+
+	if ( 'artist' === get_post_type( $post_id ) ) {
+		$title_parts['title'] = sprintf(
+			'%s Artwork for Sale',
+			get_the_title( $post_id )
+		);
+	}
+
+	return $title_parts;
+}
+add_filter( 'document_title_parts', 'coopercole_filter_document_title_parts' );
+
+function coopercole_output_seo_meta() {
+	if ( is_admin() || defined( 'WPSEO_VERSION' ) || defined( 'RANK_MATH_VERSION' ) ) {
+		return;
+	}
+
+	$meta = coopercole_get_seo_meta();
+
+	echo "\n" . '<meta name="description" content="' . esc_attr( $meta['description'] ) . '" />' . "\n";
+	echo '<link rel="canonical" href="' . esc_url( $meta['url'] ) . '" />' . "\n";
+
+	if ( is_search() || is_404() ) {
+		echo '<meta name="robots" content="noindex,follow" />' . "\n";
+	}
+
+	echo '<meta property="og:type" content="' . esc_attr( $meta['type'] ) . '" />' . "\n";
+	echo '<meta property="og:url" content="' . esc_url( $meta['url'] ) . '" />' . "\n";
+	echo '<meta property="og:title" content="' . esc_attr( $meta['social_title'] ) . '" />' . "\n";
+	echo '<meta property="og:description" content="' . esc_attr( $meta['social_description'] ) . '" />' . "\n";
+	echo '<meta property="og:image" content="' . esc_url( $meta['image'] ) . '" />' . "\n";
+	echo '<meta name="twitter:card" content="summary_large_image" />' . "\n";
+	echo '<meta name="twitter:url" content="' . esc_url( $meta['url'] ) . '" />' . "\n";
+	echo '<meta name="twitter:title" content="' . esc_attr( $meta['social_title'] ) . '" />' . "\n";
+	echo '<meta name="twitter:description" content="' . esc_attr( $meta['social_description'] ) . '" />' . "\n";
+	echo '<meta name="twitter:image" content="' . esc_url( $meta['image'] ) . '" />' . "\n";
+}
+add_action( 'wp_head', 'coopercole_output_seo_meta', 1 );
+
+function coopercole_get_connected_post_titles( $post_id, $connection_type ) {
+	$titles = array();
+
+	if ( ! class_exists( 'WP_Query' ) ) {
+		return $titles;
+	}
+
+	$connected = new WP_Query( array(
+		'connected_type'  => $connection_type,
+		'connected_items' => $post_id,
+		'nopaging'        => true,
+		'fields'          => 'ids',
+	) );
+
+	if ( $connected->have_posts() ) {
+		foreach ( $connected->posts as $connected_id ) {
+			$title = get_the_title( $connected_id );
+			if ( $title ) {
+				$titles[] = $title;
+			}
+		}
+	}
+
+	wp_reset_postdata();
+
+	return array_values( array_unique( $titles ) );
+}
+
+function coopercole_format_title_list( $titles ) {
+	$titles = array_values( array_filter( array_map( 'trim', (array) $titles ) ) );
+	$count  = count( $titles );
+
+	if ( 0 === $count ) {
+		return '';
+	}
+
+	if ( 1 === $count ) {
+		return $titles[0];
+	}
+
+	if ( 2 === $count ) {
+		return $titles[0] . ' and ' . $titles[1];
+	}
+
+	$last = array_pop( $titles );
+
+	return implode( ', ', $titles ) . ', and ' . $last;
+}
+
+function coopercole_get_date_range_label( $start_raw, $end_raw = '' ) {
+	if ( empty( $start_raw ) ) {
+		return '';
+	}
+
+	try {
+		$start = new DateTime( $start_raw );
+	} catch ( Exception $e ) {
+		return '';
+	}
+
+	if ( empty( $end_raw ) ) {
+		return $start->format( 'F j, Y' );
+	}
+
+	try {
+		$end = new DateTime( $end_raw );
+	} catch ( Exception $e ) {
+		return $start->format( 'F j, Y' );
+	}
+
+	return $start->format( 'F j, Y' ) . ' - ' . $end->format( 'F j, Y' );
+}
+
+function coopercole_get_generated_image_alt( $context_post_id, $context = '' ) {
+	$post_type   = get_post_type( $context_post_id );
+	$post_title  = get_the_title( $context_post_id );
+	$gallery     = get_bloginfo( 'name' );
+	$context     = $context ? $context : $post_type;
+	$start_date  = get_field( 'start_date', $context_post_id, false );
+	$end_date    = get_field( 'end_date', $context_post_id, false );
+	$date_label  = coopercole_get_date_range_label( $start_date, $end_date );
+	$year_label  = $start_date ? gmdate( 'Y', strtotime( $start_date ) ) : '';
+
+	if ( 'art' === $context || 'art' === $post_type ) {
+		$piece_title   = get_field( 'title', $context_post_id ) ? get_field( 'title', $context_post_id ) : $post_title;
+		$artist_names  = coopercole_get_connected_post_titles( $context_post_id, 'art_to_artist' );
+		if ( empty( $artist_names ) ) {
+			$fallback_artist = get_field( 'artist_name', $context_post_id );
+			if ( $fallback_artist ) {
+				$artist_names[] = $fallback_artist;
+			}
+		}
+
+		$artist_label = coopercole_format_title_list( $artist_names );
+
+		if ( $artist_label ) {
+			return sprintf( '%s by %s, %s', $piece_title, $artist_label, $gallery );
+		}
+
+		return sprintf( '%s, %s', $piece_title, $gallery );
+	}
+
+	if ( 'exhibition' === $context || 'exhibition' === $post_type ) {
+		$artist_names = coopercole_get_connected_post_titles( $context_post_id, 'exhibition_to_artist' );
+
+		if ( empty( $artist_names ) ) {
+			$non_page_artists = get_field( 'artist_with_no_artist_page', $context_post_id );
+			if ( is_array( $non_page_artists ) ) {
+				foreach ( $non_page_artists as $artist_row ) {
+					if ( ! empty( $artist_row['artist_name_noArtistPage'] ) ) {
+						$artist_names[] = $artist_row['artist_name_noArtistPage'];
+					}
+				}
+			}
+		}
+
+		$artist_label = coopercole_format_title_list( $artist_names );
+
+		if ( $artist_label && $year_label ) {
+			return sprintf( '%s by %s at %s, %s', $post_title, $artist_label, $gallery, $year_label );
+		}
+
+		if ( $artist_label ) {
+			return sprintf( '%s by %s at %s', $post_title, $artist_label, $gallery );
+		}
+
+		if ( $year_label ) {
+			return sprintf( '%s at %s, %s', $post_title, $gallery, $year_label );
+		}
+
+		return sprintf( '%s at %s', $post_title, $gallery );
+	}
+
+	if ( 'art-fair' === $context || 'art-fair' === $post_type ) {
+		$location = trim( (string) get_field( 'location', $context_post_id ) );
+
+		if ( $date_label && $location ) {
+			return sprintf( '%s at %s, %s, %s', $gallery, $post_title, $date_label, $location );
+		}
+
+		if ( $date_label ) {
+			return sprintf( '%s at %s, %s', $gallery, $post_title, $date_label );
+		}
+
+		if ( $location ) {
+			return sprintf( '%s at %s, %s', $gallery, $post_title, $location );
+		}
+
+		return sprintf( '%s at %s', $gallery, $post_title );
+	}
+
+	return sprintf( '%s, %s', $post_title, $gallery );
+}
+
+function coopercole_get_artwork_dimensions_label( $post_id ) {
+	$height = get_field( 'height', $post_id );
+	$width  = get_field( 'width', $post_id );
+	$depth  = get_field( 'depth', $post_id );
+
+	if ( $height && $width && $depth ) {
+		return sprintf( '%s" x %s" x %s"', $height, $width, $depth );
+	}
+
+	if ( $height && $width ) {
+		return sprintf( '%s" x %s"', $height, $width );
+	}
+
+	return '';
+}
+
+function coopercole_get_artwork_gallery_alt( $post_id ) {
+	$post_id = (int) $post_id;
+	if ( ! $post_id ) {
+		return get_bloginfo( 'name' );
+	}
+
+	$artist_label = trim( (string) get_field( 'artist_name', $post_id ) );
+	$post_title   = get_the_title( $post_id );
+
+	if ( ! $artist_label && $post_title ) {
+		$title_parts = preg_split( '/\s+[\x{2013}\x{2014}-]\s+/u', $post_title, 2 );
+		if ( ! empty( $title_parts[0] ) ) {
+			$artist_label = trim( $title_parts[0] );
+		}
+	}
+
+	$parts = array();
+	$title        = get_field( 'title', $post_id );
+	$year         = get_field( 'year', $post_id );
+	$materials    = get_field( 'media', $post_id );
+	$dimensions   = coopercole_get_artwork_dimensions_label( $post_id );
+
+	if ( $artist_label ) {
+		$parts[] = $artist_label;
+	}
+
+	if ( $title ) {
+		$parts[] = $title;
+	}
+
+	if ( $year ) {
+		$parts[] = $year;
+	}
+
+	if ( $materials ) {
+		$parts[] = $materials;
+	}
+
+	if ( $dimensions ) {
+		$parts[] = $dimensions;
+	}
+
+	$parts[] = 'courtesy of ' . get_bloginfo( 'name' );
+
+	return implode( ', ', array_filter( $parts ) );
+}
+
+function coopercole_get_attachment_alt_text( $attachment_id, $context_post_id = 0, $context = '' ) {
+	$attachment_id = (int) $attachment_id;
+
+	if ( $attachment_id ) {
+		$alt = trim( get_post_meta( $attachment_id, '_wp_attachment_image_alt', true ) );
+		if ( $alt ) {
+			return $alt;
+		}
+	}
+
+	if ( $context_post_id ) {
+		return coopercole_get_generated_image_alt( $context_post_id, $context );
+	}
+
+	return get_bloginfo( 'name' );
+}
+
+function coopercole_get_attachment_image_with_fallback( $attachment_id, $size = 'large', $context_post_id = 0, $context = '', $attr = array() ) {
+	$attachment_id = (int) $attachment_id;
+	if ( ! $attachment_id ) {
+		return '';
+	}
+
+	$attr['alt'] = coopercole_get_attachment_alt_text( $attachment_id, $context_post_id, $context );
+
+	return wp_get_attachment_image( $attachment_id, $size, false, $attr );
+}
+
+function coopercole_get_post_thumbnail_with_fallback( $post_id = 0, $size = 'large', $context = '', $attr = array() ) {
+	$post_id = $post_id ? (int) $post_id : get_the_ID();
+	if ( ! $post_id || ! has_post_thumbnail( $post_id ) ) {
+		return '';
+	}
+
+	$thumbnail_id = get_post_thumbnail_id( $post_id );
+	$attr['alt']  = coopercole_get_attachment_alt_text( $thumbnail_id, $post_id, $context );
+
+	return get_the_post_thumbnail( $post_id, $size, $attr );
+}
+
+function coopercole_output_schema() {
+	if ( is_admin() || is_search() || is_404() ) {
+		return;
+	}
+
+	$schema = array(
+		'@context' => 'https://schema.org',
+		'@graph'   => array(),
+	);
+
+	$site_name = get_bloginfo( 'name' );
+	$site_url  = home_url( '/' );
+
+	$schema['@graph'][] = array(
+		'@type'       => array( 'ArtGallery', 'Organization' ),
+		'@id'         => trailingslashit( $site_url ) . '#organization',
+		'name'        => $site_name,
+		'url'         => $site_url,
+		'logo'        => get_template_directory_uri() . '/images/ccfullLogoMobile.png',
+		'image'       => coopercole_get_seo_image_url(),
+		'description' => coopercole_get_seo_fallback_description(),
+	);
+
+	if ( is_singular( 'post' ) ) {
+		$post_id = get_the_ID();
+		$schema['@graph'][] = array(
+			'@type'            => 'Article',
+			'headline'         => wp_strip_all_tags( get_the_title( $post_id ) ),
+			'datePublished'    => get_post_time( 'c', true, $post_id ),
+			'dateModified'     => get_post_modified_time( 'c', true, $post_id ),
+			'mainEntityOfPage' => get_permalink( $post_id ),
+			'image'            => coopercole_get_seo_image_url( $post_id ),
+			'description'      => coopercole_get_seo_fallback_description( $post_id ),
+			'publisher'        => array(
+				'@id' => trailingslashit( $site_url ) . '#organization',
+			),
+		);
+	}
+
+	if ( is_singular( array( 'exhibition', 'art-fair' ) ) ) {
+		$post_id      = get_the_ID();
+		$start_date   = get_field( 'start_date', $post_id, false );
+		$end_date     = get_field( 'end_date', $post_id, false );
+		$location     = get_field( 'location', $post_id );
+		$event_schema = array(
+			'@type'            => 'Event',
+			'name'             => wp_strip_all_tags( get_the_title( $post_id ) ),
+			'mainEntityOfPage' => get_permalink( $post_id ),
+			'description'      => coopercole_get_seo_fallback_description( $post_id ),
+			'image'            => coopercole_get_seo_image_url( $post_id ),
+			'organizer'        => array(
+				'@id' => trailingslashit( $site_url ) . '#organization',
+			),
+		);
+
+		if ( $start_date ) {
+			$event_schema['startDate'] = gmdate( 'c', strtotime( $start_date ) );
+		}
+
+		if ( $end_date ) {
+			$event_schema['endDate'] = gmdate( 'c', strtotime( $end_date ) );
+		}
+
+		if ( $location ) {
+			$event_schema['location'] = array(
+				'@type' => 'Place',
+				'name'  => wp_strip_all_tags( $location ),
+			);
+		}
+
+		$schema['@graph'][] = $event_schema;
+	}
+
+	if ( count( $schema['@graph'] ) < 1 ) {
+		return;
+	}
+
+	echo '<script type="application/ld+json">' . wp_json_encode( $schema, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE ) . '</script>' . "\n";
+}
+add_action( 'wp_head', 'coopercole_output_schema', 20 );
+
+function coopercole_register_seo_acf_fields() {
+	if ( ! function_exists( 'acf_add_local_field_group' ) ) {
+		return;
+	}
+
+	$post_type_locations = array();
+	$post_types = array(
+		'page',
+		'post',
+		'artist',
+		'exhibition',
+		'art-fair',
+		'art',
+		'product',
+	);
+
+	foreach ( $post_types as $post_type ) {
+		$post_type_locations[] = array(
+			array(
+				'param' => 'post_type',
+				'operator' => '==',
+				'value' => $post_type,
+			),
+		);
+	}
+
+	acf_add_local_field_group( array(
+		'key' => 'group_coopercole_page_seo',
+		'title' => 'SEO',
+		'fields' => array(
+			array(
+				'key' => 'field_coopercole_seo_title',
+				'label' => 'SEO Title',
+				'name' => 'seo_title',
+				'type' => 'text',
+				'instructions' => 'Overrides the browser title tag. Leave empty to use the page title.',
+			),
+			array(
+				'key' => 'field_coopercole_seo_meta_description',
+				'label' => 'Meta Description',
+				'name' => 'seo_meta_description',
+				'type' => 'textarea',
+				'rows' => 3,
+				'instructions' => 'Used for search and social description. Leave empty to fall back to excerpt or content.',
+			),
+			array(
+				'key' => 'field_coopercole_seo_social_title',
+				'label' => 'Social Title',
+				'name' => 'seo_social_title',
+				'type' => 'text',
+				'instructions' => 'Optional override for Open Graph and Twitter title.',
+			),
+			array(
+				'key' => 'field_coopercole_seo_social_description',
+				'label' => 'Social Description',
+				'name' => 'seo_social_description',
+				'type' => 'textarea',
+				'rows' => 3,
+				'instructions' => 'Optional override for Open Graph and Twitter description.',
+			),
+			array(
+				'key' => 'field_coopercole_seo_social_image',
+				'label' => 'Social Image',
+				'name' => 'seo_social_image',
+				'type' => 'image',
+				'return_format' => 'array',
+				'preview_size' => 'medium',
+				'library' => 'all',
+				'instructions' => 'Optional override for Open Graph and Twitter image.',
+			),
+		),
+		'location' => $post_type_locations,
+		'position' => 'side',
+		'style' => 'default',
+		'active' => true,
+	) );
+
+	acf_add_local_field_group( array(
+		'key' => 'group_coopercole_seo_defaults',
+		'title' => 'SEO Defaults',
+		'fields' => array(
+			array(
+				'key' => 'field_coopercole_default_meta_description',
+				'label' => 'Default Meta Description',
+				'name' => 'default_meta_description',
+				'type' => 'textarea',
+				'rows' => 3,
+				'instructions' => 'Fallback description when a page does not have its own SEO description.',
+			),
+			array(
+				'key' => 'field_coopercole_default_social_title',
+				'label' => 'Default Social Title',
+				'name' => 'default_social_title',
+				'type' => 'text',
+				'instructions' => 'Fallback social title for non-singular pages.',
+			),
+			array(
+				'key' => 'field_coopercole_default_social_description',
+				'label' => 'Default Social Description',
+				'name' => 'default_social_description',
+				'type' => 'textarea',
+				'rows' => 3,
+				'instructions' => 'Fallback social description for non-singular pages.',
+			),
+			array(
+				'key' => 'field_coopercole_default_social_image',
+				'label' => 'Default Social Image',
+				'name' => 'default_social_image',
+				'type' => 'image',
+				'return_format' => 'array',
+				'preview_size' => 'medium',
+				'library' => 'all',
+				'instructions' => 'Fallback social image when a page does not have a featured image or SEO image.',
+			),
+		),
+		'location' => array(
+			array(
+				array(
+					'param' => 'options_page',
+					'operator' => '==',
+					'value' => 'coopercole-seo-settings',
+				),
+			),
+		),
+		'position' => 'normal',
+		'style' => 'default',
+		'active' => true,
+	) );
+}
+add_action( 'acf/init', 'coopercole_register_seo_acf_fields' );
 
 
 add_action('init', 'excludePostTypeFromSearch', 99);

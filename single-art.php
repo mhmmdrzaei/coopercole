@@ -196,17 +196,17 @@
 
                  $gallery = get_field('gallery');
 
-                 foreach($gallery as $image) {
+	                 foreach($gallery as $image) {
+	                   echo '<img src="' . esc_url( $image['sizes']['large'] ) . '" alt="' . esc_attr( coopercole_get_attachment_alt_text( $image['id'], $curr_id, 'art' ) ) . '" />';
+	                 }
 
-                   echo '<img src="'.$image['sizes']['large'].'" />';
+	               } else {
 
-                 }
+	                 $art_image = get_the_post_thumbnail_url( $curr_id, 'large' );
+	                 $art_thumbnail_id = get_post_thumbnail_id( $curr_id );
+	                 echo '<img src="' . esc_url( $art_image ) . '" alt="' . esc_attr( coopercole_get_attachment_alt_text( $art_thumbnail_id, $curr_id, 'art' ) ) . '" />';
 
-               } else {
-
-                 the_post_thumbnail('large');
-
-               }
+	               }
 
                ?>
       </section>

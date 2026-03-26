@@ -2,10 +2,11 @@
 <main class="exhibtionPageContainer">
 
     <?php if(have_posts()) : while(have_posts()) : the_post(); ?>
-    <?php $exhibitionImage = get_the_post_thumbnail_url(null, 'full'); ?>
-    <figure class="exhibitionMainImg">
-            <img src="<?php echo $exhibitionImage ?>" alt="selected from the exhibtion <?php the_title() ?>, Cooper Cole Gallery is located in Toronto, Canada">
-        </figure>
+	    <?php $exhibitionImage = get_the_post_thumbnail_url(null, 'full'); ?>
+	    <?php $exhibitionThumbnailId = get_post_thumbnail_id( get_the_ID() ); ?>
+	    <figure class="exhibitionMainImg">
+	            <img src="<?php echo esc_url( $exhibitionImage ); ?>" alt="<?php echo esc_attr( coopercole_get_attachment_alt_text( $exhibitionThumbnailId, get_the_ID(), 'exhibition' ) ); ?>">
+	        </figure>
     <section class="exhibitionHeader">
         <section class="artists">
                 <?php $connected_artists = new WP_Query( array(
@@ -49,7 +50,7 @@
                 <?php endif; ?>
             </section>
         <section class="exhibitionInfo">
-            <h2 class="exhibitionTitle"><?php the_title(); ?></h2>
+            <h1 class="exhibitionTitle"><?php the_title(); ?></h1>
             <section class="otherinfo">
             <?php
               $start_date_raw = get_field('start_date', false, false);
@@ -215,10 +216,9 @@
               foreach($slides as $slide):
 
               ?>
-            <figure class="exhibitionImgs">
-            <img class="exhibitionImgsLL" src="<?php echo $slide['url']; ?>" alt="" id="<?php echo $slide['id'];?>" />
-
-            </figure>
+	            <figure class="exhibitionImgs">
+	            <img class="exhibitionImgsLL" src="<?php echo esc_url( $slide['url'] ); ?>" alt="<?php echo esc_attr( coopercole_get_attachment_alt_text( $slide['id'], get_the_ID(), 'exhibition' ) ); ?>" id="<?php echo esc_attr( $slide['id'] ); ?>" />
+	            </figure>
 
             <?php endforeach; ?>
 
