@@ -480,10 +480,10 @@ document.addEventListener("DOMContentLoaded", function() {
       $(this).css("color", e.type === "mouseenter" ? "white" : "black");
     });
     $(
-      "bdi, .woocommerce-loop-product__title, .exhibitionDateLocationHome, a, .open, .exhibitionsOpen, .newsOpen, .bioOpen, #downClick, #upClick, .btn-info, .location, .date, .mobileSocialVisIG, .featuredVideoTitle, .read-more-btn, .artFairArtists .nonRepArtists li, .gt_selector"
+      "bdi, .woocommerce-loop-product__title, .exhibitionDateLocationHome, a, .open, .exhibitionsOpen, .newsOpen, .bioOpen, #downClick, #upClick, .btn-info, .location, .date, .mobileSocialVisIG, .featuredVideoTitle, .read-more-btn, .artFairArtists .nonRepArtists li, .gt_selector "
     ).css("color", "black");
     $(
-      ".infoAnimated, .arrow, .bookAnAppointment a, .mailing-list-open, .wt-cli-accept-btn, .menu__nav li a, .artistsNames li a, .cli-plugin-main-butto, .description h2 a, .newsTitle a, .newsReadMore, .artistNameExhibition .nonRepArtists li, .nextItem, .previousItem, .ab-item, .pageNav a, .pageNav span, .menu-instagram a"
+      ".infoAnimated, .arrow, .bookAnAppointment a, .mailing-list-open, .wt-cli-accept-btn, .menu__nav li a, .artistsNames li a, .cli-plugin-main-butto, .description h2 a, .newsTitle a, .newsReadMore, .artistNameExhibition .nonRepArtists li, .nextItem, .previousItem, .ab-item, .pageNav a, .pageNav span, .menu-instagram a "
     ).css("color", "white");
     $(
       ".infoAnimated, .mailing-list-open, .bookAnAppointment, .menu-instagram a"
