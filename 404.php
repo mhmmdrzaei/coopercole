@@ -8,7 +8,6 @@
 
   	<h1>Page Not Found</h1>
     <p>The page you requested could not be found. Try a search, or head to one of the main sections below.</p>
-    <?php get_search_form(); ?>
     <p><a href="/artists">Artists</a> / <a href="/exhibitions">Exhibitions</a> / <a href="/news">News</a> / <a href="<?php echo esc_url( home_url( '/' ) ); ?>">Home</a></p>
 
   </section>

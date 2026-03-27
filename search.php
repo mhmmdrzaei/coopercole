@@ -15,7 +15,7 @@
 
 				<h1>No Search Results Found</h1>
 				<p>Try a different keyword, or browse one of the main sections below.</p>
-				<?php get_search_form(); ?>
+				
 				<p><a href="/artists">Artists</a> / <a href="/exhibitions">Exhibitions</a> / <a href="/news">News</a></p>
 			</section>
 		<?php endif; ?>
